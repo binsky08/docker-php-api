@@ -16,13 +16,20 @@
         "jane-php/open-api-runtime": "^6.3"
     },
     "require-dev": {
-        "amphp/http-client": "^4.5",
         "friendsofphp/php-cs-fixer": "^2.17",
         "jane-php/json-schema": "^6.3",
         "jane-php/open-api-3": "^6.3"
     },
     "suggest": {
-        "amphp/http-client": "To use the async api"
+        "php-http/socket-client": "Socket-based HTTP Client to use the API"
+    },
+    "conflict": {
+        "docker-php/docker-php-api": "*"
+    },
+    "scripts": {
+        "generate": "vendor/bin/jane-openapi generate",
+        "lint": "vendor/bin/php-cs-fixer fix --dry-run --verbose --diff",
+        "lint-fix": "vendor/bin/php-cs-fixer fix --verbose"
     },
     "extra": {
         "branch-alias": {
