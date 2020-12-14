@@ -41,14 +41,20 @@ class TLSInfoNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('TrustRoot', $data)) {
+        if (\array_key_exists('TrustRoot', $data) && null !== $data['TrustRoot']) {
             $object->setTrustRoot($data['TrustRoot']);
+        } elseif (\array_key_exists('TrustRoot', $data) && null === $data['TrustRoot']) {
+            $object->setTrustRoot(null);
         }
-        if (\array_key_exists('CertIssuerSubject', $data)) {
+        if (\array_key_exists('CertIssuerSubject', $data) && null !== $data['CertIssuerSubject']) {
             $object->setCertIssuerSubject($data['CertIssuerSubject']);
+        } elseif (\array_key_exists('CertIssuerSubject', $data) && null === $data['CertIssuerSubject']) {
+            $object->setCertIssuerSubject(null);
         }
-        if (\array_key_exists('CertIssuerPublicKey', $data)) {
+        if (\array_key_exists('CertIssuerPublicKey', $data) && null !== $data['CertIssuerPublicKey']) {
             $object->setCertIssuerPublicKey($data['CertIssuerPublicKey']);
+        } elseif (\array_key_exists('CertIssuerPublicKey', $data) && null === $data['CertIssuerPublicKey']) {
+            $object->setCertIssuerPublicKey(null);
         }
 
         return $object;

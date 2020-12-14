@@ -41,41 +41,57 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Driver', $data)) {
+        if (\array_key_exists('Driver', $data) && null !== $data['Driver']) {
             $object->setDriver($data['Driver']);
+        } elseif (\array_key_exists('Driver', $data) && null === $data['Driver']) {
+            $object->setDriver(null);
         }
-        if (\array_key_exists('Mountpoint', $data)) {
+        if (\array_key_exists('Mountpoint', $data) && null !== $data['Mountpoint']) {
             $object->setMountpoint($data['Mountpoint']);
+        } elseif (\array_key_exists('Mountpoint', $data) && null === $data['Mountpoint']) {
+            $object->setMountpoint(null);
         }
-        if (\array_key_exists('CreatedAt', $data)) {
+        if (\array_key_exists('CreatedAt', $data) && null !== $data['CreatedAt']) {
             $object->setCreatedAt($data['CreatedAt']);
+        } elseif (\array_key_exists('CreatedAt', $data) && null === $data['CreatedAt']) {
+            $object->setCreatedAt(null);
         }
-        if (\array_key_exists('Status', $data)) {
+        if (\array_key_exists('Status', $data) && null !== $data['Status']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Status'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\VolumeStatusItem', 'json', $context);
             }
             $object->setStatus($values);
+        } elseif (\array_key_exists('Status', $data) && null === $data['Status']) {
+            $object->setStatus(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $object->setLabels($values_1);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('Scope', $data)) {
+        if (\array_key_exists('Scope', $data) && null !== $data['Scope']) {
             $object->setScope($data['Scope']);
+        } elseif (\array_key_exists('Scope', $data) && null === $data['Scope']) {
+            $object->setScope(null);
         }
-        if (\array_key_exists('Options', $data)) {
+        if (\array_key_exists('Options', $data) && null !== $data['Options']) {
             $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Options'] as $key_2 => $value_2) {
                 $values_2[$key_2] = $value_2;
             }
             $object->setOptions($values_2);
+        } elseif (\array_key_exists('Options', $data) && null === $data['Options']) {
+            $object->setOptions(null);
         }
         if (\array_key_exists('UsageData', $data) && null !== $data['UsageData']) {
             $object->setUsageData($this->denormalizer->denormalize($data['UsageData'], 'Docker\\API\\Model\\VolumeUsageData', 'json', $context));

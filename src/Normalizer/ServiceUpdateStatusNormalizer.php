@@ -41,17 +41,25 @@ class ServiceUpdateStatusNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('State', $data)) {
+        if (\array_key_exists('State', $data) && null !== $data['State']) {
             $object->setState($data['State']);
+        } elseif (\array_key_exists('State', $data) && null === $data['State']) {
+            $object->setState(null);
         }
-        if (\array_key_exists('StartedAt', $data)) {
+        if (\array_key_exists('StartedAt', $data) && null !== $data['StartedAt']) {
             $object->setStartedAt($data['StartedAt']);
+        } elseif (\array_key_exists('StartedAt', $data) && null === $data['StartedAt']) {
+            $object->setStartedAt(null);
         }
-        if (\array_key_exists('CompletedAt', $data)) {
+        if (\array_key_exists('CompletedAt', $data) && null !== $data['CompletedAt']) {
             $object->setCompletedAt($data['CompletedAt']);
+        } elseif (\array_key_exists('CompletedAt', $data) && null === $data['CompletedAt']) {
+            $object->setCompletedAt(null);
         }
-        if (\array_key_exists('Message', $data)) {
+        if (\array_key_exists('Message', $data) && null !== $data['Message']) {
             $object->setMessage($data['Message']);
+        } elseif (\array_key_exists('Message', $data) && null === $data['Message']) {
+            $object->setMessage(null);
         }
 
         return $object;

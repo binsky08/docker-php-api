@@ -41,38 +41,60 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('CanRemove', $data)) {
+        if (\array_key_exists('CanRemove', $data) && null !== $data['CanRemove']) {
             $object->setCanRemove($data['CanRemove']);
+        } elseif (\array_key_exists('CanRemove', $data) && null === $data['CanRemove']) {
+            $object->setCanRemove(null);
         }
-        if (\array_key_exists('DetachKeys', $data)) {
+        if (\array_key_exists('DetachKeys', $data) && null !== $data['DetachKeys']) {
             $object->setDetachKeys($data['DetachKeys']);
+        } elseif (\array_key_exists('DetachKeys', $data) && null === $data['DetachKeys']) {
+            $object->setDetachKeys(null);
         }
-        if (\array_key_exists('ID', $data)) {
+        if (\array_key_exists('ID', $data) && null !== $data['ID']) {
             $object->setID($data['ID']);
+        } elseif (\array_key_exists('ID', $data) && null === $data['ID']) {
+            $object->setID(null);
         }
-        if (\array_key_exists('Running', $data)) {
+        if (\array_key_exists('Running', $data) && null !== $data['Running']) {
             $object->setRunning($data['Running']);
+        } elseif (\array_key_exists('Running', $data) && null === $data['Running']) {
+            $object->setRunning(null);
         }
-        if (\array_key_exists('ExitCode', $data)) {
+        if (\array_key_exists('ExitCode', $data) && null !== $data['ExitCode']) {
             $object->setExitCode($data['ExitCode']);
+        } elseif (\array_key_exists('ExitCode', $data) && null === $data['ExitCode']) {
+            $object->setExitCode(null);
         }
-        if (\array_key_exists('ProcessConfig', $data)) {
+        if (\array_key_exists('ProcessConfig', $data) && null !== $data['ProcessConfig']) {
             $object->setProcessConfig($this->denormalizer->denormalize($data['ProcessConfig'], 'Docker\\API\\Model\\ProcessConfig', 'json', $context));
+        } elseif (\array_key_exists('ProcessConfig', $data) && null === $data['ProcessConfig']) {
+            $object->setProcessConfig(null);
         }
-        if (\array_key_exists('OpenStdin', $data)) {
+        if (\array_key_exists('OpenStdin', $data) && null !== $data['OpenStdin']) {
             $object->setOpenStdin($data['OpenStdin']);
+        } elseif (\array_key_exists('OpenStdin', $data) && null === $data['OpenStdin']) {
+            $object->setOpenStdin(null);
         }
-        if (\array_key_exists('OpenStderr', $data)) {
+        if (\array_key_exists('OpenStderr', $data) && null !== $data['OpenStderr']) {
             $object->setOpenStderr($data['OpenStderr']);
+        } elseif (\array_key_exists('OpenStderr', $data) && null === $data['OpenStderr']) {
+            $object->setOpenStderr(null);
         }
-        if (\array_key_exists('OpenStdout', $data)) {
+        if (\array_key_exists('OpenStdout', $data) && null !== $data['OpenStdout']) {
             $object->setOpenStdout($data['OpenStdout']);
+        } elseif (\array_key_exists('OpenStdout', $data) && null === $data['OpenStdout']) {
+            $object->setOpenStdout(null);
         }
-        if (\array_key_exists('ContainerID', $data)) {
+        if (\array_key_exists('ContainerID', $data) && null !== $data['ContainerID']) {
             $object->setContainerID($data['ContainerID']);
+        } elseif (\array_key_exists('ContainerID', $data) && null === $data['ContainerID']) {
+            $object->setContainerID(null);
         }
-        if (\array_key_exists('Pid', $data)) {
+        if (\array_key_exists('Pid', $data) && null !== $data['Pid']) {
             $object->setPid($data['Pid']);
+        } elseif (\array_key_exists('Pid', $data) && null === $data['Pid']) {
+            $object->setPid(null);
         }
 
         return $object;

@@ -41,21 +41,29 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Protocol', $data)) {
+        if (\array_key_exists('Protocol', $data) && null !== $data['Protocol']) {
             $object->setProtocol($data['Protocol']);
+        } elseif (\array_key_exists('Protocol', $data) && null === $data['Protocol']) {
+            $object->setProtocol(null);
         }
-        if (\array_key_exists('URL', $data)) {
+        if (\array_key_exists('URL', $data) && null !== $data['URL']) {
             $object->setURL($data['URL']);
+        } elseif (\array_key_exists('URL', $data) && null === $data['URL']) {
+            $object->setURL(null);
         }
-        if (\array_key_exists('Options', $data)) {
+        if (\array_key_exists('Options', $data) && null !== $data['Options']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Options'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setOptions($values);
+        } elseif (\array_key_exists('Options', $data) && null === $data['Options']) {
+            $object->setOptions(null);
         }
-        if (\array_key_exists('CACert', $data)) {
+        if (\array_key_exists('CACert', $data) && null !== $data['CACert']) {
             $object->setCACert($data['CACert']);
+        } elseif (\array_key_exists('CACert', $data) && null === $data['CACert']) {
+            $object->setCACert(null);
         }
 
         return $object;

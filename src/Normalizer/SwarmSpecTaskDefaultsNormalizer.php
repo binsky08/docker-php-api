@@ -41,8 +41,10 @@ class SwarmSpecTaskDefaultsNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('LogDriver', $data)) {
+        if (\array_key_exists('LogDriver', $data) && null !== $data['LogDriver']) {
             $object->setLogDriver($this->denormalizer->denormalize($data['LogDriver'], 'Docker\\API\\Model\\SwarmSpecTaskDefaultsLogDriver', 'json', $context));
+        } elseif (\array_key_exists('LogDriver', $data) && null === $data['LogDriver']) {
+            $object->setLogDriver(null);
         }
 
         return $object;

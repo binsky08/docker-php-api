@@ -9,13 +9,13 @@ class SwarmSpec
     /**
      * Name of the swarm.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
@@ -27,7 +27,7 @@ class SwarmSpec
     /**
      * Raft configuration.
      *
-     * @var SwarmSpecRaft
+     * @var SwarmSpecRaft|null
      */
     protected $raft;
     /**
@@ -45,20 +45,20 @@ class SwarmSpec
     /**
      * Parameters related to encryption-at-rest.
      *
-     * @var SwarmSpecEncryptionConfig
+     * @var SwarmSpecEncryptionConfig|null
      */
     protected $encryptionConfig;
     /**
      * Defaults for creating tasks in this cluster.
      *
-     * @var SwarmSpecTaskDefaults
+     * @var SwarmSpecTaskDefaults|null
      */
     protected $taskDefaults;
 
     /**
      * Name of the swarm.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -66,7 +66,7 @@ class SwarmSpec
     /**
      * Name of the swarm.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -76,9 +76,9 @@ class SwarmSpec
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -86,9 +86,9 @@ class SwarmSpec
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -116,7 +116,7 @@ class SwarmSpec
     /**
      * Raft configuration.
      */
-    public function getRaft(): SwarmSpecRaft
+    public function getRaft(): ?SwarmSpecRaft
     {
         return $this->raft;
     }
@@ -124,7 +124,7 @@ class SwarmSpec
     /**
      * Raft configuration.
      */
-    public function setRaft(SwarmSpecRaft $raft): self
+    public function setRaft(?SwarmSpecRaft $raft): self
     {
         $this->raft = $raft;
 
@@ -170,7 +170,7 @@ class SwarmSpec
     /**
      * Parameters related to encryption-at-rest.
      */
-    public function getEncryptionConfig(): SwarmSpecEncryptionConfig
+    public function getEncryptionConfig(): ?SwarmSpecEncryptionConfig
     {
         return $this->encryptionConfig;
     }
@@ -178,7 +178,7 @@ class SwarmSpec
     /**
      * Parameters related to encryption-at-rest.
      */
-    public function setEncryptionConfig(SwarmSpecEncryptionConfig $encryptionConfig): self
+    public function setEncryptionConfig(?SwarmSpecEncryptionConfig $encryptionConfig): self
     {
         $this->encryptionConfig = $encryptionConfig;
 
@@ -188,7 +188,7 @@ class SwarmSpec
     /**
      * Defaults for creating tasks in this cluster.
      */
-    public function getTaskDefaults(): SwarmSpecTaskDefaults
+    public function getTaskDefaults(): ?SwarmSpecTaskDefaults
     {
         return $this->taskDefaults;
     }
@@ -196,7 +196,7 @@ class SwarmSpec
     /**
      * Defaults for creating tasks in this cluster.
      */
-    public function setTaskDefaults(SwarmSpecTaskDefaults $taskDefaults): self
+    public function setTaskDefaults(?SwarmSpecTaskDefaults $taskDefaults): self
     {
         $this->taskDefaults = $taskDefaults;
 

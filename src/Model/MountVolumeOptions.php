@@ -9,26 +9,26 @@ class MountVolumeOptions
     /**
      * Populate volume with data from the target.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $noCopy = false;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
      * Map of driver specific options.
      *
-     * @var MountVolumeOptionsDriverConfig
+     * @var MountVolumeOptionsDriverConfig|null
      */
     protected $driverConfig;
 
     /**
      * Populate volume with data from the target.
      */
-    public function getNoCopy(): bool
+    public function getNoCopy(): ?bool
     {
         return $this->noCopy;
     }
@@ -36,7 +36,7 @@ class MountVolumeOptions
     /**
      * Populate volume with data from the target.
      */
-    public function setNoCopy(bool $noCopy): self
+    public function setNoCopy(?bool $noCopy): self
     {
         $this->noCopy = $noCopy;
 
@@ -46,9 +46,9 @@ class MountVolumeOptions
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -56,9 +56,9 @@ class MountVolumeOptions
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -68,7 +68,7 @@ class MountVolumeOptions
     /**
      * Map of driver specific options.
      */
-    public function getDriverConfig(): MountVolumeOptionsDriverConfig
+    public function getDriverConfig(): ?MountVolumeOptionsDriverConfig
     {
         return $this->driverConfig;
     }
@@ -76,7 +76,7 @@ class MountVolumeOptions
     /**
      * Map of driver specific options.
      */
-    public function setDriverConfig(MountVolumeOptionsDriverConfig $driverConfig): self
+    public function setDriverConfig(?MountVolumeOptionsDriverConfig $driverConfig): self
     {
         $this->driverConfig = $driverConfig;
 

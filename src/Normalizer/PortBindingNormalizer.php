@@ -41,11 +41,15 @@ class PortBindingNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('HostIp', $data)) {
+        if (\array_key_exists('HostIp', $data) && null !== $data['HostIp']) {
             $object->setHostIp($data['HostIp']);
+        } elseif (\array_key_exists('HostIp', $data) && null === $data['HostIp']) {
+            $object->setHostIp(null);
         }
-        if (\array_key_exists('HostPort', $data)) {
+        if (\array_key_exists('HostPort', $data) && null !== $data['HostPort']) {
             $object->setHostPort($data['HostPort']);
+        } elseif (\array_key_exists('HostPort', $data) && null === $data['HostPort']) {
+            $object->setHostPort(null);
         }
 
         return $object;

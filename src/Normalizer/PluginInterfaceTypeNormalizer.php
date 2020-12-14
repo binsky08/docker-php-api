@@ -41,14 +41,20 @@ class PluginInterfaceTypeNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Prefix', $data)) {
+        if (\array_key_exists('Prefix', $data) && null !== $data['Prefix']) {
             $object->setPrefix($data['Prefix']);
+        } elseif (\array_key_exists('Prefix', $data) && null === $data['Prefix']) {
+            $object->setPrefix(null);
         }
-        if (\array_key_exists('Capability', $data)) {
+        if (\array_key_exists('Capability', $data) && null !== $data['Capability']) {
             $object->setCapability($data['Capability']);
+        } elseif (\array_key_exists('Capability', $data) && null === $data['Capability']) {
+            $object->setCapability(null);
         }
-        if (\array_key_exists('Version', $data)) {
+        if (\array_key_exists('Version', $data) && null !== $data['Version']) {
             $object->setVersion($data['Version']);
+        } elseif (\array_key_exists('Version', $data) && null === $data['Version']) {
+            $object->setVersion(null);
         }
 
         return $object;

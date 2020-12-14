@@ -41,8 +41,10 @@ class ObjectVersionNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Index', $data)) {
+        if (\array_key_exists('Index', $data) && null !== $data['Index']) {
             $object->setIndex($data['Index']);
+        } elseif (\array_key_exists('Index', $data) && null === $data['Index']) {
+            $object->setIndex(null);
         }
 
         return $object;

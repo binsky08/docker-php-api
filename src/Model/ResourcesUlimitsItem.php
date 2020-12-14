@@ -9,26 +9,26 @@ class ResourcesUlimitsItem
     /**
      * Name of ulimit.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * Soft limit.
      *
-     * @var int
+     * @var int|null
      */
     protected $soft;
     /**
      * Hard limit.
      *
-     * @var int
+     * @var int|null
      */
     protected $hard;
 
     /**
      * Name of ulimit.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -36,7 +36,7 @@ class ResourcesUlimitsItem
     /**
      * Name of ulimit.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -46,7 +46,7 @@ class ResourcesUlimitsItem
     /**
      * Soft limit.
      */
-    public function getSoft(): int
+    public function getSoft(): ?int
     {
         return $this->soft;
     }
@@ -54,7 +54,7 @@ class ResourcesUlimitsItem
     /**
      * Soft limit.
      */
-    public function setSoft(int $soft): self
+    public function setSoft(?int $soft): self
     {
         $this->soft = $soft;
 
@@ -64,7 +64,7 @@ class ResourcesUlimitsItem
     /**
      * Hard limit.
      */
-    public function getHard(): int
+    public function getHard(): ?int
     {
         return $this->hard;
     }
@@ -72,7 +72,7 @@ class ResourcesUlimitsItem
     /**
      * Hard limit.
      */
-    public function setHard(int $hard): self
+    public function setHard(?int $hard): self
     {
         $this->hard = $hard;
 

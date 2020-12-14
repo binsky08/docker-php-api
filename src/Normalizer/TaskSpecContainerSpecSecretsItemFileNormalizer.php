@@ -41,17 +41,25 @@ class TaskSpecContainerSpecSecretsItemFileNormalizer implements DenormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('UID', $data)) {
+        if (\array_key_exists('UID', $data) && null !== $data['UID']) {
             $object->setUID($data['UID']);
+        } elseif (\array_key_exists('UID', $data) && null === $data['UID']) {
+            $object->setUID(null);
         }
-        if (\array_key_exists('GID', $data)) {
+        if (\array_key_exists('GID', $data) && null !== $data['GID']) {
             $object->setGID($data['GID']);
+        } elseif (\array_key_exists('GID', $data) && null === $data['GID']) {
+            $object->setGID(null);
         }
-        if (\array_key_exists('Mode', $data)) {
+        if (\array_key_exists('Mode', $data) && null !== $data['Mode']) {
             $object->setMode($data['Mode']);
+        } elseif (\array_key_exists('Mode', $data) && null === $data['Mode']) {
+            $object->setMode(null);
         }
 
         return $object;

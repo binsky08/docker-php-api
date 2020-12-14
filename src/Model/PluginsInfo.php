@@ -9,34 +9,34 @@ class PluginsInfo
     /**
      * Names of available volume-drivers, and network-driver plugins.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $volume;
     /**
      * Names of available network-drivers, and network-driver plugins.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $network;
     /**
      * Names of available authorization plugins.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $authorization;
     /**
      * Names of available logging-drivers, and logging-driver plugins.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $log;
 
     /**
      * Names of available volume-drivers, and network-driver plugins.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getVolume(): array
+    public function getVolume(): ?array
     {
         return $this->volume;
     }
@@ -44,9 +44,9 @@ class PluginsInfo
     /**
      * Names of available volume-drivers, and network-driver plugins.
      *
-     * @param string[] $volume
+     * @param string[]|null $volume
      */
-    public function setVolume(array $volume): self
+    public function setVolume(?array $volume): self
     {
         $this->volume = $volume;
 
@@ -56,9 +56,9 @@ class PluginsInfo
     /**
      * Names of available network-drivers, and network-driver plugins.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getNetwork(): array
+    public function getNetwork(): ?array
     {
         return $this->network;
     }
@@ -66,9 +66,9 @@ class PluginsInfo
     /**
      * Names of available network-drivers, and network-driver plugins.
      *
-     * @param string[] $network
+     * @param string[]|null $network
      */
-    public function setNetwork(array $network): self
+    public function setNetwork(?array $network): self
     {
         $this->network = $network;
 
@@ -78,9 +78,9 @@ class PluginsInfo
     /**
      * Names of available authorization plugins.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getAuthorization(): array
+    public function getAuthorization(): ?array
     {
         return $this->authorization;
     }
@@ -88,9 +88,9 @@ class PluginsInfo
     /**
      * Names of available authorization plugins.
      *
-     * @param string[] $authorization
+     * @param string[]|null $authorization
      */
-    public function setAuthorization(array $authorization): self
+    public function setAuthorization(?array $authorization): self
     {
         $this->authorization = $authorization;
 
@@ -100,9 +100,9 @@ class PluginsInfo
     /**
      * Names of available logging-drivers, and logging-driver plugins.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLog(): array
+    public function getLog(): ?array
     {
         return $this->log;
     }
@@ -110,9 +110,9 @@ class PluginsInfo
     /**
      * Names of available logging-drivers, and logging-driver plugins.
      *
-     * @param string[] $log
+     * @param string[]|null $log
      */
-    public function setLog(array $log): self
+    public function setLog(?array $log): self
     {
         $this->log = $log;
 

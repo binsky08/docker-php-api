@@ -9,18 +9,18 @@ class NetworksCreatePostResponse201
     /**
      * The ID of the created network.
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
-     * @var string
+     * @var string|null
      */
     protected $warning;
 
     /**
      * The ID of the created network.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -28,19 +28,19 @@ class NetworksCreatePostResponse201
     /**
      * The ID of the created network.
      */
-    public function setId(string $id): self
+    public function setId(?string $id): self
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getWarning(): string
+    public function getWarning(): ?string
     {
         return $this->warning;
     }
 
-    public function setWarning(string $warning): self
+    public function setWarning(?string $warning): self
     {
         $this->warning = $warning;
 

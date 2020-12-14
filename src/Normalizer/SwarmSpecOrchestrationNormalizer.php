@@ -41,8 +41,10 @@ class SwarmSpecOrchestrationNormalizer implements DenormalizerInterface, Normali
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('TaskHistoryRetentionLimit', $data)) {
+        if (\array_key_exists('TaskHistoryRetentionLimit', $data) && null !== $data['TaskHistoryRetentionLimit']) {
             $object->setTaskHistoryRetentionLimit($data['TaskHistoryRetentionLimit']);
+        } elseif (\array_key_exists('TaskHistoryRetentionLimit', $data) && null === $data['TaskHistoryRetentionLimit']) {
+            $object->setTaskHistoryRetentionLimit(null);
         }
 
         return $object;

@@ -41,14 +41,20 @@ class NodeStatusNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('State', $data)) {
+        if (\array_key_exists('State', $data) && null !== $data['State']) {
             $object->setState($data['State']);
+        } elseif (\array_key_exists('State', $data) && null === $data['State']) {
+            $object->setState(null);
         }
-        if (\array_key_exists('Message', $data)) {
+        if (\array_key_exists('Message', $data) && null !== $data['Message']) {
             $object->setMessage($data['Message']);
+        } elseif (\array_key_exists('Message', $data) && null === $data['Message']) {
+            $object->setMessage(null);
         }
-        if (\array_key_exists('Addr', $data)) {
+        if (\array_key_exists('Addr', $data) && null !== $data['Addr']) {
             $object->setAddr($data['Addr']);
+        } elseif (\array_key_exists('Addr', $data) && null === $data['Addr']) {
+            $object->setAddr(null);
         }
 
         return $object;

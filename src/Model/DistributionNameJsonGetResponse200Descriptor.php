@@ -7,52 +7,52 @@ namespace Docker\API\Model;
 class DistributionNameJsonGetResponse200Descriptor
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $mediaType;
     /**
-     * @var int
+     * @var int|null
      */
     protected $size;
     /**
-     * @var string
+     * @var string|null
      */
     protected $digest;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $uRLs;
 
-    public function getMediaType(): string
+    public function getMediaType(): ?string
     {
         return $this->mediaType;
     }
 
-    public function setMediaType(string $mediaType): self
+    public function setMediaType(?string $mediaType): self
     {
         $this->mediaType = $mediaType;
 
         return $this;
     }
 
-    public function getSize(): int
+    public function getSize(): ?int
     {
         return $this->size;
     }
 
-    public function setSize(int $size): self
+    public function setSize(?int $size): self
     {
         $this->size = $size;
 
         return $this;
     }
 
-    public function getDigest(): string
+    public function getDigest(): ?string
     {
         return $this->digest;
     }
 
-    public function setDigest(string $digest): self
+    public function setDigest(?string $digest): self
     {
         $this->digest = $digest;
 
@@ -60,17 +60,17 @@ class DistributionNameJsonGetResponse200Descriptor
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getURLs(): array
+    public function getURLs(): ?array
     {
         return $this->uRLs;
     }
 
     /**
-     * @param string[] $uRLs
+     * @param string[]|null $uRLs
      */
-    public function setURLs(array $uRLs): self
+    public function setURLs(?array $uRLs): self
     {
         $this->uRLs = $uRLs;
 

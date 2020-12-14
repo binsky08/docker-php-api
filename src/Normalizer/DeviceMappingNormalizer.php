@@ -41,14 +41,20 @@ class DeviceMappingNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('PathOnHost', $data)) {
+        if (\array_key_exists('PathOnHost', $data) && null !== $data['PathOnHost']) {
             $object->setPathOnHost($data['PathOnHost']);
+        } elseif (\array_key_exists('PathOnHost', $data) && null === $data['PathOnHost']) {
+            $object->setPathOnHost(null);
         }
-        if (\array_key_exists('PathInContainer', $data)) {
+        if (\array_key_exists('PathInContainer', $data) && null !== $data['PathInContainer']) {
             $object->setPathInContainer($data['PathInContainer']);
+        } elseif (\array_key_exists('PathInContainer', $data) && null === $data['PathInContainer']) {
+            $object->setPathInContainer(null);
         }
-        if (\array_key_exists('CgroupPermissions', $data)) {
+        if (\array_key_exists('CgroupPermissions', $data) && null !== $data['CgroupPermissions']) {
             $object->setCgroupPermissions($data['CgroupPermissions']);
+        } elseif (\array_key_exists('CgroupPermissions', $data) && null === $data['CgroupPermissions']) {
+            $object->setCgroupPermissions(null);
         }
 
         return $object;

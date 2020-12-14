@@ -9,20 +9,20 @@ class EventsGetResponse200Actor
     /**
      * The ID of the object emitting the event.
      *
-     * @var string
+     * @var string|null
      */
     protected $iD;
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $attributes;
 
     /**
      * The ID of the object emitting the event.
      */
-    public function getID(): string
+    public function getID(): ?string
     {
         return $this->iD;
     }
@@ -30,7 +30,7 @@ class EventsGetResponse200Actor
     /**
      * The ID of the object emitting the event.
      */
-    public function setID(string $iD): self
+    public function setID(?string $iD): self
     {
         $this->iD = $iD;
 
@@ -40,9 +40,9 @@ class EventsGetResponse200Actor
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getAttributes(): iterable
+    public function getAttributes(): ?iterable
     {
         return $this->attributes;
     }
@@ -50,9 +50,9 @@ class EventsGetResponse200Actor
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @param string[] $attributes
+     * @param string[]|null $attributes
      */
-    public function setAttributes(iterable $attributes): self
+    public function setAttributes(?iterable $attributes): self
     {
         $this->attributes = $attributes;
 

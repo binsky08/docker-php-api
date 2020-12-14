@@ -41,45 +41,69 @@ class VersionGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Platform', $data)) {
+        if (\array_key_exists('Platform', $data) && null !== $data['Platform']) {
             $object->setPlatform($this->denormalizer->denormalize($data['Platform'], 'Docker\\API\\Model\\VersionGetResponse200Platform', 'json', $context));
+        } elseif (\array_key_exists('Platform', $data) && null === $data['Platform']) {
+            $object->setPlatform(null);
         }
-        if (\array_key_exists('Components', $data)) {
+        if (\array_key_exists('Components', $data) && null !== $data['Components']) {
             $values = [];
             foreach ($data['Components'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\VersionGetResponse200ComponentsItem', 'json', $context);
             }
             $object->setComponents($values);
+        } elseif (\array_key_exists('Components', $data) && null === $data['Components']) {
+            $object->setComponents(null);
         }
-        if (\array_key_exists('Version', $data)) {
+        if (\array_key_exists('Version', $data) && null !== $data['Version']) {
             $object->setVersion($data['Version']);
+        } elseif (\array_key_exists('Version', $data) && null === $data['Version']) {
+            $object->setVersion(null);
         }
-        if (\array_key_exists('ApiVersion', $data)) {
+        if (\array_key_exists('ApiVersion', $data) && null !== $data['ApiVersion']) {
             $object->setApiVersion($data['ApiVersion']);
+        } elseif (\array_key_exists('ApiVersion', $data) && null === $data['ApiVersion']) {
+            $object->setApiVersion(null);
         }
-        if (\array_key_exists('MinAPIVersion', $data)) {
+        if (\array_key_exists('MinAPIVersion', $data) && null !== $data['MinAPIVersion']) {
             $object->setMinAPIVersion($data['MinAPIVersion']);
+        } elseif (\array_key_exists('MinAPIVersion', $data) && null === $data['MinAPIVersion']) {
+            $object->setMinAPIVersion(null);
         }
-        if (\array_key_exists('GitCommit', $data)) {
+        if (\array_key_exists('GitCommit', $data) && null !== $data['GitCommit']) {
             $object->setGitCommit($data['GitCommit']);
+        } elseif (\array_key_exists('GitCommit', $data) && null === $data['GitCommit']) {
+            $object->setGitCommit(null);
         }
-        if (\array_key_exists('GoVersion', $data)) {
+        if (\array_key_exists('GoVersion', $data) && null !== $data['GoVersion']) {
             $object->setGoVersion($data['GoVersion']);
+        } elseif (\array_key_exists('GoVersion', $data) && null === $data['GoVersion']) {
+            $object->setGoVersion(null);
         }
-        if (\array_key_exists('Os', $data)) {
+        if (\array_key_exists('Os', $data) && null !== $data['Os']) {
             $object->setOs($data['Os']);
+        } elseif (\array_key_exists('Os', $data) && null === $data['Os']) {
+            $object->setOs(null);
         }
-        if (\array_key_exists('Arch', $data)) {
+        if (\array_key_exists('Arch', $data) && null !== $data['Arch']) {
             $object->setArch($data['Arch']);
+        } elseif (\array_key_exists('Arch', $data) && null === $data['Arch']) {
+            $object->setArch(null);
         }
-        if (\array_key_exists('KernelVersion', $data)) {
+        if (\array_key_exists('KernelVersion', $data) && null !== $data['KernelVersion']) {
             $object->setKernelVersion($data['KernelVersion']);
+        } elseif (\array_key_exists('KernelVersion', $data) && null === $data['KernelVersion']) {
+            $object->setKernelVersion(null);
         }
-        if (\array_key_exists('Experimental', $data)) {
+        if (\array_key_exists('Experimental', $data) && null !== $data['Experimental']) {
             $object->setExperimental($data['Experimental']);
+        } elseif (\array_key_exists('Experimental', $data) && null === $data['Experimental']) {
+            $object->setExperimental(null);
         }
-        if (\array_key_exists('BuildTime', $data)) {
+        if (\array_key_exists('BuildTime', $data) && null !== $data['BuildTime']) {
             $object->setBuildTime($data['BuildTime']);
+        } elseif (\array_key_exists('BuildTime', $data) && null === $data['BuildTime']) {
+            $object->setBuildTime(null);
         }
 
         return $object;

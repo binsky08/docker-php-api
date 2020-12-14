@@ -7,80 +7,80 @@ namespace Docker\API\Model;
 class ImagesSearchGetResponse200Item
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $isOfficial;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $isAutomated;
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var int
+     * @var int|null
      */
     protected $starCount;
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getIsOfficial(): bool
+    public function getIsOfficial(): ?bool
     {
         return $this->isOfficial;
     }
 
-    public function setIsOfficial(bool $isOfficial): self
+    public function setIsOfficial(?bool $isOfficial): self
     {
         $this->isOfficial = $isOfficial;
 
         return $this;
     }
 
-    public function getIsAutomated(): bool
+    public function getIsAutomated(): ?bool
     {
         return $this->isAutomated;
     }
 
-    public function setIsAutomated(bool $isAutomated): self
+    public function setIsAutomated(?bool $isAutomated): self
     {
         $this->isAutomated = $isAutomated;
 
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getStarCount(): int
+    public function getStarCount(): ?int
     {
         return $this->starCount;
     }
 
-    public function setStarCount(int $starCount): self
+    public function setStarCount(?int $starCount): self
     {
         $this->starCount = $starCount;
 

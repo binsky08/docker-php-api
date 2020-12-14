@@ -7,24 +7,24 @@ namespace Docker\API\Model;
 class EngineDescription
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $engineVersion;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
-     * @var EngineDescriptionPluginsItem[]
+     * @var EngineDescriptionPluginsItem[]|null
      */
     protected $plugins;
 
-    public function getEngineVersion(): string
+    public function getEngineVersion(): ?string
     {
         return $this->engineVersion;
     }
 
-    public function setEngineVersion(string $engineVersion): self
+    public function setEngineVersion(?string $engineVersion): self
     {
         $this->engineVersion = $engineVersion;
 
@@ -32,17 +32,17 @@ class EngineDescription
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
 
     /**
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -50,17 +50,17 @@ class EngineDescription
     }
 
     /**
-     * @return EngineDescriptionPluginsItem[]
+     * @return EngineDescriptionPluginsItem[]|null
      */
-    public function getPlugins(): array
+    public function getPlugins(): ?array
     {
         return $this->plugins;
     }
 
     /**
-     * @param EngineDescriptionPluginsItem[] $plugins
+     * @param EngineDescriptionPluginsItem[]|null $plugins
      */
-    public function setPlugins(array $plugins): self
+    public function setPlugins(?array $plugins): self
     {
         $this->plugins = $plugins;
 

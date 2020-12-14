@@ -41,14 +41,20 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('File', $data)) {
+        if (\array_key_exists('File', $data) && null !== $data['File']) {
             $object->setFile($this->denormalizer->denormalize($data['File'], 'Docker\\API\\Model\\TaskSpecContainerSpecConfigsItemFile', 'json', $context));
+        } elseif (\array_key_exists('File', $data) && null === $data['File']) {
+            $object->setFile(null);
         }
-        if (\array_key_exists('ConfigID', $data)) {
+        if (\array_key_exists('ConfigID', $data) && null !== $data['ConfigID']) {
             $object->setConfigID($data['ConfigID']);
+        } elseif (\array_key_exists('ConfigID', $data) && null === $data['ConfigID']) {
+            $object->setConfigID(null);
         }
-        if (\array_key_exists('ConfigName', $data)) {
+        if (\array_key_exists('ConfigName', $data) && null !== $data['ConfigName']) {
             $object->setConfigName($data['ConfigName']);
+        } elseif (\array_key_exists('ConfigName', $data) && null === $data['ConfigName']) {
+            $object->setConfigName(null);
         }
 
         return $object;

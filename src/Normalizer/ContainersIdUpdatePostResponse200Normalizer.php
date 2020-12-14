@@ -41,12 +41,14 @@ class ContainersIdUpdatePostResponse200Normalizer implements DenormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Warnings', $data)) {
+        if (\array_key_exists('Warnings', $data) && null !== $data['Warnings']) {
             $values = [];
             foreach ($data['Warnings'] as $value) {
                 $values[] = $value;
             }
             $object->setWarnings($values);
+        } elseif (\array_key_exists('Warnings', $data) && null === $data['Warnings']) {
+            $object->setWarnings(null);
         }
 
         return $object;

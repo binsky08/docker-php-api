@@ -41,8 +41,10 @@ class ServiceSpecModeReplicatedNormalizer implements DenormalizerInterface, Norm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Replicas', $data)) {
+        if (\array_key_exists('Replicas', $data) && null !== $data['Replicas']) {
             $object->setReplicas($data['Replicas']);
+        } elseif (\array_key_exists('Replicas', $data) && null === $data['Replicas']) {
+            $object->setReplicas(null);
         }
 
         return $object;

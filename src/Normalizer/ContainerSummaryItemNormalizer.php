@@ -41,66 +41,96 @@ class ContainerSummaryItemNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Id', $data)) {
+        if (\array_key_exists('Id', $data) && null !== $data['Id']) {
             $object->setId($data['Id']);
+        } elseif (\array_key_exists('Id', $data) && null === $data['Id']) {
+            $object->setId(null);
         }
-        if (\array_key_exists('Names', $data)) {
+        if (\array_key_exists('Names', $data) && null !== $data['Names']) {
             $values = [];
             foreach ($data['Names'] as $value) {
                 $values[] = $value;
             }
             $object->setNames($values);
+        } elseif (\array_key_exists('Names', $data) && null === $data['Names']) {
+            $object->setNames(null);
         }
-        if (\array_key_exists('Image', $data)) {
+        if (\array_key_exists('Image', $data) && null !== $data['Image']) {
             $object->setImage($data['Image']);
+        } elseif (\array_key_exists('Image', $data) && null === $data['Image']) {
+            $object->setImage(null);
         }
-        if (\array_key_exists('ImageID', $data)) {
+        if (\array_key_exists('ImageID', $data) && null !== $data['ImageID']) {
             $object->setImageID($data['ImageID']);
+        } elseif (\array_key_exists('ImageID', $data) && null === $data['ImageID']) {
+            $object->setImageID(null);
         }
-        if (\array_key_exists('Command', $data)) {
+        if (\array_key_exists('Command', $data) && null !== $data['Command']) {
             $object->setCommand($data['Command']);
+        } elseif (\array_key_exists('Command', $data) && null === $data['Command']) {
+            $object->setCommand(null);
         }
-        if (\array_key_exists('Created', $data)) {
+        if (\array_key_exists('Created', $data) && null !== $data['Created']) {
             $object->setCreated($data['Created']);
+        } elseif (\array_key_exists('Created', $data) && null === $data['Created']) {
+            $object->setCreated(null);
         }
-        if (\array_key_exists('Ports', $data)) {
+        if (\array_key_exists('Ports', $data) && null !== $data['Ports']) {
             $values_1 = [];
             foreach ($data['Ports'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\Port', 'json', $context);
             }
             $object->setPorts($values_1);
+        } elseif (\array_key_exists('Ports', $data) && null === $data['Ports']) {
+            $object->setPorts(null);
         }
-        if (\array_key_exists('SizeRw', $data)) {
+        if (\array_key_exists('SizeRw', $data) && null !== $data['SizeRw']) {
             $object->setSizeRw($data['SizeRw']);
+        } elseif (\array_key_exists('SizeRw', $data) && null === $data['SizeRw']) {
+            $object->setSizeRw(null);
         }
-        if (\array_key_exists('SizeRootFs', $data)) {
+        if (\array_key_exists('SizeRootFs', $data) && null !== $data['SizeRootFs']) {
             $object->setSizeRootFs($data['SizeRootFs']);
+        } elseif (\array_key_exists('SizeRootFs', $data) && null === $data['SizeRootFs']) {
+            $object->setSizeRootFs(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
             $object->setLabels($values_2);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('State', $data)) {
+        if (\array_key_exists('State', $data) && null !== $data['State']) {
             $object->setState($data['State']);
+        } elseif (\array_key_exists('State', $data) && null === $data['State']) {
+            $object->setState(null);
         }
-        if (\array_key_exists('Status', $data)) {
+        if (\array_key_exists('Status', $data) && null !== $data['Status']) {
             $object->setStatus($data['Status']);
+        } elseif (\array_key_exists('Status', $data) && null === $data['Status']) {
+            $object->setStatus(null);
         }
-        if (\array_key_exists('HostConfig', $data)) {
+        if (\array_key_exists('HostConfig', $data) && null !== $data['HostConfig']) {
             $object->setHostConfig($this->denormalizer->denormalize($data['HostConfig'], 'Docker\\API\\Model\\ContainerSummaryItemHostConfig', 'json', $context));
+        } elseif (\array_key_exists('HostConfig', $data) && null === $data['HostConfig']) {
+            $object->setHostConfig(null);
         }
-        if (\array_key_exists('NetworkSettings', $data)) {
+        if (\array_key_exists('NetworkSettings', $data) && null !== $data['NetworkSettings']) {
             $object->setNetworkSettings($this->denormalizer->denormalize($data['NetworkSettings'], 'Docker\\API\\Model\\ContainerSummaryItemNetworkSettings', 'json', $context));
+        } elseif (\array_key_exists('NetworkSettings', $data) && null === $data['NetworkSettings']) {
+            $object->setNetworkSettings(null);
         }
-        if (\array_key_exists('Mounts', $data)) {
+        if (\array_key_exists('Mounts', $data) && null !== $data['Mounts']) {
             $values_3 = [];
             foreach ($data['Mounts'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'Docker\\API\\Model\\Mount', 'json', $context);
             }
             $object->setMounts($values_3);
+        } elseif (\array_key_exists('Mounts', $data) && null === $data['Mounts']) {
+            $object->setMounts(null);
         }
 
         return $object;

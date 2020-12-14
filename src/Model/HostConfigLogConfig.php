@@ -7,20 +7,20 @@ namespace Docker\API\Model;
 class HostConfigLogConfig
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $config;
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
@@ -28,17 +28,17 @@ class HostConfigLogConfig
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getConfig(): iterable
+    public function getConfig(): ?iterable
     {
         return $this->config;
     }
 
     /**
-     * @param string[] $config
+     * @param string[]|null $config
      */
-    public function setConfig(iterable $config): self
+    public function setConfig(?iterable $config): self
     {
         $this->config = $config;
 

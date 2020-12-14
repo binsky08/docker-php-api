@@ -41,11 +41,15 @@ class NetworksIdDisconnectPostBodyNormalizer implements DenormalizerInterface, N
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Container', $data)) {
+        if (\array_key_exists('Container', $data) && null !== $data['Container']) {
             $object->setContainer($data['Container']);
+        } elseif (\array_key_exists('Container', $data) && null === $data['Container']) {
+            $object->setContainer(null);
         }
-        if (\array_key_exists('Force', $data)) {
+        if (\array_key_exists('Force', $data) && null !== $data['Force']) {
             $object->setForce($data['Force']);
+        } elseif (\array_key_exists('Force', $data) && null === $data['Force']) {
+            $object->setForce(null);
         }
 
         return $object;

@@ -41,29 +41,45 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
+            $object->setId(null);
         }
-        if (\array_key_exists('stream', $data)) {
+        if (\array_key_exists('stream', $data) && null !== $data['stream']) {
             $object->setStream($data['stream']);
+        } elseif (\array_key_exists('stream', $data) && null === $data['stream']) {
+            $object->setStream(null);
         }
-        if (\array_key_exists('error', $data)) {
+        if (\array_key_exists('error', $data) && null !== $data['error']) {
             $object->setError($data['error']);
+        } elseif (\array_key_exists('error', $data) && null === $data['error']) {
+            $object->setError(null);
         }
-        if (\array_key_exists('errorDetail', $data)) {
+        if (\array_key_exists('errorDetail', $data) && null !== $data['errorDetail']) {
             $object->setErrorDetail($this->denormalizer->denormalize($data['errorDetail'], 'Docker\\API\\Model\\ErrorDetail', 'json', $context));
+        } elseif (\array_key_exists('errorDetail', $data) && null === $data['errorDetail']) {
+            $object->setErrorDetail(null);
         }
-        if (\array_key_exists('status', $data)) {
+        if (\array_key_exists('status', $data) && null !== $data['status']) {
             $object->setStatus($data['status']);
+        } elseif (\array_key_exists('status', $data) && null === $data['status']) {
+            $object->setStatus(null);
         }
-        if (\array_key_exists('progress', $data)) {
+        if (\array_key_exists('progress', $data) && null !== $data['progress']) {
             $object->setProgress($data['progress']);
+        } elseif (\array_key_exists('progress', $data) && null === $data['progress']) {
+            $object->setProgress(null);
         }
-        if (\array_key_exists('progressDetail', $data)) {
+        if (\array_key_exists('progressDetail', $data) && null !== $data['progressDetail']) {
             $object->setProgressDetail($this->denormalizer->denormalize($data['progressDetail'], 'Docker\\API\\Model\\ProgressDetail', 'json', $context));
+        } elseif (\array_key_exists('progressDetail', $data) && null === $data['progressDetail']) {
+            $object->setProgressDetail(null);
         }
-        if (\array_key_exists('aux', $data)) {
+        if (\array_key_exists('aux', $data) && null !== $data['aux']) {
             $object->setAux($this->denormalizer->denormalize($data['aux'], 'Docker\\API\\Model\\ImageID', 'json', $context));
+        } elseif (\array_key_exists('aux', $data) && null === $data['aux']) {
+            $object->setAux(null);
         }
 
         return $object;

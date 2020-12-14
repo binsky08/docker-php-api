@@ -12,14 +12,14 @@ class VolumeUsageData
      * driver. For volumes created with other volume drivers, this field
      * is set to `-1` ("not available")
      *
-     * @var int
+     * @var int|null
      */
     protected $size;
     /**
      * The number of containers referencing this volume. This field.
      * is set to `-1` if the reference-count is not available.
      *
-     * @var int
+     * @var int|null
      */
     protected $refCount;
 
@@ -29,7 +29,7 @@ class VolumeUsageData
      * driver. For volumes created with other volume drivers, this field
      * is set to `-1` ("not available")
      */
-    public function getSize(): int
+    public function getSize(): ?int
     {
         return $this->size;
     }
@@ -40,7 +40,7 @@ class VolumeUsageData
      * driver. For volumes created with other volume drivers, this field
      * is set to `-1` ("not available")
      */
-    public function setSize(int $size): self
+    public function setSize(?int $size): self
     {
         $this->size = $size;
 
@@ -51,7 +51,7 @@ class VolumeUsageData
      * The number of containers referencing this volume. This field.
      * is set to `-1` if the reference-count is not available.
      */
-    public function getRefCount(): int
+    public function getRefCount(): ?int
     {
         return $this->refCount;
     }
@@ -60,7 +60,7 @@ class VolumeUsageData
      * The number of containers referencing this volume. This field.
      * is set to `-1` if the reference-count is not available.
      */
-    public function setRefCount(int $refCount): self
+    public function setRefCount(?int $refCount): self
     {
         $this->refCount = $refCount;
 

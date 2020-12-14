@@ -41,21 +41,29 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Remote', $data)) {
+        if (\array_key_exists('Remote', $data) && null !== $data['Remote']) {
             $object->setRemote($data['Remote']);
+        } elseif (\array_key_exists('Remote', $data) && null === $data['Remote']) {
+            $object->setRemote(null);
         }
-        if (\array_key_exists('Disabled', $data)) {
+        if (\array_key_exists('Disabled', $data) && null !== $data['Disabled']) {
             $object->setDisabled($data['Disabled']);
+        } elseif (\array_key_exists('Disabled', $data) && null === $data['Disabled']) {
+            $object->setDisabled(null);
         }
-        if (\array_key_exists('PluginPrivilege', $data)) {
+        if (\array_key_exists('PluginPrivilege', $data) && null !== $data['PluginPrivilege']) {
             $values = [];
             foreach ($data['PluginPrivilege'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\TaskSpecPluginSpecPluginPrivilegeItem', 'json', $context);
             }
             $object->setPluginPrivilege($values);
+        } elseif (\array_key_exists('PluginPrivilege', $data) && null === $data['PluginPrivilege']) {
+            $object->setPluginPrivilege(null);
         }
 
         return $object;

@@ -41,33 +41,41 @@ class PluginsInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Volume', $data)) {
+        if (\array_key_exists('Volume', $data) && null !== $data['Volume']) {
             $values = [];
             foreach ($data['Volume'] as $value) {
                 $values[] = $value;
             }
             $object->setVolume($values);
+        } elseif (\array_key_exists('Volume', $data) && null === $data['Volume']) {
+            $object->setVolume(null);
         }
-        if (\array_key_exists('Network', $data)) {
+        if (\array_key_exists('Network', $data) && null !== $data['Network']) {
             $values_1 = [];
             foreach ($data['Network'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setNetwork($values_1);
+        } elseif (\array_key_exists('Network', $data) && null === $data['Network']) {
+            $object->setNetwork(null);
         }
-        if (\array_key_exists('Authorization', $data)) {
+        if (\array_key_exists('Authorization', $data) && null !== $data['Authorization']) {
             $values_2 = [];
             foreach ($data['Authorization'] as $value_2) {
                 $values_2[] = $value_2;
             }
             $object->setAuthorization($values_2);
+        } elseif (\array_key_exists('Authorization', $data) && null === $data['Authorization']) {
+            $object->setAuthorization(null);
         }
-        if (\array_key_exists('Log', $data)) {
+        if (\array_key_exists('Log', $data) && null !== $data['Log']) {
             $values_3 = [];
             foreach ($data['Log'] as $value_3) {
                 $values_3[] = $value_3;
             }
             $object->setLog($values_3);
+        } elseif (\array_key_exists('Log', $data) && null === $data['Log']) {
+            $object->setLog(null);
         }
 
         return $object;

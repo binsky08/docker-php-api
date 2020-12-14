@@ -7,24 +7,24 @@ namespace Docker\API\Model;
 class ImageRootFS
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $layers;
     /**
-     * @var string
+     * @var string|null
      */
     protected $baseLayer;
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
@@ -32,29 +32,29 @@ class ImageRootFS
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLayers(): array
+    public function getLayers(): ?array
     {
         return $this->layers;
     }
 
     /**
-     * @param string[] $layers
+     * @param string[]|null $layers
      */
-    public function setLayers(array $layers): self
+    public function setLayers(?array $layers): self
     {
         $this->layers = $layers;
 
         return $this;
     }
 
-    public function getBaseLayer(): string
+    public function getBaseLayer(): ?string
     {
         return $this->baseLayer;
     }
 
-    public function setBaseLayer(string $baseLayer): self
+    public function setBaseLayer(?string $baseLayer): self
     {
         $this->baseLayer = $baseLayer;
 

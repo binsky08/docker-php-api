@@ -9,13 +9,13 @@ class SecretSpec
     /**
      * User-defined name of the secret.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
@@ -25,20 +25,20 @@ class SecretSpec
      * This field is only used to _create_ a secret, and is not returned by
      * other endpoints.
      *
-     * @var string
+     * @var string|null
      */
     protected $data;
     /**
      * Driver represents a driver (network, logging, secrets).
      *
-     * @var Driver
+     * @var Driver|null
      */
     protected $driver;
 
     /**
      * User-defined name of the secret.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -46,7 +46,7 @@ class SecretSpec
     /**
      * User-defined name of the secret.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -56,9 +56,9 @@ class SecretSpec
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -66,9 +66,9 @@ class SecretSpec
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -82,7 +82,7 @@ class SecretSpec
      * This field is only used to _create_ a secret, and is not returned by
      * other endpoints.
      */
-    public function getData(): string
+    public function getData(): ?string
     {
         return $this->data;
     }
@@ -94,7 +94,7 @@ class SecretSpec
      * This field is only used to _create_ a secret, and is not returned by
      * other endpoints.
      */
-    public function setData(string $data): self
+    public function setData(?string $data): self
     {
         $this->data = $data;
 
@@ -104,7 +104,7 @@ class SecretSpec
     /**
      * Driver represents a driver (network, logging, secrets).
      */
-    public function getDriver(): Driver
+    public function getDriver(): ?Driver
     {
         return $this->driver;
     }
@@ -112,7 +112,7 @@ class SecretSpec
     /**
      * Driver represents a driver (network, logging, secrets).
      */
-    public function setDriver(Driver $driver): self
+    public function setDriver(?Driver $driver): self
     {
         $this->driver = $driver;
 

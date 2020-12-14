@@ -9,20 +9,20 @@ class ContainersCreatePostResponse201
     /**
      * The ID of the created container.
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * Warnings encountered when creating the container.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $warnings;
 
     /**
      * The ID of the created container.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -30,7 +30,7 @@ class ContainersCreatePostResponse201
     /**
      * The ID of the created container.
      */
-    public function setId(string $id): self
+    public function setId(?string $id): self
     {
         $this->id = $id;
 
@@ -40,9 +40,9 @@ class ContainersCreatePostResponse201
     /**
      * Warnings encountered when creating the container.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getWarnings(): array
+    public function getWarnings(): ?array
     {
         return $this->warnings;
     }
@@ -50,9 +50,9 @@ class ContainersCreatePostResponse201
     /**
      * Warnings encountered when creating the container.
      *
-     * @param string[] $warnings
+     * @param string[]|null $warnings
      */
-    public function setWarnings(array $warnings): self
+    public function setWarnings(?array $warnings): self
     {
         $this->warnings = $warnings;
 

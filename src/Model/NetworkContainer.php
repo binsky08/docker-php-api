@@ -7,80 +7,80 @@ namespace Docker\API\Model;
 class NetworkContainer
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $endpointID;
     /**
-     * @var string
+     * @var string|null
      */
     protected $macAddress;
     /**
-     * @var string
+     * @var string|null
      */
     protected $iPv4Address;
     /**
-     * @var string
+     * @var string|null
      */
     protected $iPv6Address;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getEndpointID(): string
+    public function getEndpointID(): ?string
     {
         return $this->endpointID;
     }
 
-    public function setEndpointID(string $endpointID): self
+    public function setEndpointID(?string $endpointID): self
     {
         $this->endpointID = $endpointID;
 
         return $this;
     }
 
-    public function getMacAddress(): string
+    public function getMacAddress(): ?string
     {
         return $this->macAddress;
     }
 
-    public function setMacAddress(string $macAddress): self
+    public function setMacAddress(?string $macAddress): self
     {
         $this->macAddress = $macAddress;
 
         return $this;
     }
 
-    public function getIPv4Address(): string
+    public function getIPv4Address(): ?string
     {
         return $this->iPv4Address;
     }
 
-    public function setIPv4Address(string $iPv4Address): self
+    public function setIPv4Address(?string $iPv4Address): self
     {
         $this->iPv4Address = $iPv4Address;
 
         return $this;
     }
 
-    public function getIPv6Address(): string
+    public function getIPv6Address(): ?string
     {
         return $this->iPv6Address;
     }
 
-    public function setIPv6Address(string $iPv6Address): self
+    public function setIPv6Address(?string $iPv6Address): self
     {
         $this->iPv6Address = $iPv6Address;
 

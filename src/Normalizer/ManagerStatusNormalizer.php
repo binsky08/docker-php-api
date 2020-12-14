@@ -41,14 +41,20 @@ class ManagerStatusNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Leader', $data)) {
+        if (\array_key_exists('Leader', $data) && null !== $data['Leader']) {
             $object->setLeader($data['Leader']);
+        } elseif (\array_key_exists('Leader', $data) && null === $data['Leader']) {
+            $object->setLeader(null);
         }
-        if (\array_key_exists('Reachability', $data)) {
+        if (\array_key_exists('Reachability', $data) && null !== $data['Reachability']) {
             $object->setReachability($data['Reachability']);
+        } elseif (\array_key_exists('Reachability', $data) && null === $data['Reachability']) {
+            $object->setReachability(null);
         }
-        if (\array_key_exists('Addr', $data)) {
+        if (\array_key_exists('Addr', $data) && null !== $data['Addr']) {
             $object->setAddr($data['Addr']);
+        } elseif (\array_key_exists('Addr', $data) && null === $data['Addr']) {
+            $object->setAddr(null);
         }
 
         return $object;

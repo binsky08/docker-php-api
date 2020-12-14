@@ -41,8 +41,10 @@ class ContainersIdWaitPostResponse200ErrorNormalizer implements DenormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Message', $data)) {
+        if (\array_key_exists('Message', $data) && null !== $data['Message']) {
             $object->setMessage($data['Message']);
+        } elseif (\array_key_exists('Message', $data) && null === $data['Message']) {
+            $object->setMessage(null);
         }
 
         return $object;

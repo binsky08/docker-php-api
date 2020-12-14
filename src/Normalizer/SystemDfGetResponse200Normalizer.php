@@ -41,17 +41,21 @@ class SystemDfGetResponse200Normalizer implements DenormalizerInterface, Normali
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('LayersSize', $data)) {
+        if (\array_key_exists('LayersSize', $data) && null !== $data['LayersSize']) {
             $object->setLayersSize($data['LayersSize']);
+        } elseif (\array_key_exists('LayersSize', $data) && null === $data['LayersSize']) {
+            $object->setLayersSize(null);
         }
-        if (\array_key_exists('Images', $data)) {
+        if (\array_key_exists('Images', $data) && null !== $data['Images']) {
             $values = [];
             foreach ($data['Images'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\ImageSummary', 'json', $context);
             }
             $object->setImages($values);
+        } elseif (\array_key_exists('Images', $data) && null === $data['Images']) {
+            $object->setImages(null);
         }
-        if (\array_key_exists('Containers', $data)) {
+        if (\array_key_exists('Containers', $data) && null !== $data['Containers']) {
             $values_1 = [];
             foreach ($data['Containers'] as $value_1) {
                 $values_2 = [];
@@ -61,13 +65,17 @@ class SystemDfGetResponse200Normalizer implements DenormalizerInterface, Normali
                 $values_1[] = $values_2;
             }
             $object->setContainers($values_1);
+        } elseif (\array_key_exists('Containers', $data) && null === $data['Containers']) {
+            $object->setContainers(null);
         }
-        if (\array_key_exists('Volumes', $data)) {
+        if (\array_key_exists('Volumes', $data) && null !== $data['Volumes']) {
             $values_3 = [];
             foreach ($data['Volumes'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'Docker\\API\\Model\\Volume', 'json', $context);
             }
             $object->setVolumes($values_3);
+        } elseif (\array_key_exists('Volumes', $data) && null === $data['Volumes']) {
+            $object->setVolumes(null);
         }
 
         return $object;

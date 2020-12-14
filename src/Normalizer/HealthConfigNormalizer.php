@@ -41,24 +41,34 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Test', $data)) {
+        if (\array_key_exists('Test', $data) && null !== $data['Test']) {
             $values = [];
             foreach ($data['Test'] as $value) {
                 $values[] = $value;
             }
             $object->setTest($values);
+        } elseif (\array_key_exists('Test', $data) && null === $data['Test']) {
+            $object->setTest(null);
         }
-        if (\array_key_exists('Interval', $data)) {
+        if (\array_key_exists('Interval', $data) && null !== $data['Interval']) {
             $object->setInterval($data['Interval']);
+        } elseif (\array_key_exists('Interval', $data) && null === $data['Interval']) {
+            $object->setInterval(null);
         }
-        if (\array_key_exists('Timeout', $data)) {
+        if (\array_key_exists('Timeout', $data) && null !== $data['Timeout']) {
             $object->setTimeout($data['Timeout']);
+        } elseif (\array_key_exists('Timeout', $data) && null === $data['Timeout']) {
+            $object->setTimeout(null);
         }
-        if (\array_key_exists('Retries', $data)) {
+        if (\array_key_exists('Retries', $data) && null !== $data['Retries']) {
             $object->setRetries($data['Retries']);
+        } elseif (\array_key_exists('Retries', $data) && null === $data['Retries']) {
+            $object->setRetries(null);
         }
-        if (\array_key_exists('StartPeriod', $data)) {
+        if (\array_key_exists('StartPeriod', $data) && null !== $data['StartPeriod']) {
             $object->setStartPeriod($data['StartPeriod']);
+        } elseif (\array_key_exists('StartPeriod', $data) && null === $data['StartPeriod']) {
+            $object->setStartPeriod(null);
         }
 
         return $object;

@@ -41,11 +41,15 @@ class ContainersIdWaitPostResponse200Normalizer implements DenormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('StatusCode', $data)) {
+        if (\array_key_exists('StatusCode', $data) && null !== $data['StatusCode']) {
             $object->setStatusCode($data['StatusCode']);
+        } elseif (\array_key_exists('StatusCode', $data) && null === $data['StatusCode']) {
+            $object->setStatusCode(null);
         }
-        if (\array_key_exists('Error', $data)) {
+        if (\array_key_exists('Error', $data) && null !== $data['Error']) {
             $object->setError($this->denormalizer->denormalize($data['Error'], 'Docker\\API\\Model\\ContainersIdWaitPostResponse200Error', 'json', $context));
+        } elseif (\array_key_exists('Error', $data) && null === $data['Error']) {
+            $object->setError(null);
         }
 
         return $object;

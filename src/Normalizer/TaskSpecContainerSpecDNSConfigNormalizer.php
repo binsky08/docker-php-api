@@ -41,26 +41,32 @@ class TaskSpecContainerSpecDNSConfigNormalizer implements DenormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Nameservers', $data)) {
+        if (\array_key_exists('Nameservers', $data) && null !== $data['Nameservers']) {
             $values = [];
             foreach ($data['Nameservers'] as $value) {
                 $values[] = $value;
             }
             $object->setNameservers($values);
+        } elseif (\array_key_exists('Nameservers', $data) && null === $data['Nameservers']) {
+            $object->setNameservers(null);
         }
-        if (\array_key_exists('Search', $data)) {
+        if (\array_key_exists('Search', $data) && null !== $data['Search']) {
             $values_1 = [];
             foreach ($data['Search'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setSearch($values_1);
+        } elseif (\array_key_exists('Search', $data) && null === $data['Search']) {
+            $object->setSearch(null);
         }
-        if (\array_key_exists('Options', $data)) {
+        if (\array_key_exists('Options', $data) && null !== $data['Options']) {
             $values_2 = [];
             foreach ($data['Options'] as $value_2) {
                 $values_2[] = $value_2;
             }
             $object->setOptions($values_2);
+        } elseif (\array_key_exists('Options', $data) && null === $data['Options']) {
+            $object->setOptions(null);
         }
 
         return $object;

@@ -41,18 +41,24 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Type', $data)) {
+        if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
+        } elseif (\array_key_exists('Type', $data) && null === $data['Type']) {
+            $object->setType(null);
         }
-        if (\array_key_exists('Layers', $data)) {
+        if (\array_key_exists('Layers', $data) && null !== $data['Layers']) {
             $values = [];
             foreach ($data['Layers'] as $value) {
                 $values[] = $value;
             }
             $object->setLayers($values);
+        } elseif (\array_key_exists('Layers', $data) && null === $data['Layers']) {
+            $object->setLayers(null);
         }
-        if (\array_key_exists('BaseLayer', $data)) {
+        if (\array_key_exists('BaseLayer', $data) && null !== $data['BaseLayer']) {
             $object->setBaseLayer($data['BaseLayer']);
+        } elseif (\array_key_exists('BaseLayer', $data) && null === $data['BaseLayer']) {
+            $object->setBaseLayer(null);
         }
 
         return $object;

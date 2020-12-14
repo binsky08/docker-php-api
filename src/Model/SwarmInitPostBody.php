@@ -9,13 +9,13 @@ class SwarmInitPostBody
     /**
      * Listen address used for inter-manager communication, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP). This can either be an address/port combination in the form `192.168.1.1:4567`, or an interface followed by a port number, like `eth0:4567`. If the port number is omitted, the default swarm listening port is used.
      *
-     * @var string
+     * @var string|null
      */
     protected $listenAddr;
     /**
      * Externally reachable address advertised to other nodes. This can either be an address/port combination in the form `192.168.1.1:4567`, or an interface followed by a port number, like `eth0:4567`. If the port number is omitted, the port number from the listen address is used. If `AdvertiseAddr` is not specified, it will be automatically detected when possible.
      *
-     * @var string
+     * @var string|null
      */
     protected $advertiseAddr;
     /**
@@ -27,26 +27,26 @@ class SwarmInitPostBody
      * nodes in order to reach the containers running on this node. Using this parameter it is possible to
      * separate the container data traffic from the management traffic of the cluster.
      *
-     * @var string
+     * @var string|null
      */
     protected $dataPathAddr;
     /**
      * Force creation of a new swarm.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $forceNewCluster;
     /**
      * User modifiable swarm configuration.
      *
-     * @var SwarmSpec
+     * @var SwarmSpec|null
      */
     protected $spec;
 
     /**
      * Listen address used for inter-manager communication, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP). This can either be an address/port combination in the form `192.168.1.1:4567`, or an interface followed by a port number, like `eth0:4567`. If the port number is omitted, the default swarm listening port is used.
      */
-    public function getListenAddr(): string
+    public function getListenAddr(): ?string
     {
         return $this->listenAddr;
     }
@@ -54,7 +54,7 @@ class SwarmInitPostBody
     /**
      * Listen address used for inter-manager communication, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP). This can either be an address/port combination in the form `192.168.1.1:4567`, or an interface followed by a port number, like `eth0:4567`. If the port number is omitted, the default swarm listening port is used.
      */
-    public function setListenAddr(string $listenAddr): self
+    public function setListenAddr(?string $listenAddr): self
     {
         $this->listenAddr = $listenAddr;
 
@@ -64,7 +64,7 @@ class SwarmInitPostBody
     /**
      * Externally reachable address advertised to other nodes. This can either be an address/port combination in the form `192.168.1.1:4567`, or an interface followed by a port number, like `eth0:4567`. If the port number is omitted, the port number from the listen address is used. If `AdvertiseAddr` is not specified, it will be automatically detected when possible.
      */
-    public function getAdvertiseAddr(): string
+    public function getAdvertiseAddr(): ?string
     {
         return $this->advertiseAddr;
     }
@@ -72,7 +72,7 @@ class SwarmInitPostBody
     /**
      * Externally reachable address advertised to other nodes. This can either be an address/port combination in the form `192.168.1.1:4567`, or an interface followed by a port number, like `eth0:4567`. If the port number is omitted, the port number from the listen address is used. If `AdvertiseAddr` is not specified, it will be automatically detected when possible.
      */
-    public function setAdvertiseAddr(string $advertiseAddr): self
+    public function setAdvertiseAddr(?string $advertiseAddr): self
     {
         $this->advertiseAddr = $advertiseAddr;
 
@@ -88,7 +88,7 @@ class SwarmInitPostBody
      * nodes in order to reach the containers running on this node. Using this parameter it is possible to
      * separate the container data traffic from the management traffic of the cluster.
      */
-    public function getDataPathAddr(): string
+    public function getDataPathAddr(): ?string
     {
         return $this->dataPathAddr;
     }
@@ -102,7 +102,7 @@ class SwarmInitPostBody
      * nodes in order to reach the containers running on this node. Using this parameter it is possible to
      * separate the container data traffic from the management traffic of the cluster.
      */
-    public function setDataPathAddr(string $dataPathAddr): self
+    public function setDataPathAddr(?string $dataPathAddr): self
     {
         $this->dataPathAddr = $dataPathAddr;
 
@@ -112,7 +112,7 @@ class SwarmInitPostBody
     /**
      * Force creation of a new swarm.
      */
-    public function getForceNewCluster(): bool
+    public function getForceNewCluster(): ?bool
     {
         return $this->forceNewCluster;
     }
@@ -120,7 +120,7 @@ class SwarmInitPostBody
     /**
      * Force creation of a new swarm.
      */
-    public function setForceNewCluster(bool $forceNewCluster): self
+    public function setForceNewCluster(?bool $forceNewCluster): self
     {
         $this->forceNewCluster = $forceNewCluster;
 
@@ -130,7 +130,7 @@ class SwarmInitPostBody
     /**
      * User modifiable swarm configuration.
      */
-    public function getSpec(): SwarmSpec
+    public function getSpec(): ?SwarmSpec
     {
         return $this->spec;
     }
@@ -138,7 +138,7 @@ class SwarmInitPostBody
     /**
      * User modifiable swarm configuration.
      */
-    public function setSpec(SwarmSpec $spec): self
+    public function setSpec(?SwarmSpec $spec): self
     {
         $this->spec = $spec;
 

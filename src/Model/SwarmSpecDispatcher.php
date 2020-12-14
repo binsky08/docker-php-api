@@ -9,14 +9,14 @@ class SwarmSpecDispatcher
     /**
      * The delay for an agent to send a heartbeat to the dispatcher.
      *
-     * @var int
+     * @var int|null
      */
     protected $heartbeatPeriod;
 
     /**
      * The delay for an agent to send a heartbeat to the dispatcher.
      */
-    public function getHeartbeatPeriod(): int
+    public function getHeartbeatPeriod(): ?int
     {
         return $this->heartbeatPeriod;
     }
@@ -24,7 +24,7 @@ class SwarmSpecDispatcher
     /**
      * The delay for an agent to send a heartbeat to the dispatcher.
      */
-    public function setHeartbeatPeriod(int $heartbeatPeriod): self
+    public function setHeartbeatPeriod(?int $heartbeatPeriod): self
     {
         $this->heartbeatPeriod = $heartbeatPeriod;
 

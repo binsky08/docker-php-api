@@ -17,7 +17,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
      *
      * > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
      *
-     * @var string
+     * @var string|null
      */
     protected $file;
     /**
@@ -31,7 +31,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
      *
      * > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
      *
-     * @var string
+     * @var string|null
      */
     protected $registry;
 
@@ -46,7 +46,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
      *
      * > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
      */
-    public function getFile(): string
+    public function getFile(): ?string
     {
         return $this->file;
     }
@@ -62,7 +62,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
      *
      * > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
      */
-    public function setFile(string $file): self
+    public function setFile(?string $file): self
     {
         $this->file = $file;
 
@@ -80,7 +80,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
      *
      * > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
      */
-    public function getRegistry(): string
+    public function getRegistry(): ?string
     {
         return $this->registry;
     }
@@ -96,7 +96,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
      *
      * > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
      */
-    public function setRegistry(string $registry): self
+    public function setRegistry(?string $registry): self
     {
         $this->registry = $registry;
 

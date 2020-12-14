@@ -9,7 +9,7 @@ class Task
     /**
      * The ID of the task.
      *
-     * @var string
+     * @var string|null
      */
     protected $iD;
     /**
@@ -21,70 +21,70 @@ class Task
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      *
-     * @var ObjectVersion
+     * @var ObjectVersion|null
      */
     protected $version;
     /**
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
-     * @var string
+     * @var string|null
      */
     protected $updatedAt;
     /**
      * Name of the task.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
      * User modifiable task configuration.
      *
-     * @var TaskSpec
+     * @var TaskSpec|null
      */
     protected $spec;
     /**
      * The ID of the service this task is part of.
      *
-     * @var string
+     * @var string|null
      */
     protected $serviceID;
     /**
-     * @var int
+     * @var int|null
      */
     protected $slot;
     /**
      * The ID of the node that this task is on.
      *
-     * @var string
+     * @var string|null
      */
     protected $nodeID;
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @var GenericResourcesItem[]
+     * @var GenericResourcesItem[]|null
      */
     protected $assignedGenericResources;
     /**
-     * @var TaskStatus
+     * @var TaskStatus|null
      */
     protected $status;
     /**
-     * @var string
+     * @var string|null
      */
     protected $desiredState;
 
     /**
      * The ID of the task.
      */
-    public function getID(): string
+    public function getID(): ?string
     {
         return $this->iD;
     }
@@ -92,7 +92,7 @@ class Task
     /**
      * The ID of the task.
      */
-    public function setID(string $iD): self
+    public function setID(?string $iD): self
     {
         $this->iD = $iD;
 
@@ -108,7 +108,7 @@ class Task
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function getVersion(): ObjectVersion
+    public function getVersion(): ?ObjectVersion
     {
         return $this->version;
     }
@@ -122,31 +122,31 @@ class Task
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function setVersion(ObjectVersion $version): self
+    public function setVersion(?ObjectVersion $version): self
     {
         $this->version = $version;
 
         return $this;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(string $createdAt): self
+    public function setCreatedAt(?string $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(string $updatedAt): self
+    public function setUpdatedAt(?string $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -156,7 +156,7 @@ class Task
     /**
      * Name of the task.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -164,7 +164,7 @@ class Task
     /**
      * Name of the task.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -174,9 +174,9 @@ class Task
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -184,9 +184,9 @@ class Task
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -196,7 +196,7 @@ class Task
     /**
      * User modifiable task configuration.
      */
-    public function getSpec(): TaskSpec
+    public function getSpec(): ?TaskSpec
     {
         return $this->spec;
     }
@@ -204,7 +204,7 @@ class Task
     /**
      * User modifiable task configuration.
      */
-    public function setSpec(TaskSpec $spec): self
+    public function setSpec(?TaskSpec $spec): self
     {
         $this->spec = $spec;
 
@@ -214,7 +214,7 @@ class Task
     /**
      * The ID of the service this task is part of.
      */
-    public function getServiceID(): string
+    public function getServiceID(): ?string
     {
         return $this->serviceID;
     }
@@ -222,19 +222,19 @@ class Task
     /**
      * The ID of the service this task is part of.
      */
-    public function setServiceID(string $serviceID): self
+    public function setServiceID(?string $serviceID): self
     {
         $this->serviceID = $serviceID;
 
         return $this;
     }
 
-    public function getSlot(): int
+    public function getSlot(): ?int
     {
         return $this->slot;
     }
 
-    public function setSlot(int $slot): self
+    public function setSlot(?int $slot): self
     {
         $this->slot = $slot;
 
@@ -244,7 +244,7 @@ class Task
     /**
      * The ID of the node that this task is on.
      */
-    public function getNodeID(): string
+    public function getNodeID(): ?string
     {
         return $this->nodeID;
     }
@@ -252,7 +252,7 @@ class Task
     /**
      * The ID of the node that this task is on.
      */
-    public function setNodeID(string $nodeID): self
+    public function setNodeID(?string $nodeID): self
     {
         $this->nodeID = $nodeID;
 
@@ -262,9 +262,9 @@ class Task
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @return GenericResourcesItem[]
+     * @return GenericResourcesItem[]|null
      */
-    public function getAssignedGenericResources(): array
+    public function getAssignedGenericResources(): ?array
     {
         return $this->assignedGenericResources;
     }
@@ -272,33 +272,33 @@ class Task
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @param GenericResourcesItem[] $assignedGenericResources
+     * @param GenericResourcesItem[]|null $assignedGenericResources
      */
-    public function setAssignedGenericResources(array $assignedGenericResources): self
+    public function setAssignedGenericResources(?array $assignedGenericResources): self
     {
         $this->assignedGenericResources = $assignedGenericResources;
 
         return $this;
     }
 
-    public function getStatus(): TaskStatus
+    public function getStatus(): ?TaskStatus
     {
         return $this->status;
     }
 
-    public function setStatus(TaskStatus $status): self
+    public function setStatus(?TaskStatus $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    public function getDesiredState(): string
+    public function getDesiredState(): ?string
     {
         return $this->desiredState;
     }
 
-    public function setDesiredState(string $desiredState): self
+    public function setDesiredState(?string $desiredState): self
     {
         $this->desiredState = $desiredState;
 

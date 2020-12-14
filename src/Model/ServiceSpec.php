@@ -9,56 +9,56 @@ class ServiceSpec
     /**
      * Name of the service.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
      * User modifiable task configuration.
      *
-     * @var TaskSpec
+     * @var TaskSpec|null
      */
     protected $taskTemplate;
     /**
      * Scheduling mode for the service.
      *
-     * @var ServiceSpecMode
+     * @var ServiceSpecMode|null
      */
     protected $mode;
     /**
      * Specification for the update strategy of the service.
      *
-     * @var ServiceSpecUpdateConfig
+     * @var ServiceSpecUpdateConfig|null
      */
     protected $updateConfig;
     /**
      * Specification for the rollback strategy of the service.
      *
-     * @var ServiceSpecRollbackConfig
+     * @var ServiceSpecRollbackConfig|null
      */
     protected $rollbackConfig;
     /**
      * Array of network names or IDs to attach the service to.
      *
-     * @var ServiceSpecNetworksItem[]
+     * @var ServiceSpecNetworksItem[]|null
      */
     protected $networks;
     /**
      * Properties that can be configured to access and load balance a service.
      *
-     * @var EndpointSpec
+     * @var EndpointSpec|null
      */
     protected $endpointSpec;
 
     /**
      * Name of the service.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -66,7 +66,7 @@ class ServiceSpec
     /**
      * Name of the service.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -76,9 +76,9 @@ class ServiceSpec
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -86,9 +86,9 @@ class ServiceSpec
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -98,7 +98,7 @@ class ServiceSpec
     /**
      * User modifiable task configuration.
      */
-    public function getTaskTemplate(): TaskSpec
+    public function getTaskTemplate(): ?TaskSpec
     {
         return $this->taskTemplate;
     }
@@ -106,7 +106,7 @@ class ServiceSpec
     /**
      * User modifiable task configuration.
      */
-    public function setTaskTemplate(TaskSpec $taskTemplate): self
+    public function setTaskTemplate(?TaskSpec $taskTemplate): self
     {
         $this->taskTemplate = $taskTemplate;
 
@@ -116,7 +116,7 @@ class ServiceSpec
     /**
      * Scheduling mode for the service.
      */
-    public function getMode(): ServiceSpecMode
+    public function getMode(): ?ServiceSpecMode
     {
         return $this->mode;
     }
@@ -124,7 +124,7 @@ class ServiceSpec
     /**
      * Scheduling mode for the service.
      */
-    public function setMode(ServiceSpecMode $mode): self
+    public function setMode(?ServiceSpecMode $mode): self
     {
         $this->mode = $mode;
 
@@ -134,7 +134,7 @@ class ServiceSpec
     /**
      * Specification for the update strategy of the service.
      */
-    public function getUpdateConfig(): ServiceSpecUpdateConfig
+    public function getUpdateConfig(): ?ServiceSpecUpdateConfig
     {
         return $this->updateConfig;
     }
@@ -142,7 +142,7 @@ class ServiceSpec
     /**
      * Specification for the update strategy of the service.
      */
-    public function setUpdateConfig(ServiceSpecUpdateConfig $updateConfig): self
+    public function setUpdateConfig(?ServiceSpecUpdateConfig $updateConfig): self
     {
         $this->updateConfig = $updateConfig;
 
@@ -152,7 +152,7 @@ class ServiceSpec
     /**
      * Specification for the rollback strategy of the service.
      */
-    public function getRollbackConfig(): ServiceSpecRollbackConfig
+    public function getRollbackConfig(): ?ServiceSpecRollbackConfig
     {
         return $this->rollbackConfig;
     }
@@ -160,7 +160,7 @@ class ServiceSpec
     /**
      * Specification for the rollback strategy of the service.
      */
-    public function setRollbackConfig(ServiceSpecRollbackConfig $rollbackConfig): self
+    public function setRollbackConfig(?ServiceSpecRollbackConfig $rollbackConfig): self
     {
         $this->rollbackConfig = $rollbackConfig;
 
@@ -170,9 +170,9 @@ class ServiceSpec
     /**
      * Array of network names or IDs to attach the service to.
      *
-     * @return ServiceSpecNetworksItem[]
+     * @return ServiceSpecNetworksItem[]|null
      */
-    public function getNetworks(): array
+    public function getNetworks(): ?array
     {
         return $this->networks;
     }
@@ -180,9 +180,9 @@ class ServiceSpec
     /**
      * Array of network names or IDs to attach the service to.
      *
-     * @param ServiceSpecNetworksItem[] $networks
+     * @param ServiceSpecNetworksItem[]|null $networks
      */
-    public function setNetworks(array $networks): self
+    public function setNetworks(?array $networks): self
     {
         $this->networks = $networks;
 
@@ -192,7 +192,7 @@ class ServiceSpec
     /**
      * Properties that can be configured to access and load balance a service.
      */
-    public function getEndpointSpec(): EndpointSpec
+    public function getEndpointSpec(): ?EndpointSpec
     {
         return $this->endpointSpec;
     }
@@ -200,7 +200,7 @@ class ServiceSpec
     /**
      * Properties that can be configured to access and load balance a service.
      */
-    public function setEndpointSpec(EndpointSpec $endpointSpec): self
+    public function setEndpointSpec(?EndpointSpec $endpointSpec): self
     {
         $this->endpointSpec = $endpointSpec;
 

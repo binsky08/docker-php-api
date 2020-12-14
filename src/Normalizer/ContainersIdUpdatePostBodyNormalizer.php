@@ -41,130 +41,192 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('CpuShares', $data)) {
+        if (\array_key_exists('CpuShares', $data) && null !== $data['CpuShares']) {
             $object->setCpuShares($data['CpuShares']);
+        } elseif (\array_key_exists('CpuShares', $data) && null === $data['CpuShares']) {
+            $object->setCpuShares(null);
         }
-        if (\array_key_exists('Memory', $data)) {
+        if (\array_key_exists('Memory', $data) && null !== $data['Memory']) {
             $object->setMemory($data['Memory']);
+        } elseif (\array_key_exists('Memory', $data) && null === $data['Memory']) {
+            $object->setMemory(null);
         }
-        if (\array_key_exists('CgroupParent', $data)) {
+        if (\array_key_exists('CgroupParent', $data) && null !== $data['CgroupParent']) {
             $object->setCgroupParent($data['CgroupParent']);
+        } elseif (\array_key_exists('CgroupParent', $data) && null === $data['CgroupParent']) {
+            $object->setCgroupParent(null);
         }
-        if (\array_key_exists('BlkioWeight', $data)) {
+        if (\array_key_exists('BlkioWeight', $data) && null !== $data['BlkioWeight']) {
             $object->setBlkioWeight($data['BlkioWeight']);
+        } elseif (\array_key_exists('BlkioWeight', $data) && null === $data['BlkioWeight']) {
+            $object->setBlkioWeight(null);
         }
-        if (\array_key_exists('BlkioWeightDevice', $data)) {
+        if (\array_key_exists('BlkioWeightDevice', $data) && null !== $data['BlkioWeightDevice']) {
             $values = [];
             foreach ($data['BlkioWeightDevice'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\ResourcesBlkioWeightDeviceItem', 'json', $context);
             }
             $object->setBlkioWeightDevice($values);
+        } elseif (\array_key_exists('BlkioWeightDevice', $data) && null === $data['BlkioWeightDevice']) {
+            $object->setBlkioWeightDevice(null);
         }
-        if (\array_key_exists('BlkioDeviceReadBps', $data)) {
+        if (\array_key_exists('BlkioDeviceReadBps', $data) && null !== $data['BlkioDeviceReadBps']) {
             $values_1 = [];
             foreach ($data['BlkioDeviceReadBps'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\ThrottleDevice', 'json', $context);
             }
             $object->setBlkioDeviceReadBps($values_1);
+        } elseif (\array_key_exists('BlkioDeviceReadBps', $data) && null === $data['BlkioDeviceReadBps']) {
+            $object->setBlkioDeviceReadBps(null);
         }
-        if (\array_key_exists('BlkioDeviceWriteBps', $data)) {
+        if (\array_key_exists('BlkioDeviceWriteBps', $data) && null !== $data['BlkioDeviceWriteBps']) {
             $values_2 = [];
             foreach ($data['BlkioDeviceWriteBps'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Docker\\API\\Model\\ThrottleDevice', 'json', $context);
             }
             $object->setBlkioDeviceWriteBps($values_2);
+        } elseif (\array_key_exists('BlkioDeviceWriteBps', $data) && null === $data['BlkioDeviceWriteBps']) {
+            $object->setBlkioDeviceWriteBps(null);
         }
-        if (\array_key_exists('BlkioDeviceReadIOps', $data)) {
+        if (\array_key_exists('BlkioDeviceReadIOps', $data) && null !== $data['BlkioDeviceReadIOps']) {
             $values_3 = [];
             foreach ($data['BlkioDeviceReadIOps'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, 'Docker\\API\\Model\\ThrottleDevice', 'json', $context);
             }
             $object->setBlkioDeviceReadIOps($values_3);
+        } elseif (\array_key_exists('BlkioDeviceReadIOps', $data) && null === $data['BlkioDeviceReadIOps']) {
+            $object->setBlkioDeviceReadIOps(null);
         }
-        if (\array_key_exists('BlkioDeviceWriteIOps', $data)) {
+        if (\array_key_exists('BlkioDeviceWriteIOps', $data) && null !== $data['BlkioDeviceWriteIOps']) {
             $values_4 = [];
             foreach ($data['BlkioDeviceWriteIOps'] as $value_4) {
                 $values_4[] = $this->denormalizer->denormalize($value_4, 'Docker\\API\\Model\\ThrottleDevice', 'json', $context);
             }
             $object->setBlkioDeviceWriteIOps($values_4);
+        } elseif (\array_key_exists('BlkioDeviceWriteIOps', $data) && null === $data['BlkioDeviceWriteIOps']) {
+            $object->setBlkioDeviceWriteIOps(null);
         }
-        if (\array_key_exists('CpuPeriod', $data)) {
+        if (\array_key_exists('CpuPeriod', $data) && null !== $data['CpuPeriod']) {
             $object->setCpuPeriod($data['CpuPeriod']);
+        } elseif (\array_key_exists('CpuPeriod', $data) && null === $data['CpuPeriod']) {
+            $object->setCpuPeriod(null);
         }
-        if (\array_key_exists('CpuQuota', $data)) {
+        if (\array_key_exists('CpuQuota', $data) && null !== $data['CpuQuota']) {
             $object->setCpuQuota($data['CpuQuota']);
+        } elseif (\array_key_exists('CpuQuota', $data) && null === $data['CpuQuota']) {
+            $object->setCpuQuota(null);
         }
-        if (\array_key_exists('CpuRealtimePeriod', $data)) {
+        if (\array_key_exists('CpuRealtimePeriod', $data) && null !== $data['CpuRealtimePeriod']) {
             $object->setCpuRealtimePeriod($data['CpuRealtimePeriod']);
+        } elseif (\array_key_exists('CpuRealtimePeriod', $data) && null === $data['CpuRealtimePeriod']) {
+            $object->setCpuRealtimePeriod(null);
         }
-        if (\array_key_exists('CpuRealtimeRuntime', $data)) {
+        if (\array_key_exists('CpuRealtimeRuntime', $data) && null !== $data['CpuRealtimeRuntime']) {
             $object->setCpuRealtimeRuntime($data['CpuRealtimeRuntime']);
+        } elseif (\array_key_exists('CpuRealtimeRuntime', $data) && null === $data['CpuRealtimeRuntime']) {
+            $object->setCpuRealtimeRuntime(null);
         }
-        if (\array_key_exists('CpusetCpus', $data)) {
+        if (\array_key_exists('CpusetCpus', $data) && null !== $data['CpusetCpus']) {
             $object->setCpusetCpus($data['CpusetCpus']);
+        } elseif (\array_key_exists('CpusetCpus', $data) && null === $data['CpusetCpus']) {
+            $object->setCpusetCpus(null);
         }
-        if (\array_key_exists('CpusetMems', $data)) {
+        if (\array_key_exists('CpusetMems', $data) && null !== $data['CpusetMems']) {
             $object->setCpusetMems($data['CpusetMems']);
+        } elseif (\array_key_exists('CpusetMems', $data) && null === $data['CpusetMems']) {
+            $object->setCpusetMems(null);
         }
-        if (\array_key_exists('Devices', $data)) {
+        if (\array_key_exists('Devices', $data) && null !== $data['Devices']) {
             $values_5 = [];
             foreach ($data['Devices'] as $value_5) {
                 $values_5[] = $this->denormalizer->denormalize($value_5, 'Docker\\API\\Model\\DeviceMapping', 'json', $context);
             }
             $object->setDevices($values_5);
+        } elseif (\array_key_exists('Devices', $data) && null === $data['Devices']) {
+            $object->setDevices(null);
         }
-        if (\array_key_exists('DeviceCgroupRules', $data)) {
+        if (\array_key_exists('DeviceCgroupRules', $data) && null !== $data['DeviceCgroupRules']) {
             $values_6 = [];
             foreach ($data['DeviceCgroupRules'] as $value_6) {
                 $values_6[] = $value_6;
             }
             $object->setDeviceCgroupRules($values_6);
+        } elseif (\array_key_exists('DeviceCgroupRules', $data) && null === $data['DeviceCgroupRules']) {
+            $object->setDeviceCgroupRules(null);
         }
-        if (\array_key_exists('DiskQuota', $data)) {
+        if (\array_key_exists('DiskQuota', $data) && null !== $data['DiskQuota']) {
             $object->setDiskQuota($data['DiskQuota']);
+        } elseif (\array_key_exists('DiskQuota', $data) && null === $data['DiskQuota']) {
+            $object->setDiskQuota(null);
         }
-        if (\array_key_exists('KernelMemory', $data)) {
+        if (\array_key_exists('KernelMemory', $data) && null !== $data['KernelMemory']) {
             $object->setKernelMemory($data['KernelMemory']);
+        } elseif (\array_key_exists('KernelMemory', $data) && null === $data['KernelMemory']) {
+            $object->setKernelMemory(null);
         }
-        if (\array_key_exists('MemoryReservation', $data)) {
+        if (\array_key_exists('MemoryReservation', $data) && null !== $data['MemoryReservation']) {
             $object->setMemoryReservation($data['MemoryReservation']);
+        } elseif (\array_key_exists('MemoryReservation', $data) && null === $data['MemoryReservation']) {
+            $object->setMemoryReservation(null);
         }
-        if (\array_key_exists('MemorySwap', $data)) {
+        if (\array_key_exists('MemorySwap', $data) && null !== $data['MemorySwap']) {
             $object->setMemorySwap($data['MemorySwap']);
+        } elseif (\array_key_exists('MemorySwap', $data) && null === $data['MemorySwap']) {
+            $object->setMemorySwap(null);
         }
-        if (\array_key_exists('MemorySwappiness', $data)) {
+        if (\array_key_exists('MemorySwappiness', $data) && null !== $data['MemorySwappiness']) {
             $object->setMemorySwappiness($data['MemorySwappiness']);
+        } elseif (\array_key_exists('MemorySwappiness', $data) && null === $data['MemorySwappiness']) {
+            $object->setMemorySwappiness(null);
         }
-        if (\array_key_exists('NanoCPUs', $data)) {
+        if (\array_key_exists('NanoCPUs', $data) && null !== $data['NanoCPUs']) {
             $object->setNanoCPUs($data['NanoCPUs']);
+        } elseif (\array_key_exists('NanoCPUs', $data) && null === $data['NanoCPUs']) {
+            $object->setNanoCPUs(null);
         }
-        if (\array_key_exists('OomKillDisable', $data)) {
+        if (\array_key_exists('OomKillDisable', $data) && null !== $data['OomKillDisable']) {
             $object->setOomKillDisable($data['OomKillDisable']);
+        } elseif (\array_key_exists('OomKillDisable', $data) && null === $data['OomKillDisable']) {
+            $object->setOomKillDisable(null);
         }
-        if (\array_key_exists('PidsLimit', $data)) {
+        if (\array_key_exists('PidsLimit', $data) && null !== $data['PidsLimit']) {
             $object->setPidsLimit($data['PidsLimit']);
+        } elseif (\array_key_exists('PidsLimit', $data) && null === $data['PidsLimit']) {
+            $object->setPidsLimit(null);
         }
-        if (\array_key_exists('Ulimits', $data)) {
+        if (\array_key_exists('Ulimits', $data) && null !== $data['Ulimits']) {
             $values_7 = [];
             foreach ($data['Ulimits'] as $value_7) {
                 $values_7[] = $this->denormalizer->denormalize($value_7, 'Docker\\API\\Model\\ResourcesUlimitsItem', 'json', $context);
             }
             $object->setUlimits($values_7);
+        } elseif (\array_key_exists('Ulimits', $data) && null === $data['Ulimits']) {
+            $object->setUlimits(null);
         }
-        if (\array_key_exists('CpuCount', $data)) {
+        if (\array_key_exists('CpuCount', $data) && null !== $data['CpuCount']) {
             $object->setCpuCount($data['CpuCount']);
+        } elseif (\array_key_exists('CpuCount', $data) && null === $data['CpuCount']) {
+            $object->setCpuCount(null);
         }
-        if (\array_key_exists('CpuPercent', $data)) {
+        if (\array_key_exists('CpuPercent', $data) && null !== $data['CpuPercent']) {
             $object->setCpuPercent($data['CpuPercent']);
+        } elseif (\array_key_exists('CpuPercent', $data) && null === $data['CpuPercent']) {
+            $object->setCpuPercent(null);
         }
-        if (\array_key_exists('IOMaximumIOps', $data)) {
+        if (\array_key_exists('IOMaximumIOps', $data) && null !== $data['IOMaximumIOps']) {
             $object->setIOMaximumIOps($data['IOMaximumIOps']);
+        } elseif (\array_key_exists('IOMaximumIOps', $data) && null === $data['IOMaximumIOps']) {
+            $object->setIOMaximumIOps(null);
         }
-        if (\array_key_exists('IOMaximumBandwidth', $data)) {
+        if (\array_key_exists('IOMaximumBandwidth', $data) && null !== $data['IOMaximumBandwidth']) {
             $object->setIOMaximumBandwidth($data['IOMaximumBandwidth']);
+        } elseif (\array_key_exists('IOMaximumBandwidth', $data) && null === $data['IOMaximumBandwidth']) {
+            $object->setIOMaximumBandwidth(null);
         }
-        if (\array_key_exists('RestartPolicy', $data)) {
+        if (\array_key_exists('RestartPolicy', $data) && null !== $data['RestartPolicy']) {
             $object->setRestartPolicy($this->denormalizer->denormalize($data['RestartPolicy'], 'Docker\\API\\Model\\RestartPolicy', 'json', $context));
+        } elseif (\array_key_exists('RestartPolicy', $data) && null === $data['RestartPolicy']) {
+            $object->setRestartPolicy(null);
         }
 
         return $object;

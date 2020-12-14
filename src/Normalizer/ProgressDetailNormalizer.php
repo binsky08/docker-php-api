@@ -41,11 +41,15 @@ class ProgressDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('current', $data)) {
+        if (\array_key_exists('current', $data) && null !== $data['current']) {
             $object->setCurrent($data['current']);
+        } elseif (\array_key_exists('current', $data) && null === $data['current']) {
+            $object->setCurrent(null);
         }
-        if (\array_key_exists('total', $data)) {
+        if (\array_key_exists('total', $data) && null !== $data['total']) {
             $object->setTotal($data['total']);
+        } elseif (\array_key_exists('total', $data) && null === $data['total']) {
+            $object->setTotal(null);
         }
 
         return $object;

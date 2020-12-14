@@ -9,19 +9,19 @@ class SwarmSpecRaft
     /**
      * The number of log entries between snapshots.
      *
-     * @var int
+     * @var int|null
      */
     protected $snapshotInterval;
     /**
      * The number of snapshots to keep beyond the current snapshot.
      *
-     * @var int
+     * @var int|null
      */
     protected $keepOldSnapshots;
     /**
      * The number of log entries to keep around to sync up slow followers after a snapshot is created.
      *
-     * @var int
+     * @var int|null
      */
     protected $logEntriesForSlowFollowers;
     /**
@@ -29,7 +29,7 @@ class SwarmSpecRaft
      *
      * A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
      *
-     * @var int
+     * @var int|null
      */
     protected $electionTick;
     /**
@@ -37,14 +37,14 @@ class SwarmSpecRaft
      *
      * A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
      *
-     * @var int
+     * @var int|null
      */
     protected $heartbeatTick;
 
     /**
      * The number of log entries between snapshots.
      */
-    public function getSnapshotInterval(): int
+    public function getSnapshotInterval(): ?int
     {
         return $this->snapshotInterval;
     }
@@ -52,7 +52,7 @@ class SwarmSpecRaft
     /**
      * The number of log entries between snapshots.
      */
-    public function setSnapshotInterval(int $snapshotInterval): self
+    public function setSnapshotInterval(?int $snapshotInterval): self
     {
         $this->snapshotInterval = $snapshotInterval;
 
@@ -62,7 +62,7 @@ class SwarmSpecRaft
     /**
      * The number of snapshots to keep beyond the current snapshot.
      */
-    public function getKeepOldSnapshots(): int
+    public function getKeepOldSnapshots(): ?int
     {
         return $this->keepOldSnapshots;
     }
@@ -70,7 +70,7 @@ class SwarmSpecRaft
     /**
      * The number of snapshots to keep beyond the current snapshot.
      */
-    public function setKeepOldSnapshots(int $keepOldSnapshots): self
+    public function setKeepOldSnapshots(?int $keepOldSnapshots): self
     {
         $this->keepOldSnapshots = $keepOldSnapshots;
 
@@ -80,7 +80,7 @@ class SwarmSpecRaft
     /**
      * The number of log entries to keep around to sync up slow followers after a snapshot is created.
      */
-    public function getLogEntriesForSlowFollowers(): int
+    public function getLogEntriesForSlowFollowers(): ?int
     {
         return $this->logEntriesForSlowFollowers;
     }
@@ -88,7 +88,7 @@ class SwarmSpecRaft
     /**
      * The number of log entries to keep around to sync up slow followers after a snapshot is created.
      */
-    public function setLogEntriesForSlowFollowers(int $logEntriesForSlowFollowers): self
+    public function setLogEntriesForSlowFollowers(?int $logEntriesForSlowFollowers): self
     {
         $this->logEntriesForSlowFollowers = $logEntriesForSlowFollowers;
 
@@ -100,7 +100,7 @@ class SwarmSpecRaft
      *
      * A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
      */
-    public function getElectionTick(): int
+    public function getElectionTick(): ?int
     {
         return $this->electionTick;
     }
@@ -110,7 +110,7 @@ class SwarmSpecRaft
      *
      * A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
      */
-    public function setElectionTick(int $electionTick): self
+    public function setElectionTick(?int $electionTick): self
     {
         $this->electionTick = $electionTick;
 
@@ -122,7 +122,7 @@ class SwarmSpecRaft
      *
      * A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
      */
-    public function getHeartbeatTick(): int
+    public function getHeartbeatTick(): ?int
     {
         return $this->heartbeatTick;
     }
@@ -132,7 +132,7 @@ class SwarmSpecRaft
      *
      * A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
      */
-    public function setHeartbeatTick(int $heartbeatTick): self
+    public function setHeartbeatTick(?int $heartbeatTick): self
     {
         $this->heartbeatTick = $heartbeatTick;
 

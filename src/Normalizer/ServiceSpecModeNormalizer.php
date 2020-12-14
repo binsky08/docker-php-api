@@ -41,11 +41,15 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Replicated', $data)) {
+        if (\array_key_exists('Replicated', $data) && null !== $data['Replicated']) {
             $object->setReplicated($this->denormalizer->denormalize($data['Replicated'], 'Docker\\API\\Model\\ServiceSpecModeReplicated', 'json', $context));
+        } elseif (\array_key_exists('Replicated', $data) && null === $data['Replicated']) {
+            $object->setReplicated(null);
         }
-        if (\array_key_exists('Global', $data)) {
+        if (\array_key_exists('Global', $data) && null !== $data['Global']) {
             $object->setGlobal($this->denormalizer->denormalize($data['Global'], 'Docker\\API\\Model\\ServiceSpecModeGlobal', 'json', $context));
+        } elseif (\array_key_exists('Global', $data) && null === $data['Global']) {
+            $object->setGlobal(null);
         }
 
         return $object;

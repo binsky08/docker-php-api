@@ -41,52 +41,78 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ID', $data)) {
+        if (\array_key_exists('ID', $data) && null !== $data['ID']) {
             $object->setID($data['ID']);
+        } elseif (\array_key_exists('ID', $data) && null === $data['ID']) {
+            $object->setID(null);
         }
-        if (\array_key_exists('Version', $data)) {
+        if (\array_key_exists('Version', $data) && null !== $data['Version']) {
             $object->setVersion($this->denormalizer->denormalize($data['Version'], 'Docker\\API\\Model\\ObjectVersion', 'json', $context));
+        } elseif (\array_key_exists('Version', $data) && null === $data['Version']) {
+            $object->setVersion(null);
         }
-        if (\array_key_exists('CreatedAt', $data)) {
+        if (\array_key_exists('CreatedAt', $data) && null !== $data['CreatedAt']) {
             $object->setCreatedAt($data['CreatedAt']);
+        } elseif (\array_key_exists('CreatedAt', $data) && null === $data['CreatedAt']) {
+            $object->setCreatedAt(null);
         }
-        if (\array_key_exists('UpdatedAt', $data)) {
+        if (\array_key_exists('UpdatedAt', $data) && null !== $data['UpdatedAt']) {
             $object->setUpdatedAt($data['UpdatedAt']);
+        } elseif (\array_key_exists('UpdatedAt', $data) && null === $data['UpdatedAt']) {
+            $object->setUpdatedAt(null);
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setLabels($values);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('Spec', $data)) {
+        if (\array_key_exists('Spec', $data) && null !== $data['Spec']) {
             $object->setSpec($this->denormalizer->denormalize($data['Spec'], 'Docker\\API\\Model\\TaskSpec', 'json', $context));
+        } elseif (\array_key_exists('Spec', $data) && null === $data['Spec']) {
+            $object->setSpec(null);
         }
-        if (\array_key_exists('ServiceID', $data)) {
+        if (\array_key_exists('ServiceID', $data) && null !== $data['ServiceID']) {
             $object->setServiceID($data['ServiceID']);
+        } elseif (\array_key_exists('ServiceID', $data) && null === $data['ServiceID']) {
+            $object->setServiceID(null);
         }
-        if (\array_key_exists('Slot', $data)) {
+        if (\array_key_exists('Slot', $data) && null !== $data['Slot']) {
             $object->setSlot($data['Slot']);
+        } elseif (\array_key_exists('Slot', $data) && null === $data['Slot']) {
+            $object->setSlot(null);
         }
-        if (\array_key_exists('NodeID', $data)) {
+        if (\array_key_exists('NodeID', $data) && null !== $data['NodeID']) {
             $object->setNodeID($data['NodeID']);
+        } elseif (\array_key_exists('NodeID', $data) && null === $data['NodeID']) {
+            $object->setNodeID(null);
         }
-        if (\array_key_exists('AssignedGenericResources', $data)) {
+        if (\array_key_exists('AssignedGenericResources', $data) && null !== $data['AssignedGenericResources']) {
             $values_1 = [];
             foreach ($data['AssignedGenericResources'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\GenericResourcesItem', 'json', $context);
             }
             $object->setAssignedGenericResources($values_1);
+        } elseif (\array_key_exists('AssignedGenericResources', $data) && null === $data['AssignedGenericResources']) {
+            $object->setAssignedGenericResources(null);
         }
-        if (\array_key_exists('Status', $data)) {
+        if (\array_key_exists('Status', $data) && null !== $data['Status']) {
             $object->setStatus($this->denormalizer->denormalize($data['Status'], 'Docker\\API\\Model\\TaskStatus', 'json', $context));
+        } elseif (\array_key_exists('Status', $data) && null === $data['Status']) {
+            $object->setStatus(null);
         }
-        if (\array_key_exists('DesiredState', $data)) {
+        if (\array_key_exists('DesiredState', $data) && null !== $data['DesiredState']) {
             $object->setDesiredState($data['DesiredState']);
+        } elseif (\array_key_exists('DesiredState', $data) && null === $data['DesiredState']) {
+            $object->setDesiredState(null);
         }
 
         return $object;

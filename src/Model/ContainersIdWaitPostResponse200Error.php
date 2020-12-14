@@ -9,14 +9,14 @@ class ContainersIdWaitPostResponse200Error
     /**
      * Details of an error.
      *
-     * @var string
+     * @var string|null
      */
     protected $message;
 
     /**
      * Details of an error.
      */
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
@@ -24,7 +24,7 @@ class ContainersIdWaitPostResponse200Error
     /**
      * Details of an error.
      */
-    public function setMessage(string $message): self
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 

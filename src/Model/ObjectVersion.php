@@ -7,16 +7,16 @@ namespace Docker\API\Model;
 class ObjectVersion
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $index;
 
-    public function getIndex(): int
+    public function getIndex(): ?int
     {
         return $this->index;
     }
 
-    public function setIndex(int $index): self
+    public function setIndex(?int $index): self
     {
         $this->index = $index;
 

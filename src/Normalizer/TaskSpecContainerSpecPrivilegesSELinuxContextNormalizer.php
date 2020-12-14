@@ -41,20 +41,30 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Disable', $data)) {
+        if (\array_key_exists('Disable', $data) && null !== $data['Disable']) {
             $object->setDisable($data['Disable']);
+        } elseif (\array_key_exists('Disable', $data) && null === $data['Disable']) {
+            $object->setDisable(null);
         }
-        if (\array_key_exists('User', $data)) {
+        if (\array_key_exists('User', $data) && null !== $data['User']) {
             $object->setUser($data['User']);
+        } elseif (\array_key_exists('User', $data) && null === $data['User']) {
+            $object->setUser(null);
         }
-        if (\array_key_exists('Role', $data)) {
+        if (\array_key_exists('Role', $data) && null !== $data['Role']) {
             $object->setRole($data['Role']);
+        } elseif (\array_key_exists('Role', $data) && null === $data['Role']) {
+            $object->setRole(null);
         }
-        if (\array_key_exists('Type', $data)) {
+        if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
+        } elseif (\array_key_exists('Type', $data) && null === $data['Type']) {
+            $object->setType(null);
         }
-        if (\array_key_exists('Level', $data)) {
+        if (\array_key_exists('Level', $data) && null !== $data['Level']) {
             $object->setLevel($data['Level']);
+        } elseif (\array_key_exists('Level', $data) && null === $data['Level']) {
+            $object->setLevel(null);
         }
 
         return $object;

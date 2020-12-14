@@ -41,43 +41,63 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('AttachStdin', $data)) {
+        if (\array_key_exists('AttachStdin', $data) && null !== $data['AttachStdin']) {
             $object->setAttachStdin($data['AttachStdin']);
+        } elseif (\array_key_exists('AttachStdin', $data) && null === $data['AttachStdin']) {
+            $object->setAttachStdin(null);
         }
-        if (\array_key_exists('AttachStdout', $data)) {
+        if (\array_key_exists('AttachStdout', $data) && null !== $data['AttachStdout']) {
             $object->setAttachStdout($data['AttachStdout']);
+        } elseif (\array_key_exists('AttachStdout', $data) && null === $data['AttachStdout']) {
+            $object->setAttachStdout(null);
         }
-        if (\array_key_exists('AttachStderr', $data)) {
+        if (\array_key_exists('AttachStderr', $data) && null !== $data['AttachStderr']) {
             $object->setAttachStderr($data['AttachStderr']);
+        } elseif (\array_key_exists('AttachStderr', $data) && null === $data['AttachStderr']) {
+            $object->setAttachStderr(null);
         }
-        if (\array_key_exists('DetachKeys', $data)) {
+        if (\array_key_exists('DetachKeys', $data) && null !== $data['DetachKeys']) {
             $object->setDetachKeys($data['DetachKeys']);
+        } elseif (\array_key_exists('DetachKeys', $data) && null === $data['DetachKeys']) {
+            $object->setDetachKeys(null);
         }
-        if (\array_key_exists('Tty', $data)) {
+        if (\array_key_exists('Tty', $data) && null !== $data['Tty']) {
             $object->setTty($data['Tty']);
+        } elseif (\array_key_exists('Tty', $data) && null === $data['Tty']) {
+            $object->setTty(null);
         }
-        if (\array_key_exists('Env', $data)) {
+        if (\array_key_exists('Env', $data) && null !== $data['Env']) {
             $values = [];
             foreach ($data['Env'] as $value) {
                 $values[] = $value;
             }
             $object->setEnv($values);
+        } elseif (\array_key_exists('Env', $data) && null === $data['Env']) {
+            $object->setEnv(null);
         }
-        if (\array_key_exists('Cmd', $data)) {
+        if (\array_key_exists('Cmd', $data) && null !== $data['Cmd']) {
             $values_1 = [];
             foreach ($data['Cmd'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setCmd($values_1);
+        } elseif (\array_key_exists('Cmd', $data) && null === $data['Cmd']) {
+            $object->setCmd(null);
         }
-        if (\array_key_exists('Privileged', $data)) {
+        if (\array_key_exists('Privileged', $data) && null !== $data['Privileged']) {
             $object->setPrivileged($data['Privileged']);
+        } elseif (\array_key_exists('Privileged', $data) && null === $data['Privileged']) {
+            $object->setPrivileged(null);
         }
-        if (\array_key_exists('User', $data)) {
+        if (\array_key_exists('User', $data) && null !== $data['User']) {
             $object->setUser($data['User']);
+        } elseif (\array_key_exists('User', $data) && null === $data['User']) {
+            $object->setUser(null);
         }
-        if (\array_key_exists('WorkingDir', $data)) {
+        if (\array_key_exists('WorkingDir', $data) && null !== $data['WorkingDir']) {
             $object->setWorkingDir($data['WorkingDir']);
+        } elseif (\array_key_exists('WorkingDir', $data) && null === $data['WorkingDir']) {
+            $object->setWorkingDir(null);
         }
 
         return $object;

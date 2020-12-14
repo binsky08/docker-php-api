@@ -41,14 +41,20 @@ class TaskStatusContainerStatusNormalizer implements DenormalizerInterface, Norm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ContainerID', $data)) {
+        if (\array_key_exists('ContainerID', $data) && null !== $data['ContainerID']) {
             $object->setContainerID($data['ContainerID']);
+        } elseif (\array_key_exists('ContainerID', $data) && null === $data['ContainerID']) {
+            $object->setContainerID(null);
         }
-        if (\array_key_exists('PID', $data)) {
+        if (\array_key_exists('PID', $data) && null !== $data['PID']) {
             $object->setPID($data['PID']);
+        } elseif (\array_key_exists('PID', $data) && null === $data['PID']) {
+            $object->setPID(null);
         }
-        if (\array_key_exists('ExitCode', $data)) {
+        if (\array_key_exists('ExitCode', $data) && null !== $data['ExitCode']) {
             $object->setExitCode($data['ExitCode']);
+        } elseif (\array_key_exists('ExitCode', $data) && null === $data['ExitCode']) {
+            $object->setExitCode(null);
         }
 
         return $object;

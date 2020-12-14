@@ -41,21 +41,29 @@ class PluginEnvNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Description', $data)) {
+        if (\array_key_exists('Description', $data) && null !== $data['Description']) {
             $object->setDescription($data['Description']);
+        } elseif (\array_key_exists('Description', $data) && null === $data['Description']) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('Settable', $data)) {
+        if (\array_key_exists('Settable', $data) && null !== $data['Settable']) {
             $values = [];
             foreach ($data['Settable'] as $value) {
                 $values[] = $value;
             }
             $object->setSettable($values);
+        } elseif (\array_key_exists('Settable', $data) && null === $data['Settable']) {
+            $object->setSettable(null);
         }
-        if (\array_key_exists('Value', $data)) {
+        if (\array_key_exists('Value', $data) && null !== $data['Value']) {
             $object->setValue($data['Value']);
+        } elseif (\array_key_exists('Value', $data) && null === $data['Value']) {
+            $object->setValue(null);
         }
 
         return $object;

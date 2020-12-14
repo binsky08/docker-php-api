@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class Node
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $iD;
     /**
@@ -19,32 +19,32 @@ class Node
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      *
-     * @var ObjectVersion
+     * @var ObjectVersion|null
      */
     protected $version;
     /**
      * Date and time at which the node was added to the swarm in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
      * Date and time at which the node was last updated in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
-     * @var string
+     * @var string|null
      */
     protected $updatedAt;
     /**
-     * @var NodeSpec
+     * @var NodeSpec|null
      */
     protected $spec;
     /**
      * NodeDescription encapsulates the properties of the Node as reported by the.
      * agent.
      *
-     * @var NodeDescription
+     * @var NodeDescription|null
      */
     protected $description;
     /**
@@ -52,7 +52,7 @@ class Node
      *
      * It provides the current status of the node, as seen by the manager.
      *
-     * @var NodeStatus
+     * @var NodeStatus|null
      */
     protected $status;
     /**
@@ -65,12 +65,12 @@ class Node
      */
     protected $managerStatus;
 
-    public function getID(): string
+    public function getID(): ?string
     {
         return $this->iD;
     }
 
-    public function setID(string $iD): self
+    public function setID(?string $iD): self
     {
         $this->iD = $iD;
 
@@ -86,7 +86,7 @@ class Node
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function getVersion(): ObjectVersion
+    public function getVersion(): ?ObjectVersion
     {
         return $this->version;
     }
@@ -100,7 +100,7 @@ class Node
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function setVersion(ObjectVersion $version): self
+    public function setVersion(?ObjectVersion $version): self
     {
         $this->version = $version;
 
@@ -111,7 +111,7 @@ class Node
      * Date and time at which the node was added to the swarm in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
@@ -120,7 +120,7 @@ class Node
      * Date and time at which the node was added to the swarm in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
-    public function setCreatedAt(string $createdAt): self
+    public function setCreatedAt(?string $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -131,7 +131,7 @@ class Node
      * Date and time at which the node was last updated in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
@@ -140,19 +140,19 @@ class Node
      * Date and time at which the node was last updated in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
-    public function setUpdatedAt(string $updatedAt): self
+    public function setUpdatedAt(?string $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    public function getSpec(): NodeSpec
+    public function getSpec(): ?NodeSpec
     {
         return $this->spec;
     }
 
-    public function setSpec(NodeSpec $spec): self
+    public function setSpec(?NodeSpec $spec): self
     {
         $this->spec = $spec;
 
@@ -163,7 +163,7 @@ class Node
      * NodeDescription encapsulates the properties of the Node as reported by the.
      * agent.
      */
-    public function getDescription(): NodeDescription
+    public function getDescription(): ?NodeDescription
     {
         return $this->description;
     }
@@ -172,7 +172,7 @@ class Node
      * NodeDescription encapsulates the properties of the Node as reported by the.
      * agent.
      */
-    public function setDescription(NodeDescription $description): self
+    public function setDescription(?NodeDescription $description): self
     {
         $this->description = $description;
 
@@ -184,7 +184,7 @@ class Node
      *
      * It provides the current status of the node, as seen by the manager.
      */
-    public function getStatus(): NodeStatus
+    public function getStatus(): ?NodeStatus
     {
         return $this->status;
     }
@@ -194,7 +194,7 @@ class Node
      *
      * It provides the current status of the node, as seen by the manager.
      */
-    public function setStatus(NodeStatus $status): self
+    public function setStatus(?NodeStatus $status): self
     {
         $this->status = $status;
 

@@ -9,16 +9,16 @@ class ContainersCreatePostBodyNetworkingConfig
     /**
      * A mapping of network name to endpoint configuration for that network.
      *
-     * @var EndpointSettings[]
+     * @var EndpointSettings[]|null
      */
     protected $endpointsConfig;
 
     /**
      * A mapping of network name to endpoint configuration for that network.
      *
-     * @return EndpointSettings[]
+     * @return EndpointSettings[]|null
      */
-    public function getEndpointsConfig(): iterable
+    public function getEndpointsConfig(): ?iterable
     {
         return $this->endpointsConfig;
     }
@@ -26,9 +26,9 @@ class ContainersCreatePostBodyNetworkingConfig
     /**
      * A mapping of network name to endpoint configuration for that network.
      *
-     * @param EndpointSettings[] $endpointsConfig
+     * @param EndpointSettings[]|null $endpointsConfig
      */
-    public function setEndpointsConfig(iterable $endpointsConfig): self
+    public function setEndpointsConfig(?iterable $endpointsConfig): self
     {
         $this->endpointsConfig = $endpointsConfig;
 

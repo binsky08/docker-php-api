@@ -41,20 +41,30 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('description', $data)) {
+        if (\array_key_exists('description', $data) && null !== $data['description']) {
             $object->setDescription($data['description']);
+        } elseif (\array_key_exists('description', $data) && null === $data['description']) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('is_official', $data)) {
+        if (\array_key_exists('is_official', $data) && null !== $data['is_official']) {
             $object->setIsOfficial($data['is_official']);
+        } elseif (\array_key_exists('is_official', $data) && null === $data['is_official']) {
+            $object->setIsOfficial(null);
         }
-        if (\array_key_exists('is_automated', $data)) {
+        if (\array_key_exists('is_automated', $data) && null !== $data['is_automated']) {
             $object->setIsAutomated($data['is_automated']);
+        } elseif (\array_key_exists('is_automated', $data) && null === $data['is_automated']) {
+            $object->setIsAutomated(null);
         }
-        if (\array_key_exists('name', $data)) {
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('star_count', $data)) {
+        if (\array_key_exists('star_count', $data) && null !== $data['star_count']) {
             $object->setStarCount($data['star_count']);
+        } elseif (\array_key_exists('star_count', $data) && null === $data['star_count']) {
+            $object->setStarCount(null);
         }
 
         return $object;

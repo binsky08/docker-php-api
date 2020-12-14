@@ -9,20 +9,20 @@ class Address
     /**
      * IP address.
      *
-     * @var string
+     * @var string|null
      */
     protected $addr;
     /**
      * Mask length of the IP address.
      *
-     * @var int
+     * @var int|null
      */
     protected $prefixLen;
 
     /**
      * IP address.
      */
-    public function getAddr(): string
+    public function getAddr(): ?string
     {
         return $this->addr;
     }
@@ -30,7 +30,7 @@ class Address
     /**
      * IP address.
      */
-    public function setAddr(string $addr): self
+    public function setAddr(?string $addr): self
     {
         $this->addr = $addr;
 
@@ -40,7 +40,7 @@ class Address
     /**
      * Mask length of the IP address.
      */
-    public function getPrefixLen(): int
+    public function getPrefixLen(): ?int
     {
         return $this->prefixLen;
     }
@@ -48,7 +48,7 @@ class Address
     /**
      * Mask length of the IP address.
      */
-    public function setPrefixLen(int $prefixLen): self
+    public function setPrefixLen(?int $prefixLen): self
     {
         $this->prefixLen = $prefixLen;
 

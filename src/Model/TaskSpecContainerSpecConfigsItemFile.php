@@ -9,32 +9,32 @@ class TaskSpecContainerSpecConfigsItemFile
     /**
      * Name represents the final filename in the filesystem.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * UID represents the file UID.
      *
-     * @var string
+     * @var string|null
      */
     protected $uID;
     /**
      * GID represents the file GID.
      *
-     * @var string
+     * @var string|null
      */
     protected $gID;
     /**
      * Mode represents the FileMode of the file.
      *
-     * @var int
+     * @var int|null
      */
     protected $mode;
 
     /**
      * Name represents the final filename in the filesystem.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -42,7 +42,7 @@ class TaskSpecContainerSpecConfigsItemFile
     /**
      * Name represents the final filename in the filesystem.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -52,7 +52,7 @@ class TaskSpecContainerSpecConfigsItemFile
     /**
      * UID represents the file UID.
      */
-    public function getUID(): string
+    public function getUID(): ?string
     {
         return $this->uID;
     }
@@ -60,7 +60,7 @@ class TaskSpecContainerSpecConfigsItemFile
     /**
      * UID represents the file UID.
      */
-    public function setUID(string $uID): self
+    public function setUID(?string $uID): self
     {
         $this->uID = $uID;
 
@@ -70,7 +70,7 @@ class TaskSpecContainerSpecConfigsItemFile
     /**
      * GID represents the file GID.
      */
-    public function getGID(): string
+    public function getGID(): ?string
     {
         return $this->gID;
     }
@@ -78,7 +78,7 @@ class TaskSpecContainerSpecConfigsItemFile
     /**
      * GID represents the file GID.
      */
-    public function setGID(string $gID): self
+    public function setGID(?string $gID): self
     {
         $this->gID = $gID;
 
@@ -88,7 +88,7 @@ class TaskSpecContainerSpecConfigsItemFile
     /**
      * Mode represents the FileMode of the file.
      */
-    public function getMode(): int
+    public function getMode(): ?int
     {
         return $this->mode;
     }
@@ -96,7 +96,7 @@ class TaskSpecContainerSpecConfigsItemFile
     /**
      * Mode represents the FileMode of the file.
      */
-    public function setMode(int $mode): self
+    public function setMode(?int $mode): self
     {
         $this->mode = $mode;
 

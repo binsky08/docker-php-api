@@ -41,17 +41,25 @@ class TaskSpecRestartPolicyNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Condition', $data)) {
+        if (\array_key_exists('Condition', $data) && null !== $data['Condition']) {
             $object->setCondition($data['Condition']);
+        } elseif (\array_key_exists('Condition', $data) && null === $data['Condition']) {
+            $object->setCondition(null);
         }
-        if (\array_key_exists('Delay', $data)) {
+        if (\array_key_exists('Delay', $data) && null !== $data['Delay']) {
             $object->setDelay($data['Delay']);
+        } elseif (\array_key_exists('Delay', $data) && null === $data['Delay']) {
+            $object->setDelay(null);
         }
-        if (\array_key_exists('MaxAttempts', $data)) {
+        if (\array_key_exists('MaxAttempts', $data) && null !== $data['MaxAttempts']) {
             $object->setMaxAttempts($data['MaxAttempts']);
+        } elseif (\array_key_exists('MaxAttempts', $data) && null === $data['MaxAttempts']) {
+            $object->setMaxAttempts(null);
         }
-        if (\array_key_exists('Window', $data)) {
+        if (\array_key_exists('Window', $data) && null !== $data['Window']) {
             $object->setWindow($data['Window']);
+        } elseif (\array_key_exists('Window', $data) && null === $data['Window']) {
+            $object->setWindow(null);
         }
 
         return $object;

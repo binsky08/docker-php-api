@@ -41,21 +41,29 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Mirrors', $data)) {
+        if (\array_key_exists('Mirrors', $data) && null !== $data['Mirrors']) {
             $values = [];
             foreach ($data['Mirrors'] as $value) {
                 $values[] = $value;
             }
             $object->setMirrors($values);
+        } elseif (\array_key_exists('Mirrors', $data) && null === $data['Mirrors']) {
+            $object->setMirrors(null);
         }
-        if (\array_key_exists('Secure', $data)) {
+        if (\array_key_exists('Secure', $data) && null !== $data['Secure']) {
             $object->setSecure($data['Secure']);
+        } elseif (\array_key_exists('Secure', $data) && null === $data['Secure']) {
+            $object->setSecure(null);
         }
-        if (\array_key_exists('Official', $data)) {
+        if (\array_key_exists('Official', $data) && null !== $data['Official']) {
             $object->setOfficial($data['Official']);
+        } elseif (\array_key_exists('Official', $data) && null === $data['Official']) {
+            $object->setOfficial(null);
         }
 
         return $object;

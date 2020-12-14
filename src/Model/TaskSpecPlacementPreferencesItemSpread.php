@@ -9,14 +9,14 @@ class TaskSpecPlacementPreferencesItemSpread
     /**
      * label descriptor, such as engine.labels.az.
      *
-     * @var string
+     * @var string|null
      */
     protected $spreadDescriptor;
 
     /**
      * label descriptor, such as engine.labels.az.
      */
-    public function getSpreadDescriptor(): string
+    public function getSpreadDescriptor(): ?string
     {
         return $this->spreadDescriptor;
     }
@@ -24,7 +24,7 @@ class TaskSpecPlacementPreferencesItemSpread
     /**
      * label descriptor, such as engine.labels.az.
      */
-    public function setSpreadDescriptor(string $spreadDescriptor): self
+    public function setSpreadDescriptor(?string $spreadDescriptor): self
     {
         $this->spreadDescriptor = $spreadDescriptor;
 

@@ -7,28 +7,28 @@ namespace Docker\API\Model;
 class ManagerStatus
 {
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $leader = false;
     /**
      * Reachability represents the reachability of a node.
      *
-     * @var string
+     * @var string|null
      */
     protected $reachability;
     /**
      * The IP address and port at which the manager is reachable.
      *
-     * @var string
+     * @var string|null
      */
     protected $addr;
 
-    public function getLeader(): bool
+    public function getLeader(): ?bool
     {
         return $this->leader;
     }
 
-    public function setLeader(bool $leader): self
+    public function setLeader(?bool $leader): self
     {
         $this->leader = $leader;
 
@@ -38,7 +38,7 @@ class ManagerStatus
     /**
      * Reachability represents the reachability of a node.
      */
-    public function getReachability(): string
+    public function getReachability(): ?string
     {
         return $this->reachability;
     }
@@ -46,7 +46,7 @@ class ManagerStatus
     /**
      * Reachability represents the reachability of a node.
      */
-    public function setReachability(string $reachability): self
+    public function setReachability(?string $reachability): self
     {
         $this->reachability = $reachability;
 
@@ -56,7 +56,7 @@ class ManagerStatus
     /**
      * The IP address and port at which the manager is reachable.
      */
-    public function getAddr(): string
+    public function getAddr(): ?string
     {
         return $this->addr;
     }
@@ -64,7 +64,7 @@ class ManagerStatus
     /**
      * The IP address and port at which the manager is reachable.
      */
-    public function setAddr(string $addr): self
+    public function setAddr(?string $addr): self
     {
         $this->addr = $addr;
 

@@ -7,80 +7,80 @@ namespace Docker\API\Model;
 class TaskStatus
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $timestamp;
     /**
-     * @var string
+     * @var string|null
      */
     protected $state;
     /**
-     * @var string
+     * @var string|null
      */
     protected $message;
     /**
-     * @var string
+     * @var string|null
      */
     protected $err;
     /**
-     * @var TaskStatusContainerStatus
+     * @var TaskStatusContainerStatus|null
      */
     protected $containerStatus;
 
-    public function getTimestamp(): string
+    public function getTimestamp(): ?string
     {
         return $this->timestamp;
     }
 
-    public function setTimestamp(string $timestamp): self
+    public function setTimestamp(?string $timestamp): self
     {
         $this->timestamp = $timestamp;
 
         return $this;
     }
 
-    public function getState(): string
+    public function getState(): ?string
     {
         return $this->state;
     }
 
-    public function setState(string $state): self
+    public function setState(?string $state): self
     {
         $this->state = $state;
 
         return $this;
     }
 
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
-    public function setMessage(string $message): self
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 
         return $this;
     }
 
-    public function getErr(): string
+    public function getErr(): ?string
     {
         return $this->err;
     }
 
-    public function setErr(string $err): self
+    public function setErr(?string $err): self
     {
         $this->err = $err;
 
         return $this;
     }
 
-    public function getContainerStatus(): TaskStatusContainerStatus
+    public function getContainerStatus(): ?TaskStatusContainerStatus
     {
         return $this->containerStatus;
     }
 
-    public function setContainerStatus(TaskStatusContainerStatus $containerStatus): self
+    public function setContainerStatus(?TaskStatusContainerStatus $containerStatus): self
     {
         $this->containerStatus = $containerStatus;
 

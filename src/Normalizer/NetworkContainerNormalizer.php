@@ -41,20 +41,30 @@ class NetworkContainerNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('EndpointID', $data)) {
+        if (\array_key_exists('EndpointID', $data) && null !== $data['EndpointID']) {
             $object->setEndpointID($data['EndpointID']);
+        } elseif (\array_key_exists('EndpointID', $data) && null === $data['EndpointID']) {
+            $object->setEndpointID(null);
         }
-        if (\array_key_exists('MacAddress', $data)) {
+        if (\array_key_exists('MacAddress', $data) && null !== $data['MacAddress']) {
             $object->setMacAddress($data['MacAddress']);
+        } elseif (\array_key_exists('MacAddress', $data) && null === $data['MacAddress']) {
+            $object->setMacAddress(null);
         }
-        if (\array_key_exists('IPv4Address', $data)) {
+        if (\array_key_exists('IPv4Address', $data) && null !== $data['IPv4Address']) {
             $object->setIPv4Address($data['IPv4Address']);
+        } elseif (\array_key_exists('IPv4Address', $data) && null === $data['IPv4Address']) {
+            $object->setIPv4Address(null);
         }
-        if (\array_key_exists('IPv6Address', $data)) {
+        if (\array_key_exists('IPv6Address', $data) && null !== $data['IPv6Address']) {
             $object->setIPv6Address($data['IPv6Address']);
+        } elseif (\array_key_exists('IPv6Address', $data) && null === $data['IPv6Address']) {
+            $object->setIPv6Address(null);
         }
 
         return $object;

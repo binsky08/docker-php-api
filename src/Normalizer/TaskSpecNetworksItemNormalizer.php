@@ -41,15 +41,19 @@ class TaskSpecNetworksItemNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Target', $data)) {
+        if (\array_key_exists('Target', $data) && null !== $data['Target']) {
             $object->setTarget($data['Target']);
+        } elseif (\array_key_exists('Target', $data) && null === $data['Target']) {
+            $object->setTarget(null);
         }
-        if (\array_key_exists('Aliases', $data)) {
+        if (\array_key_exists('Aliases', $data) && null !== $data['Aliases']) {
             $values = [];
             foreach ($data['Aliases'] as $value) {
                 $values[] = $value;
             }
             $object->setAliases($values);
+        } elseif (\array_key_exists('Aliases', $data) && null === $data['Aliases']) {
+            $object->setAliases(null);
         }
 
         return $object;

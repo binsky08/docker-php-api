@@ -41,11 +41,15 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Detach', $data)) {
+        if (\array_key_exists('Detach', $data) && null !== $data['Detach']) {
             $object->setDetach($data['Detach']);
+        } elseif (\array_key_exists('Detach', $data) && null === $data['Detach']) {
+            $object->setDetach(null);
         }
-        if (\array_key_exists('Tty', $data)) {
+        if (\array_key_exists('Tty', $data) && null !== $data['Tty']) {
             $object->setTty($data['Tty']);
+        } elseif (\array_key_exists('Tty', $data) && null === $data['Tty']) {
+            $object->setTty(null);
         }
 
         return $object;

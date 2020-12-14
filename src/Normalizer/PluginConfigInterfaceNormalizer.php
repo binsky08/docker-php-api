@@ -41,15 +41,19 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Types', $data)) {
+        if (\array_key_exists('Types', $data) && null !== $data['Types']) {
             $values = [];
             foreach ($data['Types'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\PluginInterfaceType', 'json', $context);
             }
             $object->setTypes($values);
+        } elseif (\array_key_exists('Types', $data) && null === $data['Types']) {
+            $object->setTypes(null);
         }
-        if (\array_key_exists('Socket', $data)) {
+        if (\array_key_exists('Socket', $data) && null !== $data['Socket']) {
             $object->setSocket($data['Socket']);
+        } elseif (\array_key_exists('Socket', $data) && null === $data['Socket']) {
+            $object->setSocket(null);
         }
 
         return $object;

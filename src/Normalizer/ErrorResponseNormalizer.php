@@ -41,8 +41,10 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('message', $data)) {
+        if (\array_key_exists('message', $data) && null !== $data['message']) {
             $object->setMessage($data['message']);
+        } elseif (\array_key_exists('message', $data) && null === $data['message']) {
+            $object->setMessage(null);
         }
 
         return $object;

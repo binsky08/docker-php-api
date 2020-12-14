@@ -41,37 +41,53 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setLabels($values);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('TaskTemplate', $data)) {
+        if (\array_key_exists('TaskTemplate', $data) && null !== $data['TaskTemplate']) {
             $object->setTaskTemplate($this->denormalizer->denormalize($data['TaskTemplate'], 'Docker\\API\\Model\\TaskSpec', 'json', $context));
+        } elseif (\array_key_exists('TaskTemplate', $data) && null === $data['TaskTemplate']) {
+            $object->setTaskTemplate(null);
         }
-        if (\array_key_exists('Mode', $data)) {
+        if (\array_key_exists('Mode', $data) && null !== $data['Mode']) {
             $object->setMode($this->denormalizer->denormalize($data['Mode'], 'Docker\\API\\Model\\ServiceSpecMode', 'json', $context));
+        } elseif (\array_key_exists('Mode', $data) && null === $data['Mode']) {
+            $object->setMode(null);
         }
-        if (\array_key_exists('UpdateConfig', $data)) {
+        if (\array_key_exists('UpdateConfig', $data) && null !== $data['UpdateConfig']) {
             $object->setUpdateConfig($this->denormalizer->denormalize($data['UpdateConfig'], 'Docker\\API\\Model\\ServiceSpecUpdateConfig', 'json', $context));
+        } elseif (\array_key_exists('UpdateConfig', $data) && null === $data['UpdateConfig']) {
+            $object->setUpdateConfig(null);
         }
-        if (\array_key_exists('RollbackConfig', $data)) {
+        if (\array_key_exists('RollbackConfig', $data) && null !== $data['RollbackConfig']) {
             $object->setRollbackConfig($this->denormalizer->denormalize($data['RollbackConfig'], 'Docker\\API\\Model\\ServiceSpecRollbackConfig', 'json', $context));
+        } elseif (\array_key_exists('RollbackConfig', $data) && null === $data['RollbackConfig']) {
+            $object->setRollbackConfig(null);
         }
-        if (\array_key_exists('Networks', $data)) {
+        if (\array_key_exists('Networks', $data) && null !== $data['Networks']) {
             $values_1 = [];
             foreach ($data['Networks'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\ServiceSpecNetworksItem', 'json', $context);
             }
             $object->setNetworks($values_1);
+        } elseif (\array_key_exists('Networks', $data) && null === $data['Networks']) {
+            $object->setNetworks(null);
         }
-        if (\array_key_exists('EndpointSpec', $data)) {
+        if (\array_key_exists('EndpointSpec', $data) && null !== $data['EndpointSpec']) {
             $object->setEndpointSpec($this->denormalizer->denormalize($data['EndpointSpec'], 'Docker\\API\\Model\\EndpointSpec', 'json', $context));
+        } elseif (\array_key_exists('EndpointSpec', $data) && null === $data['EndpointSpec']) {
+            $object->setEndpointSpec(null);
         }
 
         return $object;

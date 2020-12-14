@@ -9,68 +9,68 @@ class ContainersIdExecPostBody
     /**
      * Attach to `stdin` of the exec command.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $attachStdin;
     /**
      * Attach to `stdout` of the exec command.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $attachStdout;
     /**
      * Attach to `stderr` of the exec command.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $attachStderr;
     /**
      * Override the key sequence for detaching a container. Format is a single character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      *
-     * @var string
+     * @var string|null
      */
     protected $detachKeys;
     /**
      * Allocate a pseudo-TTY.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $tty;
     /**
      * A list of environment variables in the form `["VAR=value", ...]`.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $env;
     /**
      * Command to run, as a string or array of strings.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $cmd;
     /**
      * Runs the exec process with extended privileges.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $privileged = false;
     /**
      * The user, and optionally, group to run the exec process inside the container. Format is one of: `user`, `user:group`, `uid`, or `uid:gid`.
      *
-     * @var string
+     * @var string|null
      */
     protected $user;
     /**
      * The working directory for the exec process inside the container.
      *
-     * @var string
+     * @var string|null
      */
     protected $workingDir;
 
     /**
      * Attach to `stdin` of the exec command.
      */
-    public function getAttachStdin(): bool
+    public function getAttachStdin(): ?bool
     {
         return $this->attachStdin;
     }
@@ -78,7 +78,7 @@ class ContainersIdExecPostBody
     /**
      * Attach to `stdin` of the exec command.
      */
-    public function setAttachStdin(bool $attachStdin): self
+    public function setAttachStdin(?bool $attachStdin): self
     {
         $this->attachStdin = $attachStdin;
 
@@ -88,7 +88,7 @@ class ContainersIdExecPostBody
     /**
      * Attach to `stdout` of the exec command.
      */
-    public function getAttachStdout(): bool
+    public function getAttachStdout(): ?bool
     {
         return $this->attachStdout;
     }
@@ -96,7 +96,7 @@ class ContainersIdExecPostBody
     /**
      * Attach to `stdout` of the exec command.
      */
-    public function setAttachStdout(bool $attachStdout): self
+    public function setAttachStdout(?bool $attachStdout): self
     {
         $this->attachStdout = $attachStdout;
 
@@ -106,7 +106,7 @@ class ContainersIdExecPostBody
     /**
      * Attach to `stderr` of the exec command.
      */
-    public function getAttachStderr(): bool
+    public function getAttachStderr(): ?bool
     {
         return $this->attachStderr;
     }
@@ -114,7 +114,7 @@ class ContainersIdExecPostBody
     /**
      * Attach to `stderr` of the exec command.
      */
-    public function setAttachStderr(bool $attachStderr): self
+    public function setAttachStderr(?bool $attachStderr): self
     {
         $this->attachStderr = $attachStderr;
 
@@ -124,7 +124,7 @@ class ContainersIdExecPostBody
     /**
      * Override the key sequence for detaching a container. Format is a single character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      */
-    public function getDetachKeys(): string
+    public function getDetachKeys(): ?string
     {
         return $this->detachKeys;
     }
@@ -132,7 +132,7 @@ class ContainersIdExecPostBody
     /**
      * Override the key sequence for detaching a container. Format is a single character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      */
-    public function setDetachKeys(string $detachKeys): self
+    public function setDetachKeys(?string $detachKeys): self
     {
         $this->detachKeys = $detachKeys;
 
@@ -142,7 +142,7 @@ class ContainersIdExecPostBody
     /**
      * Allocate a pseudo-TTY.
      */
-    public function getTty(): bool
+    public function getTty(): ?bool
     {
         return $this->tty;
     }
@@ -150,7 +150,7 @@ class ContainersIdExecPostBody
     /**
      * Allocate a pseudo-TTY.
      */
-    public function setTty(bool $tty): self
+    public function setTty(?bool $tty): self
     {
         $this->tty = $tty;
 
@@ -160,9 +160,9 @@ class ContainersIdExecPostBody
     /**
      * A list of environment variables in the form `["VAR=value", ...]`.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getEnv(): array
+    public function getEnv(): ?array
     {
         return $this->env;
     }
@@ -170,9 +170,9 @@ class ContainersIdExecPostBody
     /**
      * A list of environment variables in the form `["VAR=value", ...]`.
      *
-     * @param string[] $env
+     * @param string[]|null $env
      */
-    public function setEnv(array $env): self
+    public function setEnv(?array $env): self
     {
         $this->env = $env;
 
@@ -182,9 +182,9 @@ class ContainersIdExecPostBody
     /**
      * Command to run, as a string or array of strings.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getCmd(): array
+    public function getCmd(): ?array
     {
         return $this->cmd;
     }
@@ -192,9 +192,9 @@ class ContainersIdExecPostBody
     /**
      * Command to run, as a string or array of strings.
      *
-     * @param string[] $cmd
+     * @param string[]|null $cmd
      */
-    public function setCmd(array $cmd): self
+    public function setCmd(?array $cmd): self
     {
         $this->cmd = $cmd;
 
@@ -204,7 +204,7 @@ class ContainersIdExecPostBody
     /**
      * Runs the exec process with extended privileges.
      */
-    public function getPrivileged(): bool
+    public function getPrivileged(): ?bool
     {
         return $this->privileged;
     }
@@ -212,7 +212,7 @@ class ContainersIdExecPostBody
     /**
      * Runs the exec process with extended privileges.
      */
-    public function setPrivileged(bool $privileged): self
+    public function setPrivileged(?bool $privileged): self
     {
         $this->privileged = $privileged;
 
@@ -222,7 +222,7 @@ class ContainersIdExecPostBody
     /**
      * The user, and optionally, group to run the exec process inside the container. Format is one of: `user`, `user:group`, `uid`, or `uid:gid`.
      */
-    public function getUser(): string
+    public function getUser(): ?string
     {
         return $this->user;
     }
@@ -230,7 +230,7 @@ class ContainersIdExecPostBody
     /**
      * The user, and optionally, group to run the exec process inside the container. Format is one of: `user`, `user:group`, `uid`, or `uid:gid`.
      */
-    public function setUser(string $user): self
+    public function setUser(?string $user): self
     {
         $this->user = $user;
 
@@ -240,7 +240,7 @@ class ContainersIdExecPostBody
     /**
      * The working directory for the exec process inside the container.
      */
-    public function getWorkingDir(): string
+    public function getWorkingDir(): ?string
     {
         return $this->workingDir;
     }
@@ -248,7 +248,7 @@ class ContainersIdExecPostBody
     /**
      * The working directory for the exec process inside the container.
      */
-    public function setWorkingDir(string $workingDir): self
+    public function setWorkingDir(?string $workingDir): self
     {
         $this->workingDir = $workingDir;
 

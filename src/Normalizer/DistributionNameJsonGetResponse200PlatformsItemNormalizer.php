@@ -41,31 +41,43 @@ class DistributionNameJsonGetResponse200PlatformsItemNormalizer implements Denor
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Architecture', $data)) {
+        if (\array_key_exists('Architecture', $data) && null !== $data['Architecture']) {
             $object->setArchitecture($data['Architecture']);
+        } elseif (\array_key_exists('Architecture', $data) && null === $data['Architecture']) {
+            $object->setArchitecture(null);
         }
-        if (\array_key_exists('OS', $data)) {
+        if (\array_key_exists('OS', $data) && null !== $data['OS']) {
             $object->setOS($data['OS']);
+        } elseif (\array_key_exists('OS', $data) && null === $data['OS']) {
+            $object->setOS(null);
         }
-        if (\array_key_exists('OSVersion', $data)) {
+        if (\array_key_exists('OSVersion', $data) && null !== $data['OSVersion']) {
             $object->setOSVersion($data['OSVersion']);
+        } elseif (\array_key_exists('OSVersion', $data) && null === $data['OSVersion']) {
+            $object->setOSVersion(null);
         }
-        if (\array_key_exists('OSFeatures', $data)) {
+        if (\array_key_exists('OSFeatures', $data) && null !== $data['OSFeatures']) {
             $values = [];
             foreach ($data['OSFeatures'] as $value) {
                 $values[] = $value;
             }
             $object->setOSFeatures($values);
+        } elseif (\array_key_exists('OSFeatures', $data) && null === $data['OSFeatures']) {
+            $object->setOSFeatures(null);
         }
-        if (\array_key_exists('Variant', $data)) {
+        if (\array_key_exists('Variant', $data) && null !== $data['Variant']) {
             $object->setVariant($data['Variant']);
+        } elseif (\array_key_exists('Variant', $data) && null === $data['Variant']) {
+            $object->setVariant(null);
         }
-        if (\array_key_exists('Features', $data)) {
+        if (\array_key_exists('Features', $data) && null !== $data['Features']) {
             $values_1 = [];
             foreach ($data['Features'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setFeatures($values_1);
+        } elseif (\array_key_exists('Features', $data) && null === $data['Features']) {
+            $object->setFeatures(null);
         }
 
         return $object;

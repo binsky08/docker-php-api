@@ -41,27 +41,39 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Id', $data)) {
+        if (\array_key_exists('Id', $data) && null !== $data['Id']) {
             $object->setId($data['Id']);
+        } elseif (\array_key_exists('Id', $data) && null === $data['Id']) {
+            $object->setId(null);
         }
-        if (\array_key_exists('Created', $data)) {
+        if (\array_key_exists('Created', $data) && null !== $data['Created']) {
             $object->setCreated($data['Created']);
+        } elseif (\array_key_exists('Created', $data) && null === $data['Created']) {
+            $object->setCreated(null);
         }
-        if (\array_key_exists('CreatedBy', $data)) {
+        if (\array_key_exists('CreatedBy', $data) && null !== $data['CreatedBy']) {
             $object->setCreatedBy($data['CreatedBy']);
+        } elseif (\array_key_exists('CreatedBy', $data) && null === $data['CreatedBy']) {
+            $object->setCreatedBy(null);
         }
-        if (\array_key_exists('Tags', $data)) {
+        if (\array_key_exists('Tags', $data) && null !== $data['Tags']) {
             $values = [];
             foreach ($data['Tags'] as $value) {
                 $values[] = $value;
             }
             $object->setTags($values);
+        } elseif (\array_key_exists('Tags', $data) && null === $data['Tags']) {
+            $object->setTags(null);
         }
-        if (\array_key_exists('Size', $data)) {
+        if (\array_key_exists('Size', $data) && null !== $data['Size']) {
             $object->setSize($data['Size']);
+        } elseif (\array_key_exists('Size', $data) && null === $data['Size']) {
+            $object->setSize(null);
         }
-        if (\array_key_exists('Comment', $data)) {
+        if (\array_key_exists('Comment', $data) && null !== $data['Comment']) {
             $object->setComment($data['Comment']);
+        } elseif (\array_key_exists('Comment', $data) && null === $data['Comment']) {
+            $object->setComment(null);
         }
 
         return $object;

@@ -41,17 +41,25 @@ class AuthConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('username', $data)) {
+        if (\array_key_exists('username', $data) && null !== $data['username']) {
             $object->setUsername($data['username']);
+        } elseif (\array_key_exists('username', $data) && null === $data['username']) {
+            $object->setUsername(null);
         }
-        if (\array_key_exists('password', $data)) {
+        if (\array_key_exists('password', $data) && null !== $data['password']) {
             $object->setPassword($data['password']);
+        } elseif (\array_key_exists('password', $data) && null === $data['password']) {
+            $object->setPassword(null);
         }
-        if (\array_key_exists('email', $data)) {
+        if (\array_key_exists('email', $data) && null !== $data['email']) {
             $object->setEmail($data['email']);
+        } elseif (\array_key_exists('email', $data) && null === $data['email']) {
+            $object->setEmail(null);
         }
-        if (\array_key_exists('serveraddress', $data)) {
+        if (\array_key_exists('serveraddress', $data) && null !== $data['serveraddress']) {
             $object->setServeraddress($data['serveraddress']);
+        } elseif (\array_key_exists('serveraddress', $data) && null === $data['serveraddress']) {
+            $object->setServeraddress(null);
         }
 
         return $object;

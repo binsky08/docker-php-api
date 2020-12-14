@@ -9,13 +9,13 @@ class IndexInfo
     /**
      * Name of the registry, such as "docker.io".
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * List of mirrors, expressed as URIs.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $mirrors;
     /**
@@ -32,20 +32,20 @@ class IndexInfo
      * > security, users should add their CA to their system's list of
      * > trusted CAs instead of enabling this option.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $secure;
     /**
      * Indicates whether this is an official registry (i.e., Docker Hub / docker.io).
      *
-     * @var bool
+     * @var bool|null
      */
     protected $official;
 
     /**
      * Name of the registry, such as "docker.io".
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -53,7 +53,7 @@ class IndexInfo
     /**
      * Name of the registry, such as "docker.io".
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -63,9 +63,9 @@ class IndexInfo
     /**
      * List of mirrors, expressed as URIs.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getMirrors(): array
+    public function getMirrors(): ?array
     {
         return $this->mirrors;
     }
@@ -73,9 +73,9 @@ class IndexInfo
     /**
      * List of mirrors, expressed as URIs.
      *
-     * @param string[] $mirrors
+     * @param string[]|null $mirrors
      */
-    public function setMirrors(array $mirrors): self
+    public function setMirrors(?array $mirrors): self
     {
         $this->mirrors = $mirrors;
 
@@ -96,7 +96,7 @@ class IndexInfo
      * > security, users should add their CA to their system's list of
      * > trusted CAs instead of enabling this option.
      */
-    public function getSecure(): bool
+    public function getSecure(): ?bool
     {
         return $this->secure;
     }
@@ -115,7 +115,7 @@ class IndexInfo
      * > security, users should add their CA to their system's list of
      * > trusted CAs instead of enabling this option.
      */
-    public function setSecure(bool $secure): self
+    public function setSecure(?bool $secure): self
     {
         $this->secure = $secure;
 
@@ -125,7 +125,7 @@ class IndexInfo
     /**
      * Indicates whether this is an official registry (i.e., Docker Hub / docker.io).
      */
-    public function getOfficial(): bool
+    public function getOfficial(): ?bool
     {
         return $this->official;
     }
@@ -133,7 +133,7 @@ class IndexInfo
     /**
      * Indicates whether this is an official registry (i.e., Docker Hub / docker.io).
      */
-    public function setOfficial(bool $official): self
+    public function setOfficial(?bool $official): self
     {
         $this->official = $official;
 

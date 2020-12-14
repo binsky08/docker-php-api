@@ -41,20 +41,30 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Hostname', $data)) {
+        if (\array_key_exists('Hostname', $data) && null !== $data['Hostname']) {
             $object->setHostname($data['Hostname']);
+        } elseif (\array_key_exists('Hostname', $data) && null === $data['Hostname']) {
+            $object->setHostname(null);
         }
-        if (\array_key_exists('Platform', $data)) {
+        if (\array_key_exists('Platform', $data) && null !== $data['Platform']) {
             $object->setPlatform($this->denormalizer->denormalize($data['Platform'], 'Docker\\API\\Model\\Platform', 'json', $context));
+        } elseif (\array_key_exists('Platform', $data) && null === $data['Platform']) {
+            $object->setPlatform(null);
         }
-        if (\array_key_exists('Resources', $data)) {
+        if (\array_key_exists('Resources', $data) && null !== $data['Resources']) {
             $object->setResources($this->denormalizer->denormalize($data['Resources'], 'Docker\\API\\Model\\ResourceObject', 'json', $context));
+        } elseif (\array_key_exists('Resources', $data) && null === $data['Resources']) {
+            $object->setResources(null);
         }
-        if (\array_key_exists('Engine', $data)) {
+        if (\array_key_exists('Engine', $data) && null !== $data['Engine']) {
             $object->setEngine($this->denormalizer->denormalize($data['Engine'], 'Docker\\API\\Model\\EngineDescription', 'json', $context));
+        } elseif (\array_key_exists('Engine', $data) && null === $data['Engine']) {
+            $object->setEngine(null);
         }
-        if (\array_key_exists('TLSInfo', $data)) {
+        if (\array_key_exists('TLSInfo', $data) && null !== $data['TLSInfo']) {
             $object->setTLSInfo($this->denormalizer->denormalize($data['TLSInfo'], 'Docker\\API\\Model\\TLSInfo', 'json', $context));
+        } elseif (\array_key_exists('TLSInfo', $data) && null === $data['TLSInfo']) {
+            $object->setTLSInfo(null);
         }
 
         return $object;

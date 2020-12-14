@@ -9,14 +9,14 @@ class BuildPrunePostResponse200
     /**
      * Disk space reclaimed in bytes.
      *
-     * @var int
+     * @var int|null
      */
     protected $spaceReclaimed;
 
     /**
      * Disk space reclaimed in bytes.
      */
-    public function getSpaceReclaimed(): int
+    public function getSpaceReclaimed(): ?int
     {
         return $this->spaceReclaimed;
     }
@@ -24,7 +24,7 @@ class BuildPrunePostResponse200
     /**
      * Disk space reclaimed in bytes.
      */
-    public function setSpaceReclaimed(int $spaceReclaimed): self
+    public function setSpaceReclaimed(?int $spaceReclaimed): self
     {
         $this->spaceReclaimed = $spaceReclaimed;
 

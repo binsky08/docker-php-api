@@ -41,15 +41,19 @@ class ContainersCreatePostResponse201Normalizer implements DenormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Id', $data)) {
+        if (\array_key_exists('Id', $data) && null !== $data['Id']) {
             $object->setId($data['Id']);
+        } elseif (\array_key_exists('Id', $data) && null === $data['Id']) {
+            $object->setId(null);
         }
-        if (\array_key_exists('Warnings', $data)) {
+        if (\array_key_exists('Warnings', $data) && null !== $data['Warnings']) {
             $values = [];
             foreach ($data['Warnings'] as $value) {
                 $values[] = $value;
             }
             $object->setWarnings($values);
+        } elseif (\array_key_exists('Warnings', $data) && null === $data['Warnings']) {
+            $object->setWarnings(null);
         }
 
         return $object;

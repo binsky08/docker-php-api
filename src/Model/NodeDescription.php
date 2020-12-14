@@ -7,40 +7,40 @@ namespace Docker\API\Model;
 class NodeDescription
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $hostname;
     /**
      * Platform represents the platform (Arch/OS).
      *
-     * @var Platform
+     * @var Platform|null
      */
     protected $platform;
     /**
      * An object describing the resources which can be advertised by a node and requested by a task.
      *
-     * @var ResourceObject
+     * @var ResourceObject|null
      */
     protected $resources;
     /**
      * EngineDescription provides information about an engine.
      *
-     * @var EngineDescription
+     * @var EngineDescription|null
      */
     protected $engine;
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      *
-     * @var TLSInfo
+     * @var TLSInfo|null
      */
     protected $tLSInfo;
 
-    public function getHostname(): string
+    public function getHostname(): ?string
     {
         return $this->hostname;
     }
 
-    public function setHostname(string $hostname): self
+    public function setHostname(?string $hostname): self
     {
         $this->hostname = $hostname;
 
@@ -50,7 +50,7 @@ class NodeDescription
     /**
      * Platform represents the platform (Arch/OS).
      */
-    public function getPlatform(): Platform
+    public function getPlatform(): ?Platform
     {
         return $this->platform;
     }
@@ -58,7 +58,7 @@ class NodeDescription
     /**
      * Platform represents the platform (Arch/OS).
      */
-    public function setPlatform(Platform $platform): self
+    public function setPlatform(?Platform $platform): self
     {
         $this->platform = $platform;
 
@@ -68,7 +68,7 @@ class NodeDescription
     /**
      * An object describing the resources which can be advertised by a node and requested by a task.
      */
-    public function getResources(): ResourceObject
+    public function getResources(): ?ResourceObject
     {
         return $this->resources;
     }
@@ -76,7 +76,7 @@ class NodeDescription
     /**
      * An object describing the resources which can be advertised by a node and requested by a task.
      */
-    public function setResources(ResourceObject $resources): self
+    public function setResources(?ResourceObject $resources): self
     {
         $this->resources = $resources;
 
@@ -86,7 +86,7 @@ class NodeDescription
     /**
      * EngineDescription provides information about an engine.
      */
-    public function getEngine(): EngineDescription
+    public function getEngine(): ?EngineDescription
     {
         return $this->engine;
     }
@@ -94,7 +94,7 @@ class NodeDescription
     /**
      * EngineDescription provides information about an engine.
      */
-    public function setEngine(EngineDescription $engine): self
+    public function setEngine(?EngineDescription $engine): self
     {
         $this->engine = $engine;
 
@@ -104,7 +104,7 @@ class NodeDescription
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      */
-    public function getTLSInfo(): TLSInfo
+    public function getTLSInfo(): ?TLSInfo
     {
         return $this->tLSInfo;
     }
@@ -112,7 +112,7 @@ class NodeDescription
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      */
-    public function setTLSInfo(TLSInfo $tLSInfo): self
+    public function setTLSInfo(?TLSInfo $tLSInfo): self
     {
         $this->tLSInfo = $tLSInfo;
 

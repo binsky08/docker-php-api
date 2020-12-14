@@ -41,10 +41,12 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Driver', $data)) {
+        if (\array_key_exists('Driver', $data) && null !== $data['Driver']) {
             $object->setDriver($data['Driver']);
+        } elseif (\array_key_exists('Driver', $data) && null === $data['Driver']) {
+            $object->setDriver(null);
         }
-        if (\array_key_exists('Config', $data)) {
+        if (\array_key_exists('Config', $data) && null !== $data['Config']) {
             $values = [];
             foreach ($data['Config'] as $value) {
                 $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -54,8 +56,10 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $values[] = $values_1;
             }
             $object->setConfig($values);
+        } elseif (\array_key_exists('Config', $data) && null === $data['Config']) {
+            $object->setConfig(null);
         }
-        if (\array_key_exists('Options', $data)) {
+        if (\array_key_exists('Options', $data) && null !== $data['Options']) {
             $values_2 = [];
             foreach ($data['Options'] as $value_2) {
                 $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -65,6 +69,8 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $values_2[] = $values_3;
             }
             $object->setOptions($values_2);
+        } elseif (\array_key_exists('Options', $data) && null === $data['Options']) {
+            $object->setOptions(null);
         }
 
         return $object;

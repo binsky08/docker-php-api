@@ -9,20 +9,20 @@ class ContainersIdChangesGetResponse200Item
     /**
      * Path to file that has changed.
      *
-     * @var string
+     * @var string|null
      */
     protected $path;
     /**
      * Kind of change.
      *
-     * @var int
+     * @var int|null
      */
     protected $kind;
 
     /**
      * Path to file that has changed.
      */
-    public function getPath(): string
+    public function getPath(): ?string
     {
         return $this->path;
     }
@@ -30,7 +30,7 @@ class ContainersIdChangesGetResponse200Item
     /**
      * Path to file that has changed.
      */
-    public function setPath(string $path): self
+    public function setPath(?string $path): self
     {
         $this->path = $path;
 
@@ -40,7 +40,7 @@ class ContainersIdChangesGetResponse200Item
     /**
      * Kind of change.
      */
-    public function getKind(): int
+    public function getKind(): ?int
     {
         return $this->kind;
     }
@@ -48,7 +48,7 @@ class ContainersIdChangesGetResponse200Item
     /**
      * Kind of change.
      */
-    public function setKind(int $kind): self
+    public function setKind(?int $kind): self
     {
         $this->kind = $kind;
 

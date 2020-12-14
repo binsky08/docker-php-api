@@ -41,19 +41,23 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Volumes', $data)) {
+        if (\array_key_exists('Volumes', $data) && null !== $data['Volumes']) {
             $values = [];
             foreach ($data['Volumes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\Volume', 'json', $context);
             }
             $object->setVolumes($values);
+        } elseif (\array_key_exists('Volumes', $data) && null === $data['Volumes']) {
+            $object->setVolumes(null);
         }
-        if (\array_key_exists('Warnings', $data)) {
+        if (\array_key_exists('Warnings', $data) && null !== $data['Warnings']) {
             $values_1 = [];
             foreach ($data['Warnings'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setWarnings($values_1);
+        } elseif (\array_key_exists('Warnings', $data) && null === $data['Warnings']) {
+            $object->setWarnings(null);
         }
 
         return $object;

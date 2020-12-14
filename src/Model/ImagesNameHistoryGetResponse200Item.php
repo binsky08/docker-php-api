@@ -7,60 +7,60 @@ namespace Docker\API\Model;
 class ImagesNameHistoryGetResponse200Item
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
-     * @var int
+     * @var int|null
      */
     protected $created;
     /**
-     * @var string
+     * @var string|null
      */
     protected $createdBy;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $tags;
     /**
-     * @var int
+     * @var int|null
      */
     protected $size;
     /**
-     * @var string
+     * @var string|null
      */
     protected $comment;
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId(string $id): self
+    public function setId(?string $id): self
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getCreated(): int
+    public function getCreated(): ?int
     {
         return $this->created;
     }
 
-    public function setCreated(int $created): self
+    public function setCreated(?int $created): self
     {
         $this->created = $created;
 
         return $this;
     }
 
-    public function getCreatedBy(): string
+    public function getCreatedBy(): ?string
     {
         return $this->createdBy;
     }
 
-    public function setCreatedBy(string $createdBy): self
+    public function setCreatedBy(?string $createdBy): self
     {
         $this->createdBy = $createdBy;
 
@@ -68,41 +68,41 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getTags(): array
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     /**
-     * @param string[] $tags
+     * @param string[]|null $tags
      */
-    public function setTags(array $tags): self
+    public function setTags(?array $tags): self
     {
         $this->tags = $tags;
 
         return $this;
     }
 
-    public function getSize(): int
+    public function getSize(): ?int
     {
         return $this->size;
     }
 
-    public function setSize(int $size): self
+    public function setSize(?int $size): self
     {
         $this->size = $size;
 
         return $this;
     }
 
-    public function getComment(): string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    public function setComment(string $comment): self
+    public function setComment(?string $comment): self
     {
         $this->comment = $comment;
 

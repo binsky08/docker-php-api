@@ -46,46 +46,68 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
         } elseif (\array_key_exists('IPAMConfig', $data) && null === $data['IPAMConfig']) {
             $object->setIPAMConfig(null);
         }
-        if (\array_key_exists('Links', $data)) {
+        if (\array_key_exists('Links', $data) && null !== $data['Links']) {
             $values = [];
             foreach ($data['Links'] as $value) {
                 $values[] = $value;
             }
             $object->setLinks($values);
+        } elseif (\array_key_exists('Links', $data) && null === $data['Links']) {
+            $object->setLinks(null);
         }
-        if (\array_key_exists('Aliases', $data)) {
+        if (\array_key_exists('Aliases', $data) && null !== $data['Aliases']) {
             $values_1 = [];
             foreach ($data['Aliases'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setAliases($values_1);
+        } elseif (\array_key_exists('Aliases', $data) && null === $data['Aliases']) {
+            $object->setAliases(null);
         }
-        if (\array_key_exists('NetworkID', $data)) {
+        if (\array_key_exists('NetworkID', $data) && null !== $data['NetworkID']) {
             $object->setNetworkID($data['NetworkID']);
+        } elseif (\array_key_exists('NetworkID', $data) && null === $data['NetworkID']) {
+            $object->setNetworkID(null);
         }
-        if (\array_key_exists('EndpointID', $data)) {
+        if (\array_key_exists('EndpointID', $data) && null !== $data['EndpointID']) {
             $object->setEndpointID($data['EndpointID']);
+        } elseif (\array_key_exists('EndpointID', $data) && null === $data['EndpointID']) {
+            $object->setEndpointID(null);
         }
-        if (\array_key_exists('Gateway', $data)) {
+        if (\array_key_exists('Gateway', $data) && null !== $data['Gateway']) {
             $object->setGateway($data['Gateway']);
+        } elseif (\array_key_exists('Gateway', $data) && null === $data['Gateway']) {
+            $object->setGateway(null);
         }
-        if (\array_key_exists('IPAddress', $data)) {
+        if (\array_key_exists('IPAddress', $data) && null !== $data['IPAddress']) {
             $object->setIPAddress($data['IPAddress']);
+        } elseif (\array_key_exists('IPAddress', $data) && null === $data['IPAddress']) {
+            $object->setIPAddress(null);
         }
-        if (\array_key_exists('IPPrefixLen', $data)) {
+        if (\array_key_exists('IPPrefixLen', $data) && null !== $data['IPPrefixLen']) {
             $object->setIPPrefixLen($data['IPPrefixLen']);
+        } elseif (\array_key_exists('IPPrefixLen', $data) && null === $data['IPPrefixLen']) {
+            $object->setIPPrefixLen(null);
         }
-        if (\array_key_exists('IPv6Gateway', $data)) {
+        if (\array_key_exists('IPv6Gateway', $data) && null !== $data['IPv6Gateway']) {
             $object->setIPv6Gateway($data['IPv6Gateway']);
+        } elseif (\array_key_exists('IPv6Gateway', $data) && null === $data['IPv6Gateway']) {
+            $object->setIPv6Gateway(null);
         }
-        if (\array_key_exists('GlobalIPv6Address', $data)) {
+        if (\array_key_exists('GlobalIPv6Address', $data) && null !== $data['GlobalIPv6Address']) {
             $object->setGlobalIPv6Address($data['GlobalIPv6Address']);
+        } elseif (\array_key_exists('GlobalIPv6Address', $data) && null === $data['GlobalIPv6Address']) {
+            $object->setGlobalIPv6Address(null);
         }
-        if (\array_key_exists('GlobalIPv6PrefixLen', $data)) {
+        if (\array_key_exists('GlobalIPv6PrefixLen', $data) && null !== $data['GlobalIPv6PrefixLen']) {
             $object->setGlobalIPv6PrefixLen($data['GlobalIPv6PrefixLen']);
+        } elseif (\array_key_exists('GlobalIPv6PrefixLen', $data) && null === $data['GlobalIPv6PrefixLen']) {
+            $object->setGlobalIPv6PrefixLen(null);
         }
-        if (\array_key_exists('MacAddress', $data)) {
+        if (\array_key_exists('MacAddress', $data) && null !== $data['MacAddress']) {
             $object->setMacAddress($data['MacAddress']);
+        } elseif (\array_key_exists('MacAddress', $data) && null === $data['MacAddress']) {
+            $object->setMacAddress(null);
         }
         if (\array_key_exists('DriverOpts', $data) && null !== $data['DriverOpts']) {
             $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);

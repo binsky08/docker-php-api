@@ -9,32 +9,32 @@ class NodeSpec
     /**
      * Name for the node.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
      * Role of the node.
      *
-     * @var string
+     * @var string|null
      */
     protected $role;
     /**
      * Availability of the node.
      *
-     * @var string
+     * @var string|null
      */
     protected $availability;
 
     /**
      * Name for the node.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -42,7 +42,7 @@ class NodeSpec
     /**
      * Name for the node.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -52,9 +52,9 @@ class NodeSpec
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -62,9 +62,9 @@ class NodeSpec
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -74,7 +74,7 @@ class NodeSpec
     /**
      * Role of the node.
      */
-    public function getRole(): string
+    public function getRole(): ?string
     {
         return $this->role;
     }
@@ -82,7 +82,7 @@ class NodeSpec
     /**
      * Role of the node.
      */
-    public function setRole(string $role): self
+    public function setRole(?string $role): self
     {
         $this->role = $role;
 
@@ -92,7 +92,7 @@ class NodeSpec
     /**
      * Availability of the node.
      */
-    public function getAvailability(): string
+    public function getAvailability(): ?string
     {
         return $this->availability;
     }
@@ -100,7 +100,7 @@ class NodeSpec
     /**
      * Availability of the node.
      */
-    public function setAvailability(string $availability): self
+    public function setAvailability(?string $availability): self
     {
         $this->availability = $availability;
 

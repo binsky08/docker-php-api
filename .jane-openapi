@@ -6,5 +6,5 @@ return [
   'namespace'             => 'Docker\\API',
   'openapi-file'          => __DIR__ . '/spec/v1.36.json',
   'reference'             => true,
-  'strict'                => true,
+  'strict'                => false,
 ];

@@ -41,11 +41,15 @@ class VersionGetResponse200ComponentsItemNormalizer implements DenormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Version', $data)) {
+        if (\array_key_exists('Version', $data) && null !== $data['Version']) {
             $object->setVersion($data['Version']);
+        } elseif (\array_key_exists('Version', $data) && null === $data['Version']) {
+            $object->setVersion(null);
         }
         if (\array_key_exists('Details', $data) && null !== $data['Details']) {
             $object->setDetails($this->denormalizer->denormalize($data['Details'], 'Docker\\API\\Model\\VersionGetResponse200ComponentsItemDetails', 'json', $context));

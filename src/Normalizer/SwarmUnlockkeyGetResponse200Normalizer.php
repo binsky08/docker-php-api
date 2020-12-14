@@ -41,8 +41,10 @@ class SwarmUnlockkeyGetResponse200Normalizer implements DenormalizerInterface, N
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('UnlockKey', $data)) {
+        if (\array_key_exists('UnlockKey', $data) && null !== $data['UnlockKey']) {
             $object->setUnlockKey($data['UnlockKey']);
+        } elseif (\array_key_exists('UnlockKey', $data) && null === $data['UnlockKey']) {
+            $object->setUnlockKey(null);
         }
 
         return $object;

@@ -41,8 +41,10 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('AutoLockManagers', $data)) {
+        if (\array_key_exists('AutoLockManagers', $data) && null !== $data['AutoLockManagers']) {
             $object->setAutoLockManagers($data['AutoLockManagers']);
+        } elseif (\array_key_exists('AutoLockManagers', $data) && null === $data['AutoLockManagers']) {
+            $object->setAutoLockManagers(null);
         }
 
         return $object;

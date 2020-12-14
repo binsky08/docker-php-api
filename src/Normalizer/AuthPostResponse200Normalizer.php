@@ -41,11 +41,15 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Status', $data)) {
+        if (\array_key_exists('Status', $data) && null !== $data['Status']) {
             $object->setStatus($data['Status']);
+        } elseif (\array_key_exists('Status', $data) && null === $data['Status']) {
+            $object->setStatus(null);
         }
-        if (\array_key_exists('IdentityToken', $data)) {
+        if (\array_key_exists('IdentityToken', $data) && null !== $data['IdentityToken']) {
             $object->setIdentityToken($data['IdentityToken']);
+        } elseif (\array_key_exists('IdentityToken', $data) && null === $data['IdentityToken']) {
+            $object->setIdentityToken(null);
         }
 
         return $object;

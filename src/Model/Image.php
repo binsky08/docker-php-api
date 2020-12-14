@@ -7,94 +7,94 @@ namespace Docker\API\Model;
 class Image
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $repoTags;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $repoDigests;
     /**
-     * @var string
+     * @var string|null
      */
     protected $parent;
     /**
-     * @var string
+     * @var string|null
      */
     protected $comment;
     /**
-     * @var string
+     * @var string|null
      */
     protected $created;
     /**
-     * @var string
+     * @var string|null
      */
     protected $container;
     /**
      * Configuration for a container that is portable between hosts.
      *
-     * @var ContainerConfig
+     * @var ContainerConfig|null
      */
     protected $containerConfig;
     /**
-     * @var string
+     * @var string|null
      */
     protected $dockerVersion;
     /**
-     * @var string
+     * @var string|null
      */
     protected $author;
     /**
      * Configuration for a container that is portable between hosts.
      *
-     * @var ContainerConfig
+     * @var ContainerConfig|null
      */
     protected $config;
     /**
-     * @var string
+     * @var string|null
      */
     protected $architecture;
     /**
-     * @var string
+     * @var string|null
      */
     protected $os;
     /**
-     * @var string
+     * @var string|null
      */
     protected $osVersion;
     /**
-     * @var int
+     * @var int|null
      */
     protected $size;
     /**
-     * @var int
+     * @var int|null
      */
     protected $virtualSize;
     /**
      * Information about a container's graph driver.
      *
-     * @var GraphDriverData
+     * @var GraphDriverData|null
      */
     protected $graphDriver;
     /**
-     * @var ImageRootFS
+     * @var ImageRootFS|null
      */
     protected $rootFS;
     /**
-     * @var ImageMetadata
+     * @var ImageMetadata|null
      */
     protected $metadata;
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId(string $id): self
+    public function setId(?string $id): self
     {
         $this->id = $id;
 
@@ -102,17 +102,17 @@ class Image
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getRepoTags(): array
+    public function getRepoTags(): ?array
     {
         return $this->repoTags;
     }
 
     /**
-     * @param string[] $repoTags
+     * @param string[]|null $repoTags
      */
-    public function setRepoTags(array $repoTags): self
+    public function setRepoTags(?array $repoTags): self
     {
         $this->repoTags = $repoTags;
 
@@ -120,65 +120,65 @@ class Image
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getRepoDigests(): array
+    public function getRepoDigests(): ?array
     {
         return $this->repoDigests;
     }
 
     /**
-     * @param string[] $repoDigests
+     * @param string[]|null $repoDigests
      */
-    public function setRepoDigests(array $repoDigests): self
+    public function setRepoDigests(?array $repoDigests): self
     {
         $this->repoDigests = $repoDigests;
 
         return $this;
     }
 
-    public function getParent(): string
+    public function getParent(): ?string
     {
         return $this->parent;
     }
 
-    public function setParent(string $parent): self
+    public function setParent(?string $parent): self
     {
         $this->parent = $parent;
 
         return $this;
     }
 
-    public function getComment(): string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    public function setComment(string $comment): self
+    public function setComment(?string $comment): self
     {
         $this->comment = $comment;
 
         return $this;
     }
 
-    public function getCreated(): string
+    public function getCreated(): ?string
     {
         return $this->created;
     }
 
-    public function setCreated(string $created): self
+    public function setCreated(?string $created): self
     {
         $this->created = $created;
 
         return $this;
     }
 
-    public function getContainer(): string
+    public function getContainer(): ?string
     {
         return $this->container;
     }
 
-    public function setContainer(string $container): self
+    public function setContainer(?string $container): self
     {
         $this->container = $container;
 
@@ -188,7 +188,7 @@ class Image
     /**
      * Configuration for a container that is portable between hosts.
      */
-    public function getContainerConfig(): ContainerConfig
+    public function getContainerConfig(): ?ContainerConfig
     {
         return $this->containerConfig;
     }
@@ -196,31 +196,31 @@ class Image
     /**
      * Configuration for a container that is portable between hosts.
      */
-    public function setContainerConfig(ContainerConfig $containerConfig): self
+    public function setContainerConfig(?ContainerConfig $containerConfig): self
     {
         $this->containerConfig = $containerConfig;
 
         return $this;
     }
 
-    public function getDockerVersion(): string
+    public function getDockerVersion(): ?string
     {
         return $this->dockerVersion;
     }
 
-    public function setDockerVersion(string $dockerVersion): self
+    public function setDockerVersion(?string $dockerVersion): self
     {
         $this->dockerVersion = $dockerVersion;
 
         return $this;
     }
 
-    public function getAuthor(): string
+    public function getAuthor(): ?string
     {
         return $this->author;
     }
 
-    public function setAuthor(string $author): self
+    public function setAuthor(?string $author): self
     {
         $this->author = $author;
 
@@ -230,7 +230,7 @@ class Image
     /**
      * Configuration for a container that is portable between hosts.
      */
-    public function getConfig(): ContainerConfig
+    public function getConfig(): ?ContainerConfig
     {
         return $this->config;
     }
@@ -238,67 +238,67 @@ class Image
     /**
      * Configuration for a container that is portable between hosts.
      */
-    public function setConfig(ContainerConfig $config): self
+    public function setConfig(?ContainerConfig $config): self
     {
         $this->config = $config;
 
         return $this;
     }
 
-    public function getArchitecture(): string
+    public function getArchitecture(): ?string
     {
         return $this->architecture;
     }
 
-    public function setArchitecture(string $architecture): self
+    public function setArchitecture(?string $architecture): self
     {
         $this->architecture = $architecture;
 
         return $this;
     }
 
-    public function getOs(): string
+    public function getOs(): ?string
     {
         return $this->os;
     }
 
-    public function setOs(string $os): self
+    public function setOs(?string $os): self
     {
         $this->os = $os;
 
         return $this;
     }
 
-    public function getOsVersion(): string
+    public function getOsVersion(): ?string
     {
         return $this->osVersion;
     }
 
-    public function setOsVersion(string $osVersion): self
+    public function setOsVersion(?string $osVersion): self
     {
         $this->osVersion = $osVersion;
 
         return $this;
     }
 
-    public function getSize(): int
+    public function getSize(): ?int
     {
         return $this->size;
     }
 
-    public function setSize(int $size): self
+    public function setSize(?int $size): self
     {
         $this->size = $size;
 
         return $this;
     }
 
-    public function getVirtualSize(): int
+    public function getVirtualSize(): ?int
     {
         return $this->virtualSize;
     }
 
-    public function setVirtualSize(int $virtualSize): self
+    public function setVirtualSize(?int $virtualSize): self
     {
         $this->virtualSize = $virtualSize;
 
@@ -308,7 +308,7 @@ class Image
     /**
      * Information about a container's graph driver.
      */
-    public function getGraphDriver(): GraphDriverData
+    public function getGraphDriver(): ?GraphDriverData
     {
         return $this->graphDriver;
     }
@@ -316,31 +316,31 @@ class Image
     /**
      * Information about a container's graph driver.
      */
-    public function setGraphDriver(GraphDriverData $graphDriver): self
+    public function setGraphDriver(?GraphDriverData $graphDriver): self
     {
         $this->graphDriver = $graphDriver;
 
         return $this;
     }
 
-    public function getRootFS(): ImageRootFS
+    public function getRootFS(): ?ImageRootFS
     {
         return $this->rootFS;
     }
 
-    public function setRootFS(ImageRootFS $rootFS): self
+    public function setRootFS(?ImageRootFS $rootFS): self
     {
         $this->rootFS = $rootFS;
 
         return $this;
     }
 
-    public function getMetadata(): ImageMetadata
+    public function getMetadata(): ?ImageMetadata
     {
         return $this->metadata;
     }
 
-    public function setMetadata(ImageMetadata $metadata): self
+    public function setMetadata(?ImageMetadata $metadata): self
     {
         $this->metadata = $metadata;
 

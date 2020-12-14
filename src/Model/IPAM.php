@@ -9,26 +9,26 @@ class IPAM
     /**
      * Name of the IPAM driver to use.
      *
-     * @var string
+     * @var string|null
      */
     protected $driver = 'default';
     /**
      * List of IPAM configuration options, specified as a map: `{"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}`.
      *
-     * @var string[][]
+     * @var string[][]|null
      */
     protected $config;
     /**
      * Driver-specific options, specified as a map.
      *
-     * @var string[][]
+     * @var string[][]|null
      */
     protected $options;
 
     /**
      * Name of the IPAM driver to use.
      */
-    public function getDriver(): string
+    public function getDriver(): ?string
     {
         return $this->driver;
     }
@@ -36,7 +36,7 @@ class IPAM
     /**
      * Name of the IPAM driver to use.
      */
-    public function setDriver(string $driver): self
+    public function setDriver(?string $driver): self
     {
         $this->driver = $driver;
 
@@ -46,9 +46,9 @@ class IPAM
     /**
      * List of IPAM configuration options, specified as a map: `{"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}`.
      *
-     * @return string[][]
+     * @return string[][]|null
      */
-    public function getConfig(): array
+    public function getConfig(): ?array
     {
         return $this->config;
     }
@@ -56,9 +56,9 @@ class IPAM
     /**
      * List of IPAM configuration options, specified as a map: `{"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}`.
      *
-     * @param string[][] $config
+     * @param string[][]|null $config
      */
-    public function setConfig(array $config): self
+    public function setConfig(?array $config): self
     {
         $this->config = $config;
 
@@ -68,9 +68,9 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @return string[][]
+     * @return string[][]|null
      */
-    public function getOptions(): array
+    public function getOptions(): ?array
     {
         return $this->options;
     }
@@ -78,9 +78,9 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @param string[][] $options
+     * @param string[][]|null $options
      */
-    public function setOptions(array $options): self
+    public function setOptions(?array $options): self
     {
         $this->options = $options;
 

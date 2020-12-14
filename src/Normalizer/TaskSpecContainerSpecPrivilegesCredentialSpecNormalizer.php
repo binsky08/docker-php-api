@@ -41,11 +41,15 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('File', $data)) {
+        if (\array_key_exists('File', $data) && null !== $data['File']) {
             $object->setFile($data['File']);
+        } elseif (\array_key_exists('File', $data) && null === $data['File']) {
+            $object->setFile(null);
         }
-        if (\array_key_exists('Registry', $data)) {
+        if (\array_key_exists('Registry', $data) && null !== $data['Registry']) {
             $object->setRegistry($data['Registry']);
+        } elseif (\array_key_exists('Registry', $data) && null === $data['Registry']) {
+            $object->setRegistry(null);
         }
 
         return $object;

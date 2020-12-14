@@ -41,12 +41,14 @@ class ContainersCreatePostBodyNetworkingConfigNormalizer implements Denormalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('EndpointsConfig', $data)) {
+        if (\array_key_exists('EndpointsConfig', $data) && null !== $data['EndpointsConfig']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['EndpointsConfig'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\EndpointSettings', 'json', $context);
             }
             $object->setEndpointsConfig($values);
+        } elseif (\array_key_exists('EndpointsConfig', $data) && null === $data['EndpointsConfig']) {
+            $object->setEndpointsConfig(null);
         }
 
         return $object;

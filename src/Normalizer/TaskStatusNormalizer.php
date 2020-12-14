@@ -41,20 +41,30 @@ class TaskStatusNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Timestamp', $data)) {
+        if (\array_key_exists('Timestamp', $data) && null !== $data['Timestamp']) {
             $object->setTimestamp($data['Timestamp']);
+        } elseif (\array_key_exists('Timestamp', $data) && null === $data['Timestamp']) {
+            $object->setTimestamp(null);
         }
-        if (\array_key_exists('State', $data)) {
+        if (\array_key_exists('State', $data) && null !== $data['State']) {
             $object->setState($data['State']);
+        } elseif (\array_key_exists('State', $data) && null === $data['State']) {
+            $object->setState(null);
         }
-        if (\array_key_exists('Message', $data)) {
+        if (\array_key_exists('Message', $data) && null !== $data['Message']) {
             $object->setMessage($data['Message']);
+        } elseif (\array_key_exists('Message', $data) && null === $data['Message']) {
+            $object->setMessage(null);
         }
-        if (\array_key_exists('Err', $data)) {
+        if (\array_key_exists('Err', $data) && null !== $data['Err']) {
             $object->setErr($data['Err']);
+        } elseif (\array_key_exists('Err', $data) && null === $data['Err']) {
+            $object->setErr(null);
         }
-        if (\array_key_exists('ContainerStatus', $data)) {
+        if (\array_key_exists('ContainerStatus', $data) && null !== $data['ContainerStatus']) {
             $object->setContainerStatus($this->denormalizer->denormalize($data['ContainerStatus'], 'Docker\\API\\Model\\TaskStatusContainerStatus', 'json', $context));
+        } elseif (\array_key_exists('ContainerStatus', $data) && null === $data['ContainerStatus']) {
+            $object->setContainerStatus(null);
         }
 
         return $object;

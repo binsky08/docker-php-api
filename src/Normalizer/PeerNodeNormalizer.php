@@ -41,11 +41,15 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('NodeID', $data)) {
+        if (\array_key_exists('NodeID', $data) && null !== $data['NodeID']) {
             $object->setNodeID($data['NodeID']);
+        } elseif (\array_key_exists('NodeID', $data) && null === $data['NodeID']) {
+            $object->setNodeID(null);
         }
-        if (\array_key_exists('Addr', $data)) {
+        if (\array_key_exists('Addr', $data) && null !== $data['Addr']) {
             $object->setAddr($data['Addr']);
+        } elseif (\array_key_exists('Addr', $data) && null === $data['Addr']) {
+            $object->setAddr(null);
         }
 
         return $object;

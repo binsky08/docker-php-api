@@ -7,16 +7,16 @@ namespace Docker\API\Model;
 class ImageMetadata
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $lastTagTime;
 
-    public function getLastTagTime(): string
+    public function getLastTagTime(): ?string
     {
         return $this->lastTagTime;
     }
 
-    public function setLastTagTime(string $lastTagTime): self
+    public function setLastTagTime(?string $lastTagTime): self
     {
         $this->lastTagTime = $lastTagTime;
 

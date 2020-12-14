@@ -9,20 +9,20 @@ class NetworksIdConnectPostBody
     /**
      * The ID or name of the container to connect to the network.
      *
-     * @var string
+     * @var string|null
      */
     protected $container;
     /**
      * Configuration for a network endpoint.
      *
-     * @var EndpointSettings
+     * @var EndpointSettings|null
      */
     protected $endpointConfig;
 
     /**
      * The ID or name of the container to connect to the network.
      */
-    public function getContainer(): string
+    public function getContainer(): ?string
     {
         return $this->container;
     }
@@ -30,7 +30,7 @@ class NetworksIdConnectPostBody
     /**
      * The ID or name of the container to connect to the network.
      */
-    public function setContainer(string $container): self
+    public function setContainer(?string $container): self
     {
         $this->container = $container;
 
@@ -40,7 +40,7 @@ class NetworksIdConnectPostBody
     /**
      * Configuration for a network endpoint.
      */
-    public function getEndpointConfig(): EndpointSettings
+    public function getEndpointConfig(): ?EndpointSettings
     {
         return $this->endpointConfig;
     }
@@ -48,7 +48,7 @@ class NetworksIdConnectPostBody
     /**
      * Configuration for a network endpoint.
      */
-    public function setEndpointConfig(EndpointSettings $endpointConfig): self
+    public function setEndpointConfig(?EndpointSettings $endpointConfig): self
     {
         $this->endpointConfig = $endpointConfig;
 

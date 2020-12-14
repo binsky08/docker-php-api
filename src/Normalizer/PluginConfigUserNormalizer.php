@@ -41,11 +41,15 @@ class PluginConfigUserNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('UID', $data)) {
+        if (\array_key_exists('UID', $data) && null !== $data['UID']) {
             $object->setUID($data['UID']);
+        } elseif (\array_key_exists('UID', $data) && null === $data['UID']) {
+            $object->setUID(null);
         }
-        if (\array_key_exists('GID', $data)) {
+        if (\array_key_exists('GID', $data) && null !== $data['GID']) {
             $object->setGID($data['GID']);
+        } elseif (\array_key_exists('GID', $data) && null === $data['GID']) {
+            $object->setGID(null);
         }
 
         return $object;

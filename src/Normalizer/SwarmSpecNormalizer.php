@@ -41,23 +41,29 @@ class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setLabels($values);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
         if (\array_key_exists('Orchestration', $data) && null !== $data['Orchestration']) {
             $object->setOrchestration($this->denormalizer->denormalize($data['Orchestration'], 'Docker\\API\\Model\\SwarmSpecOrchestration', 'json', $context));
         } elseif (\array_key_exists('Orchestration', $data) && null === $data['Orchestration']) {
             $object->setOrchestration(null);
         }
-        if (\array_key_exists('Raft', $data)) {
+        if (\array_key_exists('Raft', $data) && null !== $data['Raft']) {
             $object->setRaft($this->denormalizer->denormalize($data['Raft'], 'Docker\\API\\Model\\SwarmSpecRaft', 'json', $context));
+        } elseif (\array_key_exists('Raft', $data) && null === $data['Raft']) {
+            $object->setRaft(null);
         }
         if (\array_key_exists('Dispatcher', $data) && null !== $data['Dispatcher']) {
             $object->setDispatcher($this->denormalizer->denormalize($data['Dispatcher'], 'Docker\\API\\Model\\SwarmSpecDispatcher', 'json', $context));
@@ -69,11 +75,15 @@ class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface,
         } elseif (\array_key_exists('CAConfig', $data) && null === $data['CAConfig']) {
             $object->setCAConfig(null);
         }
-        if (\array_key_exists('EncryptionConfig', $data)) {
+        if (\array_key_exists('EncryptionConfig', $data) && null !== $data['EncryptionConfig']) {
             $object->setEncryptionConfig($this->denormalizer->denormalize($data['EncryptionConfig'], 'Docker\\API\\Model\\SwarmSpecEncryptionConfig', 'json', $context));
+        } elseif (\array_key_exists('EncryptionConfig', $data) && null === $data['EncryptionConfig']) {
+            $object->setEncryptionConfig(null);
         }
-        if (\array_key_exists('TaskDefaults', $data)) {
+        if (\array_key_exists('TaskDefaults', $data) && null !== $data['TaskDefaults']) {
             $object->setTaskDefaults($this->denormalizer->denormalize($data['TaskDefaults'], 'Docker\\API\\Model\\SwarmSpecTaskDefaults', 'json', $context));
+        } elseif (\array_key_exists('TaskDefaults', $data) && null === $data['TaskDefaults']) {
+            $object->setTaskDefaults(null);
         }
 
         return $object;

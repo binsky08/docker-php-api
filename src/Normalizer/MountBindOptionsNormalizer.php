@@ -41,8 +41,10 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Propagation', $data)) {
+        if (\array_key_exists('Propagation', $data) && null !== $data['Propagation']) {
             $object->setPropagation($data['Propagation']);
+        } elseif (\array_key_exists('Propagation', $data) && null === $data['Propagation']) {
+            $object->setPropagation(null);
         }
 
         return $object;

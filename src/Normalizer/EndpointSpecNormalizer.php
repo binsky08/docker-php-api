@@ -41,15 +41,19 @@ class EndpointSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Mode', $data)) {
+        if (\array_key_exists('Mode', $data) && null !== $data['Mode']) {
             $object->setMode($data['Mode']);
+        } elseif (\array_key_exists('Mode', $data) && null === $data['Mode']) {
+            $object->setMode(null);
         }
-        if (\array_key_exists('Ports', $data)) {
+        if (\array_key_exists('Ports', $data) && null !== $data['Ports']) {
             $values = [];
             foreach ($data['Ports'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\EndpointPortConfig', 'json', $context);
             }
             $object->setPorts($values);
+        } elseif (\array_key_exists('Ports', $data) && null === $data['Ports']) {
+            $object->setPorts(null);
         }
 
         return $object;

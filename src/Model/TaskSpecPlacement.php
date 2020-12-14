@@ -9,13 +9,13 @@ class TaskSpecPlacement
     /**
      * An array of constraints.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $constraints;
     /**
      * Preferences provide a way to make the scheduler aware of factors such as topology. They are provided in order from highest to lowest precedence.
      *
-     * @var TaskSpecPlacementPreferencesItem[]
+     * @var TaskSpecPlacementPreferencesItem[]|null
      */
     protected $preferences;
     /**
@@ -24,16 +24,16 @@ class TaskSpecPlacement
      * If empty, then the platform filter is off, meaning there are no
      * scheduling restrictions.
      *
-     * @var Platform[]
+     * @var Platform[]|null
      */
     protected $platforms;
 
     /**
      * An array of constraints.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getConstraints(): array
+    public function getConstraints(): ?array
     {
         return $this->constraints;
     }
@@ -41,9 +41,9 @@ class TaskSpecPlacement
     /**
      * An array of constraints.
      *
-     * @param string[] $constraints
+     * @param string[]|null $constraints
      */
-    public function setConstraints(array $constraints): self
+    public function setConstraints(?array $constraints): self
     {
         $this->constraints = $constraints;
 
@@ -53,9 +53,9 @@ class TaskSpecPlacement
     /**
      * Preferences provide a way to make the scheduler aware of factors such as topology. They are provided in order from highest to lowest precedence.
      *
-     * @return TaskSpecPlacementPreferencesItem[]
+     * @return TaskSpecPlacementPreferencesItem[]|null
      */
-    public function getPreferences(): array
+    public function getPreferences(): ?array
     {
         return $this->preferences;
     }
@@ -63,9 +63,9 @@ class TaskSpecPlacement
     /**
      * Preferences provide a way to make the scheduler aware of factors such as topology. They are provided in order from highest to lowest precedence.
      *
-     * @param TaskSpecPlacementPreferencesItem[] $preferences
+     * @param TaskSpecPlacementPreferencesItem[]|null $preferences
      */
-    public function setPreferences(array $preferences): self
+    public function setPreferences(?array $preferences): self
     {
         $this->preferences = $preferences;
 
@@ -78,9 +78,9 @@ class TaskSpecPlacement
      * If empty, then the platform filter is off, meaning there are no
      * scheduling restrictions.
      *
-     * @return Platform[]
+     * @return Platform[]|null
      */
-    public function getPlatforms(): array
+    public function getPlatforms(): ?array
     {
         return $this->platforms;
     }
@@ -91,9 +91,9 @@ class TaskSpecPlacement
      * If empty, then the platform filter is off, meaning there are no
      * scheduling restrictions.
      *
-     * @param Platform[] $platforms
+     * @param Platform[]|null $platforms
      */
-    public function setPlatforms(array $platforms): self
+    public function setPlatforms(?array $platforms): self
     {
         $this->platforms = $platforms;
 

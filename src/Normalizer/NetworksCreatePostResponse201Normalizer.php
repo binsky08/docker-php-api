@@ -41,11 +41,15 @@ class NetworksCreatePostResponse201Normalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Id', $data)) {
+        if (\array_key_exists('Id', $data) && null !== $data['Id']) {
             $object->setId($data['Id']);
+        } elseif (\array_key_exists('Id', $data) && null === $data['Id']) {
+            $object->setId(null);
         }
-        if (\array_key_exists('Warning', $data)) {
+        if (\array_key_exists('Warning', $data) && null !== $data['Warning']) {
             $object->setWarning($data['Warning']);
+        } elseif (\array_key_exists('Warning', $data) && null === $data['Warning']) {
+            $object->setWarning(null);
         }
 
         return $object;

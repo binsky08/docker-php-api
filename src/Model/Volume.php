@@ -9,25 +9,25 @@ class Volume
     /**
      * Name of the volume.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * Name of the volume driver used by the volume.
      *
-     * @var string
+     * @var string|null
      */
     protected $driver;
     /**
      * Mount path of the volume on the host.
      *
-     * @var string
+     * @var string|null
      */
     protected $mountpoint;
     /**
      * Date/Time the volume was created.
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
@@ -38,25 +38,25 @@ class Volume
      * The `Status` field is optional, and is omitted if the volume driver
      * does not support this feature.
      *
-     * @var VolumeStatusItem[]
+     * @var VolumeStatusItem[]|null
      */
     protected $status;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
      * The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level.
      *
-     * @var string
+     * @var string|null
      */
     protected $scope = 'local';
     /**
      * The driver specific options used when creating the volume.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $options;
     /**
@@ -70,7 +70,7 @@ class Volume
     /**
      * Name of the volume.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -78,7 +78,7 @@ class Volume
     /**
      * Name of the volume.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -88,7 +88,7 @@ class Volume
     /**
      * Name of the volume driver used by the volume.
      */
-    public function getDriver(): string
+    public function getDriver(): ?string
     {
         return $this->driver;
     }
@@ -96,7 +96,7 @@ class Volume
     /**
      * Name of the volume driver used by the volume.
      */
-    public function setDriver(string $driver): self
+    public function setDriver(?string $driver): self
     {
         $this->driver = $driver;
 
@@ -106,7 +106,7 @@ class Volume
     /**
      * Mount path of the volume on the host.
      */
-    public function getMountpoint(): string
+    public function getMountpoint(): ?string
     {
         return $this->mountpoint;
     }
@@ -114,7 +114,7 @@ class Volume
     /**
      * Mount path of the volume on the host.
      */
-    public function setMountpoint(string $mountpoint): self
+    public function setMountpoint(?string $mountpoint): self
     {
         $this->mountpoint = $mountpoint;
 
@@ -124,7 +124,7 @@ class Volume
     /**
      * Date/Time the volume was created.
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
@@ -132,7 +132,7 @@ class Volume
     /**
      * Date/Time the volume was created.
      */
-    public function setCreatedAt(string $createdAt): self
+    public function setCreatedAt(?string $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -147,9 +147,9 @@ class Volume
      * The `Status` field is optional, and is omitted if the volume driver
      * does not support this feature.
      *
-     * @return VolumeStatusItem[]
+     * @return VolumeStatusItem[]|null
      */
-    public function getStatus(): iterable
+    public function getStatus(): ?iterable
     {
         return $this->status;
     }
@@ -162,9 +162,9 @@ class Volume
      * The `Status` field is optional, and is omitted if the volume driver
      * does not support this feature.
      *
-     * @param VolumeStatusItem[] $status
+     * @param VolumeStatusItem[]|null $status
      */
-    public function setStatus(iterable $status): self
+    public function setStatus(?iterable $status): self
     {
         $this->status = $status;
 
@@ -174,9 +174,9 @@ class Volume
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -184,9 +184,9 @@ class Volume
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -196,7 +196,7 @@ class Volume
     /**
      * The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level.
      */
-    public function getScope(): string
+    public function getScope(): ?string
     {
         return $this->scope;
     }
@@ -204,7 +204,7 @@ class Volume
     /**
      * The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level.
      */
-    public function setScope(string $scope): self
+    public function setScope(?string $scope): self
     {
         $this->scope = $scope;
 
@@ -214,9 +214,9 @@ class Volume
     /**
      * The driver specific options used when creating the volume.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getOptions(): iterable
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
@@ -224,9 +224,9 @@ class Volume
     /**
      * The driver specific options used when creating the volume.
      *
-     * @param string[] $options
+     * @param string[]|null $options
      */
-    public function setOptions(iterable $options): self
+    public function setOptions(?iterable $options): self
     {
         $this->options = $options;
 

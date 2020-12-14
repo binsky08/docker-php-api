@@ -7,16 +7,16 @@ namespace Docker\API\Model;
 class TaskSpecPlacementPreferencesItem
 {
     /**
-     * @var TaskSpecPlacementPreferencesItemSpread
+     * @var TaskSpecPlacementPreferencesItemSpread|null
      */
     protected $spread;
 
-    public function getSpread(): TaskSpecPlacementPreferencesItemSpread
+    public function getSpread(): ?TaskSpecPlacementPreferencesItemSpread
     {
         return $this->spread;
     }
 
-    public function setSpread(TaskSpecPlacementPreferencesItemSpread $spread): self
+    public function setSpread(?TaskSpecPlacementPreferencesItemSpread $spread): self
     {
         $this->spread = $spread;
 

@@ -41,15 +41,19 @@ class EventsGetResponse200ActorNormalizer implements DenormalizerInterface, Norm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ID', $data)) {
+        if (\array_key_exists('ID', $data) && null !== $data['ID']) {
             $object->setID($data['ID']);
+        } elseif (\array_key_exists('ID', $data) && null === $data['ID']) {
+            $object->setID(null);
         }
-        if (\array_key_exists('Attributes', $data)) {
+        if (\array_key_exists('Attributes', $data) && null !== $data['Attributes']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Attributes'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setAttributes($values);
+        } elseif (\array_key_exists('Attributes', $data) && null === $data['Attributes']) {
+            $object->setAttributes(null);
         }
 
         return $object;

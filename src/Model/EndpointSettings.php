@@ -13,65 +13,65 @@ class EndpointSettings
      */
     protected $iPAMConfig;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $links;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $aliases;
     /**
      * Unique ID of the network.
      *
-     * @var string
+     * @var string|null
      */
     protected $networkID;
     /**
      * Unique ID for the service endpoint in a Sandbox.
      *
-     * @var string
+     * @var string|null
      */
     protected $endpointID;
     /**
      * Gateway address for this network.
      *
-     * @var string
+     * @var string|null
      */
     protected $gateway;
     /**
      * IPv4 address.
      *
-     * @var string
+     * @var string|null
      */
     protected $iPAddress;
     /**
      * Mask length of the IPv4 address.
      *
-     * @var int
+     * @var int|null
      */
     protected $iPPrefixLen;
     /**
      * IPv6 gateway address.
      *
-     * @var string
+     * @var string|null
      */
     protected $iPv6Gateway;
     /**
      * Global IPv6 address.
      *
-     * @var string
+     * @var string|null
      */
     protected $globalIPv6Address;
     /**
      * Mask length of the global IPv6 address.
      *
-     * @var int
+     * @var int|null
      */
     protected $globalIPv6PrefixLen;
     /**
      * MAC address for the endpoint on this network.
      *
-     * @var string
+     * @var string|null
      */
     protected $macAddress;
     /**
@@ -101,17 +101,17 @@ class EndpointSettings
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLinks(): array
+    public function getLinks(): ?array
     {
         return $this->links;
     }
 
     /**
-     * @param string[] $links
+     * @param string[]|null $links
      */
-    public function setLinks(array $links): self
+    public function setLinks(?array $links): self
     {
         $this->links = $links;
 
@@ -119,17 +119,17 @@ class EndpointSettings
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getAliases(): array
+    public function getAliases(): ?array
     {
         return $this->aliases;
     }
 
     /**
-     * @param string[] $aliases
+     * @param string[]|null $aliases
      */
-    public function setAliases(array $aliases): self
+    public function setAliases(?array $aliases): self
     {
         $this->aliases = $aliases;
 
@@ -139,7 +139,7 @@ class EndpointSettings
     /**
      * Unique ID of the network.
      */
-    public function getNetworkID(): string
+    public function getNetworkID(): ?string
     {
         return $this->networkID;
     }
@@ -147,7 +147,7 @@ class EndpointSettings
     /**
      * Unique ID of the network.
      */
-    public function setNetworkID(string $networkID): self
+    public function setNetworkID(?string $networkID): self
     {
         $this->networkID = $networkID;
 
@@ -157,7 +157,7 @@ class EndpointSettings
     /**
      * Unique ID for the service endpoint in a Sandbox.
      */
-    public function getEndpointID(): string
+    public function getEndpointID(): ?string
     {
         return $this->endpointID;
     }
@@ -165,7 +165,7 @@ class EndpointSettings
     /**
      * Unique ID for the service endpoint in a Sandbox.
      */
-    public function setEndpointID(string $endpointID): self
+    public function setEndpointID(?string $endpointID): self
     {
         $this->endpointID = $endpointID;
 
@@ -175,7 +175,7 @@ class EndpointSettings
     /**
      * Gateway address for this network.
      */
-    public function getGateway(): string
+    public function getGateway(): ?string
     {
         return $this->gateway;
     }
@@ -183,7 +183,7 @@ class EndpointSettings
     /**
      * Gateway address for this network.
      */
-    public function setGateway(string $gateway): self
+    public function setGateway(?string $gateway): self
     {
         $this->gateway = $gateway;
 
@@ -193,7 +193,7 @@ class EndpointSettings
     /**
      * IPv4 address.
      */
-    public function getIPAddress(): string
+    public function getIPAddress(): ?string
     {
         return $this->iPAddress;
     }
@@ -201,7 +201,7 @@ class EndpointSettings
     /**
      * IPv4 address.
      */
-    public function setIPAddress(string $iPAddress): self
+    public function setIPAddress(?string $iPAddress): self
     {
         $this->iPAddress = $iPAddress;
 
@@ -211,7 +211,7 @@ class EndpointSettings
     /**
      * Mask length of the IPv4 address.
      */
-    public function getIPPrefixLen(): int
+    public function getIPPrefixLen(): ?int
     {
         return $this->iPPrefixLen;
     }
@@ -219,7 +219,7 @@ class EndpointSettings
     /**
      * Mask length of the IPv4 address.
      */
-    public function setIPPrefixLen(int $iPPrefixLen): self
+    public function setIPPrefixLen(?int $iPPrefixLen): self
     {
         $this->iPPrefixLen = $iPPrefixLen;
 
@@ -229,7 +229,7 @@ class EndpointSettings
     /**
      * IPv6 gateway address.
      */
-    public function getIPv6Gateway(): string
+    public function getIPv6Gateway(): ?string
     {
         return $this->iPv6Gateway;
     }
@@ -237,7 +237,7 @@ class EndpointSettings
     /**
      * IPv6 gateway address.
      */
-    public function setIPv6Gateway(string $iPv6Gateway): self
+    public function setIPv6Gateway(?string $iPv6Gateway): self
     {
         $this->iPv6Gateway = $iPv6Gateway;
 
@@ -247,7 +247,7 @@ class EndpointSettings
     /**
      * Global IPv6 address.
      */
-    public function getGlobalIPv6Address(): string
+    public function getGlobalIPv6Address(): ?string
     {
         return $this->globalIPv6Address;
     }
@@ -255,7 +255,7 @@ class EndpointSettings
     /**
      * Global IPv6 address.
      */
-    public function setGlobalIPv6Address(string $globalIPv6Address): self
+    public function setGlobalIPv6Address(?string $globalIPv6Address): self
     {
         $this->globalIPv6Address = $globalIPv6Address;
 
@@ -265,7 +265,7 @@ class EndpointSettings
     /**
      * Mask length of the global IPv6 address.
      */
-    public function getGlobalIPv6PrefixLen(): int
+    public function getGlobalIPv6PrefixLen(): ?int
     {
         return $this->globalIPv6PrefixLen;
     }
@@ -273,7 +273,7 @@ class EndpointSettings
     /**
      * Mask length of the global IPv6 address.
      */
-    public function setGlobalIPv6PrefixLen(int $globalIPv6PrefixLen): self
+    public function setGlobalIPv6PrefixLen(?int $globalIPv6PrefixLen): self
     {
         $this->globalIPv6PrefixLen = $globalIPv6PrefixLen;
 
@@ -283,7 +283,7 @@ class EndpointSettings
     /**
      * MAC address for the endpoint on this network.
      */
-    public function getMacAddress(): string
+    public function getMacAddress(): ?string
     {
         return $this->macAddress;
     }
@@ -291,7 +291,7 @@ class EndpointSettings
     /**
      * MAC address for the endpoint on this network.
      */
-    public function setMacAddress(string $macAddress): self
+    public function setMacAddress(?string $macAddress): self
     {
         $this->macAddress = $macAddress;
 

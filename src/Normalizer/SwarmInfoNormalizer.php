@@ -41,20 +41,30 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('NodeID', $data)) {
+        if (\array_key_exists('NodeID', $data) && null !== $data['NodeID']) {
             $object->setNodeID($data['NodeID']);
+        } elseif (\array_key_exists('NodeID', $data) && null === $data['NodeID']) {
+            $object->setNodeID(null);
         }
-        if (\array_key_exists('NodeAddr', $data)) {
+        if (\array_key_exists('NodeAddr', $data) && null !== $data['NodeAddr']) {
             $object->setNodeAddr($data['NodeAddr']);
+        } elseif (\array_key_exists('NodeAddr', $data) && null === $data['NodeAddr']) {
+            $object->setNodeAddr(null);
         }
-        if (\array_key_exists('LocalNodeState', $data)) {
+        if (\array_key_exists('LocalNodeState', $data) && null !== $data['LocalNodeState']) {
             $object->setLocalNodeState($data['LocalNodeState']);
+        } elseif (\array_key_exists('LocalNodeState', $data) && null === $data['LocalNodeState']) {
+            $object->setLocalNodeState(null);
         }
-        if (\array_key_exists('ControlAvailable', $data)) {
+        if (\array_key_exists('ControlAvailable', $data) && null !== $data['ControlAvailable']) {
             $object->setControlAvailable($data['ControlAvailable']);
+        } elseif (\array_key_exists('ControlAvailable', $data) && null === $data['ControlAvailable']) {
+            $object->setControlAvailable(null);
         }
-        if (\array_key_exists('Error', $data)) {
+        if (\array_key_exists('Error', $data) && null !== $data['Error']) {
             $object->setError($data['Error']);
+        } elseif (\array_key_exists('Error', $data) && null === $data['Error']) {
+            $object->setError(null);
         }
         if (\array_key_exists('RemoteManagers', $data) && null !== $data['RemoteManagers']) {
             $values = [];

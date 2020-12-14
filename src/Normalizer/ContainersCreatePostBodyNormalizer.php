@@ -41,118 +41,172 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Hostname', $data)) {
+        if (\array_key_exists('Hostname', $data) && null !== $data['Hostname']) {
             $object->setHostname($data['Hostname']);
+        } elseif (\array_key_exists('Hostname', $data) && null === $data['Hostname']) {
+            $object->setHostname(null);
         }
-        if (\array_key_exists('Domainname', $data)) {
+        if (\array_key_exists('Domainname', $data) && null !== $data['Domainname']) {
             $object->setDomainname($data['Domainname']);
+        } elseif (\array_key_exists('Domainname', $data) && null === $data['Domainname']) {
+            $object->setDomainname(null);
         }
-        if (\array_key_exists('User', $data)) {
+        if (\array_key_exists('User', $data) && null !== $data['User']) {
             $object->setUser($data['User']);
+        } elseif (\array_key_exists('User', $data) && null === $data['User']) {
+            $object->setUser(null);
         }
-        if (\array_key_exists('AttachStdin', $data)) {
+        if (\array_key_exists('AttachStdin', $data) && null !== $data['AttachStdin']) {
             $object->setAttachStdin($data['AttachStdin']);
+        } elseif (\array_key_exists('AttachStdin', $data) && null === $data['AttachStdin']) {
+            $object->setAttachStdin(null);
         }
-        if (\array_key_exists('AttachStdout', $data)) {
+        if (\array_key_exists('AttachStdout', $data) && null !== $data['AttachStdout']) {
             $object->setAttachStdout($data['AttachStdout']);
+        } elseif (\array_key_exists('AttachStdout', $data) && null === $data['AttachStdout']) {
+            $object->setAttachStdout(null);
         }
-        if (\array_key_exists('AttachStderr', $data)) {
+        if (\array_key_exists('AttachStderr', $data) && null !== $data['AttachStderr']) {
             $object->setAttachStderr($data['AttachStderr']);
+        } elseif (\array_key_exists('AttachStderr', $data) && null === $data['AttachStderr']) {
+            $object->setAttachStderr(null);
         }
-        if (\array_key_exists('ExposedPorts', $data)) {
+        if (\array_key_exists('ExposedPorts', $data) && null !== $data['ExposedPorts']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['ExposedPorts'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\ContainerConfigExposedPortsItem', 'json', $context);
             }
             $object->setExposedPorts($values);
+        } elseif (\array_key_exists('ExposedPorts', $data) && null === $data['ExposedPorts']) {
+            $object->setExposedPorts(null);
         }
-        if (\array_key_exists('Tty', $data)) {
+        if (\array_key_exists('Tty', $data) && null !== $data['Tty']) {
             $object->setTty($data['Tty']);
+        } elseif (\array_key_exists('Tty', $data) && null === $data['Tty']) {
+            $object->setTty(null);
         }
-        if (\array_key_exists('OpenStdin', $data)) {
+        if (\array_key_exists('OpenStdin', $data) && null !== $data['OpenStdin']) {
             $object->setOpenStdin($data['OpenStdin']);
+        } elseif (\array_key_exists('OpenStdin', $data) && null === $data['OpenStdin']) {
+            $object->setOpenStdin(null);
         }
-        if (\array_key_exists('StdinOnce', $data)) {
+        if (\array_key_exists('StdinOnce', $data) && null !== $data['StdinOnce']) {
             $object->setStdinOnce($data['StdinOnce']);
+        } elseif (\array_key_exists('StdinOnce', $data) && null === $data['StdinOnce']) {
+            $object->setStdinOnce(null);
         }
-        if (\array_key_exists('Env', $data)) {
+        if (\array_key_exists('Env', $data) && null !== $data['Env']) {
             $values_1 = [];
             foreach ($data['Env'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setEnv($values_1);
+        } elseif (\array_key_exists('Env', $data) && null === $data['Env']) {
+            $object->setEnv(null);
         }
-        if (\array_key_exists('Cmd', $data)) {
+        if (\array_key_exists('Cmd', $data) && null !== $data['Cmd']) {
             $values_2 = [];
             foreach ($data['Cmd'] as $value_2) {
                 $values_2[] = $value_2;
             }
             $object->setCmd($values_2);
+        } elseif (\array_key_exists('Cmd', $data) && null === $data['Cmd']) {
+            $object->setCmd(null);
         }
-        if (\array_key_exists('Healthcheck', $data)) {
+        if (\array_key_exists('Healthcheck', $data) && null !== $data['Healthcheck']) {
             $object->setHealthcheck($this->denormalizer->denormalize($data['Healthcheck'], 'Docker\\API\\Model\\HealthConfig', 'json', $context));
+        } elseif (\array_key_exists('Healthcheck', $data) && null === $data['Healthcheck']) {
+            $object->setHealthcheck(null);
         }
-        if (\array_key_exists('ArgsEscaped', $data)) {
+        if (\array_key_exists('ArgsEscaped', $data) && null !== $data['ArgsEscaped']) {
             $object->setArgsEscaped($data['ArgsEscaped']);
+        } elseif (\array_key_exists('ArgsEscaped', $data) && null === $data['ArgsEscaped']) {
+            $object->setArgsEscaped(null);
         }
-        if (\array_key_exists('Image', $data)) {
+        if (\array_key_exists('Image', $data) && null !== $data['Image']) {
             $object->setImage($data['Image']);
+        } elseif (\array_key_exists('Image', $data) && null === $data['Image']) {
+            $object->setImage(null);
         }
-        if (\array_key_exists('Volumes', $data)) {
+        if (\array_key_exists('Volumes', $data) && null !== $data['Volumes']) {
             $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Volumes'] as $key_1 => $value_3) {
                 $values_3[$key_1] = $this->denormalizer->denormalize($value_3, 'Docker\\API\\Model\\ContainerConfigVolumesItem', 'json', $context);
             }
             $object->setVolumes($values_3);
+        } elseif (\array_key_exists('Volumes', $data) && null === $data['Volumes']) {
+            $object->setVolumes(null);
         }
-        if (\array_key_exists('WorkingDir', $data)) {
+        if (\array_key_exists('WorkingDir', $data) && null !== $data['WorkingDir']) {
             $object->setWorkingDir($data['WorkingDir']);
+        } elseif (\array_key_exists('WorkingDir', $data) && null === $data['WorkingDir']) {
+            $object->setWorkingDir(null);
         }
-        if (\array_key_exists('Entrypoint', $data)) {
+        if (\array_key_exists('Entrypoint', $data) && null !== $data['Entrypoint']) {
             $values_4 = [];
             foreach ($data['Entrypoint'] as $value_4) {
                 $values_4[] = $value_4;
             }
             $object->setEntrypoint($values_4);
+        } elseif (\array_key_exists('Entrypoint', $data) && null === $data['Entrypoint']) {
+            $object->setEntrypoint(null);
         }
-        if (\array_key_exists('NetworkDisabled', $data)) {
+        if (\array_key_exists('NetworkDisabled', $data) && null !== $data['NetworkDisabled']) {
             $object->setNetworkDisabled($data['NetworkDisabled']);
+        } elseif (\array_key_exists('NetworkDisabled', $data) && null === $data['NetworkDisabled']) {
+            $object->setNetworkDisabled(null);
         }
-        if (\array_key_exists('MacAddress', $data)) {
+        if (\array_key_exists('MacAddress', $data) && null !== $data['MacAddress']) {
             $object->setMacAddress($data['MacAddress']);
+        } elseif (\array_key_exists('MacAddress', $data) && null === $data['MacAddress']) {
+            $object->setMacAddress(null);
         }
-        if (\array_key_exists('OnBuild', $data)) {
+        if (\array_key_exists('OnBuild', $data) && null !== $data['OnBuild']) {
             $values_5 = [];
             foreach ($data['OnBuild'] as $value_5) {
                 $values_5[] = $value_5;
             }
             $object->setOnBuild($values_5);
+        } elseif (\array_key_exists('OnBuild', $data) && null === $data['OnBuild']) {
+            $object->setOnBuild(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values_6 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key_2 => $value_6) {
                 $values_6[$key_2] = $value_6;
             }
             $object->setLabels($values_6);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('StopSignal', $data)) {
+        if (\array_key_exists('StopSignal', $data) && null !== $data['StopSignal']) {
             $object->setStopSignal($data['StopSignal']);
+        } elseif (\array_key_exists('StopSignal', $data) && null === $data['StopSignal']) {
+            $object->setStopSignal(null);
         }
-        if (\array_key_exists('StopTimeout', $data)) {
+        if (\array_key_exists('StopTimeout', $data) && null !== $data['StopTimeout']) {
             $object->setStopTimeout($data['StopTimeout']);
+        } elseif (\array_key_exists('StopTimeout', $data) && null === $data['StopTimeout']) {
+            $object->setStopTimeout(null);
         }
-        if (\array_key_exists('Shell', $data)) {
+        if (\array_key_exists('Shell', $data) && null !== $data['Shell']) {
             $values_7 = [];
             foreach ($data['Shell'] as $value_7) {
                 $values_7[] = $value_7;
             }
             $object->setShell($values_7);
+        } elseif (\array_key_exists('Shell', $data) && null === $data['Shell']) {
+            $object->setShell(null);
         }
-        if (\array_key_exists('HostConfig', $data)) {
+        if (\array_key_exists('HostConfig', $data) && null !== $data['HostConfig']) {
             $object->setHostConfig($this->denormalizer->denormalize($data['HostConfig'], 'Docker\\API\\Model\\HostConfig', 'json', $context));
+        } elseif (\array_key_exists('HostConfig', $data) && null === $data['HostConfig']) {
+            $object->setHostConfig(null);
         }
-        if (\array_key_exists('NetworkingConfig', $data)) {
+        if (\array_key_exists('NetworkingConfig', $data) && null !== $data['NetworkingConfig']) {
             $object->setNetworkingConfig($this->denormalizer->denormalize($data['NetworkingConfig'], 'Docker\\API\\Model\\ContainersCreatePostBodyNetworkingConfig', 'json', $context));
+        } elseif (\array_key_exists('NetworkingConfig', $data) && null === $data['NetworkingConfig']) {
+            $object->setNetworkingConfig(null);
         }
 
         return $object;

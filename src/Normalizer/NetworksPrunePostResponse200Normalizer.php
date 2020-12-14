@@ -41,12 +41,14 @@ class NetworksPrunePostResponse200Normalizer implements DenormalizerInterface, N
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('NetworksDeleted', $data)) {
+        if (\array_key_exists('NetworksDeleted', $data) && null !== $data['NetworksDeleted']) {
             $values = [];
             foreach ($data['NetworksDeleted'] as $value) {
                 $values[] = $value;
             }
             $object->setNetworksDeleted($values);
+        } elseif (\array_key_exists('NetworksDeleted', $data) && null === $data['NetworksDeleted']) {
+            $object->setNetworksDeleted(null);
         }
 
         return $object;

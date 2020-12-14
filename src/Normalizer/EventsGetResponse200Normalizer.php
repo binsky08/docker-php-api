@@ -41,20 +41,30 @@ class EventsGetResponse200Normalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Type', $data)) {
+        if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
+        } elseif (\array_key_exists('Type', $data) && null === $data['Type']) {
+            $object->setType(null);
         }
-        if (\array_key_exists('Action', $data)) {
+        if (\array_key_exists('Action', $data) && null !== $data['Action']) {
             $object->setAction($data['Action']);
+        } elseif (\array_key_exists('Action', $data) && null === $data['Action']) {
+            $object->setAction(null);
         }
-        if (\array_key_exists('Actor', $data)) {
+        if (\array_key_exists('Actor', $data) && null !== $data['Actor']) {
             $object->setActor($this->denormalizer->denormalize($data['Actor'], 'Docker\\API\\Model\\EventsGetResponse200Actor', 'json', $context));
+        } elseif (\array_key_exists('Actor', $data) && null === $data['Actor']) {
+            $object->setActor(null);
         }
-        if (\array_key_exists('time', $data)) {
+        if (\array_key_exists('time', $data) && null !== $data['time']) {
             $object->setTime($data['time']);
+        } elseif (\array_key_exists('time', $data) && null === $data['time']) {
+            $object->setTime(null);
         }
-        if (\array_key_exists('timeNano', $data)) {
+        if (\array_key_exists('timeNano', $data) && null !== $data['timeNano']) {
             $object->setTimeNano($data['timeNano']);
+        } elseif (\array_key_exists('timeNano', $data) && null === $data['timeNano']) {
+            $object->setTimeNano(null);
         }
 
         return $object;

@@ -9,36 +9,36 @@ class EventsGetResponse200
     /**
      * The type of object emitting the event.
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * The type of event.
      *
-     * @var string
+     * @var string|null
      */
     protected $action;
     /**
-     * @var EventsGetResponse200Actor
+     * @var EventsGetResponse200Actor|null
      */
     protected $actor;
     /**
      * Timestamp of event.
      *
-     * @var int
+     * @var int|null
      */
     protected $time;
     /**
      * Timestamp of event, with nanosecond accuracy.
      *
-     * @var int
+     * @var int|null
      */
     protected $timeNano;
 
     /**
      * The type of object emitting the event.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -46,7 +46,7 @@ class EventsGetResponse200
     /**
      * The type of object emitting the event.
      */
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
@@ -56,7 +56,7 @@ class EventsGetResponse200
     /**
      * The type of event.
      */
-    public function getAction(): string
+    public function getAction(): ?string
     {
         return $this->action;
     }
@@ -64,19 +64,19 @@ class EventsGetResponse200
     /**
      * The type of event.
      */
-    public function setAction(string $action): self
+    public function setAction(?string $action): self
     {
         $this->action = $action;
 
         return $this;
     }
 
-    public function getActor(): EventsGetResponse200Actor
+    public function getActor(): ?EventsGetResponse200Actor
     {
         return $this->actor;
     }
 
-    public function setActor(EventsGetResponse200Actor $actor): self
+    public function setActor(?EventsGetResponse200Actor $actor): self
     {
         $this->actor = $actor;
 
@@ -86,7 +86,7 @@ class EventsGetResponse200
     /**
      * Timestamp of event.
      */
-    public function getTime(): int
+    public function getTime(): ?int
     {
         return $this->time;
     }
@@ -94,7 +94,7 @@ class EventsGetResponse200
     /**
      * Timestamp of event.
      */
-    public function setTime(int $time): self
+    public function setTime(?int $time): self
     {
         $this->time = $time;
 
@@ -104,7 +104,7 @@ class EventsGetResponse200
     /**
      * Timestamp of event, with nanosecond accuracy.
      */
-    public function getTimeNano(): int
+    public function getTimeNano(): ?int
     {
         return $this->timeNano;
     }
@@ -112,7 +112,7 @@ class EventsGetResponse200
     /**
      * Timestamp of event, with nanosecond accuracy.
      */
-    public function setTimeNano(int $timeNano): self
+    public function setTimeNano(?int $timeNano): self
     {
         $this->timeNano = $timeNano;
 

@@ -41,23 +41,35 @@ class ServiceSpecUpdateConfigNormalizer implements DenormalizerInterface, Normal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Parallelism', $data)) {
+        if (\array_key_exists('Parallelism', $data) && null !== $data['Parallelism']) {
             $object->setParallelism($data['Parallelism']);
+        } elseif (\array_key_exists('Parallelism', $data) && null === $data['Parallelism']) {
+            $object->setParallelism(null);
         }
-        if (\array_key_exists('Delay', $data)) {
+        if (\array_key_exists('Delay', $data) && null !== $data['Delay']) {
             $object->setDelay($data['Delay']);
+        } elseif (\array_key_exists('Delay', $data) && null === $data['Delay']) {
+            $object->setDelay(null);
         }
-        if (\array_key_exists('FailureAction', $data)) {
+        if (\array_key_exists('FailureAction', $data) && null !== $data['FailureAction']) {
             $object->setFailureAction($data['FailureAction']);
+        } elseif (\array_key_exists('FailureAction', $data) && null === $data['FailureAction']) {
+            $object->setFailureAction(null);
         }
-        if (\array_key_exists('Monitor', $data)) {
+        if (\array_key_exists('Monitor', $data) && null !== $data['Monitor']) {
             $object->setMonitor($data['Monitor']);
+        } elseif (\array_key_exists('Monitor', $data) && null === $data['Monitor']) {
+            $object->setMonitor(null);
         }
-        if (\array_key_exists('MaxFailureRatio', $data)) {
+        if (\array_key_exists('MaxFailureRatio', $data) && null !== $data['MaxFailureRatio']) {
             $object->setMaxFailureRatio($data['MaxFailureRatio']);
+        } elseif (\array_key_exists('MaxFailureRatio', $data) && null === $data['MaxFailureRatio']) {
+            $object->setMaxFailureRatio(null);
         }
-        if (\array_key_exists('Order', $data)) {
+        if (\array_key_exists('Order', $data) && null !== $data['Order']) {
             $object->setOrder($data['Order']);
+        } elseif (\array_key_exists('Order', $data) && null === $data['Order']) {
+            $object->setOrder(null);
         }
 
         return $object;

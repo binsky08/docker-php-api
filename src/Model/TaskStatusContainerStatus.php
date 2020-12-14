@@ -7,48 +7,48 @@ namespace Docker\API\Model;
 class TaskStatusContainerStatus
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $containerID;
     /**
-     * @var int
+     * @var int|null
      */
     protected $pID;
     /**
-     * @var int
+     * @var int|null
      */
     protected $exitCode;
 
-    public function getContainerID(): string
+    public function getContainerID(): ?string
     {
         return $this->containerID;
     }
 
-    public function setContainerID(string $containerID): self
+    public function setContainerID(?string $containerID): self
     {
         $this->containerID = $containerID;
 
         return $this;
     }
 
-    public function getPID(): int
+    public function getPID(): ?int
     {
         return $this->pID;
     }
 
-    public function setPID(int $pID): self
+    public function setPID(?int $pID): self
     {
         $this->pID = $pID;
 
         return $this;
     }
 
-    public function getExitCode(): int
+    public function getExitCode(): ?int
     {
         return $this->exitCode;
     }
 
-    public function setExitCode(int $exitCode): self
+    public function setExitCode(?int $exitCode): self
     {
         $this->exitCode = $exitCode;
 

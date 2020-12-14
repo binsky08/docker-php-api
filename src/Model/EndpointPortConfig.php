@@ -7,23 +7,23 @@ namespace Docker\API\Model;
 class EndpointPortConfig
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $protocol;
     /**
      * The port inside the container.
      *
-     * @var int
+     * @var int|null
      */
     protected $targetPort;
     /**
      * The port on the swarm hosts.
      *
-     * @var int
+     * @var int|null
      */
     protected $publishedPort;
     /**
@@ -37,28 +37,28 @@ class EndpointPortConfig
      * - "host" bypasses the routing mesh and publish the port directly on
      * the swarm node where that service is running.
      *
-     * @var string
+     * @var string|null
      */
     protected $publishMode = 'ingress';
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getProtocol(): string
+    public function getProtocol(): ?string
     {
         return $this->protocol;
     }
 
-    public function setProtocol(string $protocol): self
+    public function setProtocol(?string $protocol): self
     {
         $this->protocol = $protocol;
 
@@ -68,7 +68,7 @@ class EndpointPortConfig
     /**
      * The port inside the container.
      */
-    public function getTargetPort(): int
+    public function getTargetPort(): ?int
     {
         return $this->targetPort;
     }
@@ -76,7 +76,7 @@ class EndpointPortConfig
     /**
      * The port inside the container.
      */
-    public function setTargetPort(int $targetPort): self
+    public function setTargetPort(?int $targetPort): self
     {
         $this->targetPort = $targetPort;
 
@@ -86,7 +86,7 @@ class EndpointPortConfig
     /**
      * The port on the swarm hosts.
      */
-    public function getPublishedPort(): int
+    public function getPublishedPort(): ?int
     {
         return $this->publishedPort;
     }
@@ -94,7 +94,7 @@ class EndpointPortConfig
     /**
      * The port on the swarm hosts.
      */
-    public function setPublishedPort(int $publishedPort): self
+    public function setPublishedPort(?int $publishedPort): self
     {
         $this->publishedPort = $publishedPort;
 
@@ -112,7 +112,7 @@ class EndpointPortConfig
      * - "host" bypasses the routing mesh and publish the port directly on
      * the swarm node where that service is running.
      */
-    public function getPublishMode(): string
+    public function getPublishMode(): ?string
     {
         return $this->publishMode;
     }
@@ -128,7 +128,7 @@ class EndpointPortConfig
      * - "host" bypasses the routing mesh and publish the port directly on
      * the swarm node where that service is running.
      */
-    public function setPublishMode(string $publishMode): self
+    public function setPublishMode(?string $publishMode): self
     {
         $this->publishMode = $publishMode;
 

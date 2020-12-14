@@ -7,32 +7,32 @@ namespace Docker\API\Model;
 class GenericResourcesItemNamedResourceSpec
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $kind;
     /**
-     * @var string
+     * @var string|null
      */
     protected $value;
 
-    public function getKind(): string
+    public function getKind(): ?string
     {
         return $this->kind;
     }
 
-    public function setKind(string $kind): self
+    public function setKind(?string $kind): self
     {
         $this->kind = $kind;
 
         return $this;
     }
 
-    public function getValue(): string
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
-    public function setValue(string $value): self
+    public function setValue(?string $value): self
     {
         $this->value = $value;
 

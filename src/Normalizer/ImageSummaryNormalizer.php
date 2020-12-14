@@ -41,47 +41,67 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Id', $data)) {
+        if (\array_key_exists('Id', $data) && null !== $data['Id']) {
             $object->setId($data['Id']);
+        } elseif (\array_key_exists('Id', $data) && null === $data['Id']) {
+            $object->setId(null);
         }
-        if (\array_key_exists('ParentId', $data)) {
+        if (\array_key_exists('ParentId', $data) && null !== $data['ParentId']) {
             $object->setParentId($data['ParentId']);
+        } elseif (\array_key_exists('ParentId', $data) && null === $data['ParentId']) {
+            $object->setParentId(null);
         }
-        if (\array_key_exists('RepoTags', $data)) {
+        if (\array_key_exists('RepoTags', $data) && null !== $data['RepoTags']) {
             $values = [];
             foreach ($data['RepoTags'] as $value) {
                 $values[] = $value;
             }
             $object->setRepoTags($values);
+        } elseif (\array_key_exists('RepoTags', $data) && null === $data['RepoTags']) {
+            $object->setRepoTags(null);
         }
-        if (\array_key_exists('RepoDigests', $data)) {
+        if (\array_key_exists('RepoDigests', $data) && null !== $data['RepoDigests']) {
             $values_1 = [];
             foreach ($data['RepoDigests'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setRepoDigests($values_1);
+        } elseif (\array_key_exists('RepoDigests', $data) && null === $data['RepoDigests']) {
+            $object->setRepoDigests(null);
         }
-        if (\array_key_exists('Created', $data)) {
+        if (\array_key_exists('Created', $data) && null !== $data['Created']) {
             $object->setCreated($data['Created']);
+        } elseif (\array_key_exists('Created', $data) && null === $data['Created']) {
+            $object->setCreated(null);
         }
-        if (\array_key_exists('Size', $data)) {
+        if (\array_key_exists('Size', $data) && null !== $data['Size']) {
             $object->setSize($data['Size']);
+        } elseif (\array_key_exists('Size', $data) && null === $data['Size']) {
+            $object->setSize(null);
         }
-        if (\array_key_exists('SharedSize', $data)) {
+        if (\array_key_exists('SharedSize', $data) && null !== $data['SharedSize']) {
             $object->setSharedSize($data['SharedSize']);
+        } elseif (\array_key_exists('SharedSize', $data) && null === $data['SharedSize']) {
+            $object->setSharedSize(null);
         }
-        if (\array_key_exists('VirtualSize', $data)) {
+        if (\array_key_exists('VirtualSize', $data) && null !== $data['VirtualSize']) {
             $object->setVirtualSize($data['VirtualSize']);
+        } elseif (\array_key_exists('VirtualSize', $data) && null === $data['VirtualSize']) {
+            $object->setVirtualSize(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
             $object->setLabels($values_2);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('Containers', $data)) {
+        if (\array_key_exists('Containers', $data) && null !== $data['Containers']) {
             $object->setContainers($data['Containers']);
+        } elseif (\array_key_exists('Containers', $data) && null === $data['Containers']) {
+            $object->setContainers(null);
         }
 
         return $object;

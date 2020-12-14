@@ -7,52 +7,52 @@ namespace Docker\API\Model;
 class PluginMount
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $settable;
     /**
-     * @var string
+     * @var string|null
      */
     protected $source;
     /**
-     * @var string
+     * @var string|null
      */
     protected $destination;
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $options;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -60,53 +60,53 @@ class PluginMount
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getSettable(): array
+    public function getSettable(): ?array
     {
         return $this->settable;
     }
 
     /**
-     * @param string[] $settable
+     * @param string[]|null $settable
      */
-    public function setSettable(array $settable): self
+    public function setSettable(?array $settable): self
     {
         $this->settable = $settable;
 
         return $this;
     }
 
-    public function getSource(): string
+    public function getSource(): ?string
     {
         return $this->source;
     }
 
-    public function setSource(string $source): self
+    public function setSource(?string $source): self
     {
         $this->source = $source;
 
         return $this;
     }
 
-    public function getDestination(): string
+    public function getDestination(): ?string
     {
         return $this->destination;
     }
 
-    public function setDestination(string $destination): self
+    public function setDestination(?string $destination): self
     {
         $this->destination = $destination;
 
         return $this;
     }
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
@@ -114,17 +114,17 @@ class PluginMount
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getOptions(): array
+    public function getOptions(): ?array
     {
         return $this->options;
     }
 
     /**
-     * @param string[] $options
+     * @param string[]|null $options
      */
-    public function setOptions(array $options): self
+    public function setOptions(?array $options): self
     {
         $this->options = $options;
 

@@ -9,58 +9,58 @@ class TaskSpec
     /**
      * Invalid when specified with `ContainerSpec`. *(Experimental release only.)*.
      *
-     * @var TaskSpecPluginSpec
+     * @var TaskSpecPluginSpec|null
      */
     protected $pluginSpec;
     /**
      * Invalid when specified with `PluginSpec`.
      *
-     * @var TaskSpecContainerSpec
+     * @var TaskSpecContainerSpec|null
      */
     protected $containerSpec;
     /**
      * Resource requirements which apply to each individual container created as part of the service.
      *
-     * @var TaskSpecResources
+     * @var TaskSpecResources|null
      */
     protected $resources;
     /**
      * Specification for the restart policy which applies to containers created as part of this service.
      *
-     * @var TaskSpecRestartPolicy
+     * @var TaskSpecRestartPolicy|null
      */
     protected $restartPolicy;
     /**
-     * @var TaskSpecPlacement
+     * @var TaskSpecPlacement|null
      */
     protected $placement;
     /**
      * A counter that triggers an update even if no relevant parameters have been changed.
      *
-     * @var int
+     * @var int|null
      */
     protected $forceUpdate;
     /**
      * Runtime is the type of runtime specified for the task executor.
      *
-     * @var string
+     * @var string|null
      */
     protected $runtime;
     /**
-     * @var TaskSpecNetworksItem[]
+     * @var TaskSpecNetworksItem[]|null
      */
     protected $networks;
     /**
      * Specifies the log driver to use for tasks created from this spec. If not present, the default one for the swarm will be used, finally falling back to the engine default if not specified.
      *
-     * @var TaskSpecLogDriver
+     * @var TaskSpecLogDriver|null
      */
     protected $logDriver;
 
     /**
      * Invalid when specified with `ContainerSpec`. *(Experimental release only.)*.
      */
-    public function getPluginSpec(): TaskSpecPluginSpec
+    public function getPluginSpec(): ?TaskSpecPluginSpec
     {
         return $this->pluginSpec;
     }
@@ -68,7 +68,7 @@ class TaskSpec
     /**
      * Invalid when specified with `ContainerSpec`. *(Experimental release only.)*.
      */
-    public function setPluginSpec(TaskSpecPluginSpec $pluginSpec): self
+    public function setPluginSpec(?TaskSpecPluginSpec $pluginSpec): self
     {
         $this->pluginSpec = $pluginSpec;
 
@@ -78,7 +78,7 @@ class TaskSpec
     /**
      * Invalid when specified with `PluginSpec`.
      */
-    public function getContainerSpec(): TaskSpecContainerSpec
+    public function getContainerSpec(): ?TaskSpecContainerSpec
     {
         return $this->containerSpec;
     }
@@ -86,7 +86,7 @@ class TaskSpec
     /**
      * Invalid when specified with `PluginSpec`.
      */
-    public function setContainerSpec(TaskSpecContainerSpec $containerSpec): self
+    public function setContainerSpec(?TaskSpecContainerSpec $containerSpec): self
     {
         $this->containerSpec = $containerSpec;
 
@@ -96,7 +96,7 @@ class TaskSpec
     /**
      * Resource requirements which apply to each individual container created as part of the service.
      */
-    public function getResources(): TaskSpecResources
+    public function getResources(): ?TaskSpecResources
     {
         return $this->resources;
     }
@@ -104,7 +104,7 @@ class TaskSpec
     /**
      * Resource requirements which apply to each individual container created as part of the service.
      */
-    public function setResources(TaskSpecResources $resources): self
+    public function setResources(?TaskSpecResources $resources): self
     {
         $this->resources = $resources;
 
@@ -114,7 +114,7 @@ class TaskSpec
     /**
      * Specification for the restart policy which applies to containers created as part of this service.
      */
-    public function getRestartPolicy(): TaskSpecRestartPolicy
+    public function getRestartPolicy(): ?TaskSpecRestartPolicy
     {
         return $this->restartPolicy;
     }
@@ -122,19 +122,19 @@ class TaskSpec
     /**
      * Specification for the restart policy which applies to containers created as part of this service.
      */
-    public function setRestartPolicy(TaskSpecRestartPolicy $restartPolicy): self
+    public function setRestartPolicy(?TaskSpecRestartPolicy $restartPolicy): self
     {
         $this->restartPolicy = $restartPolicy;
 
         return $this;
     }
 
-    public function getPlacement(): TaskSpecPlacement
+    public function getPlacement(): ?TaskSpecPlacement
     {
         return $this->placement;
     }
 
-    public function setPlacement(TaskSpecPlacement $placement): self
+    public function setPlacement(?TaskSpecPlacement $placement): self
     {
         $this->placement = $placement;
 
@@ -144,7 +144,7 @@ class TaskSpec
     /**
      * A counter that triggers an update even if no relevant parameters have been changed.
      */
-    public function getForceUpdate(): int
+    public function getForceUpdate(): ?int
     {
         return $this->forceUpdate;
     }
@@ -152,7 +152,7 @@ class TaskSpec
     /**
      * A counter that triggers an update even if no relevant parameters have been changed.
      */
-    public function setForceUpdate(int $forceUpdate): self
+    public function setForceUpdate(?int $forceUpdate): self
     {
         $this->forceUpdate = $forceUpdate;
 
@@ -162,7 +162,7 @@ class TaskSpec
     /**
      * Runtime is the type of runtime specified for the task executor.
      */
-    public function getRuntime(): string
+    public function getRuntime(): ?string
     {
         return $this->runtime;
     }
@@ -170,7 +170,7 @@ class TaskSpec
     /**
      * Runtime is the type of runtime specified for the task executor.
      */
-    public function setRuntime(string $runtime): self
+    public function setRuntime(?string $runtime): self
     {
         $this->runtime = $runtime;
 
@@ -178,17 +178,17 @@ class TaskSpec
     }
 
     /**
-     * @return TaskSpecNetworksItem[]
+     * @return TaskSpecNetworksItem[]|null
      */
-    public function getNetworks(): array
+    public function getNetworks(): ?array
     {
         return $this->networks;
     }
 
     /**
-     * @param TaskSpecNetworksItem[] $networks
+     * @param TaskSpecNetworksItem[]|null $networks
      */
-    public function setNetworks(array $networks): self
+    public function setNetworks(?array $networks): self
     {
         $this->networks = $networks;
 
@@ -198,7 +198,7 @@ class TaskSpec
     /**
      * Specifies the log driver to use for tasks created from this spec. If not present, the default one for the swarm will be used, finally falling back to the engine default if not specified.
      */
-    public function getLogDriver(): TaskSpecLogDriver
+    public function getLogDriver(): ?TaskSpecLogDriver
     {
         return $this->logDriver;
     }
@@ -206,7 +206,7 @@ class TaskSpec
     /**
      * Specifies the log driver to use for tasks created from this spec. If not present, the default one for the swarm will be used, finally falling back to the engine default if not specified.
      */
-    public function setLogDriver(TaskSpecLogDriver $logDriver): self
+    public function setLogDriver(?TaskSpecLogDriver $logDriver): self
     {
         $this->logDriver = $logDriver;
 

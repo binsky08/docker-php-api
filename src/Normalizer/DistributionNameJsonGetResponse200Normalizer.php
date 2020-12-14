@@ -41,15 +41,19 @@ class DistributionNameJsonGetResponse200Normalizer implements DenormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Descriptor', $data)) {
+        if (\array_key_exists('Descriptor', $data) && null !== $data['Descriptor']) {
             $object->setDescriptor($this->denormalizer->denormalize($data['Descriptor'], 'Docker\\API\\Model\\DistributionNameJsonGetResponse200Descriptor', 'json', $context));
+        } elseif (\array_key_exists('Descriptor', $data) && null === $data['Descriptor']) {
+            $object->setDescriptor(null);
         }
-        if (\array_key_exists('Platforms', $data)) {
+        if (\array_key_exists('Platforms', $data) && null !== $data['Platforms']) {
             $values = [];
             foreach ($data['Platforms'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\DistributionNameJsonGetResponse200PlatformsItem', 'json', $context);
             }
             $object->setPlatforms($values);
+        } elseif (\array_key_exists('Platforms', $data) && null === $data['Platforms']) {
+            $object->setPlatforms(null);
         }
 
         return $object;

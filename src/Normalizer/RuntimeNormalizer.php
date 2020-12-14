@@ -41,8 +41,10 @@ class RuntimeNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('path', $data)) {
+        if (\array_key_exists('path', $data) && null !== $data['path']) {
             $object->setPath($data['path']);
+        } elseif (\array_key_exists('path', $data) && null === $data['path']) {
+            $object->setPath(null);
         }
         if (\array_key_exists('runtimeArgs', $data) && null !== $data['runtimeArgs']) {
             $values = [];

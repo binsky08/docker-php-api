@@ -41,15 +41,19 @@ class VolumesPrunePostResponse200Normalizer implements DenormalizerInterface, No
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('VolumesDeleted', $data)) {
+        if (\array_key_exists('VolumesDeleted', $data) && null !== $data['VolumesDeleted']) {
             $values = [];
             foreach ($data['VolumesDeleted'] as $value) {
                 $values[] = $value;
             }
             $object->setVolumesDeleted($values);
+        } elseif (\array_key_exists('VolumesDeleted', $data) && null === $data['VolumesDeleted']) {
+            $object->setVolumesDeleted(null);
         }
-        if (\array_key_exists('SpaceReclaimed', $data)) {
+        if (\array_key_exists('SpaceReclaimed', $data) && null !== $data['SpaceReclaimed']) {
             $object->setSpaceReclaimed($data['SpaceReclaimed']);
+        } elseif (\array_key_exists('SpaceReclaimed', $data) && null === $data['SpaceReclaimed']) {
+            $object->setSpaceReclaimed(null);
         }
 
         return $object;

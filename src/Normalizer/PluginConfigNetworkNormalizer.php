@@ -41,8 +41,10 @@ class PluginConfigNetworkNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Type', $data)) {
+        if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
+        } elseif (\array_key_exists('Type', $data) && null === $data['Type']) {
+            $object->setType(null);
         }
 
         return $object;

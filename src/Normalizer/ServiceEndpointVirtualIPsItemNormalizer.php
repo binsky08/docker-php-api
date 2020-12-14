@@ -41,11 +41,15 @@ class ServiceEndpointVirtualIPsItemNormalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('NetworkID', $data)) {
+        if (\array_key_exists('NetworkID', $data) && null !== $data['NetworkID']) {
             $object->setNetworkID($data['NetworkID']);
+        } elseif (\array_key_exists('NetworkID', $data) && null === $data['NetworkID']) {
+            $object->setNetworkID(null);
         }
-        if (\array_key_exists('Addr', $data)) {
+        if (\array_key_exists('Addr', $data) && null !== $data['Addr']) {
             $object->setAddr($data['Addr']);
+        } elseif (\array_key_exists('Addr', $data) && null === $data['Addr']) {
+            $object->setAddr(null);
         }
 
         return $object;

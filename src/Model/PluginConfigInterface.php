@@ -7,38 +7,38 @@ namespace Docker\API\Model;
 class PluginConfigInterface
 {
     /**
-     * @var PluginInterfaceType[]
+     * @var PluginInterfaceType[]|null
      */
     protected $types;
     /**
-     * @var string
+     * @var string|null
      */
     protected $socket;
 
     /**
-     * @return PluginInterfaceType[]
+     * @return PluginInterfaceType[]|null
      */
-    public function getTypes(): array
+    public function getTypes(): ?array
     {
         return $this->types;
     }
 
     /**
-     * @param PluginInterfaceType[] $types
+     * @param PluginInterfaceType[]|null $types
      */
-    public function setTypes(array $types): self
+    public function setTypes(?array $types): self
     {
         $this->types = $types;
 
         return $this;
     }
 
-    public function getSocket(): string
+    public function getSocket(): ?string
     {
         return $this->socket;
     }
 
-    public function setSocket(string $socket): self
+    public function setSocket(?string $socket): self
     {
         $this->socket = $socket;
 

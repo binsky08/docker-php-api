@@ -9,14 +9,14 @@ class ErrorResponse
     /**
      * The error message.
      *
-     * @var string
+     * @var string|null
      */
     protected $message;
 
     /**
      * The error message.
      */
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
@@ -24,7 +24,7 @@ class ErrorResponse
     /**
      * The error message.
      */
-    public function setMessage(string $message): self
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 

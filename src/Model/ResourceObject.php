@@ -7,38 +7,38 @@ namespace Docker\API\Model;
 class ResourceObject
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $nanoCPUs;
     /**
-     * @var int
+     * @var int|null
      */
     protected $memoryBytes;
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @var GenericResourcesItem[]
+     * @var GenericResourcesItem[]|null
      */
     protected $genericResources;
 
-    public function getNanoCPUs(): int
+    public function getNanoCPUs(): ?int
     {
         return $this->nanoCPUs;
     }
 
-    public function setNanoCPUs(int $nanoCPUs): self
+    public function setNanoCPUs(?int $nanoCPUs): self
     {
         $this->nanoCPUs = $nanoCPUs;
 
         return $this;
     }
 
-    public function getMemoryBytes(): int
+    public function getMemoryBytes(): ?int
     {
         return $this->memoryBytes;
     }
 
-    public function setMemoryBytes(int $memoryBytes): self
+    public function setMemoryBytes(?int $memoryBytes): self
     {
         $this->memoryBytes = $memoryBytes;
 
@@ -48,9 +48,9 @@ class ResourceObject
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @return GenericResourcesItem[]
+     * @return GenericResourcesItem[]|null
      */
-    public function getGenericResources(): array
+    public function getGenericResources(): ?array
     {
         return $this->genericResources;
     }
@@ -58,9 +58,9 @@ class ResourceObject
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @param GenericResourcesItem[] $genericResources
+     * @param GenericResourcesItem[]|null $genericResources
      */
-    public function setGenericResources(array $genericResources): self
+    public function setGenericResources(?array $genericResources): self
     {
         $this->genericResources = $genericResources;
 

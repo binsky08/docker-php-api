@@ -41,11 +41,15 @@ class JoinTokensNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Worker', $data)) {
+        if (\array_key_exists('Worker', $data) && null !== $data['Worker']) {
             $object->setWorker($data['Worker']);
+        } elseif (\array_key_exists('Worker', $data) && null === $data['Worker']) {
+            $object->setWorker(null);
         }
-        if (\array_key_exists('Manager', $data)) {
+        if (\array_key_exists('Manager', $data) && null !== $data['Manager']) {
             $object->setManager($data['Manager']);
+        } elseif (\array_key_exists('Manager', $data) && null === $data['Manager']) {
+            $object->setManager(null);
         }
 
         return $object;

@@ -7,64 +7,64 @@ namespace Docker\API\Model;
 class ServiceUpdateStatus
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $state;
     /**
-     * @var string
+     * @var string|null
      */
     protected $startedAt;
     /**
-     * @var string
+     * @var string|null
      */
     protected $completedAt;
     /**
-     * @var string
+     * @var string|null
      */
     protected $message;
 
-    public function getState(): string
+    public function getState(): ?string
     {
         return $this->state;
     }
 
-    public function setState(string $state): self
+    public function setState(?string $state): self
     {
         $this->state = $state;
 
         return $this;
     }
 
-    public function getStartedAt(): string
+    public function getStartedAt(): ?string
     {
         return $this->startedAt;
     }
 
-    public function setStartedAt(string $startedAt): self
+    public function setStartedAt(?string $startedAt): self
     {
         $this->startedAt = $startedAt;
 
         return $this;
     }
 
-    public function getCompletedAt(): string
+    public function getCompletedAt(): ?string
     {
         return $this->completedAt;
     }
 
-    public function setCompletedAt(string $completedAt): self
+    public function setCompletedAt(?string $completedAt): self
     {
         $this->completedAt = $completedAt;
 
         return $this;
     }
 
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
-    public function setMessage(string $message): self
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 

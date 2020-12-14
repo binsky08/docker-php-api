@@ -7,28 +7,28 @@ namespace Docker\API\Model;
 class SystemDfGetResponse200
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $layersSize;
     /**
-     * @var ImageSummary[]
+     * @var ImageSummary[]|null
      */
     protected $images;
     /**
-     * @var ContainerSummaryItem[][]
+     * @var ContainerSummaryItem[][]|null
      */
     protected $containers;
     /**
-     * @var Volume[]
+     * @var Volume[]|null
      */
     protected $volumes;
 
-    public function getLayersSize(): int
+    public function getLayersSize(): ?int
     {
         return $this->layersSize;
     }
 
-    public function setLayersSize(int $layersSize): self
+    public function setLayersSize(?int $layersSize): self
     {
         $this->layersSize = $layersSize;
 
@@ -36,17 +36,17 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @return ImageSummary[]
+     * @return ImageSummary[]|null
      */
-    public function getImages(): array
+    public function getImages(): ?array
     {
         return $this->images;
     }
 
     /**
-     * @param ImageSummary[] $images
+     * @param ImageSummary[]|null $images
      */
-    public function setImages(array $images): self
+    public function setImages(?array $images): self
     {
         $this->images = $images;
 
@@ -54,17 +54,17 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @return ContainerSummaryItem[][]
+     * @return ContainerSummaryItem[][]|null
      */
-    public function getContainers(): array
+    public function getContainers(): ?array
     {
         return $this->containers;
     }
 
     /**
-     * @param ContainerSummaryItem[][] $containers
+     * @param ContainerSummaryItem[][]|null $containers
      */
-    public function setContainers(array $containers): self
+    public function setContainers(?array $containers): self
     {
         $this->containers = $containers;
 
@@ -72,17 +72,17 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @return Volume[]
+     * @return Volume[]|null
      */
-    public function getVolumes(): array
+    public function getVolumes(): ?array
     {
         return $this->volumes;
     }
 
     /**
-     * @param Volume[] $volumes
+     * @param Volume[]|null $volumes
      */
-    public function setVolumes(array $volumes): self
+    public function setVolumes(?array $volumes): self
     {
         $this->volumes = $volumes;
 

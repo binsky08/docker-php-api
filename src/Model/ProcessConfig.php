@@ -7,68 +7,68 @@ namespace Docker\API\Model;
 class ProcessConfig
 {
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $privileged;
     /**
-     * @var string
+     * @var string|null
      */
     protected $user;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $tty;
     /**
-     * @var string
+     * @var string|null
      */
     protected $entrypoint;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $arguments;
 
-    public function getPrivileged(): bool
+    public function getPrivileged(): ?bool
     {
         return $this->privileged;
     }
 
-    public function setPrivileged(bool $privileged): self
+    public function setPrivileged(?bool $privileged): self
     {
         $this->privileged = $privileged;
 
         return $this;
     }
 
-    public function getUser(): string
+    public function getUser(): ?string
     {
         return $this->user;
     }
 
-    public function setUser(string $user): self
+    public function setUser(?string $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getTty(): bool
+    public function getTty(): ?bool
     {
         return $this->tty;
     }
 
-    public function setTty(bool $tty): self
+    public function setTty(?bool $tty): self
     {
         $this->tty = $tty;
 
         return $this;
     }
 
-    public function getEntrypoint(): string
+    public function getEntrypoint(): ?string
     {
         return $this->entrypoint;
     }
 
-    public function setEntrypoint(string $entrypoint): self
+    public function setEntrypoint(?string $entrypoint): self
     {
         $this->entrypoint = $entrypoint;
 
@@ -76,17 +76,17 @@ class ProcessConfig
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getArguments(): array
+    public function getArguments(): ?array
     {
         return $this->arguments;
     }
 
     /**
-     * @param string[] $arguments
+     * @param string[]|null $arguments
      */
-    public function setArguments(array $arguments): self
+    public function setArguments(?array $arguments): self
     {
         $this->arguments = $arguments;
 

@@ -41,17 +41,25 @@ class PushImageInfoNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('error', $data)) {
+        if (\array_key_exists('error', $data) && null !== $data['error']) {
             $object->setError($data['error']);
+        } elseif (\array_key_exists('error', $data) && null === $data['error']) {
+            $object->setError(null);
         }
-        if (\array_key_exists('status', $data)) {
+        if (\array_key_exists('status', $data) && null !== $data['status']) {
             $object->setStatus($data['status']);
+        } elseif (\array_key_exists('status', $data) && null === $data['status']) {
+            $object->setStatus(null);
         }
-        if (\array_key_exists('progress', $data)) {
+        if (\array_key_exists('progress', $data) && null !== $data['progress']) {
             $object->setProgress($data['progress']);
+        } elseif (\array_key_exists('progress', $data) && null === $data['progress']) {
+            $object->setProgress(null);
         }
-        if (\array_key_exists('progressDetail', $data)) {
+        if (\array_key_exists('progressDetail', $data) && null !== $data['progressDetail']) {
             $object->setProgressDetail($this->denormalizer->denormalize($data['progressDetail'], 'Docker\\API\\Model\\ProgressDetail', 'json', $context));
+        } elseif (\array_key_exists('progressDetail', $data) && null === $data['progressDetail']) {
+            $object->setProgressDetail(null);
         }
 
         return $object;

@@ -9,31 +9,31 @@ class NetworkSettings
     /**
      * Name of the network'a bridge (for example, `docker0`).
      *
-     * @var string
+     * @var string|null
      */
     protected $bridge;
     /**
      * SandboxID uniquely represents a container's network stack.
      *
-     * @var string
+     * @var string|null
      */
     protected $sandboxID;
     /**
      * Indicates if hairpin NAT should be enabled on the virtual interface.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $hairpinMode;
     /**
      * IPv6 unicast address using the link-local prefix.
      *
-     * @var string
+     * @var string|null
      */
     protected $linkLocalIPv6Address;
     /**
      * Prefix length of the IPv6 unicast address.
      *
-     * @var int
+     * @var int|null
      */
     protected $linkLocalIPv6PrefixLen;
     /**
@@ -44,13 +44,13 @@ class NetworkSettings
      * If a container's port is mapped for both `tcp` and `udp`, two separate
      * entries are added to the mapping table.
      *
-     * @var PortBinding[][]
+     * @var PortBinding[][]|null
      */
     protected $ports;
     /**
      * SandboxKey identifies the sandbox.
      *
-     * @var string
+     * @var string|null
      */
     protected $sandboxKey;
     /**
@@ -72,7 +72,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      *
-     * @var string
+     * @var string|null
      */
     protected $endpointID;
     /**
@@ -86,7 +86,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      *
-     * @var string
+     * @var string|null
      */
     protected $gateway;
     /**
@@ -100,7 +100,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      *
-     * @var string
+     * @var string|null
      */
     protected $globalIPv6Address;
     /**
@@ -114,7 +114,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      *
-     * @var int
+     * @var int|null
      */
     protected $globalIPv6PrefixLen;
     /**
@@ -128,7 +128,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      *
-     * @var string
+     * @var string|null
      */
     protected $iPAddress;
     /**
@@ -142,7 +142,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      *
-     * @var int
+     * @var int|null
      */
     protected $iPPrefixLen;
     /**
@@ -156,7 +156,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      *
-     * @var string
+     * @var string|null
      */
     protected $iPv6Gateway;
     /**
@@ -170,20 +170,20 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      *
-     * @var string
+     * @var string|null
      */
     protected $macAddress;
     /**
      * Information about all networks that the container is connected to.
      *
-     * @var EndpointSettings[]
+     * @var EndpointSettings[]|null
      */
     protected $networks;
 
     /**
      * Name of the network'a bridge (for example, `docker0`).
      */
-    public function getBridge(): string
+    public function getBridge(): ?string
     {
         return $this->bridge;
     }
@@ -191,7 +191,7 @@ class NetworkSettings
     /**
      * Name of the network'a bridge (for example, `docker0`).
      */
-    public function setBridge(string $bridge): self
+    public function setBridge(?string $bridge): self
     {
         $this->bridge = $bridge;
 
@@ -201,7 +201,7 @@ class NetworkSettings
     /**
      * SandboxID uniquely represents a container's network stack.
      */
-    public function getSandboxID(): string
+    public function getSandboxID(): ?string
     {
         return $this->sandboxID;
     }
@@ -209,7 +209,7 @@ class NetworkSettings
     /**
      * SandboxID uniquely represents a container's network stack.
      */
-    public function setSandboxID(string $sandboxID): self
+    public function setSandboxID(?string $sandboxID): self
     {
         $this->sandboxID = $sandboxID;
 
@@ -219,7 +219,7 @@ class NetworkSettings
     /**
      * Indicates if hairpin NAT should be enabled on the virtual interface.
      */
-    public function getHairpinMode(): bool
+    public function getHairpinMode(): ?bool
     {
         return $this->hairpinMode;
     }
@@ -227,7 +227,7 @@ class NetworkSettings
     /**
      * Indicates if hairpin NAT should be enabled on the virtual interface.
      */
-    public function setHairpinMode(bool $hairpinMode): self
+    public function setHairpinMode(?bool $hairpinMode): self
     {
         $this->hairpinMode = $hairpinMode;
 
@@ -237,7 +237,7 @@ class NetworkSettings
     /**
      * IPv6 unicast address using the link-local prefix.
      */
-    public function getLinkLocalIPv6Address(): string
+    public function getLinkLocalIPv6Address(): ?string
     {
         return $this->linkLocalIPv6Address;
     }
@@ -245,7 +245,7 @@ class NetworkSettings
     /**
      * IPv6 unicast address using the link-local prefix.
      */
-    public function setLinkLocalIPv6Address(string $linkLocalIPv6Address): self
+    public function setLinkLocalIPv6Address(?string $linkLocalIPv6Address): self
     {
         $this->linkLocalIPv6Address = $linkLocalIPv6Address;
 
@@ -255,7 +255,7 @@ class NetworkSettings
     /**
      * Prefix length of the IPv6 unicast address.
      */
-    public function getLinkLocalIPv6PrefixLen(): int
+    public function getLinkLocalIPv6PrefixLen(): ?int
     {
         return $this->linkLocalIPv6PrefixLen;
     }
@@ -263,7 +263,7 @@ class NetworkSettings
     /**
      * Prefix length of the IPv6 unicast address.
      */
-    public function setLinkLocalIPv6PrefixLen(int $linkLocalIPv6PrefixLen): self
+    public function setLinkLocalIPv6PrefixLen(?int $linkLocalIPv6PrefixLen): self
     {
         $this->linkLocalIPv6PrefixLen = $linkLocalIPv6PrefixLen;
 
@@ -278,9 +278,9 @@ class NetworkSettings
      * If a container's port is mapped for both `tcp` and `udp`, two separate
      * entries are added to the mapping table.
      *
-     * @return PortBinding[][]
+     * @return PortBinding[][]|null
      */
-    public function getPorts(): iterable
+    public function getPorts(): ?iterable
     {
         return $this->ports;
     }
@@ -293,9 +293,9 @@ class NetworkSettings
      * If a container's port is mapped for both `tcp` and `udp`, two separate
      * entries are added to the mapping table.
      *
-     * @param PortBinding[][] $ports
+     * @param PortBinding[][]|null $ports
      */
-    public function setPorts(iterable $ports): self
+    public function setPorts(?iterable $ports): self
     {
         $this->ports = $ports;
 
@@ -305,7 +305,7 @@ class NetworkSettings
     /**
      * SandboxKey identifies the sandbox.
      */
-    public function getSandboxKey(): string
+    public function getSandboxKey(): ?string
     {
         return $this->sandboxKey;
     }
@@ -313,7 +313,7 @@ class NetworkSettings
     /**
      * SandboxKey identifies the sandbox.
      */
-    public function setSandboxKey(string $sandboxKey): self
+    public function setSandboxKey(?string $sandboxKey): self
     {
         $this->sandboxKey = $sandboxKey;
 
@@ -367,7 +367,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function getEndpointID(): string
+    public function getEndpointID(): ?string
     {
         return $this->endpointID;
     }
@@ -383,7 +383,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function setEndpointID(string $endpointID): self
+    public function setEndpointID(?string $endpointID): self
     {
         $this->endpointID = $endpointID;
 
@@ -401,7 +401,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function getGateway(): string
+    public function getGateway(): ?string
     {
         return $this->gateway;
     }
@@ -417,7 +417,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function setGateway(string $gateway): self
+    public function setGateway(?string $gateway): self
     {
         $this->gateway = $gateway;
 
@@ -435,7 +435,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function getGlobalIPv6Address(): string
+    public function getGlobalIPv6Address(): ?string
     {
         return $this->globalIPv6Address;
     }
@@ -451,7 +451,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function setGlobalIPv6Address(string $globalIPv6Address): self
+    public function setGlobalIPv6Address(?string $globalIPv6Address): self
     {
         $this->globalIPv6Address = $globalIPv6Address;
 
@@ -469,7 +469,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function getGlobalIPv6PrefixLen(): int
+    public function getGlobalIPv6PrefixLen(): ?int
     {
         return $this->globalIPv6PrefixLen;
     }
@@ -485,7 +485,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function setGlobalIPv6PrefixLen(int $globalIPv6PrefixLen): self
+    public function setGlobalIPv6PrefixLen(?int $globalIPv6PrefixLen): self
     {
         $this->globalIPv6PrefixLen = $globalIPv6PrefixLen;
 
@@ -503,7 +503,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function getIPAddress(): string
+    public function getIPAddress(): ?string
     {
         return $this->iPAddress;
     }
@@ -519,7 +519,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function setIPAddress(string $iPAddress): self
+    public function setIPAddress(?string $iPAddress): self
     {
         $this->iPAddress = $iPAddress;
 
@@ -537,7 +537,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function getIPPrefixLen(): int
+    public function getIPPrefixLen(): ?int
     {
         return $this->iPPrefixLen;
     }
@@ -553,7 +553,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function setIPPrefixLen(int $iPPrefixLen): self
+    public function setIPPrefixLen(?int $iPPrefixLen): self
     {
         $this->iPPrefixLen = $iPPrefixLen;
 
@@ -571,7 +571,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function getIPv6Gateway(): string
+    public function getIPv6Gateway(): ?string
     {
         return $this->iPv6Gateway;
     }
@@ -587,7 +587,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function setIPv6Gateway(string $iPv6Gateway): self
+    public function setIPv6Gateway(?string $iPv6Gateway): self
     {
         $this->iPv6Gateway = $iPv6Gateway;
 
@@ -605,7 +605,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function getMacAddress(): string
+    public function getMacAddress(): ?string
     {
         return $this->macAddress;
     }
@@ -621,7 +621,7 @@ class NetworkSettings
      * > information. This field was deprecated in Docker 1.9 and is scheduled
      * > to be removed in Docker 17.12.0
      */
-    public function setMacAddress(string $macAddress): self
+    public function setMacAddress(?string $macAddress): self
     {
         $this->macAddress = $macAddress;
 
@@ -631,9 +631,9 @@ class NetworkSettings
     /**
      * Information about all networks that the container is connected to.
      *
-     * @return EndpointSettings[]
+     * @return EndpointSettings[]|null
      */
-    public function getNetworks(): iterable
+    public function getNetworks(): ?iterable
     {
         return $this->networks;
     }
@@ -641,9 +641,9 @@ class NetworkSettings
     /**
      * Information about all networks that the container is connected to.
      *
-     * @param EndpointSettings[] $networks
+     * @param EndpointSettings[]|null $networks
      */
-    public function setNetworks(iterable $networks): self
+    public function setNetworks(?iterable $networks): self
     {
         $this->networks = $networks;
 

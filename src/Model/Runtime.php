@@ -12,7 +12,7 @@ class Runtime
      * If the path is omitted, the daemon searches the host's `$PATH` for the
      * binary and uses the first result.
      *
-     * @var string
+     * @var string|null
      */
     protected $path;
     /**
@@ -28,7 +28,7 @@ class Runtime
      * If the path is omitted, the daemon searches the host's `$PATH` for the
      * binary and uses the first result.
      */
-    public function getPath(): string
+    public function getPath(): ?string
     {
         return $this->path;
     }
@@ -39,7 +39,7 @@ class Runtime
      * If the path is omitted, the daemon searches the host's `$PATH` for the
      * binary and uses the first result.
      */
-    public function setPath(string $path): self
+    public function setPath(?string $path): self
     {
         $this->path = $path;
 

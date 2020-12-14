@@ -29,7 +29,7 @@ class RegistryServiceConfig
      * > are in compliance with any terms that cover redistributing
      * > nondistributable artifacts.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $allowNondistributableArtifactsCIDRs;
     /**
@@ -54,7 +54,7 @@ class RegistryServiceConfig
      * > are in compliance with any terms that cover redistributing
      * > nondistributable artifacts.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $allowNondistributableArtifactsHostnames;
     /**
@@ -82,18 +82,18 @@ class RegistryServiceConfig
      * > security, users should add their CA to their system's list of trusted
      * > CAs instead of enabling this option.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $insecureRegistryCIDRs;
     /**
-     * @var IndexInfo[]
+     * @var IndexInfo[]|null
      */
     protected $indexConfigs;
     /**
      * List of registry URLs that act as a mirror for the official.
      * (`docker.io`) registry.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $mirrors;
 
@@ -120,9 +120,9 @@ class RegistryServiceConfig
      * > are in compliance with any terms that cover redistributing
      * > nondistributable artifacts.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getAllowNondistributableArtifactsCIDRs(): array
+    public function getAllowNondistributableArtifactsCIDRs(): ?array
     {
         return $this->allowNondistributableArtifactsCIDRs;
     }
@@ -150,9 +150,9 @@ class RegistryServiceConfig
      * > are in compliance with any terms that cover redistributing
      * > nondistributable artifacts.
      *
-     * @param string[] $allowNondistributableArtifactsCIDRs
+     * @param string[]|null $allowNondistributableArtifactsCIDRs
      */
-    public function setAllowNondistributableArtifactsCIDRs(array $allowNondistributableArtifactsCIDRs): self
+    public function setAllowNondistributableArtifactsCIDRs(?array $allowNondistributableArtifactsCIDRs): self
     {
         $this->allowNondistributableArtifactsCIDRs = $allowNondistributableArtifactsCIDRs;
 
@@ -181,9 +181,9 @@ class RegistryServiceConfig
      * > are in compliance with any terms that cover redistributing
      * > nondistributable artifacts.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getAllowNondistributableArtifactsHostnames(): array
+    public function getAllowNondistributableArtifactsHostnames(): ?array
     {
         return $this->allowNondistributableArtifactsHostnames;
     }
@@ -210,9 +210,9 @@ class RegistryServiceConfig
      * > are in compliance with any terms that cover redistributing
      * > nondistributable artifacts.
      *
-     * @param string[] $allowNondistributableArtifactsHostnames
+     * @param string[]|null $allowNondistributableArtifactsHostnames
      */
-    public function setAllowNondistributableArtifactsHostnames(array $allowNondistributableArtifactsHostnames): self
+    public function setAllowNondistributableArtifactsHostnames(?array $allowNondistributableArtifactsHostnames): self
     {
         $this->allowNondistributableArtifactsHostnames = $allowNondistributableArtifactsHostnames;
 
@@ -244,9 +244,9 @@ class RegistryServiceConfig
      * > security, users should add their CA to their system's list of trusted
      * > CAs instead of enabling this option.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getInsecureRegistryCIDRs(): array
+    public function getInsecureRegistryCIDRs(): ?array
     {
         return $this->insecureRegistryCIDRs;
     }
@@ -276,9 +276,9 @@ class RegistryServiceConfig
      * > security, users should add their CA to their system's list of trusted
      * > CAs instead of enabling this option.
      *
-     * @param string[] $insecureRegistryCIDRs
+     * @param string[]|null $insecureRegistryCIDRs
      */
-    public function setInsecureRegistryCIDRs(array $insecureRegistryCIDRs): self
+    public function setInsecureRegistryCIDRs(?array $insecureRegistryCIDRs): self
     {
         $this->insecureRegistryCIDRs = $insecureRegistryCIDRs;
 
@@ -286,17 +286,17 @@ class RegistryServiceConfig
     }
 
     /**
-     * @return IndexInfo[]
+     * @return IndexInfo[]|null
      */
-    public function getIndexConfigs(): iterable
+    public function getIndexConfigs(): ?iterable
     {
         return $this->indexConfigs;
     }
 
     /**
-     * @param IndexInfo[] $indexConfigs
+     * @param IndexInfo[]|null $indexConfigs
      */
-    public function setIndexConfigs(iterable $indexConfigs): self
+    public function setIndexConfigs(?iterable $indexConfigs): self
     {
         $this->indexConfigs = $indexConfigs;
 
@@ -307,9 +307,9 @@ class RegistryServiceConfig
      * List of registry URLs that act as a mirror for the official.
      * (`docker.io`) registry.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getMirrors(): array
+    public function getMirrors(): ?array
     {
         return $this->mirrors;
     }
@@ -318,9 +318,9 @@ class RegistryServiceConfig
      * List of registry URLs that act as a mirror for the official.
      * (`docker.io`) registry.
      *
-     * @param string[] $mirrors
+     * @param string[]|null $mirrors
      */
-    public function setMirrors(array $mirrors): self
+    public function setMirrors(?array $mirrors): self
     {
         $this->mirrors = $mirrors;
 

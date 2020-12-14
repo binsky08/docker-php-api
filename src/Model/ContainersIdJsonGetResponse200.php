@@ -9,134 +9,134 @@ class ContainersIdJsonGetResponse200
     /**
      * The ID of the container.
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * The time the container was created.
      *
-     * @var string
+     * @var string|null
      */
     protected $created;
     /**
      * The path to the command being run.
      *
-     * @var string
+     * @var string|null
      */
     protected $path;
     /**
      * The arguments to the command being run.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $args;
     /**
      * The state of the container.
      *
-     * @var ContainersIdJsonGetResponse200State
+     * @var ContainersIdJsonGetResponse200State|null
      */
     protected $state;
     /**
      * The container's image.
      *
-     * @var string
+     * @var string|null
      */
     protected $image;
     /**
-     * @var string
+     * @var string|null
      */
     protected $resolvConfPath;
     /**
-     * @var string
+     * @var string|null
      */
     protected $hostnamePath;
     /**
-     * @var string
+     * @var string|null
      */
     protected $hostsPath;
     /**
-     * @var string
+     * @var string|null
      */
     protected $logPath;
     /**
      * TODO.
      *
-     * @var ContainersIdJsonGetResponse200Node
+     * @var ContainersIdJsonGetResponse200Node|null
      */
     protected $node;
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var int
+     * @var int|null
      */
     protected $restartCount;
     /**
-     * @var string
+     * @var string|null
      */
     protected $driver;
     /**
-     * @var string
+     * @var string|null
      */
     protected $mountLabel;
     /**
-     * @var string
+     * @var string|null
      */
     protected $processLabel;
     /**
-     * @var string
+     * @var string|null
      */
     protected $appArmorProfile;
     /**
-     * @var string
+     * @var string|null
      */
     protected $execIDs;
     /**
      * Container configuration that depends on the host we are running on.
      *
-     * @var HostConfig
+     * @var HostConfig|null
      */
     protected $hostConfig;
     /**
      * Information about a container's graph driver.
      *
-     * @var GraphDriverData
+     * @var GraphDriverData|null
      */
     protected $graphDriver;
     /**
      * The size of files that have been created or changed by this container.
      *
-     * @var int
+     * @var int|null
      */
     protected $sizeRw;
     /**
      * The total size of all the files in this container.
      *
-     * @var int
+     * @var int|null
      */
     protected $sizeRootFs;
     /**
-     * @var MountPoint[]
+     * @var MountPoint[]|null
      */
     protected $mounts;
     /**
      * Configuration for a container that is portable between hosts.
      *
-     * @var ContainerConfig
+     * @var ContainerConfig|null
      */
     protected $config;
     /**
      * NetworkSettings exposes the network settings in the API.
      *
-     * @var NetworkSettings
+     * @var NetworkSettings|null
      */
     protected $networkSettings;
 
     /**
      * The ID of the container.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -144,7 +144,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The ID of the container.
      */
-    public function setId(string $id): self
+    public function setId(?string $id): self
     {
         $this->id = $id;
 
@@ -154,7 +154,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The time the container was created.
      */
-    public function getCreated(): string
+    public function getCreated(): ?string
     {
         return $this->created;
     }
@@ -162,7 +162,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The time the container was created.
      */
-    public function setCreated(string $created): self
+    public function setCreated(?string $created): self
     {
         $this->created = $created;
 
@@ -172,7 +172,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The path to the command being run.
      */
-    public function getPath(): string
+    public function getPath(): ?string
     {
         return $this->path;
     }
@@ -180,7 +180,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The path to the command being run.
      */
-    public function setPath(string $path): self
+    public function setPath(?string $path): self
     {
         $this->path = $path;
 
@@ -190,9 +190,9 @@ class ContainersIdJsonGetResponse200
     /**
      * The arguments to the command being run.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getArgs(): array
+    public function getArgs(): ?array
     {
         return $this->args;
     }
@@ -200,9 +200,9 @@ class ContainersIdJsonGetResponse200
     /**
      * The arguments to the command being run.
      *
-     * @param string[] $args
+     * @param string[]|null $args
      */
-    public function setArgs(array $args): self
+    public function setArgs(?array $args): self
     {
         $this->args = $args;
 
@@ -212,7 +212,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The state of the container.
      */
-    public function getState(): ContainersIdJsonGetResponse200State
+    public function getState(): ?ContainersIdJsonGetResponse200State
     {
         return $this->state;
     }
@@ -220,7 +220,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The state of the container.
      */
-    public function setState(ContainersIdJsonGetResponse200State $state): self
+    public function setState(?ContainersIdJsonGetResponse200State $state): self
     {
         $this->state = $state;
 
@@ -230,7 +230,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The container's image.
      */
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->image;
     }
@@ -238,55 +238,55 @@ class ContainersIdJsonGetResponse200
     /**
      * The container's image.
      */
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
         return $this;
     }
 
-    public function getResolvConfPath(): string
+    public function getResolvConfPath(): ?string
     {
         return $this->resolvConfPath;
     }
 
-    public function setResolvConfPath(string $resolvConfPath): self
+    public function setResolvConfPath(?string $resolvConfPath): self
     {
         $this->resolvConfPath = $resolvConfPath;
 
         return $this;
     }
 
-    public function getHostnamePath(): string
+    public function getHostnamePath(): ?string
     {
         return $this->hostnamePath;
     }
 
-    public function setHostnamePath(string $hostnamePath): self
+    public function setHostnamePath(?string $hostnamePath): self
     {
         $this->hostnamePath = $hostnamePath;
 
         return $this;
     }
 
-    public function getHostsPath(): string
+    public function getHostsPath(): ?string
     {
         return $this->hostsPath;
     }
 
-    public function setHostsPath(string $hostsPath): self
+    public function setHostsPath(?string $hostsPath): self
     {
         $this->hostsPath = $hostsPath;
 
         return $this;
     }
 
-    public function getLogPath(): string
+    public function getLogPath(): ?string
     {
         return $this->logPath;
     }
 
-    public function setLogPath(string $logPath): self
+    public function setLogPath(?string $logPath): self
     {
         $this->logPath = $logPath;
 
@@ -296,7 +296,7 @@ class ContainersIdJsonGetResponse200
     /**
      * TODO.
      */
-    public function getNode(): ContainersIdJsonGetResponse200Node
+    public function getNode(): ?ContainersIdJsonGetResponse200Node
     {
         return $this->node;
     }
@@ -304,91 +304,91 @@ class ContainersIdJsonGetResponse200
     /**
      * TODO.
      */
-    public function setNode(ContainersIdJsonGetResponse200Node $node): self
+    public function setNode(?ContainersIdJsonGetResponse200Node $node): self
     {
         $this->node = $node;
 
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getRestartCount(): int
+    public function getRestartCount(): ?int
     {
         return $this->restartCount;
     }
 
-    public function setRestartCount(int $restartCount): self
+    public function setRestartCount(?int $restartCount): self
     {
         $this->restartCount = $restartCount;
 
         return $this;
     }
 
-    public function getDriver(): string
+    public function getDriver(): ?string
     {
         return $this->driver;
     }
 
-    public function setDriver(string $driver): self
+    public function setDriver(?string $driver): self
     {
         $this->driver = $driver;
 
         return $this;
     }
 
-    public function getMountLabel(): string
+    public function getMountLabel(): ?string
     {
         return $this->mountLabel;
     }
 
-    public function setMountLabel(string $mountLabel): self
+    public function setMountLabel(?string $mountLabel): self
     {
         $this->mountLabel = $mountLabel;
 
         return $this;
     }
 
-    public function getProcessLabel(): string
+    public function getProcessLabel(): ?string
     {
         return $this->processLabel;
     }
 
-    public function setProcessLabel(string $processLabel): self
+    public function setProcessLabel(?string $processLabel): self
     {
         $this->processLabel = $processLabel;
 
         return $this;
     }
 
-    public function getAppArmorProfile(): string
+    public function getAppArmorProfile(): ?string
     {
         return $this->appArmorProfile;
     }
 
-    public function setAppArmorProfile(string $appArmorProfile): self
+    public function setAppArmorProfile(?string $appArmorProfile): self
     {
         $this->appArmorProfile = $appArmorProfile;
 
         return $this;
     }
 
-    public function getExecIDs(): string
+    public function getExecIDs(): ?string
     {
         return $this->execIDs;
     }
 
-    public function setExecIDs(string $execIDs): self
+    public function setExecIDs(?string $execIDs): self
     {
         $this->execIDs = $execIDs;
 
@@ -398,7 +398,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Container configuration that depends on the host we are running on.
      */
-    public function getHostConfig(): HostConfig
+    public function getHostConfig(): ?HostConfig
     {
         return $this->hostConfig;
     }
@@ -406,7 +406,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Container configuration that depends on the host we are running on.
      */
-    public function setHostConfig(HostConfig $hostConfig): self
+    public function setHostConfig(?HostConfig $hostConfig): self
     {
         $this->hostConfig = $hostConfig;
 
@@ -416,7 +416,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Information about a container's graph driver.
      */
-    public function getGraphDriver(): GraphDriverData
+    public function getGraphDriver(): ?GraphDriverData
     {
         return $this->graphDriver;
     }
@@ -424,7 +424,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Information about a container's graph driver.
      */
-    public function setGraphDriver(GraphDriverData $graphDriver): self
+    public function setGraphDriver(?GraphDriverData $graphDriver): self
     {
         $this->graphDriver = $graphDriver;
 
@@ -434,7 +434,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The size of files that have been created or changed by this container.
      */
-    public function getSizeRw(): int
+    public function getSizeRw(): ?int
     {
         return $this->sizeRw;
     }
@@ -442,7 +442,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The size of files that have been created or changed by this container.
      */
-    public function setSizeRw(int $sizeRw): self
+    public function setSizeRw(?int $sizeRw): self
     {
         $this->sizeRw = $sizeRw;
 
@@ -452,7 +452,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The total size of all the files in this container.
      */
-    public function getSizeRootFs(): int
+    public function getSizeRootFs(): ?int
     {
         return $this->sizeRootFs;
     }
@@ -460,7 +460,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The total size of all the files in this container.
      */
-    public function setSizeRootFs(int $sizeRootFs): self
+    public function setSizeRootFs(?int $sizeRootFs): self
     {
         $this->sizeRootFs = $sizeRootFs;
 
@@ -468,17 +468,17 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return MountPoint[]
+     * @return MountPoint[]|null
      */
-    public function getMounts(): array
+    public function getMounts(): ?array
     {
         return $this->mounts;
     }
 
     /**
-     * @param MountPoint[] $mounts
+     * @param MountPoint[]|null $mounts
      */
-    public function setMounts(array $mounts): self
+    public function setMounts(?array $mounts): self
     {
         $this->mounts = $mounts;
 
@@ -488,7 +488,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Configuration for a container that is portable between hosts.
      */
-    public function getConfig(): ContainerConfig
+    public function getConfig(): ?ContainerConfig
     {
         return $this->config;
     }
@@ -496,7 +496,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Configuration for a container that is portable between hosts.
      */
-    public function setConfig(ContainerConfig $config): self
+    public function setConfig(?ContainerConfig $config): self
     {
         $this->config = $config;
 
@@ -506,7 +506,7 @@ class ContainersIdJsonGetResponse200
     /**
      * NetworkSettings exposes the network settings in the API.
      */
-    public function getNetworkSettings(): NetworkSettings
+    public function getNetworkSettings(): ?NetworkSettings
     {
         return $this->networkSettings;
     }
@@ -514,7 +514,7 @@ class ContainersIdJsonGetResponse200
     /**
      * NetworkSettings exposes the network settings in the API.
      */
-    public function setNetworkSettings(NetworkSettings $networkSettings): self
+    public function setNetworkSettings(?NetworkSettings $networkSettings): self
     {
         $this->networkSettings = $networkSettings;
 

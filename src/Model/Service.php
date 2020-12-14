@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class Service
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $iD;
     /**
@@ -19,40 +19,40 @@ class Service
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      *
-     * @var ObjectVersion
+     * @var ObjectVersion|null
      */
     protected $version;
     /**
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
-     * @var string
+     * @var string|null
      */
     protected $updatedAt;
     /**
      * User modifiable configuration for a service.
      *
-     * @var ServiceSpec
+     * @var ServiceSpec|null
      */
     protected $spec;
     /**
-     * @var ServiceEndpoint
+     * @var ServiceEndpoint|null
      */
     protected $endpoint;
     /**
      * The status of a service update.
      *
-     * @var ServiceUpdateStatus
+     * @var ServiceUpdateStatus|null
      */
     protected $updateStatus;
 
-    public function getID(): string
+    public function getID(): ?string
     {
         return $this->iD;
     }
 
-    public function setID(string $iD): self
+    public function setID(?string $iD): self
     {
         $this->iD = $iD;
 
@@ -68,7 +68,7 @@ class Service
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function getVersion(): ObjectVersion
+    public function getVersion(): ?ObjectVersion
     {
         return $this->version;
     }
@@ -82,31 +82,31 @@ class Service
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function setVersion(ObjectVersion $version): self
+    public function setVersion(?ObjectVersion $version): self
     {
         $this->version = $version;
 
         return $this;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(string $createdAt): self
+    public function setCreatedAt(?string $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(string $updatedAt): self
+    public function setUpdatedAt(?string $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -116,7 +116,7 @@ class Service
     /**
      * User modifiable configuration for a service.
      */
-    public function getSpec(): ServiceSpec
+    public function getSpec(): ?ServiceSpec
     {
         return $this->spec;
     }
@@ -124,19 +124,19 @@ class Service
     /**
      * User modifiable configuration for a service.
      */
-    public function setSpec(ServiceSpec $spec): self
+    public function setSpec(?ServiceSpec $spec): self
     {
         $this->spec = $spec;
 
         return $this;
     }
 
-    public function getEndpoint(): ServiceEndpoint
+    public function getEndpoint(): ?ServiceEndpoint
     {
         return $this->endpoint;
     }
 
-    public function setEndpoint(ServiceEndpoint $endpoint): self
+    public function setEndpoint(?ServiceEndpoint $endpoint): self
     {
         $this->endpoint = $endpoint;
 
@@ -146,7 +146,7 @@ class Service
     /**
      * The status of a service update.
      */
-    public function getUpdateStatus(): ServiceUpdateStatus
+    public function getUpdateStatus(): ?ServiceUpdateStatus
     {
         return $this->updateStatus;
     }
@@ -154,7 +154,7 @@ class Service
     /**
      * The status of a service update.
      */
-    public function setUpdateStatus(ServiceUpdateStatus $updateStatus): self
+    public function setUpdateStatus(?ServiceUpdateStatus $updateStatus): self
     {
         $this->updateStatus = $updateStatus;
 

@@ -41,18 +41,24 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('NanoCPUs', $data)) {
+        if (\array_key_exists('NanoCPUs', $data) && null !== $data['NanoCPUs']) {
             $object->setNanoCPUs($data['NanoCPUs']);
+        } elseif (\array_key_exists('NanoCPUs', $data) && null === $data['NanoCPUs']) {
+            $object->setNanoCPUs(null);
         }
-        if (\array_key_exists('MemoryBytes', $data)) {
+        if (\array_key_exists('MemoryBytes', $data) && null !== $data['MemoryBytes']) {
             $object->setMemoryBytes($data['MemoryBytes']);
+        } elseif (\array_key_exists('MemoryBytes', $data) && null === $data['MemoryBytes']) {
+            $object->setMemoryBytes(null);
         }
-        if (\array_key_exists('GenericResources', $data)) {
+        if (\array_key_exists('GenericResources', $data) && null !== $data['GenericResources']) {
             $values = [];
             foreach ($data['GenericResources'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\GenericResourcesItem', 'json', $context);
             }
             $object->setGenericResources($values);
+        } elseif (\array_key_exists('GenericResources', $data) && null === $data['GenericResources']) {
+            $object->setGenericResources(null);
         }
 
         return $object;

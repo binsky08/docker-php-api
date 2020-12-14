@@ -9,20 +9,20 @@ class ExecIdStartPostBody
     /**
      * Detach from the command.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $detach;
     /**
      * Allocate a pseudo-TTY.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $tty;
 
     /**
      * Detach from the command.
      */
-    public function getDetach(): bool
+    public function getDetach(): ?bool
     {
         return $this->detach;
     }
@@ -30,7 +30,7 @@ class ExecIdStartPostBody
     /**
      * Detach from the command.
      */
-    public function setDetach(bool $detach): self
+    public function setDetach(?bool $detach): self
     {
         $this->detach = $detach;
 
@@ -40,7 +40,7 @@ class ExecIdStartPostBody
     /**
      * Allocate a pseudo-TTY.
      */
-    public function getTty(): bool
+    public function getTty(): ?bool
     {
         return $this->tty;
     }
@@ -48,7 +48,7 @@ class ExecIdStartPostBody
     /**
      * Allocate a pseudo-TTY.
      */
-    public function setTty(bool $tty): self
+    public function setTty(?bool $tty): self
     {
         $this->tty = $tty;
 

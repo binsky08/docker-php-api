@@ -41,8 +41,10 @@ class SwarmSpecDispatcherNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('HeartbeatPeriod', $data)) {
+        if (\array_key_exists('HeartbeatPeriod', $data) && null !== $data['HeartbeatPeriod']) {
             $object->setHeartbeatPeriod($data['HeartbeatPeriod']);
+        } elseif (\array_key_exists('HeartbeatPeriod', $data) && null === $data['HeartbeatPeriod']) {
+            $object->setHeartbeatPeriod(null);
         }
 
         return $object;

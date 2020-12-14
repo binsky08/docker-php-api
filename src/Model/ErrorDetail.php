@@ -7,32 +7,32 @@ namespace Docker\API\Model;
 class ErrorDetail
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $code;
     /**
-     * @var string
+     * @var string|null
      */
     protected $message;
 
-    public function getCode(): int
+    public function getCode(): ?int
     {
         return $this->code;
     }
 
-    public function setCode(int $code): self
+    public function setCode(?int $code): self
     {
         $this->code = $code;
 
         return $this;
     }
 
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
-    public function setMessage(string $message): self
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 

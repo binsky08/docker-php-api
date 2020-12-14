@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class Config
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $iD;
     /**
@@ -19,28 +19,28 @@ class Config
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      *
-     * @var ObjectVersion
+     * @var ObjectVersion|null
      */
     protected $version;
     /**
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
-     * @var string
+     * @var string|null
      */
     protected $updatedAt;
     /**
-     * @var ConfigSpec
+     * @var ConfigSpec|null
      */
     protected $spec;
 
-    public function getID(): string
+    public function getID(): ?string
     {
         return $this->iD;
     }
 
-    public function setID(string $iD): self
+    public function setID(?string $iD): self
     {
         $this->iD = $iD;
 
@@ -56,7 +56,7 @@ class Config
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function getVersion(): ObjectVersion
+    public function getVersion(): ?ObjectVersion
     {
         return $this->version;
     }
@@ -70,43 +70,43 @@ class Config
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function setVersion(ObjectVersion $version): self
+    public function setVersion(?ObjectVersion $version): self
     {
         $this->version = $version;
 
         return $this;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(string $createdAt): self
+    public function setCreatedAt(?string $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(string $updatedAt): self
+    public function setUpdatedAt(?string $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    public function getSpec(): ConfigSpec
+    public function getSpec(): ?ConfigSpec
     {
         return $this->spec;
     }
 
-    public function setSpec(ConfigSpec $spec): self
+    public function setSpec(?ConfigSpec $spec): self
     {
         $this->spec = $spec;
 

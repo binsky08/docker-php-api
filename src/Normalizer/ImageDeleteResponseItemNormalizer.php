@@ -41,11 +41,15 @@ class ImageDeleteResponseItemNormalizer implements DenormalizerInterface, Normal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Untagged', $data)) {
+        if (\array_key_exists('Untagged', $data) && null !== $data['Untagged']) {
             $object->setUntagged($data['Untagged']);
+        } elseif (\array_key_exists('Untagged', $data) && null === $data['Untagged']) {
+            $object->setUntagged(null);
         }
-        if (\array_key_exists('Deleted', $data)) {
+        if (\array_key_exists('Deleted', $data) && null !== $data['Deleted']) {
             $object->setDeleted($data['Deleted']);
+        } elseif (\array_key_exists('Deleted', $data) && null === $data['Deleted']) {
+            $object->setDeleted(null);
         }
 
         return $object;

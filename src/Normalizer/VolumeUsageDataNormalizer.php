@@ -41,11 +41,15 @@ class VolumeUsageDataNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Size', $data)) {
+        if (\array_key_exists('Size', $data) && null !== $data['Size']) {
             $object->setSize($data['Size']);
+        } elseif (\array_key_exists('Size', $data) && null === $data['Size']) {
+            $object->setSize(null);
         }
-        if (\array_key_exists('RefCount', $data)) {
+        if (\array_key_exists('RefCount', $data) && null !== $data['RefCount']) {
             $object->setRefCount($data['RefCount']);
+        } elseif (\array_key_exists('RefCount', $data) && null === $data['RefCount']) {
+            $object->setRefCount(null);
         }
 
         return $object;

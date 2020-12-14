@@ -9,94 +9,94 @@ class ContainerSummaryItem
     /**
      * The ID of this container.
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
      * The names that this container has been given.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $names;
     /**
      * The name of the image used when creating this container.
      *
-     * @var string
+     * @var string|null
      */
     protected $image;
     /**
      * The ID of the image that this container was created from.
      *
-     * @var string
+     * @var string|null
      */
     protected $imageID;
     /**
      * Command to run when starting the container.
      *
-     * @var string
+     * @var string|null
      */
     protected $command;
     /**
      * When the container was created.
      *
-     * @var int
+     * @var int|null
      */
     protected $created;
     /**
      * The ports exposed by this container.
      *
-     * @var Port[]
+     * @var Port[]|null
      */
     protected $ports;
     /**
      * The size of files that have been created or changed by this container.
      *
-     * @var int
+     * @var int|null
      */
     protected $sizeRw;
     /**
      * The total size of all the files in this container.
      *
-     * @var int
+     * @var int|null
      */
     protected $sizeRootFs;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
      * The state of this container (e.g. `Exited`).
      *
-     * @var string
+     * @var string|null
      */
     protected $state;
     /**
      * Additional human-readable status of this container (e.g. `Exit 0`).
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
-     * @var ContainerSummaryItemHostConfig
+     * @var ContainerSummaryItemHostConfig|null
      */
     protected $hostConfig;
     /**
      * A summary of the container's network settings.
      *
-     * @var ContainerSummaryItemNetworkSettings
+     * @var ContainerSummaryItemNetworkSettings|null
      */
     protected $networkSettings;
     /**
-     * @var Mount[]
+     * @var Mount[]|null
      */
     protected $mounts;
 
     /**
      * The ID of this container.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -104,7 +104,7 @@ class ContainerSummaryItem
     /**
      * The ID of this container.
      */
-    public function setId(string $id): self
+    public function setId(?string $id): self
     {
         $this->id = $id;
 
@@ -114,9 +114,9 @@ class ContainerSummaryItem
     /**
      * The names that this container has been given.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getNames(): array
+    public function getNames(): ?array
     {
         return $this->names;
     }
@@ -124,9 +124,9 @@ class ContainerSummaryItem
     /**
      * The names that this container has been given.
      *
-     * @param string[] $names
+     * @param string[]|null $names
      */
-    public function setNames(array $names): self
+    public function setNames(?array $names): self
     {
         $this->names = $names;
 
@@ -136,7 +136,7 @@ class ContainerSummaryItem
     /**
      * The name of the image used when creating this container.
      */
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->image;
     }
@@ -144,7 +144,7 @@ class ContainerSummaryItem
     /**
      * The name of the image used when creating this container.
      */
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -154,7 +154,7 @@ class ContainerSummaryItem
     /**
      * The ID of the image that this container was created from.
      */
-    public function getImageID(): string
+    public function getImageID(): ?string
     {
         return $this->imageID;
     }
@@ -162,7 +162,7 @@ class ContainerSummaryItem
     /**
      * The ID of the image that this container was created from.
      */
-    public function setImageID(string $imageID): self
+    public function setImageID(?string $imageID): self
     {
         $this->imageID = $imageID;
 
@@ -172,7 +172,7 @@ class ContainerSummaryItem
     /**
      * Command to run when starting the container.
      */
-    public function getCommand(): string
+    public function getCommand(): ?string
     {
         return $this->command;
     }
@@ -180,7 +180,7 @@ class ContainerSummaryItem
     /**
      * Command to run when starting the container.
      */
-    public function setCommand(string $command): self
+    public function setCommand(?string $command): self
     {
         $this->command = $command;
 
@@ -190,7 +190,7 @@ class ContainerSummaryItem
     /**
      * When the container was created.
      */
-    public function getCreated(): int
+    public function getCreated(): ?int
     {
         return $this->created;
     }
@@ -198,7 +198,7 @@ class ContainerSummaryItem
     /**
      * When the container was created.
      */
-    public function setCreated(int $created): self
+    public function setCreated(?int $created): self
     {
         $this->created = $created;
 
@@ -208,9 +208,9 @@ class ContainerSummaryItem
     /**
      * The ports exposed by this container.
      *
-     * @return Port[]
+     * @return Port[]|null
      */
-    public function getPorts(): array
+    public function getPorts(): ?array
     {
         return $this->ports;
     }
@@ -218,9 +218,9 @@ class ContainerSummaryItem
     /**
      * The ports exposed by this container.
      *
-     * @param Port[] $ports
+     * @param Port[]|null $ports
      */
-    public function setPorts(array $ports): self
+    public function setPorts(?array $ports): self
     {
         $this->ports = $ports;
 
@@ -230,7 +230,7 @@ class ContainerSummaryItem
     /**
      * The size of files that have been created or changed by this container.
      */
-    public function getSizeRw(): int
+    public function getSizeRw(): ?int
     {
         return $this->sizeRw;
     }
@@ -238,7 +238,7 @@ class ContainerSummaryItem
     /**
      * The size of files that have been created or changed by this container.
      */
-    public function setSizeRw(int $sizeRw): self
+    public function setSizeRw(?int $sizeRw): self
     {
         $this->sizeRw = $sizeRw;
 
@@ -248,7 +248,7 @@ class ContainerSummaryItem
     /**
      * The total size of all the files in this container.
      */
-    public function getSizeRootFs(): int
+    public function getSizeRootFs(): ?int
     {
         return $this->sizeRootFs;
     }
@@ -256,7 +256,7 @@ class ContainerSummaryItem
     /**
      * The total size of all the files in this container.
      */
-    public function setSizeRootFs(int $sizeRootFs): self
+    public function setSizeRootFs(?int $sizeRootFs): self
     {
         $this->sizeRootFs = $sizeRootFs;
 
@@ -266,9 +266,9 @@ class ContainerSummaryItem
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -276,9 +276,9 @@ class ContainerSummaryItem
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -288,7 +288,7 @@ class ContainerSummaryItem
     /**
      * The state of this container (e.g. `Exited`).
      */
-    public function getState(): string
+    public function getState(): ?string
     {
         return $this->state;
     }
@@ -296,7 +296,7 @@ class ContainerSummaryItem
     /**
      * The state of this container (e.g. `Exited`).
      */
-    public function setState(string $state): self
+    public function setState(?string $state): self
     {
         $this->state = $state;
 
@@ -306,7 +306,7 @@ class ContainerSummaryItem
     /**
      * Additional human-readable status of this container (e.g. `Exit 0`).
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -314,19 +314,19 @@ class ContainerSummaryItem
     /**
      * Additional human-readable status of this container (e.g. `Exit 0`).
      */
-    public function setStatus(string $status): self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    public function getHostConfig(): ContainerSummaryItemHostConfig
+    public function getHostConfig(): ?ContainerSummaryItemHostConfig
     {
         return $this->hostConfig;
     }
 
-    public function setHostConfig(ContainerSummaryItemHostConfig $hostConfig): self
+    public function setHostConfig(?ContainerSummaryItemHostConfig $hostConfig): self
     {
         $this->hostConfig = $hostConfig;
 
@@ -336,7 +336,7 @@ class ContainerSummaryItem
     /**
      * A summary of the container's network settings.
      */
-    public function getNetworkSettings(): ContainerSummaryItemNetworkSettings
+    public function getNetworkSettings(): ?ContainerSummaryItemNetworkSettings
     {
         return $this->networkSettings;
     }
@@ -344,7 +344,7 @@ class ContainerSummaryItem
     /**
      * A summary of the container's network settings.
      */
-    public function setNetworkSettings(ContainerSummaryItemNetworkSettings $networkSettings): self
+    public function setNetworkSettings(?ContainerSummaryItemNetworkSettings $networkSettings): self
     {
         $this->networkSettings = $networkSettings;
 
@@ -352,17 +352,17 @@ class ContainerSummaryItem
     }
 
     /**
-     * @return Mount[]
+     * @return Mount[]|null
      */
-    public function getMounts(): array
+    public function getMounts(): ?array
     {
         return $this->mounts;
     }
 
     /**
-     * @param Mount[] $mounts
+     * @param Mount[]|null $mounts
      */
-    public function setMounts(array $mounts): self
+    public function setMounts(?array $mounts): self
     {
         $this->mounts = $mounts;
 

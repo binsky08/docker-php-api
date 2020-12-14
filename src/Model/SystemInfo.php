@@ -14,31 +14,31 @@ class SystemInfo
      * > **Note**: The format of the ID itself is not part of the API, and
      * > should not be considered stable.
      *
-     * @var string
+     * @var string|null
      */
     protected $iD;
     /**
      * Total number of containers on the host.
      *
-     * @var int
+     * @var int|null
      */
     protected $containers;
     /**
      * Number of containers with status `"running"`.
      *
-     * @var int
+     * @var int|null
      */
     protected $containersRunning;
     /**
      * Number of containers with status `"paused"`.
      *
-     * @var int
+     * @var int|null
      */
     protected $containersPaused;
     /**
      * Number of containers with status `"stopped"`.
      *
-     * @var int
+     * @var int|null
      */
     protected $containersStopped;
     /**
@@ -46,13 +46,13 @@ class SystemInfo
      *
      * Both _tagged_ and _untagged_ (dangling) images are counted.
      *
-     * @var int
+     * @var int|null
      */
     protected $images;
     /**
      * Name of the storage driver in use.
      *
-     * @var string
+     * @var string|null
      */
     protected $driver;
     /**
@@ -69,7 +69,7 @@ class SystemInfo
      * > formatting of values and labels, should not be considered stable,
      * > and may change without notice.
      *
-     * @var string[][]
+     * @var string[][]|null
      */
     protected $driverStatus;
     /**
@@ -78,7 +78,7 @@ class SystemInfo
      * Defaults to `/var/lib/docker` on Linux, and `C:\ProgramData\docker`
      * on Windows.
      *
-     * @var string
+     * @var string|null
      */
     protected $dockerRootDir;
     /**
@@ -90,7 +90,7 @@ class SystemInfo
      * > by the Swarm standalone API, and is empty (`null`) when using
      * > built-in swarm mode.
      *
-     * @var string[][]
+     * @var string[][]|null
      */
     protected $systemStatus;
     /**
@@ -102,43 +102,43 @@ class SystemInfo
      * > V1 plugins are "lazily" loaded, and are not returned in this list
      * > if there is no resource using the plugin.
      *
-     * @var PluginsInfo
+     * @var PluginsInfo|null
      */
     protected $plugins;
     /**
      * Indicates if the host has memory limit support enabled.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $memoryLimit;
     /**
      * Indicates if the host has memory swap limit support enabled.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $swapLimit;
     /**
      * Indicates if the host has kernel memory limit support enabled.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $kernelMemory;
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by the host.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $cpuCfsPeriod;
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by the host.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $cpuCfsQuota;
     /**
      * Indicates if CPU Shares limiting is supported by the host.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $cPUShares;
     /**
@@ -146,37 +146,37 @@ class SystemInfo
      *
      * See [cpuset(7)](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $cPUSet;
     /**
      * Indicates if OOM killer disable is supported on the host.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $oomKillDisable;
     /**
      * Indicates IPv4 forwarding is enabled.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $iPv4Forwarding;
     /**
      * Indicates if `bridge-nf-call-iptables` is available on the host.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $bridgeNfIptables;
     /**
      * Indicates if `bridge-nf-call-ip6tables` is available on the host.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $bridgeNfIp6tables;
     /**
      * Indicates if the daemon is running in debug-mode / with debug-level logging enabled.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $debug;
     /**
@@ -184,7 +184,7 @@ class SystemInfo
      *
      * This information is only returned if debug-mode is enabled.
      *
-     * @var int
+     * @var int|null
      */
     protected $nFd;
     /**
@@ -192,32 +192,32 @@ class SystemInfo
      *
      * This information is only returned if debug-mode is enabled.
      *
-     * @var int
+     * @var int|null
      */
     protected $nGoroutines;
     /**
      * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt).
      * format with nano-seconds.
      *
-     * @var string
+     * @var string|null
      */
     protected $systemTime;
     /**
      * The logging driver to use as a default for new containers.
      *
-     * @var string
+     * @var string|null
      */
     protected $loggingDriver;
     /**
      * The driver to use for managing cgroups.
      *
-     * @var string
+     * @var string|null
      */
     protected $cgroupDriver = 'cgroupfs';
     /**
      * Number of event listeners subscribed.
      *
-     * @var int
+     * @var int|null
      */
     protected $nEventsListener;
     /**
@@ -227,14 +227,14 @@ class SystemInfo
      * information is queried from the <kbd>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\</kbd>
      * registry value, for example _"10.0 14393 (14393.1198.amd64fre.rs1_release_sec.170427-1353)"_.
      *
-     * @var string
+     * @var string|null
      */
     protected $kernelVersion;
     /**
      * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS".
      * or "Windows Server 2016 Datacenter"
      *
-     * @var string
+     * @var string|null
      */
     protected $operatingSystem;
     /**
@@ -244,7 +244,7 @@ class SystemInfo
      * Currently returned values are "linux" and "windows". A full list of
      * possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
      *
-     * @var string
+     * @var string|null
      */
     protected $oSType;
     /**
@@ -253,7 +253,7 @@ class SystemInfo
      *
      * A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
      *
-     * @var string
+     * @var string|null
      */
     protected $architecture;
     /**
@@ -263,20 +263,20 @@ class SystemInfo
      * system when the daemon starts. Changes to operating system CPU
      * allocation after the daemon is started are not reflected.
      *
-     * @var int
+     * @var int|null
      */
     protected $nCPU;
     /**
      * Total amount of physical memory available on the host, in kilobytes (kB).
      *
-     * @var int
+     * @var int|null
      */
     protected $memTotal;
     /**
      * Address / URL of the index server that is used for image search,.
      * and as a default for user authentication for Docker Hub and Docker Cloud.
      *
-     * @var string
+     * @var string|null
      */
     protected $indexServerAddress = 'https://index.docker.io/v1/';
     /**
@@ -288,7 +288,7 @@ class SystemInfo
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @var GenericResourcesItem[]
+     * @var GenericResourcesItem[]|null
      */
     protected $genericResources;
     /**
@@ -297,7 +297,7 @@ class SystemInfo
      *
      * Containers do not automatically inherit this configuration.
      *
-     * @var string
+     * @var string|null
      */
     protected $httpProxy;
     /**
@@ -306,7 +306,7 @@ class SystemInfo
      *
      * Containers do not automatically inherit this configuration.
      *
-     * @var string
+     * @var string|null
      */
     protected $httpsProxy;
     /**
@@ -316,13 +316,13 @@ class SystemInfo
      *
      * Containers do not automatically inherit this configuration.
      *
-     * @var string
+     * @var string|null
      */
     protected $noProxy;
     /**
      * Hostname of the host.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
@@ -336,13 +336,13 @@ class SystemInfo
      * > field. Node labels can be retrieved using the `/nodes/(id)` endpoint
      * > on a manager node in the Swarm.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
      * Indicates if experimental features are enabled on the daemon.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $experimentalBuild;
     /**
@@ -352,7 +352,7 @@ class SystemInfo
      * > returns the Swarm version instead of the daemon  version, for example
      * > `swarm/1.2.8`.
      *
-     * @var string
+     * @var string|null
      */
     protected $serverVersion;
     /**
@@ -368,7 +368,7 @@ class SystemInfo
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
      *
-     * @var string
+     * @var string|null
      */
     protected $clusterStore;
     /**
@@ -383,7 +383,7 @@ class SystemInfo
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
      *
-     * @var string
+     * @var string|null
      */
     protected $clusterAdvertise;
     /**
@@ -398,7 +398,7 @@ class SystemInfo
      * The default runtime is `runc`, and automatically configured. Additional
      * runtimes can be configured by the user and will be listed here.
      *
-     * @var Runtime[]
+     * @var Runtime[]|null
      */
     protected $runtimes;
     /**
@@ -406,13 +406,13 @@ class SystemInfo
      *
      * The default can be overridden per-container at create time.
      *
-     * @var string
+     * @var string|null
      */
     protected $defaultRuntime = 'runc';
     /**
      * Represents generic information about swarm.
      *
-     * @var SwarmInfo
+     * @var SwarmInfo|null
      */
     protected $swarm;
     /**
@@ -421,7 +421,7 @@ class SystemInfo
      * If enabled, containers are kept running when the daemon is shutdown
      * or upon daemon start if running containers are detected.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $liveRestoreEnabled = false;
     /**
@@ -433,7 +433,7 @@ class SystemInfo
      *
      * This option is currently not used on other platforms.
      *
-     * @var string
+     * @var string|null
      */
     protected $isolation = 'default';
     /**
@@ -442,7 +442,7 @@ class SystemInfo
      * If the path is omitted, the daemon searches the host's `$PATH` for the
      * binary and uses the first result.
      *
-     * @var string
+     * @var string|null
      */
     protected $initBinary;
     /**
@@ -450,7 +450,7 @@ class SystemInfo
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      *
-     * @var Commit
+     * @var Commit|null
      */
     protected $containerdCommit;
     /**
@@ -458,7 +458,7 @@ class SystemInfo
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      *
-     * @var Commit
+     * @var Commit|null
      */
     protected $runcCommit;
     /**
@@ -466,7 +466,7 @@ class SystemInfo
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      *
-     * @var Commit
+     * @var Commit|null
      */
     protected $initCommit;
     /**
@@ -477,7 +477,7 @@ class SystemInfo
      * be present, and are included as a comma-separated list of key/value
      * pairs.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $securityOptions;
 
@@ -489,7 +489,7 @@ class SystemInfo
      * > **Note**: The format of the ID itself is not part of the API, and
      * > should not be considered stable.
      */
-    public function getID(): string
+    public function getID(): ?string
     {
         return $this->iD;
     }
@@ -502,7 +502,7 @@ class SystemInfo
      * > **Note**: The format of the ID itself is not part of the API, and
      * > should not be considered stable.
      */
-    public function setID(string $iD): self
+    public function setID(?string $iD): self
     {
         $this->iD = $iD;
 
@@ -512,7 +512,7 @@ class SystemInfo
     /**
      * Total number of containers on the host.
      */
-    public function getContainers(): int
+    public function getContainers(): ?int
     {
         return $this->containers;
     }
@@ -520,7 +520,7 @@ class SystemInfo
     /**
      * Total number of containers on the host.
      */
-    public function setContainers(int $containers): self
+    public function setContainers(?int $containers): self
     {
         $this->containers = $containers;
 
@@ -530,7 +530,7 @@ class SystemInfo
     /**
      * Number of containers with status `"running"`.
      */
-    public function getContainersRunning(): int
+    public function getContainersRunning(): ?int
     {
         return $this->containersRunning;
     }
@@ -538,7 +538,7 @@ class SystemInfo
     /**
      * Number of containers with status `"running"`.
      */
-    public function setContainersRunning(int $containersRunning): self
+    public function setContainersRunning(?int $containersRunning): self
     {
         $this->containersRunning = $containersRunning;
 
@@ -548,7 +548,7 @@ class SystemInfo
     /**
      * Number of containers with status `"paused"`.
      */
-    public function getContainersPaused(): int
+    public function getContainersPaused(): ?int
     {
         return $this->containersPaused;
     }
@@ -556,7 +556,7 @@ class SystemInfo
     /**
      * Number of containers with status `"paused"`.
      */
-    public function setContainersPaused(int $containersPaused): self
+    public function setContainersPaused(?int $containersPaused): self
     {
         $this->containersPaused = $containersPaused;
 
@@ -566,7 +566,7 @@ class SystemInfo
     /**
      * Number of containers with status `"stopped"`.
      */
-    public function getContainersStopped(): int
+    public function getContainersStopped(): ?int
     {
         return $this->containersStopped;
     }
@@ -574,7 +574,7 @@ class SystemInfo
     /**
      * Number of containers with status `"stopped"`.
      */
-    public function setContainersStopped(int $containersStopped): self
+    public function setContainersStopped(?int $containersStopped): self
     {
         $this->containersStopped = $containersStopped;
 
@@ -586,7 +586,7 @@ class SystemInfo
      *
      * Both _tagged_ and _untagged_ (dangling) images are counted.
      */
-    public function getImages(): int
+    public function getImages(): ?int
     {
         return $this->images;
     }
@@ -596,7 +596,7 @@ class SystemInfo
      *
      * Both _tagged_ and _untagged_ (dangling) images are counted.
      */
-    public function setImages(int $images): self
+    public function setImages(?int $images): self
     {
         $this->images = $images;
 
@@ -606,7 +606,7 @@ class SystemInfo
     /**
      * Name of the storage driver in use.
      */
-    public function getDriver(): string
+    public function getDriver(): ?string
     {
         return $this->driver;
     }
@@ -614,7 +614,7 @@ class SystemInfo
     /**
      * Name of the storage driver in use.
      */
-    public function setDriver(string $driver): self
+    public function setDriver(?string $driver): self
     {
         $this->driver = $driver;
 
@@ -635,9 +635,9 @@ class SystemInfo
      * > formatting of values and labels, should not be considered stable,
      * > and may change without notice.
      *
-     * @return string[][]
+     * @return string[][]|null
      */
-    public function getDriverStatus(): array
+    public function getDriverStatus(): ?array
     {
         return $this->driverStatus;
     }
@@ -656,9 +656,9 @@ class SystemInfo
      * > formatting of values and labels, should not be considered stable,
      * > and may change without notice.
      *
-     * @param string[][] $driverStatus
+     * @param string[][]|null $driverStatus
      */
-    public function setDriverStatus(array $driverStatus): self
+    public function setDriverStatus(?array $driverStatus): self
     {
         $this->driverStatus = $driverStatus;
 
@@ -671,7 +671,7 @@ class SystemInfo
      * Defaults to `/var/lib/docker` on Linux, and `C:\ProgramData\docker`
      * on Windows.
      */
-    public function getDockerRootDir(): string
+    public function getDockerRootDir(): ?string
     {
         return $this->dockerRootDir;
     }
@@ -682,7 +682,7 @@ class SystemInfo
      * Defaults to `/var/lib/docker` on Linux, and `C:\ProgramData\docker`
      * on Windows.
      */
-    public function setDockerRootDir(string $dockerRootDir): self
+    public function setDockerRootDir(?string $dockerRootDir): self
     {
         $this->dockerRootDir = $dockerRootDir;
 
@@ -698,9 +698,9 @@ class SystemInfo
      * > by the Swarm standalone API, and is empty (`null`) when using
      * > built-in swarm mode.
      *
-     * @return string[][]
+     * @return string[][]|null
      */
-    public function getSystemStatus(): array
+    public function getSystemStatus(): ?array
     {
         return $this->systemStatus;
     }
@@ -714,9 +714,9 @@ class SystemInfo
      * > by the Swarm standalone API, and is empty (`null`) when using
      * > built-in swarm mode.
      *
-     * @param string[][] $systemStatus
+     * @param string[][]|null $systemStatus
      */
-    public function setSystemStatus(array $systemStatus): self
+    public function setSystemStatus(?array $systemStatus): self
     {
         $this->systemStatus = $systemStatus;
 
@@ -732,7 +732,7 @@ class SystemInfo
      * > V1 plugins are "lazily" loaded, and are not returned in this list
      * > if there is no resource using the plugin.
      */
-    public function getPlugins(): PluginsInfo
+    public function getPlugins(): ?PluginsInfo
     {
         return $this->plugins;
     }
@@ -746,7 +746,7 @@ class SystemInfo
      * > V1 plugins are "lazily" loaded, and are not returned in this list
      * > if there is no resource using the plugin.
      */
-    public function setPlugins(PluginsInfo $plugins): self
+    public function setPlugins(?PluginsInfo $plugins): self
     {
         $this->plugins = $plugins;
 
@@ -756,7 +756,7 @@ class SystemInfo
     /**
      * Indicates if the host has memory limit support enabled.
      */
-    public function getMemoryLimit(): bool
+    public function getMemoryLimit(): ?bool
     {
         return $this->memoryLimit;
     }
@@ -764,7 +764,7 @@ class SystemInfo
     /**
      * Indicates if the host has memory limit support enabled.
      */
-    public function setMemoryLimit(bool $memoryLimit): self
+    public function setMemoryLimit(?bool $memoryLimit): self
     {
         $this->memoryLimit = $memoryLimit;
 
@@ -774,7 +774,7 @@ class SystemInfo
     /**
      * Indicates if the host has memory swap limit support enabled.
      */
-    public function getSwapLimit(): bool
+    public function getSwapLimit(): ?bool
     {
         return $this->swapLimit;
     }
@@ -782,7 +782,7 @@ class SystemInfo
     /**
      * Indicates if the host has memory swap limit support enabled.
      */
-    public function setSwapLimit(bool $swapLimit): self
+    public function setSwapLimit(?bool $swapLimit): self
     {
         $this->swapLimit = $swapLimit;
 
@@ -792,7 +792,7 @@ class SystemInfo
     /**
      * Indicates if the host has kernel memory limit support enabled.
      */
-    public function getKernelMemory(): bool
+    public function getKernelMemory(): ?bool
     {
         return $this->kernelMemory;
     }
@@ -800,7 +800,7 @@ class SystemInfo
     /**
      * Indicates if the host has kernel memory limit support enabled.
      */
-    public function setKernelMemory(bool $kernelMemory): self
+    public function setKernelMemory(?bool $kernelMemory): self
     {
         $this->kernelMemory = $kernelMemory;
 
@@ -810,7 +810,7 @@ class SystemInfo
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by the host.
      */
-    public function getCpuCfsPeriod(): bool
+    public function getCpuCfsPeriod(): ?bool
     {
         return $this->cpuCfsPeriod;
     }
@@ -818,7 +818,7 @@ class SystemInfo
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by the host.
      */
-    public function setCpuCfsPeriod(bool $cpuCfsPeriod): self
+    public function setCpuCfsPeriod(?bool $cpuCfsPeriod): self
     {
         $this->cpuCfsPeriod = $cpuCfsPeriod;
 
@@ -828,7 +828,7 @@ class SystemInfo
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by the host.
      */
-    public function getCpuCfsQuota(): bool
+    public function getCpuCfsQuota(): ?bool
     {
         return $this->cpuCfsQuota;
     }
@@ -836,7 +836,7 @@ class SystemInfo
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by the host.
      */
-    public function setCpuCfsQuota(bool $cpuCfsQuota): self
+    public function setCpuCfsQuota(?bool $cpuCfsQuota): self
     {
         $this->cpuCfsQuota = $cpuCfsQuota;
 
@@ -846,7 +846,7 @@ class SystemInfo
     /**
      * Indicates if CPU Shares limiting is supported by the host.
      */
-    public function getCPUShares(): bool
+    public function getCPUShares(): ?bool
     {
         return $this->cPUShares;
     }
@@ -854,7 +854,7 @@ class SystemInfo
     /**
      * Indicates if CPU Shares limiting is supported by the host.
      */
-    public function setCPUShares(bool $cPUShares): self
+    public function setCPUShares(?bool $cPUShares): self
     {
         $this->cPUShares = $cPUShares;
 
@@ -866,7 +866,7 @@ class SystemInfo
      *
      * See [cpuset(7)](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt)
      */
-    public function getCPUSet(): bool
+    public function getCPUSet(): ?bool
     {
         return $this->cPUSet;
     }
@@ -876,7 +876,7 @@ class SystemInfo
      *
      * See [cpuset(7)](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt)
      */
-    public function setCPUSet(bool $cPUSet): self
+    public function setCPUSet(?bool $cPUSet): self
     {
         $this->cPUSet = $cPUSet;
 
@@ -886,7 +886,7 @@ class SystemInfo
     /**
      * Indicates if OOM killer disable is supported on the host.
      */
-    public function getOomKillDisable(): bool
+    public function getOomKillDisable(): ?bool
     {
         return $this->oomKillDisable;
     }
@@ -894,7 +894,7 @@ class SystemInfo
     /**
      * Indicates if OOM killer disable is supported on the host.
      */
-    public function setOomKillDisable(bool $oomKillDisable): self
+    public function setOomKillDisable(?bool $oomKillDisable): self
     {
         $this->oomKillDisable = $oomKillDisable;
 
@@ -904,7 +904,7 @@ class SystemInfo
     /**
      * Indicates IPv4 forwarding is enabled.
      */
-    public function getIPv4Forwarding(): bool
+    public function getIPv4Forwarding(): ?bool
     {
         return $this->iPv4Forwarding;
     }
@@ -912,7 +912,7 @@ class SystemInfo
     /**
      * Indicates IPv4 forwarding is enabled.
      */
-    public function setIPv4Forwarding(bool $iPv4Forwarding): self
+    public function setIPv4Forwarding(?bool $iPv4Forwarding): self
     {
         $this->iPv4Forwarding = $iPv4Forwarding;
 
@@ -922,7 +922,7 @@ class SystemInfo
     /**
      * Indicates if `bridge-nf-call-iptables` is available on the host.
      */
-    public function getBridgeNfIptables(): bool
+    public function getBridgeNfIptables(): ?bool
     {
         return $this->bridgeNfIptables;
     }
@@ -930,7 +930,7 @@ class SystemInfo
     /**
      * Indicates if `bridge-nf-call-iptables` is available on the host.
      */
-    public function setBridgeNfIptables(bool $bridgeNfIptables): self
+    public function setBridgeNfIptables(?bool $bridgeNfIptables): self
     {
         $this->bridgeNfIptables = $bridgeNfIptables;
 
@@ -940,7 +940,7 @@ class SystemInfo
     /**
      * Indicates if `bridge-nf-call-ip6tables` is available on the host.
      */
-    public function getBridgeNfIp6tables(): bool
+    public function getBridgeNfIp6tables(): ?bool
     {
         return $this->bridgeNfIp6tables;
     }
@@ -948,7 +948,7 @@ class SystemInfo
     /**
      * Indicates if `bridge-nf-call-ip6tables` is available on the host.
      */
-    public function setBridgeNfIp6tables(bool $bridgeNfIp6tables): self
+    public function setBridgeNfIp6tables(?bool $bridgeNfIp6tables): self
     {
         $this->bridgeNfIp6tables = $bridgeNfIp6tables;
 
@@ -958,7 +958,7 @@ class SystemInfo
     /**
      * Indicates if the daemon is running in debug-mode / with debug-level logging enabled.
      */
-    public function getDebug(): bool
+    public function getDebug(): ?bool
     {
         return $this->debug;
     }
@@ -966,7 +966,7 @@ class SystemInfo
     /**
      * Indicates if the daemon is running in debug-mode / with debug-level logging enabled.
      */
-    public function setDebug(bool $debug): self
+    public function setDebug(?bool $debug): self
     {
         $this->debug = $debug;
 
@@ -978,7 +978,7 @@ class SystemInfo
      *
      * This information is only returned if debug-mode is enabled.
      */
-    public function getNFd(): int
+    public function getNFd(): ?int
     {
         return $this->nFd;
     }
@@ -988,7 +988,7 @@ class SystemInfo
      *
      * This information is only returned if debug-mode is enabled.
      */
-    public function setNFd(int $nFd): self
+    public function setNFd(?int $nFd): self
     {
         $this->nFd = $nFd;
 
@@ -1000,7 +1000,7 @@ class SystemInfo
      *
      * This information is only returned if debug-mode is enabled.
      */
-    public function getNGoroutines(): int
+    public function getNGoroutines(): ?int
     {
         return $this->nGoroutines;
     }
@@ -1010,7 +1010,7 @@ class SystemInfo
      *
      * This information is only returned if debug-mode is enabled.
      */
-    public function setNGoroutines(int $nGoroutines): self
+    public function setNGoroutines(?int $nGoroutines): self
     {
         $this->nGoroutines = $nGoroutines;
 
@@ -1021,7 +1021,7 @@ class SystemInfo
      * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt).
      * format with nano-seconds.
      */
-    public function getSystemTime(): string
+    public function getSystemTime(): ?string
     {
         return $this->systemTime;
     }
@@ -1030,7 +1030,7 @@ class SystemInfo
      * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt).
      * format with nano-seconds.
      */
-    public function setSystemTime(string $systemTime): self
+    public function setSystemTime(?string $systemTime): self
     {
         $this->systemTime = $systemTime;
 
@@ -1040,7 +1040,7 @@ class SystemInfo
     /**
      * The logging driver to use as a default for new containers.
      */
-    public function getLoggingDriver(): string
+    public function getLoggingDriver(): ?string
     {
         return $this->loggingDriver;
     }
@@ -1048,7 +1048,7 @@ class SystemInfo
     /**
      * The logging driver to use as a default for new containers.
      */
-    public function setLoggingDriver(string $loggingDriver): self
+    public function setLoggingDriver(?string $loggingDriver): self
     {
         $this->loggingDriver = $loggingDriver;
 
@@ -1058,7 +1058,7 @@ class SystemInfo
     /**
      * The driver to use for managing cgroups.
      */
-    public function getCgroupDriver(): string
+    public function getCgroupDriver(): ?string
     {
         return $this->cgroupDriver;
     }
@@ -1066,7 +1066,7 @@ class SystemInfo
     /**
      * The driver to use for managing cgroups.
      */
-    public function setCgroupDriver(string $cgroupDriver): self
+    public function setCgroupDriver(?string $cgroupDriver): self
     {
         $this->cgroupDriver = $cgroupDriver;
 
@@ -1076,7 +1076,7 @@ class SystemInfo
     /**
      * Number of event listeners subscribed.
      */
-    public function getNEventsListener(): int
+    public function getNEventsListener(): ?int
     {
         return $this->nEventsListener;
     }
@@ -1084,7 +1084,7 @@ class SystemInfo
     /**
      * Number of event listeners subscribed.
      */
-    public function setNEventsListener(int $nEventsListener): self
+    public function setNEventsListener(?int $nEventsListener): self
     {
         $this->nEventsListener = $nEventsListener;
 
@@ -1098,7 +1098,7 @@ class SystemInfo
      * information is queried from the <kbd>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\</kbd>
      * registry value, for example _"10.0 14393 (14393.1198.amd64fre.rs1_release_sec.170427-1353)"_.
      */
-    public function getKernelVersion(): string
+    public function getKernelVersion(): ?string
     {
         return $this->kernelVersion;
     }
@@ -1110,7 +1110,7 @@ class SystemInfo
      * information is queried from the <kbd>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\</kbd>
      * registry value, for example _"10.0 14393 (14393.1198.amd64fre.rs1_release_sec.170427-1353)"_.
      */
-    public function setKernelVersion(string $kernelVersion): self
+    public function setKernelVersion(?string $kernelVersion): self
     {
         $this->kernelVersion = $kernelVersion;
 
@@ -1121,7 +1121,7 @@ class SystemInfo
      * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS".
      * or "Windows Server 2016 Datacenter"
      */
-    public function getOperatingSystem(): string
+    public function getOperatingSystem(): ?string
     {
         return $this->operatingSystem;
     }
@@ -1130,7 +1130,7 @@ class SystemInfo
      * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS".
      * or "Windows Server 2016 Datacenter"
      */
-    public function setOperatingSystem(string $operatingSystem): self
+    public function setOperatingSystem(?string $operatingSystem): self
     {
         $this->operatingSystem = $operatingSystem;
 
@@ -1144,7 +1144,7 @@ class SystemInfo
      * Currently returned values are "linux" and "windows". A full list of
      * possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
      */
-    public function getOSType(): string
+    public function getOSType(): ?string
     {
         return $this->oSType;
     }
@@ -1156,7 +1156,7 @@ class SystemInfo
      * Currently returned values are "linux" and "windows". A full list of
      * possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
      */
-    public function setOSType(string $oSType): self
+    public function setOSType(?string $oSType): self
     {
         $this->oSType = $oSType;
 
@@ -1169,7 +1169,7 @@ class SystemInfo
      *
      * A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
      */
-    public function getArchitecture(): string
+    public function getArchitecture(): ?string
     {
         return $this->architecture;
     }
@@ -1180,7 +1180,7 @@ class SystemInfo
      *
      * A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
      */
-    public function setArchitecture(string $architecture): self
+    public function setArchitecture(?string $architecture): self
     {
         $this->architecture = $architecture;
 
@@ -1194,7 +1194,7 @@ class SystemInfo
      * system when the daemon starts. Changes to operating system CPU
      * allocation after the daemon is started are not reflected.
      */
-    public function getNCPU(): int
+    public function getNCPU(): ?int
     {
         return $this->nCPU;
     }
@@ -1206,7 +1206,7 @@ class SystemInfo
      * system when the daemon starts. Changes to operating system CPU
      * allocation after the daemon is started are not reflected.
      */
-    public function setNCPU(int $nCPU): self
+    public function setNCPU(?int $nCPU): self
     {
         $this->nCPU = $nCPU;
 
@@ -1216,7 +1216,7 @@ class SystemInfo
     /**
      * Total amount of physical memory available on the host, in kilobytes (kB).
      */
-    public function getMemTotal(): int
+    public function getMemTotal(): ?int
     {
         return $this->memTotal;
     }
@@ -1224,7 +1224,7 @@ class SystemInfo
     /**
      * Total amount of physical memory available on the host, in kilobytes (kB).
      */
-    public function setMemTotal(int $memTotal): self
+    public function setMemTotal(?int $memTotal): self
     {
         $this->memTotal = $memTotal;
 
@@ -1235,7 +1235,7 @@ class SystemInfo
      * Address / URL of the index server that is used for image search,.
      * and as a default for user authentication for Docker Hub and Docker Cloud.
      */
-    public function getIndexServerAddress(): string
+    public function getIndexServerAddress(): ?string
     {
         return $this->indexServerAddress;
     }
@@ -1244,7 +1244,7 @@ class SystemInfo
      * Address / URL of the index server that is used for image search,.
      * and as a default for user authentication for Docker Hub and Docker Cloud.
      */
-    public function setIndexServerAddress(string $indexServerAddress): self
+    public function setIndexServerAddress(?string $indexServerAddress): self
     {
         $this->indexServerAddress = $indexServerAddress;
 
@@ -1272,9 +1272,9 @@ class SystemInfo
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @return GenericResourcesItem[]
+     * @return GenericResourcesItem[]|null
      */
-    public function getGenericResources(): array
+    public function getGenericResources(): ?array
     {
         return $this->genericResources;
     }
@@ -1282,9 +1282,9 @@ class SystemInfo
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @param GenericResourcesItem[] $genericResources
+     * @param GenericResourcesItem[]|null $genericResources
      */
-    public function setGenericResources(array $genericResources): self
+    public function setGenericResources(?array $genericResources): self
     {
         $this->genericResources = $genericResources;
 
@@ -1297,7 +1297,7 @@ class SystemInfo
      *
      * Containers do not automatically inherit this configuration.
      */
-    public function getHttpProxy(): string
+    public function getHttpProxy(): ?string
     {
         return $this->httpProxy;
     }
@@ -1308,7 +1308,7 @@ class SystemInfo
      *
      * Containers do not automatically inherit this configuration.
      */
-    public function setHttpProxy(string $httpProxy): self
+    public function setHttpProxy(?string $httpProxy): self
     {
         $this->httpProxy = $httpProxy;
 
@@ -1321,7 +1321,7 @@ class SystemInfo
      *
      * Containers do not automatically inherit this configuration.
      */
-    public function getHttpsProxy(): string
+    public function getHttpsProxy(): ?string
     {
         return $this->httpsProxy;
     }
@@ -1332,7 +1332,7 @@ class SystemInfo
      *
      * Containers do not automatically inherit this configuration.
      */
-    public function setHttpsProxy(string $httpsProxy): self
+    public function setHttpsProxy(?string $httpsProxy): self
     {
         $this->httpsProxy = $httpsProxy;
 
@@ -1346,7 +1346,7 @@ class SystemInfo
      *
      * Containers do not automatically inherit this configuration.
      */
-    public function getNoProxy(): string
+    public function getNoProxy(): ?string
     {
         return $this->noProxy;
     }
@@ -1358,7 +1358,7 @@ class SystemInfo
      *
      * Containers do not automatically inherit this configuration.
      */
-    public function setNoProxy(string $noProxy): self
+    public function setNoProxy(?string $noProxy): self
     {
         $this->noProxy = $noProxy;
 
@@ -1368,7 +1368,7 @@ class SystemInfo
     /**
      * Hostname of the host.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -1376,7 +1376,7 @@ class SystemInfo
     /**
      * Hostname of the host.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -1394,9 +1394,9 @@ class SystemInfo
      * > field. Node labels can be retrieved using the `/nodes/(id)` endpoint
      * > on a manager node in the Swarm.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): array
+    public function getLabels(): ?array
     {
         return $this->labels;
     }
@@ -1412,9 +1412,9 @@ class SystemInfo
      * > field. Node labels can be retrieved using the `/nodes/(id)` endpoint
      * > on a manager node in the Swarm.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(array $labels): self
+    public function setLabels(?array $labels): self
     {
         $this->labels = $labels;
 
@@ -1424,7 +1424,7 @@ class SystemInfo
     /**
      * Indicates if experimental features are enabled on the daemon.
      */
-    public function getExperimentalBuild(): bool
+    public function getExperimentalBuild(): ?bool
     {
         return $this->experimentalBuild;
     }
@@ -1432,7 +1432,7 @@ class SystemInfo
     /**
      * Indicates if experimental features are enabled on the daemon.
      */
-    public function setExperimentalBuild(bool $experimentalBuild): self
+    public function setExperimentalBuild(?bool $experimentalBuild): self
     {
         $this->experimentalBuild = $experimentalBuild;
 
@@ -1446,7 +1446,7 @@ class SystemInfo
      * > returns the Swarm version instead of the daemon  version, for example
      * > `swarm/1.2.8`.
      */
-    public function getServerVersion(): string
+    public function getServerVersion(): ?string
     {
         return $this->serverVersion;
     }
@@ -1458,7 +1458,7 @@ class SystemInfo
      * > returns the Swarm version instead of the daemon  version, for example
      * > `swarm/1.2.8`.
      */
-    public function setServerVersion(string $serverVersion): self
+    public function setServerVersion(?string $serverVersion): self
     {
         $this->serverVersion = $serverVersion;
 
@@ -1478,7 +1478,7 @@ class SystemInfo
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
      */
-    public function getClusterStore(): string
+    public function getClusterStore(): ?string
     {
         return $this->clusterStore;
     }
@@ -1496,7 +1496,7 @@ class SystemInfo
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
      */
-    public function setClusterStore(string $clusterStore): self
+    public function setClusterStore(?string $clusterStore): self
     {
         $this->clusterStore = $clusterStore;
 
@@ -1515,7 +1515,7 @@ class SystemInfo
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
      */
-    public function getClusterAdvertise(): string
+    public function getClusterAdvertise(): ?string
     {
         return $this->clusterAdvertise;
     }
@@ -1532,7 +1532,7 @@ class SystemInfo
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
      */
-    public function setClusterAdvertise(string $clusterAdvertise): self
+    public function setClusterAdvertise(?string $clusterAdvertise): self
     {
         $this->clusterAdvertise = $clusterAdvertise;
 
@@ -1551,9 +1551,9 @@ class SystemInfo
      * The default runtime is `runc`, and automatically configured. Additional
      * runtimes can be configured by the user and will be listed here.
      *
-     * @return Runtime[]
+     * @return Runtime[]|null
      */
-    public function getRuntimes(): iterable
+    public function getRuntimes(): ?iterable
     {
         return $this->runtimes;
     }
@@ -1570,9 +1570,9 @@ class SystemInfo
      * The default runtime is `runc`, and automatically configured. Additional
      * runtimes can be configured by the user and will be listed here.
      *
-     * @param Runtime[] $runtimes
+     * @param Runtime[]|null $runtimes
      */
-    public function setRuntimes(iterable $runtimes): self
+    public function setRuntimes(?iterable $runtimes): self
     {
         $this->runtimes = $runtimes;
 
@@ -1584,7 +1584,7 @@ class SystemInfo
      *
      * The default can be overridden per-container at create time.
      */
-    public function getDefaultRuntime(): string
+    public function getDefaultRuntime(): ?string
     {
         return $this->defaultRuntime;
     }
@@ -1594,7 +1594,7 @@ class SystemInfo
      *
      * The default can be overridden per-container at create time.
      */
-    public function setDefaultRuntime(string $defaultRuntime): self
+    public function setDefaultRuntime(?string $defaultRuntime): self
     {
         $this->defaultRuntime = $defaultRuntime;
 
@@ -1604,7 +1604,7 @@ class SystemInfo
     /**
      * Represents generic information about swarm.
      */
-    public function getSwarm(): SwarmInfo
+    public function getSwarm(): ?SwarmInfo
     {
         return $this->swarm;
     }
@@ -1612,7 +1612,7 @@ class SystemInfo
     /**
      * Represents generic information about swarm.
      */
-    public function setSwarm(SwarmInfo $swarm): self
+    public function setSwarm(?SwarmInfo $swarm): self
     {
         $this->swarm = $swarm;
 
@@ -1625,7 +1625,7 @@ class SystemInfo
      * If enabled, containers are kept running when the daemon is shutdown
      * or upon daemon start if running containers are detected.
      */
-    public function getLiveRestoreEnabled(): bool
+    public function getLiveRestoreEnabled(): ?bool
     {
         return $this->liveRestoreEnabled;
     }
@@ -1636,7 +1636,7 @@ class SystemInfo
      * If enabled, containers are kept running when the daemon is shutdown
      * or upon daemon start if running containers are detected.
      */
-    public function setLiveRestoreEnabled(bool $liveRestoreEnabled): self
+    public function setLiveRestoreEnabled(?bool $liveRestoreEnabled): self
     {
         $this->liveRestoreEnabled = $liveRestoreEnabled;
 
@@ -1652,7 +1652,7 @@ class SystemInfo
      *
      * This option is currently not used on other platforms.
      */
-    public function getIsolation(): string
+    public function getIsolation(): ?string
     {
         return $this->isolation;
     }
@@ -1666,7 +1666,7 @@ class SystemInfo
      *
      * This option is currently not used on other platforms.
      */
-    public function setIsolation(string $isolation): self
+    public function setIsolation(?string $isolation): self
     {
         $this->isolation = $isolation;
 
@@ -1679,7 +1679,7 @@ class SystemInfo
      * If the path is omitted, the daemon searches the host's `$PATH` for the
      * binary and uses the first result.
      */
-    public function getInitBinary(): string
+    public function getInitBinary(): ?string
     {
         return $this->initBinary;
     }
@@ -1690,7 +1690,7 @@ class SystemInfo
      * If the path is omitted, the daemon searches the host's `$PATH` for the
      * binary and uses the first result.
      */
-    public function setInitBinary(string $initBinary): self
+    public function setInitBinary(?string $initBinary): self
     {
         $this->initBinary = $initBinary;
 
@@ -1702,7 +1702,7 @@ class SystemInfo
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
-    public function getContainerdCommit(): Commit
+    public function getContainerdCommit(): ?Commit
     {
         return $this->containerdCommit;
     }
@@ -1712,7 +1712,7 @@ class SystemInfo
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
-    public function setContainerdCommit(Commit $containerdCommit): self
+    public function setContainerdCommit(?Commit $containerdCommit): self
     {
         $this->containerdCommit = $containerdCommit;
 
@@ -1724,7 +1724,7 @@ class SystemInfo
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
-    public function getRuncCommit(): Commit
+    public function getRuncCommit(): ?Commit
     {
         return $this->runcCommit;
     }
@@ -1734,7 +1734,7 @@ class SystemInfo
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
-    public function setRuncCommit(Commit $runcCommit): self
+    public function setRuncCommit(?Commit $runcCommit): self
     {
         $this->runcCommit = $runcCommit;
 
@@ -1746,7 +1746,7 @@ class SystemInfo
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
-    public function getInitCommit(): Commit
+    public function getInitCommit(): ?Commit
     {
         return $this->initCommit;
     }
@@ -1756,7 +1756,7 @@ class SystemInfo
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
-    public function setInitCommit(Commit $initCommit): self
+    public function setInitCommit(?Commit $initCommit): self
     {
         $this->initCommit = $initCommit;
 
@@ -1771,9 +1771,9 @@ class SystemInfo
      * be present, and are included as a comma-separated list of key/value
      * pairs.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getSecurityOptions(): array
+    public function getSecurityOptions(): ?array
     {
         return $this->securityOptions;
     }
@@ -1786,9 +1786,9 @@ class SystemInfo
      * be present, and are included as a comma-separated list of key/value
      * pairs.
      *
-     * @param string[] $securityOptions
+     * @param string[]|null $securityOptions
      */
-    public function setSecurityOptions(array $securityOptions): self
+    public function setSecurityOptions(?array $securityOptions): self
     {
         $this->securityOptions = $securityOptions;
 

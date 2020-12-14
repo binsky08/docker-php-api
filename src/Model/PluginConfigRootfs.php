@@ -7,20 +7,20 @@ namespace Docker\API\Model;
 class PluginConfigRootfs
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $diffIds;
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
@@ -28,17 +28,17 @@ class PluginConfigRootfs
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getDiffIds(): array
+    public function getDiffIds(): ?array
     {
         return $this->diffIds;
     }
 
     /**
-     * @param string[] $diffIds
+     * @param string[]|null $diffIds
      */
-    public function setDiffIds(array $diffIds): self
+    public function setDiffIds(?array $diffIds): self
     {
         $this->diffIds = $diffIds;
 

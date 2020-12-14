@@ -7,64 +7,64 @@ namespace Docker\API\Model;
 class PushImageInfo
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $error;
     /**
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
-     * @var string
+     * @var string|null
      */
     protected $progress;
     /**
-     * @var ProgressDetail
+     * @var ProgressDetail|null
      */
     protected $progressDetail;
 
-    public function getError(): string
+    public function getError(): ?string
     {
         return $this->error;
     }
 
-    public function setError(string $error): self
+    public function setError(?string $error): self
     {
         $this->error = $error;
 
         return $this;
     }
 
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    public function getProgress(): string
+    public function getProgress(): ?string
     {
         return $this->progress;
     }
 
-    public function setProgress(string $progress): self
+    public function setProgress(?string $progress): self
     {
         $this->progress = $progress;
 
         return $this;
     }
 
-    public function getProgressDetail(): ProgressDetail
+    public function getProgressDetail(): ?ProgressDetail
     {
         return $this->progressDetail;
     }
 
-    public function setProgressDetail(ProgressDetail $progressDetail): self
+    public function setProgressDetail(?ProgressDetail $progressDetail): self
     {
         $this->progressDetail = $progressDetail;
 

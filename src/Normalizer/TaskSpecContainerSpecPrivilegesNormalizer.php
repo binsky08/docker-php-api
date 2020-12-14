@@ -41,11 +41,15 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('CredentialSpec', $data)) {
+        if (\array_key_exists('CredentialSpec', $data) && null !== $data['CredentialSpec']) {
             $object->setCredentialSpec($this->denormalizer->denormalize($data['CredentialSpec'], 'Docker\\API\\Model\\TaskSpecContainerSpecPrivilegesCredentialSpec', 'json', $context));
+        } elseif (\array_key_exists('CredentialSpec', $data) && null === $data['CredentialSpec']) {
+            $object->setCredentialSpec(null);
         }
-        if (\array_key_exists('SELinuxContext', $data)) {
+        if (\array_key_exists('SELinuxContext', $data) && null !== $data['SELinuxContext']) {
             $object->setSELinuxContext($this->denormalizer->denormalize($data['SELinuxContext'], 'Docker\\API\\Model\\TaskSpecContainerSpecPrivilegesSELinuxContext', 'json', $context));
+        } elseif (\array_key_exists('SELinuxContext', $data) && null === $data['SELinuxContext']) {
+            $object->setSELinuxContext(null);
         }
 
         return $object;

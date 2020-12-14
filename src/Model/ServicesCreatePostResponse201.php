@@ -9,20 +9,20 @@ class ServicesCreatePostResponse201
     /**
      * The ID of the created service.
      *
-     * @var string
+     * @var string|null
      */
     protected $iD;
     /**
      * Optional warning message.
      *
-     * @var string
+     * @var string|null
      */
     protected $warning;
 
     /**
      * The ID of the created service.
      */
-    public function getID(): string
+    public function getID(): ?string
     {
         return $this->iD;
     }
@@ -30,7 +30,7 @@ class ServicesCreatePostResponse201
     /**
      * The ID of the created service.
      */
-    public function setID(string $iD): self
+    public function setID(?string $iD): self
     {
         $this->iD = $iD;
 
@@ -40,7 +40,7 @@ class ServicesCreatePostResponse201
     /**
      * Optional warning message.
      */
-    public function getWarning(): string
+    public function getWarning(): ?string
     {
         return $this->warning;
     }
@@ -48,7 +48,7 @@ class ServicesCreatePostResponse201
     /**
      * Optional warning message.
      */
-    public function setWarning(string $warning): self
+    public function setWarning(?string $warning): self
     {
         $this->warning = $warning;
 

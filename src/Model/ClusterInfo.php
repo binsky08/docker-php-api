@@ -9,7 +9,7 @@ class ClusterInfo
     /**
      * The ID of the swarm.
      *
-     * @var string
+     * @var string|null
      */
     protected $iD;
     /**
@@ -21,46 +21,46 @@ class ClusterInfo
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      *
-     * @var ObjectVersion
+     * @var ObjectVersion|null
      */
     protected $version;
     /**
      * Date and time at which the swarm was initialised in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
      * Date and time at which the swarm was last updated in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
-     * @var string
+     * @var string|null
      */
     protected $updatedAt;
     /**
      * User modifiable swarm configuration.
      *
-     * @var SwarmSpec
+     * @var SwarmSpec|null
      */
     protected $spec;
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      *
-     * @var TLSInfo
+     * @var TLSInfo|null
      */
     protected $tLSInfo;
     /**
      * Whether there is currently a root CA rotation in progress for the swarm.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $rootRotationInProgress;
 
     /**
      * The ID of the swarm.
      */
-    public function getID(): string
+    public function getID(): ?string
     {
         return $this->iD;
     }
@@ -68,7 +68,7 @@ class ClusterInfo
     /**
      * The ID of the swarm.
      */
-    public function setID(string $iD): self
+    public function setID(?string $iD): self
     {
         $this->iD = $iD;
 
@@ -84,7 +84,7 @@ class ClusterInfo
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function getVersion(): ObjectVersion
+    public function getVersion(): ?ObjectVersion
     {
         return $this->version;
     }
@@ -98,7 +98,7 @@ class ClusterInfo
      * As a result, two separate update requests that happen at the same time will not
      * unintentionally overwrite each other.
      */
-    public function setVersion(ObjectVersion $version): self
+    public function setVersion(?ObjectVersion $version): self
     {
         $this->version = $version;
 
@@ -109,7 +109,7 @@ class ClusterInfo
      * Date and time at which the swarm was initialised in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
@@ -118,7 +118,7 @@ class ClusterInfo
      * Date and time at which the swarm was initialised in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
-    public function setCreatedAt(string $createdAt): self
+    public function setCreatedAt(?string $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -129,7 +129,7 @@ class ClusterInfo
      * Date and time at which the swarm was last updated in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
@@ -138,7 +138,7 @@ class ClusterInfo
      * Date and time at which the swarm was last updated in.
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
-    public function setUpdatedAt(string $updatedAt): self
+    public function setUpdatedAt(?string $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -148,7 +148,7 @@ class ClusterInfo
     /**
      * User modifiable swarm configuration.
      */
-    public function getSpec(): SwarmSpec
+    public function getSpec(): ?SwarmSpec
     {
         return $this->spec;
     }
@@ -156,7 +156,7 @@ class ClusterInfo
     /**
      * User modifiable swarm configuration.
      */
-    public function setSpec(SwarmSpec $spec): self
+    public function setSpec(?SwarmSpec $spec): self
     {
         $this->spec = $spec;
 
@@ -166,7 +166,7 @@ class ClusterInfo
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      */
-    public function getTLSInfo(): TLSInfo
+    public function getTLSInfo(): ?TLSInfo
     {
         return $this->tLSInfo;
     }
@@ -174,7 +174,7 @@ class ClusterInfo
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      */
-    public function setTLSInfo(TLSInfo $tLSInfo): self
+    public function setTLSInfo(?TLSInfo $tLSInfo): self
     {
         $this->tLSInfo = $tLSInfo;
 
@@ -184,7 +184,7 @@ class ClusterInfo
     /**
      * Whether there is currently a root CA rotation in progress for the swarm.
      */
-    public function getRootRotationInProgress(): bool
+    public function getRootRotationInProgress(): ?bool
     {
         return $this->rootRotationInProgress;
     }
@@ -192,7 +192,7 @@ class ClusterInfo
     /**
      * Whether there is currently a root CA rotation in progress for the swarm.
      */
-    public function setRootRotationInProgress(bool $rootRotationInProgress): self
+    public function setRootRotationInProgress(?bool $rootRotationInProgress): self
     {
         $this->rootRotationInProgress = $rootRotationInProgress;
 

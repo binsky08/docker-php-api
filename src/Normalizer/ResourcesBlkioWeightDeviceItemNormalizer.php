@@ -41,11 +41,15 @@ class ResourcesBlkioWeightDeviceItemNormalizer implements DenormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Path', $data)) {
+        if (\array_key_exists('Path', $data) && null !== $data['Path']) {
             $object->setPath($data['Path']);
+        } elseif (\array_key_exists('Path', $data) && null === $data['Path']) {
+            $object->setPath(null);
         }
-        if (\array_key_exists('Weight', $data)) {
+        if (\array_key_exists('Weight', $data) && null !== $data['Weight']) {
             $object->setWeight($data['Weight']);
+        } elseif (\array_key_exists('Weight', $data) && null === $data['Weight']) {
+            $object->setWeight(null);
         }
 
         return $object;

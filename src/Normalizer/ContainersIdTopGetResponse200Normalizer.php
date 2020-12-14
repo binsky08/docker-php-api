@@ -41,14 +41,16 @@ class ContainersIdTopGetResponse200Normalizer implements DenormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Titles', $data)) {
+        if (\array_key_exists('Titles', $data) && null !== $data['Titles']) {
             $values = [];
             foreach ($data['Titles'] as $value) {
                 $values[] = $value;
             }
             $object->setTitles($values);
+        } elseif (\array_key_exists('Titles', $data) && null === $data['Titles']) {
+            $object->setTitles(null);
         }
-        if (\array_key_exists('Processes', $data)) {
+        if (\array_key_exists('Processes', $data) && null !== $data['Processes']) {
             $values_1 = [];
             foreach ($data['Processes'] as $value_1) {
                 $values_2 = [];
@@ -58,6 +60,8 @@ class ContainersIdTopGetResponse200Normalizer implements DenormalizerInterface, 
                 $values_1[] = $values_2;
             }
             $object->setProcesses($values_1);
+        } elseif (\array_key_exists('Processes', $data) && null === $data['Processes']) {
+            $object->setProcesses(null);
         }
 
         return $object;

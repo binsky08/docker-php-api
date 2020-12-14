@@ -41,11 +41,15 @@ class AddressNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Addr', $data)) {
+        if (\array_key_exists('Addr', $data) && null !== $data['Addr']) {
             $object->setAddr($data['Addr']);
+        } elseif (\array_key_exists('Addr', $data) && null === $data['Addr']) {
+            $object->setAddr(null);
         }
-        if (\array_key_exists('PrefixLen', $data)) {
+        if (\array_key_exists('PrefixLen', $data) && null !== $data['PrefixLen']) {
             $object->setPrefixLen($data['PrefixLen']);
+        } elseif (\array_key_exists('PrefixLen', $data) && null === $data['PrefixLen']) {
+            $object->setPrefixLen(null);
         }
 
         return $object;

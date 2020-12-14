@@ -41,8 +41,10 @@ class TaskSpecPlacementPreferencesItemSpreadNormalizer implements DenormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('SpreadDescriptor', $data)) {
+        if (\array_key_exists('SpreadDescriptor', $data) && null !== $data['SpreadDescriptor']) {
             $object->setSpreadDescriptor($data['SpreadDescriptor']);
+        } elseif (\array_key_exists('SpreadDescriptor', $data) && null === $data['SpreadDescriptor']) {
+            $object->setSpreadDescriptor(null);
         }
 
         return $object;

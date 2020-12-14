@@ -7,11 +7,11 @@ namespace Docker\API\Model;
 class VersionGetResponse200ComponentsItem
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $version;
     /**
@@ -19,24 +19,24 @@ class VersionGetResponse200ComponentsItem
      */
     protected $details;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getVersion(): string
+    public function getVersion(): ?string
     {
         return $this->version;
     }
 
-    public function setVersion(string $version): self
+    public function setVersion(?string $version): self
     {
         $this->version = $version;
 

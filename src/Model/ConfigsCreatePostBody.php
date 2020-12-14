@@ -9,27 +9,27 @@ class ConfigsCreatePostBody
     /**
      * User-defined name of the config.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
      * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-3.2)).
      * config data.
      *
-     * @var string
+     * @var string|null
      */
     protected $data;
 
     /**
      * User-defined name of the config.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -37,7 +37,7 @@ class ConfigsCreatePostBody
     /**
      * User-defined name of the config.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -47,9 +47,9 @@ class ConfigsCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -57,9 +57,9 @@ class ConfigsCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 
@@ -70,7 +70,7 @@ class ConfigsCreatePostBody
      * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-3.2)).
      * config data.
      */
-    public function getData(): string
+    public function getData(): ?string
     {
         return $this->data;
     }
@@ -79,7 +79,7 @@ class ConfigsCreatePostBody
      * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-3.2)).
      * config data.
      */
-    public function setData(string $data): self
+    public function setData(?string $data): self
     {
         $this->data = $data;
 

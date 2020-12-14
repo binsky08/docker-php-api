@@ -41,11 +41,15 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ID', $data)) {
+        if (\array_key_exists('ID', $data) && null !== $data['ID']) {
             $object->setID($data['ID']);
+        } elseif (\array_key_exists('ID', $data) && null === $data['ID']) {
+            $object->setID(null);
         }
-        if (\array_key_exists('Expected', $data)) {
+        if (\array_key_exists('Expected', $data) && null !== $data['Expected']) {
             $object->setExpected($data['Expected']);
+        } elseif (\array_key_exists('Expected', $data) && null === $data['Expected']) {
+            $object->setExpected(null);
         }
 
         return $object;

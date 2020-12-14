@@ -41,25 +41,33 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Driver', $data)) {
+        if (\array_key_exists('Driver', $data) && null !== $data['Driver']) {
             $object->setDriver($data['Driver']);
+        } elseif (\array_key_exists('Driver', $data) && null === $data['Driver']) {
+            $object->setDriver(null);
         }
-        if (\array_key_exists('DriverOpts', $data)) {
+        if (\array_key_exists('DriverOpts', $data) && null !== $data['DriverOpts']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['DriverOpts'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setDriverOpts($values);
+        } elseif (\array_key_exists('DriverOpts', $data) && null === $data['DriverOpts']) {
+            $object->setDriverOpts(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $object->setLabels($values_1);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
 
         return $object;

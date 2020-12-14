@@ -9,66 +9,66 @@ class NetworksCreatePostBody
     /**
      * The network's name.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * Check for networks with duplicate names. Since Network is primarily keyed based on a random ID and not on the name, and network name is strictly a user-friendly alias to the network which is uniquely identified using ID, there is no guaranteed way to check for duplicates. CheckDuplicate is there to provide a best effort checking of any networks which has the same name but it is not guaranteed to catch all name collisions.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $checkDuplicate;
     /**
      * Name of the network driver plugin to use.
      *
-     * @var string
+     * @var string|null
      */
     protected $driver = 'bridge';
     /**
      * Restrict external access to the network.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $internal;
     /**
      * Globally scoped network is manually attachable by regular containers from workers in swarm mode.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $attachable;
     /**
      * Ingress network is the network which provides the routing-mesh in swarm mode.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $ingress;
     /**
-     * @var IPAM
+     * @var IPAM|null
      */
     protected $iPAM;
     /**
      * Enable IPv6 on the network.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $enableIPv6;
     /**
      * Network specific options to be used by the drivers.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $options;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
 
     /**
      * The network's name.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -76,7 +76,7 @@ class NetworksCreatePostBody
     /**
      * The network's name.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -86,7 +86,7 @@ class NetworksCreatePostBody
     /**
      * Check for networks with duplicate names. Since Network is primarily keyed based on a random ID and not on the name, and network name is strictly a user-friendly alias to the network which is uniquely identified using ID, there is no guaranteed way to check for duplicates. CheckDuplicate is there to provide a best effort checking of any networks which has the same name but it is not guaranteed to catch all name collisions.
      */
-    public function getCheckDuplicate(): bool
+    public function getCheckDuplicate(): ?bool
     {
         return $this->checkDuplicate;
     }
@@ -94,7 +94,7 @@ class NetworksCreatePostBody
     /**
      * Check for networks with duplicate names. Since Network is primarily keyed based on a random ID and not on the name, and network name is strictly a user-friendly alias to the network which is uniquely identified using ID, there is no guaranteed way to check for duplicates. CheckDuplicate is there to provide a best effort checking of any networks which has the same name but it is not guaranteed to catch all name collisions.
      */
-    public function setCheckDuplicate(bool $checkDuplicate): self
+    public function setCheckDuplicate(?bool $checkDuplicate): self
     {
         $this->checkDuplicate = $checkDuplicate;
 
@@ -104,7 +104,7 @@ class NetworksCreatePostBody
     /**
      * Name of the network driver plugin to use.
      */
-    public function getDriver(): string
+    public function getDriver(): ?string
     {
         return $this->driver;
     }
@@ -112,7 +112,7 @@ class NetworksCreatePostBody
     /**
      * Name of the network driver plugin to use.
      */
-    public function setDriver(string $driver): self
+    public function setDriver(?string $driver): self
     {
         $this->driver = $driver;
 
@@ -122,7 +122,7 @@ class NetworksCreatePostBody
     /**
      * Restrict external access to the network.
      */
-    public function getInternal(): bool
+    public function getInternal(): ?bool
     {
         return $this->internal;
     }
@@ -130,7 +130,7 @@ class NetworksCreatePostBody
     /**
      * Restrict external access to the network.
      */
-    public function setInternal(bool $internal): self
+    public function setInternal(?bool $internal): self
     {
         $this->internal = $internal;
 
@@ -140,7 +140,7 @@ class NetworksCreatePostBody
     /**
      * Globally scoped network is manually attachable by regular containers from workers in swarm mode.
      */
-    public function getAttachable(): bool
+    public function getAttachable(): ?bool
     {
         return $this->attachable;
     }
@@ -148,7 +148,7 @@ class NetworksCreatePostBody
     /**
      * Globally scoped network is manually attachable by regular containers from workers in swarm mode.
      */
-    public function setAttachable(bool $attachable): self
+    public function setAttachable(?bool $attachable): self
     {
         $this->attachable = $attachable;
 
@@ -158,7 +158,7 @@ class NetworksCreatePostBody
     /**
      * Ingress network is the network which provides the routing-mesh in swarm mode.
      */
-    public function getIngress(): bool
+    public function getIngress(): ?bool
     {
         return $this->ingress;
     }
@@ -166,19 +166,19 @@ class NetworksCreatePostBody
     /**
      * Ingress network is the network which provides the routing-mesh in swarm mode.
      */
-    public function setIngress(bool $ingress): self
+    public function setIngress(?bool $ingress): self
     {
         $this->ingress = $ingress;
 
         return $this;
     }
 
-    public function getIPAM(): IPAM
+    public function getIPAM(): ?IPAM
     {
         return $this->iPAM;
     }
 
-    public function setIPAM(IPAM $iPAM): self
+    public function setIPAM(?IPAM $iPAM): self
     {
         $this->iPAM = $iPAM;
 
@@ -188,7 +188,7 @@ class NetworksCreatePostBody
     /**
      * Enable IPv6 on the network.
      */
-    public function getEnableIPv6(): bool
+    public function getEnableIPv6(): ?bool
     {
         return $this->enableIPv6;
     }
@@ -196,7 +196,7 @@ class NetworksCreatePostBody
     /**
      * Enable IPv6 on the network.
      */
-    public function setEnableIPv6(bool $enableIPv6): self
+    public function setEnableIPv6(?bool $enableIPv6): self
     {
         $this->enableIPv6 = $enableIPv6;
 
@@ -206,9 +206,9 @@ class NetworksCreatePostBody
     /**
      * Network specific options to be used by the drivers.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getOptions(): iterable
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
@@ -216,9 +216,9 @@ class NetworksCreatePostBody
     /**
      * Network specific options to be used by the drivers.
      *
-     * @param string[] $options
+     * @param string[]|null $options
      */
-    public function setOptions(iterable $options): self
+    public function setOptions(?iterable $options): self
     {
         $this->options = $options;
 
@@ -228,9 +228,9 @@ class NetworksCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
@@ -238,9 +238,9 @@ class NetworksCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 

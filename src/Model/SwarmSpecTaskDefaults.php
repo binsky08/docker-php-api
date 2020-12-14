@@ -13,7 +13,7 @@ class SwarmSpecTaskDefaults
      * Updating this value only affects new tasks. Existing tasks continue
      * to use their previously configured log driver until recreated.
      *
-     * @var SwarmSpecTaskDefaultsLogDriver
+     * @var SwarmSpecTaskDefaultsLogDriver|null
      */
     protected $logDriver;
 
@@ -24,7 +24,7 @@ class SwarmSpecTaskDefaults
      * Updating this value only affects new tasks. Existing tasks continue
      * to use their previously configured log driver until recreated.
      */
-    public function getLogDriver(): SwarmSpecTaskDefaultsLogDriver
+    public function getLogDriver(): ?SwarmSpecTaskDefaultsLogDriver
     {
         return $this->logDriver;
     }
@@ -36,7 +36,7 @@ class SwarmSpecTaskDefaults
      * Updating this value only affects new tasks. Existing tasks continue
      * to use their previously configured log driver until recreated.
      */
-    public function setLogDriver(SwarmSpecTaskDefaultsLogDriver $logDriver): self
+    public function setLogDriver(?SwarmSpecTaskDefaultsLogDriver $logDriver): self
     {
         $this->logDriver = $logDriver;
 

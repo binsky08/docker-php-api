@@ -41,15 +41,19 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ImagesDeleted', $data)) {
+        if (\array_key_exists('ImagesDeleted', $data) && null !== $data['ImagesDeleted']) {
             $values = [];
             foreach ($data['ImagesDeleted'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\ImageDeleteResponseItem', 'json', $context);
             }
             $object->setImagesDeleted($values);
+        } elseif (\array_key_exists('ImagesDeleted', $data) && null === $data['ImagesDeleted']) {
+            $object->setImagesDeleted(null);
         }
-        if (\array_key_exists('SpaceReclaimed', $data)) {
+        if (\array_key_exists('SpaceReclaimed', $data) && null !== $data['SpaceReclaimed']) {
             $object->setSpaceReclaimed($data['SpaceReclaimed']);
+        } elseif (\array_key_exists('SpaceReclaimed', $data) && null === $data['SpaceReclaimed']) {
+            $object->setSpaceReclaimed(null);
         }
 
         return $object;

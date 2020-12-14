@@ -41,26 +41,32 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Constraints', $data)) {
+        if (\array_key_exists('Constraints', $data) && null !== $data['Constraints']) {
             $values = [];
             foreach ($data['Constraints'] as $value) {
                 $values[] = $value;
             }
             $object->setConstraints($values);
+        } elseif (\array_key_exists('Constraints', $data) && null === $data['Constraints']) {
+            $object->setConstraints(null);
         }
-        if (\array_key_exists('Preferences', $data)) {
+        if (\array_key_exists('Preferences', $data) && null !== $data['Preferences']) {
             $values_1 = [];
             foreach ($data['Preferences'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\TaskSpecPlacementPreferencesItem', 'json', $context);
             }
             $object->setPreferences($values_1);
+        } elseif (\array_key_exists('Preferences', $data) && null === $data['Preferences']) {
+            $object->setPreferences(null);
         }
-        if (\array_key_exists('Platforms', $data)) {
+        if (\array_key_exists('Platforms', $data) && null !== $data['Platforms']) {
             $values_2 = [];
             foreach ($data['Platforms'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Docker\\API\\Model\\Platform', 'json', $context);
             }
             $object->setPlatforms($values_2);
+        } elseif (\array_key_exists('Platforms', $data) && null === $data['Platforms']) {
+            $object->setPlatforms(null);
         }
 
         return $object;

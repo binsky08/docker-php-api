@@ -41,29 +41,45 @@ class MountPointNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Type', $data)) {
+        if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
+        } elseif (\array_key_exists('Type', $data) && null === $data['Type']) {
+            $object->setType(null);
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Source', $data)) {
+        if (\array_key_exists('Source', $data) && null !== $data['Source']) {
             $object->setSource($data['Source']);
+        } elseif (\array_key_exists('Source', $data) && null === $data['Source']) {
+            $object->setSource(null);
         }
-        if (\array_key_exists('Destination', $data)) {
+        if (\array_key_exists('Destination', $data) && null !== $data['Destination']) {
             $object->setDestination($data['Destination']);
+        } elseif (\array_key_exists('Destination', $data) && null === $data['Destination']) {
+            $object->setDestination(null);
         }
-        if (\array_key_exists('Driver', $data)) {
+        if (\array_key_exists('Driver', $data) && null !== $data['Driver']) {
             $object->setDriver($data['Driver']);
+        } elseif (\array_key_exists('Driver', $data) && null === $data['Driver']) {
+            $object->setDriver(null);
         }
-        if (\array_key_exists('Mode', $data)) {
+        if (\array_key_exists('Mode', $data) && null !== $data['Mode']) {
             $object->setMode($data['Mode']);
+        } elseif (\array_key_exists('Mode', $data) && null === $data['Mode']) {
+            $object->setMode(null);
         }
-        if (\array_key_exists('RW', $data)) {
+        if (\array_key_exists('RW', $data) && null !== $data['RW']) {
             $object->setRW($data['RW']);
+        } elseif (\array_key_exists('RW', $data) && null === $data['RW']) {
+            $object->setRW(null);
         }
-        if (\array_key_exists('Propagation', $data)) {
+        if (\array_key_exists('Propagation', $data) && null !== $data['Propagation']) {
             $object->setPropagation($data['Propagation']);
+        } elseif (\array_key_exists('Propagation', $data) && null === $data['Propagation']) {
+            $object->setPropagation(null);
         }
 
         return $object;

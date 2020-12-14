@@ -9,26 +9,26 @@ class TLSInfo
     /**
      * The root CA certificate(s) that are used to validate leaf TLS certificates.
      *
-     * @var string
+     * @var string|null
      */
     protected $trustRoot;
     /**
      * The base64-url-safe-encoded raw subject bytes of the issuer.
      *
-     * @var string
+     * @var string|null
      */
     protected $certIssuerSubject;
     /**
      * The base64-url-safe-encoded raw public key bytes of the issuer.
      *
-     * @var string
+     * @var string|null
      */
     protected $certIssuerPublicKey;
 
     /**
      * The root CA certificate(s) that are used to validate leaf TLS certificates.
      */
-    public function getTrustRoot(): string
+    public function getTrustRoot(): ?string
     {
         return $this->trustRoot;
     }
@@ -36,7 +36,7 @@ class TLSInfo
     /**
      * The root CA certificate(s) that are used to validate leaf TLS certificates.
      */
-    public function setTrustRoot(string $trustRoot): self
+    public function setTrustRoot(?string $trustRoot): self
     {
         $this->trustRoot = $trustRoot;
 
@@ -46,7 +46,7 @@ class TLSInfo
     /**
      * The base64-url-safe-encoded raw subject bytes of the issuer.
      */
-    public function getCertIssuerSubject(): string
+    public function getCertIssuerSubject(): ?string
     {
         return $this->certIssuerSubject;
     }
@@ -54,7 +54,7 @@ class TLSInfo
     /**
      * The base64-url-safe-encoded raw subject bytes of the issuer.
      */
-    public function setCertIssuerSubject(string $certIssuerSubject): self
+    public function setCertIssuerSubject(?string $certIssuerSubject): self
     {
         $this->certIssuerSubject = $certIssuerSubject;
 
@@ -64,7 +64,7 @@ class TLSInfo
     /**
      * The base64-url-safe-encoded raw public key bytes of the issuer.
      */
-    public function getCertIssuerPublicKey(): string
+    public function getCertIssuerPublicKey(): ?string
     {
         return $this->certIssuerPublicKey;
     }
@@ -72,7 +72,7 @@ class TLSInfo
     /**
      * The base64-url-safe-encoded raw public key bytes of the issuer.
      */
-    public function setCertIssuerPublicKey(string $certIssuerPublicKey): self
+    public function setCertIssuerPublicKey(?string $certIssuerPublicKey): self
     {
         $this->certIssuerPublicKey = $certIssuerPublicKey;
 

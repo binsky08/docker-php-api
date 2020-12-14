@@ -41,20 +41,30 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ID', $data)) {
+        if (\array_key_exists('ID', $data) && null !== $data['ID']) {
             $object->setID($data['ID']);
+        } elseif (\array_key_exists('ID', $data) && null === $data['ID']) {
+            $object->setID(null);
         }
-        if (\array_key_exists('Version', $data)) {
+        if (\array_key_exists('Version', $data) && null !== $data['Version']) {
             $object->setVersion($this->denormalizer->denormalize($data['Version'], 'Docker\\API\\Model\\ObjectVersion', 'json', $context));
+        } elseif (\array_key_exists('Version', $data) && null === $data['Version']) {
+            $object->setVersion(null);
         }
-        if (\array_key_exists('CreatedAt', $data)) {
+        if (\array_key_exists('CreatedAt', $data) && null !== $data['CreatedAt']) {
             $object->setCreatedAt($data['CreatedAt']);
+        } elseif (\array_key_exists('CreatedAt', $data) && null === $data['CreatedAt']) {
+            $object->setCreatedAt(null);
         }
-        if (\array_key_exists('UpdatedAt', $data)) {
+        if (\array_key_exists('UpdatedAt', $data) && null !== $data['UpdatedAt']) {
             $object->setUpdatedAt($data['UpdatedAt']);
+        } elseif (\array_key_exists('UpdatedAt', $data) && null === $data['UpdatedAt']) {
+            $object->setUpdatedAt(null);
         }
-        if (\array_key_exists('Spec', $data)) {
+        if (\array_key_exists('Spec', $data) && null !== $data['Spec']) {
             $object->setSpec($this->denormalizer->denormalize($data['Spec'], 'Docker\\API\\Model\\ConfigSpec', 'json', $context));
+        } elseif (\array_key_exists('Spec', $data) && null === $data['Spec']) {
+            $object->setSpec(null);
         }
 
         return $object;

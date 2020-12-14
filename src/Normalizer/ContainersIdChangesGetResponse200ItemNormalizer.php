@@ -41,11 +41,15 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Path', $data)) {
+        if (\array_key_exists('Path', $data) && null !== $data['Path']) {
             $object->setPath($data['Path']);
+        } elseif (\array_key_exists('Path', $data) && null === $data['Path']) {
+            $object->setPath(null);
         }
-        if (\array_key_exists('Kind', $data)) {
+        if (\array_key_exists('Kind', $data) && null !== $data['Kind']) {
             $object->setKind($data['Kind']);
+        } elseif (\array_key_exists('Kind', $data) && null === $data['Kind']) {
+            $object->setKind(null);
         }
 
         return $object;

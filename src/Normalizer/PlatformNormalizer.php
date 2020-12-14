@@ -41,11 +41,15 @@ class PlatformNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Architecture', $data)) {
+        if (\array_key_exists('Architecture', $data) && null !== $data['Architecture']) {
             $object->setArchitecture($data['Architecture']);
+        } elseif (\array_key_exists('Architecture', $data) && null === $data['Architecture']) {
+            $object->setArchitecture(null);
         }
-        if (\array_key_exists('OS', $data)) {
+        if (\array_key_exists('OS', $data) && null !== $data['OS']) {
             $object->setOS($data['OS']);
+        } elseif (\array_key_exists('OS', $data) && null === $data['OS']) {
+            $object->setOS(null);
         }
 
         return $object;

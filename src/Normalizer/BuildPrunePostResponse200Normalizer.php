@@ -41,8 +41,10 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('SpaceReclaimed', $data)) {
+        if (\array_key_exists('SpaceReclaimed', $data) && null !== $data['SpaceReclaimed']) {
             $object->setSpaceReclaimed($data['SpaceReclaimed']);
+        } elseif (\array_key_exists('SpaceReclaimed', $data) && null === $data['SpaceReclaimed']) {
+            $object->setSpaceReclaimed(null);
         }
 
         return $object;

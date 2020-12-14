@@ -41,11 +41,15 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Limits', $data)) {
+        if (\array_key_exists('Limits', $data) && null !== $data['Limits']) {
             $object->setLimits($this->denormalizer->denormalize($data['Limits'], 'Docker\\API\\Model\\ResourceObject', 'json', $context));
+        } elseif (\array_key_exists('Limits', $data) && null === $data['Limits']) {
+            $object->setLimits(null);
         }
-        if (\array_key_exists('Reservation', $data)) {
+        if (\array_key_exists('Reservation', $data) && null !== $data['Reservation']) {
             $object->setReservation($this->denormalizer->denormalize($data['Reservation'], 'Docker\\API\\Model\\ResourceObject', 'json', $context));
+        } elseif (\array_key_exists('Reservation', $data) && null === $data['Reservation']) {
+            $object->setReservation(null);
         }
 
         return $object;

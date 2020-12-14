@@ -9,16 +9,16 @@ class ServiceUpdateResponse
     /**
      * Optional warning messages.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $warnings;
 
     /**
      * Optional warning messages.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getWarnings(): array
+    public function getWarnings(): ?array
     {
         return $this->warnings;
     }
@@ -26,9 +26,9 @@ class ServiceUpdateResponse
     /**
      * Optional warning messages.
      *
-     * @param string[] $warnings
+     * @param string[]|null $warnings
      */
-    public function setWarnings(array $warnings): self
+    public function setWarnings(?array $warnings): self
     {
         $this->warnings = $warnings;
 

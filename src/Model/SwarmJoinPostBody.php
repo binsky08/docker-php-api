@@ -9,13 +9,13 @@ class SwarmJoinPostBody
     /**
      * Listen address used for inter-manager communication if the node gets promoted to manager, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP).
      *
-     * @var string
+     * @var string|null
      */
     protected $listenAddr;
     /**
      * Externally reachable address advertised to other nodes. This can either be an address/port combination in the form `192.168.1.1:4567`, or an interface followed by a port number, like `eth0:4567`. If the port number is omitted, the port number from the listen address is used. If `AdvertiseAddr` is not specified, it will be automatically detected when possible.
      *
-     * @var string
+     * @var string|null
      */
     protected $advertiseAddr;
     /**
@@ -27,26 +27,26 @@ class SwarmJoinPostBody
      * nodes in order to reach the containers running on this node. Using this parameter it is possible to
      * separate the container data traffic from the management traffic of the cluster.
      *
-     * @var string
+     * @var string|null
      */
     protected $dataPathAddr;
     /**
      * Addresses of manager nodes already participating in the swarm.
      *
-     * @var string
+     * @var string|null
      */
     protected $remoteAddrs;
     /**
      * Secret token for joining this swarm.
      *
-     * @var string
+     * @var string|null
      */
     protected $joinToken;
 
     /**
      * Listen address used for inter-manager communication if the node gets promoted to manager, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP).
      */
-    public function getListenAddr(): string
+    public function getListenAddr(): ?string
     {
         return $this->listenAddr;
     }
@@ -54,7 +54,7 @@ class SwarmJoinPostBody
     /**
      * Listen address used for inter-manager communication if the node gets promoted to manager, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP).
      */
-    public function setListenAddr(string $listenAddr): self
+    public function setListenAddr(?string $listenAddr): self
     {
         $this->listenAddr = $listenAddr;
 
@@ -64,7 +64,7 @@ class SwarmJoinPostBody
     /**
      * Externally reachable address advertised to other nodes. This can either be an address/port combination in the form `192.168.1.1:4567`, or an interface followed by a port number, like `eth0:4567`. If the port number is omitted, the port number from the listen address is used. If `AdvertiseAddr` is not specified, it will be automatically detected when possible.
      */
-    public function getAdvertiseAddr(): string
+    public function getAdvertiseAddr(): ?string
     {
         return $this->advertiseAddr;
     }
@@ -72,7 +72,7 @@ class SwarmJoinPostBody
     /**
      * Externally reachable address advertised to other nodes. This can either be an address/port combination in the form `192.168.1.1:4567`, or an interface followed by a port number, like `eth0:4567`. If the port number is omitted, the port number from the listen address is used. If `AdvertiseAddr` is not specified, it will be automatically detected when possible.
      */
-    public function setAdvertiseAddr(string $advertiseAddr): self
+    public function setAdvertiseAddr(?string $advertiseAddr): self
     {
         $this->advertiseAddr = $advertiseAddr;
 
@@ -88,7 +88,7 @@ class SwarmJoinPostBody
      * nodes in order to reach the containers running on this node. Using this parameter it is possible to
      * separate the container data traffic from the management traffic of the cluster.
      */
-    public function getDataPathAddr(): string
+    public function getDataPathAddr(): ?string
     {
         return $this->dataPathAddr;
     }
@@ -102,7 +102,7 @@ class SwarmJoinPostBody
      * nodes in order to reach the containers running on this node. Using this parameter it is possible to
      * separate the container data traffic from the management traffic of the cluster.
      */
-    public function setDataPathAddr(string $dataPathAddr): self
+    public function setDataPathAddr(?string $dataPathAddr): self
     {
         $this->dataPathAddr = $dataPathAddr;
 
@@ -112,7 +112,7 @@ class SwarmJoinPostBody
     /**
      * Addresses of manager nodes already participating in the swarm.
      */
-    public function getRemoteAddrs(): string
+    public function getRemoteAddrs(): ?string
     {
         return $this->remoteAddrs;
     }
@@ -120,7 +120,7 @@ class SwarmJoinPostBody
     /**
      * Addresses of manager nodes already participating in the swarm.
      */
-    public function setRemoteAddrs(string $remoteAddrs): self
+    public function setRemoteAddrs(?string $remoteAddrs): self
     {
         $this->remoteAddrs = $remoteAddrs;
 
@@ -130,7 +130,7 @@ class SwarmJoinPostBody
     /**
      * Secret token for joining this swarm.
      */
-    public function getJoinToken(): string
+    public function getJoinToken(): ?string
     {
         return $this->joinToken;
     }
@@ -138,7 +138,7 @@ class SwarmJoinPostBody
     /**
      * Secret token for joining this swarm.
      */
-    public function setJoinToken(string $joinToken): self
+    public function setJoinToken(?string $joinToken): self
     {
         $this->joinToken = $joinToken;
 

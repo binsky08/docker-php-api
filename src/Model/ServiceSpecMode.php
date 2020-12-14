@@ -7,32 +7,32 @@ namespace Docker\API\Model;
 class ServiceSpecMode
 {
     /**
-     * @var ServiceSpecModeReplicated
+     * @var ServiceSpecModeReplicated|null
      */
     protected $replicated;
     /**
-     * @var ServiceSpecModeGlobal
+     * @var ServiceSpecModeGlobal|null
      */
     protected $global;
 
-    public function getReplicated(): ServiceSpecModeReplicated
+    public function getReplicated(): ?ServiceSpecModeReplicated
     {
         return $this->replicated;
     }
 
-    public function setReplicated(ServiceSpecModeReplicated $replicated): self
+    public function setReplicated(?ServiceSpecModeReplicated $replicated): self
     {
         $this->replicated = $replicated;
 
         return $this;
     }
 
-    public function getGlobal(): ServiceSpecModeGlobal
+    public function getGlobal(): ?ServiceSpecModeGlobal
     {
         return $this->global;
     }
 
-    public function setGlobal(ServiceSpecModeGlobal $global): self
+    public function setGlobal(?ServiceSpecModeGlobal $global): self
     {
         $this->global = $global;
 

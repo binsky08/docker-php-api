@@ -9,28 +9,28 @@ class SwarmInfo
     /**
      * Unique identifier of for this node in the swarm.
      *
-     * @var string
+     * @var string|null
      */
     protected $nodeID = '';
     /**
      * IP address at which this node can be reached by other nodes in the.
      * swarm.
      *
-     * @var string
+     * @var string|null
      */
     protected $nodeAddr = '';
     /**
      * Current local status of this node.
      *
-     * @var string
+     * @var string|null
      */
     protected $localNodeState = '';
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $controlAvailable = false;
     /**
-     * @var string
+     * @var string|null
      */
     protected $error = '';
     /**
@@ -62,7 +62,7 @@ class SwarmInfo
     /**
      * Unique identifier of for this node in the swarm.
      */
-    public function getNodeID(): string
+    public function getNodeID(): ?string
     {
         return $this->nodeID;
     }
@@ -70,7 +70,7 @@ class SwarmInfo
     /**
      * Unique identifier of for this node in the swarm.
      */
-    public function setNodeID(string $nodeID): self
+    public function setNodeID(?string $nodeID): self
     {
         $this->nodeID = $nodeID;
 
@@ -81,7 +81,7 @@ class SwarmInfo
      * IP address at which this node can be reached by other nodes in the.
      * swarm.
      */
-    public function getNodeAddr(): string
+    public function getNodeAddr(): ?string
     {
         return $this->nodeAddr;
     }
@@ -90,7 +90,7 @@ class SwarmInfo
      * IP address at which this node can be reached by other nodes in the.
      * swarm.
      */
-    public function setNodeAddr(string $nodeAddr): self
+    public function setNodeAddr(?string $nodeAddr): self
     {
         $this->nodeAddr = $nodeAddr;
 
@@ -100,7 +100,7 @@ class SwarmInfo
     /**
      * Current local status of this node.
      */
-    public function getLocalNodeState(): string
+    public function getLocalNodeState(): ?string
     {
         return $this->localNodeState;
     }
@@ -108,31 +108,31 @@ class SwarmInfo
     /**
      * Current local status of this node.
      */
-    public function setLocalNodeState(string $localNodeState): self
+    public function setLocalNodeState(?string $localNodeState): self
     {
         $this->localNodeState = $localNodeState;
 
         return $this;
     }
 
-    public function getControlAvailable(): bool
+    public function getControlAvailable(): ?bool
     {
         return $this->controlAvailable;
     }
 
-    public function setControlAvailable(bool $controlAvailable): self
+    public function setControlAvailable(?bool $controlAvailable): self
     {
         $this->controlAvailable = $controlAvailable;
 
         return $this;
     }
 
-    public function getError(): string
+    public function getError(): ?string
     {
         return $this->error;
     }
 
-    public function setError(string $error): self
+    public function setError(?string $error): self
     {
         $this->error = $error;
 

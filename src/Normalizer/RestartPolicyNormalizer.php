@@ -41,11 +41,15 @@ class RestartPolicyNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('MaximumRetryCount', $data)) {
+        if (\array_key_exists('MaximumRetryCount', $data) && null !== $data['MaximumRetryCount']) {
             $object->setMaximumRetryCount($data['MaximumRetryCount']);
+        } elseif (\array_key_exists('MaximumRetryCount', $data) && null === $data['MaximumRetryCount']) {
+            $object->setMaximumRetryCount(null);
         }
 
         return $object;

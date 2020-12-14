@@ -9,20 +9,20 @@ class PortBinding
     /**
      * Host IP address that the container's port is mapped to.
      *
-     * @var string
+     * @var string|null
      */
     protected $hostIp;
     /**
      * Host port number that the container's port is mapped to.
      *
-     * @var string
+     * @var string|null
      */
     protected $hostPort;
 
     /**
      * Host IP address that the container's port is mapped to.
      */
-    public function getHostIp(): string
+    public function getHostIp(): ?string
     {
         return $this->hostIp;
     }
@@ -30,7 +30,7 @@ class PortBinding
     /**
      * Host IP address that the container's port is mapped to.
      */
-    public function setHostIp(string $hostIp): self
+    public function setHostIp(?string $hostIp): self
     {
         $this->hostIp = $hostIp;
 
@@ -40,7 +40,7 @@ class PortBinding
     /**
      * Host port number that the container's port is mapped to.
      */
-    public function getHostPort(): string
+    public function getHostPort(): ?string
     {
         return $this->hostPort;
     }
@@ -48,7 +48,7 @@ class PortBinding
     /**
      * Host port number that the container's port is mapped to.
      */
-    public function setHostPort(string $hostPort): self
+    public function setHostPort(?string $hostPort): self
     {
         $this->hostPort = $hostPort;
 

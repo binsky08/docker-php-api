@@ -7,40 +7,40 @@ namespace Docker\API\Model;
 class PluginConfigArgs
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $settable;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $value;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -48,17 +48,17 @@ class PluginConfigArgs
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getSettable(): array
+    public function getSettable(): ?array
     {
         return $this->settable;
     }
 
     /**
-     * @param string[] $settable
+     * @param string[]|null $settable
      */
-    public function setSettable(array $settable): self
+    public function setSettable(?array $settable): self
     {
         $this->settable = $settable;
 
@@ -66,17 +66,17 @@ class PluginConfigArgs
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getValue(): array
+    public function getValue(): ?array
     {
         return $this->value;
     }
 
     /**
-     * @param string[] $value
+     * @param string[]|null $value
      */
-    public function setValue(array $value): self
+    public function setValue(?array $value): self
     {
         $this->value = $value;
 

@@ -41,24 +41,34 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('NodeCertExpiry', $data)) {
+        if (\array_key_exists('NodeCertExpiry', $data) && null !== $data['NodeCertExpiry']) {
             $object->setNodeCertExpiry($data['NodeCertExpiry']);
+        } elseif (\array_key_exists('NodeCertExpiry', $data) && null === $data['NodeCertExpiry']) {
+            $object->setNodeCertExpiry(null);
         }
-        if (\array_key_exists('ExternalCAs', $data)) {
+        if (\array_key_exists('ExternalCAs', $data) && null !== $data['ExternalCAs']) {
             $values = [];
             foreach ($data['ExternalCAs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\SwarmSpecCAConfigExternalCAsItem', 'json', $context);
             }
             $object->setExternalCAs($values);
+        } elseif (\array_key_exists('ExternalCAs', $data) && null === $data['ExternalCAs']) {
+            $object->setExternalCAs(null);
         }
-        if (\array_key_exists('SigningCACert', $data)) {
+        if (\array_key_exists('SigningCACert', $data) && null !== $data['SigningCACert']) {
             $object->setSigningCACert($data['SigningCACert']);
+        } elseif (\array_key_exists('SigningCACert', $data) && null === $data['SigningCACert']) {
+            $object->setSigningCACert(null);
         }
-        if (\array_key_exists('SigningCAKey', $data)) {
+        if (\array_key_exists('SigningCAKey', $data) && null !== $data['SigningCAKey']) {
             $object->setSigningCAKey($data['SigningCAKey']);
+        } elseif (\array_key_exists('SigningCAKey', $data) && null === $data['SigningCAKey']) {
+            $object->setSigningCAKey(null);
         }
-        if (\array_key_exists('ForceRotate', $data)) {
+        if (\array_key_exists('ForceRotate', $data) && null !== $data['ForceRotate']) {
             $object->setForceRotate($data['ForceRotate']);
+        } elseif (\array_key_exists('ForceRotate', $data) && null === $data['ForceRotate']) {
+            $object->setForceRotate(null);
         }
 
         return $object;

@@ -41,11 +41,15 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('NamedResourceSpec', $data)) {
+        if (\array_key_exists('NamedResourceSpec', $data) && null !== $data['NamedResourceSpec']) {
             $object->setNamedResourceSpec($this->denormalizer->denormalize($data['NamedResourceSpec'], 'Docker\\API\\Model\\GenericResourcesItemNamedResourceSpec', 'json', $context));
+        } elseif (\array_key_exists('NamedResourceSpec', $data) && null === $data['NamedResourceSpec']) {
+            $object->setNamedResourceSpec(null);
         }
-        if (\array_key_exists('DiscreteResourceSpec', $data)) {
+        if (\array_key_exists('DiscreteResourceSpec', $data) && null !== $data['DiscreteResourceSpec']) {
             $object->setDiscreteResourceSpec($this->denormalizer->denormalize($data['DiscreteResourceSpec'], 'Docker\\API\\Model\\GenericResourcesItemDiscreteResourceSpec', 'json', $context));
+        } elseif (\array_key_exists('DiscreteResourceSpec', $data) && null === $data['DiscreteResourceSpec']) {
+            $object->setDiscreteResourceSpec(null);
         }
 
         return $object;

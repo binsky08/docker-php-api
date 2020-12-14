@@ -7,20 +7,20 @@ namespace Docker\API\Model;
 class TaskSpecLogDriver
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $options;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -28,17 +28,17 @@ class TaskSpecLogDriver
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getOptions(): iterable
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
 
     /**
-     * @param string[] $options
+     * @param string[]|null $options
      */
-    public function setOptions(iterable $options): self
+    public function setOptions(?iterable $options): self
     {
         $this->options = $options;
 

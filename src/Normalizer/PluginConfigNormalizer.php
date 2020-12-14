@@ -41,65 +41,97 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('DockerVersion', $data)) {
+        if (\array_key_exists('DockerVersion', $data) && null !== $data['DockerVersion']) {
             $object->setDockerVersion($data['DockerVersion']);
+        } elseif (\array_key_exists('DockerVersion', $data) && null === $data['DockerVersion']) {
+            $object->setDockerVersion(null);
         }
-        if (\array_key_exists('Description', $data)) {
+        if (\array_key_exists('Description', $data) && null !== $data['Description']) {
             $object->setDescription($data['Description']);
+        } elseif (\array_key_exists('Description', $data) && null === $data['Description']) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('Documentation', $data)) {
+        if (\array_key_exists('Documentation', $data) && null !== $data['Documentation']) {
             $object->setDocumentation($data['Documentation']);
+        } elseif (\array_key_exists('Documentation', $data) && null === $data['Documentation']) {
+            $object->setDocumentation(null);
         }
-        if (\array_key_exists('Interface', $data)) {
+        if (\array_key_exists('Interface', $data) && null !== $data['Interface']) {
             $object->setInterface($this->denormalizer->denormalize($data['Interface'], 'Docker\\API\\Model\\PluginConfigInterface', 'json', $context));
+        } elseif (\array_key_exists('Interface', $data) && null === $data['Interface']) {
+            $object->setInterface(null);
         }
-        if (\array_key_exists('Entrypoint', $data)) {
+        if (\array_key_exists('Entrypoint', $data) && null !== $data['Entrypoint']) {
             $values = [];
             foreach ($data['Entrypoint'] as $value) {
                 $values[] = $value;
             }
             $object->setEntrypoint($values);
+        } elseif (\array_key_exists('Entrypoint', $data) && null === $data['Entrypoint']) {
+            $object->setEntrypoint(null);
         }
-        if (\array_key_exists('WorkDir', $data)) {
+        if (\array_key_exists('WorkDir', $data) && null !== $data['WorkDir']) {
             $object->setWorkDir($data['WorkDir']);
+        } elseif (\array_key_exists('WorkDir', $data) && null === $data['WorkDir']) {
+            $object->setWorkDir(null);
         }
-        if (\array_key_exists('User', $data)) {
+        if (\array_key_exists('User', $data) && null !== $data['User']) {
             $object->setUser($this->denormalizer->denormalize($data['User'], 'Docker\\API\\Model\\PluginConfigUser', 'json', $context));
+        } elseif (\array_key_exists('User', $data) && null === $data['User']) {
+            $object->setUser(null);
         }
-        if (\array_key_exists('Network', $data)) {
+        if (\array_key_exists('Network', $data) && null !== $data['Network']) {
             $object->setNetwork($this->denormalizer->denormalize($data['Network'], 'Docker\\API\\Model\\PluginConfigNetwork', 'json', $context));
+        } elseif (\array_key_exists('Network', $data) && null === $data['Network']) {
+            $object->setNetwork(null);
         }
-        if (\array_key_exists('Linux', $data)) {
+        if (\array_key_exists('Linux', $data) && null !== $data['Linux']) {
             $object->setLinux($this->denormalizer->denormalize($data['Linux'], 'Docker\\API\\Model\\PluginConfigLinux', 'json', $context));
+        } elseif (\array_key_exists('Linux', $data) && null === $data['Linux']) {
+            $object->setLinux(null);
         }
-        if (\array_key_exists('PropagatedMount', $data)) {
+        if (\array_key_exists('PropagatedMount', $data) && null !== $data['PropagatedMount']) {
             $object->setPropagatedMount($data['PropagatedMount']);
+        } elseif (\array_key_exists('PropagatedMount', $data) && null === $data['PropagatedMount']) {
+            $object->setPropagatedMount(null);
         }
-        if (\array_key_exists('IpcHost', $data)) {
+        if (\array_key_exists('IpcHost', $data) && null !== $data['IpcHost']) {
             $object->setIpcHost($data['IpcHost']);
+        } elseif (\array_key_exists('IpcHost', $data) && null === $data['IpcHost']) {
+            $object->setIpcHost(null);
         }
-        if (\array_key_exists('PidHost', $data)) {
+        if (\array_key_exists('PidHost', $data) && null !== $data['PidHost']) {
             $object->setPidHost($data['PidHost']);
+        } elseif (\array_key_exists('PidHost', $data) && null === $data['PidHost']) {
+            $object->setPidHost(null);
         }
-        if (\array_key_exists('Mounts', $data)) {
+        if (\array_key_exists('Mounts', $data) && null !== $data['Mounts']) {
             $values_1 = [];
             foreach ($data['Mounts'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\PluginMount', 'json', $context);
             }
             $object->setMounts($values_1);
+        } elseif (\array_key_exists('Mounts', $data) && null === $data['Mounts']) {
+            $object->setMounts(null);
         }
-        if (\array_key_exists('Env', $data)) {
+        if (\array_key_exists('Env', $data) && null !== $data['Env']) {
             $values_2 = [];
             foreach ($data['Env'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'Docker\\API\\Model\\PluginEnv', 'json', $context);
             }
             $object->setEnv($values_2);
+        } elseif (\array_key_exists('Env', $data) && null === $data['Env']) {
+            $object->setEnv(null);
         }
-        if (\array_key_exists('Args', $data)) {
+        if (\array_key_exists('Args', $data) && null !== $data['Args']) {
             $object->setArgs($this->denormalizer->denormalize($data['Args'], 'Docker\\API\\Model\\PluginConfigArgs', 'json', $context));
+        } elseif (\array_key_exists('Args', $data) && null === $data['Args']) {
+            $object->setArgs(null);
         }
-        if (\array_key_exists('rootfs', $data)) {
+        if (\array_key_exists('rootfs', $data) && null !== $data['rootfs']) {
             $object->setRootfs($this->denormalizer->denormalize($data['rootfs'], 'Docker\\API\\Model\\PluginConfigRootfs', 'json', $context));
+        } elseif (\array_key_exists('rootfs', $data) && null === $data['rootfs']) {
+            $object->setRootfs(null);
         }
 
         return $object;

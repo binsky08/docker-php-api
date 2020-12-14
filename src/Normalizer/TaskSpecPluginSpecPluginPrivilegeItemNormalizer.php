@@ -41,18 +41,24 @@ class TaskSpecPluginSpecPluginPrivilegeItemNormalizer implements DenormalizerInt
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Description', $data)) {
+        if (\array_key_exists('Description', $data) && null !== $data['Description']) {
             $object->setDescription($data['Description']);
+        } elseif (\array_key_exists('Description', $data) && null === $data['Description']) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('Value', $data)) {
+        if (\array_key_exists('Value', $data) && null !== $data['Value']) {
             $values = [];
             foreach ($data['Value'] as $value) {
                 $values[] = $value;
             }
             $object->setValue($values);
+        } elseif (\array_key_exists('Value', $data) && null === $data['Value']) {
+            $object->setValue(null);
         }
 
         return $object;

@@ -41,18 +41,24 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('NoCopy', $data)) {
+        if (\array_key_exists('NoCopy', $data) && null !== $data['NoCopy']) {
             $object->setNoCopy($data['NoCopy']);
+        } elseif (\array_key_exists('NoCopy', $data) && null === $data['NoCopy']) {
+            $object->setNoCopy(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setLabels($values);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('DriverConfig', $data)) {
+        if (\array_key_exists('DriverConfig', $data) && null !== $data['DriverConfig']) {
             $object->setDriverConfig($this->denormalizer->denormalize($data['DriverConfig'], 'Docker\\API\\Model\\MountVolumeOptionsDriverConfig', 'json', $context));
+        } elseif (\array_key_exists('DriverConfig', $data) && null === $data['DriverConfig']) {
+            $object->setDriverConfig(null);
         }
 
         return $object;

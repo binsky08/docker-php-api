@@ -9,21 +9,21 @@ class SwarmSpecTaskDefaultsLogDriver
     /**
      * The log driver to use as a default for new tasks.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * Driver-specific options for the selectd log driver, specified.
      * as key/value pairs.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $options;
 
     /**
      * The log driver to use as a default for new tasks.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -31,7 +31,7 @@ class SwarmSpecTaskDefaultsLogDriver
     /**
      * The log driver to use as a default for new tasks.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -42,9 +42,9 @@ class SwarmSpecTaskDefaultsLogDriver
      * Driver-specific options for the selectd log driver, specified.
      * as key/value pairs.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getOptions(): iterable
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
@@ -53,9 +53,9 @@ class SwarmSpecTaskDefaultsLogDriver
      * Driver-specific options for the selectd log driver, specified.
      * as key/value pairs.
      *
-     * @param string[] $options
+     * @param string[]|null $options
      */
-    public function setOptions(iterable $options): self
+    public function setOptions(?iterable $options): self
     {
         $this->options = $options;
 

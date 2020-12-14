@@ -41,8 +41,10 @@ class ContainerSummaryItemHostConfigNormalizer implements DenormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('NetworkMode', $data)) {
+        if (\array_key_exists('NetworkMode', $data) && null !== $data['NetworkMode']) {
             $object->setNetworkMode($data['NetworkMode']);
+        } elseif (\array_key_exists('NetworkMode', $data) && null === $data['NetworkMode']) {
+            $object->setNetworkMode(null);
         }
 
         return $object;

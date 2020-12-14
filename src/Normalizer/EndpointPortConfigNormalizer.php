@@ -41,20 +41,30 @@ class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Protocol', $data)) {
+        if (\array_key_exists('Protocol', $data) && null !== $data['Protocol']) {
             $object->setProtocol($data['Protocol']);
+        } elseif (\array_key_exists('Protocol', $data) && null === $data['Protocol']) {
+            $object->setProtocol(null);
         }
-        if (\array_key_exists('TargetPort', $data)) {
+        if (\array_key_exists('TargetPort', $data) && null !== $data['TargetPort']) {
             $object->setTargetPort($data['TargetPort']);
+        } elseif (\array_key_exists('TargetPort', $data) && null === $data['TargetPort']) {
+            $object->setTargetPort(null);
         }
-        if (\array_key_exists('PublishedPort', $data)) {
+        if (\array_key_exists('PublishedPort', $data) && null !== $data['PublishedPort']) {
             $object->setPublishedPort($data['PublishedPort']);
+        } elseif (\array_key_exists('PublishedPort', $data) && null === $data['PublishedPort']) {
+            $object->setPublishedPort(null);
         }
-        if (\array_key_exists('PublishMode', $data)) {
+        if (\array_key_exists('PublishMode', $data) && null !== $data['PublishMode']) {
             $object->setPublishMode($data['PublishMode']);
+        } elseif (\array_key_exists('PublishMode', $data) && null === $data['PublishMode']) {
+            $object->setPublishMode(null);
         }
 
         return $object;

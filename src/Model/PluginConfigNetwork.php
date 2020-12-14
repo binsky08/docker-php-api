@@ -7,16 +7,16 @@ namespace Docker\API\Model;
 class PluginConfigNetwork
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 

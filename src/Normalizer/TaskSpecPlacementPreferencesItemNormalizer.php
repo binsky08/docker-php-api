@@ -41,8 +41,10 @@ class TaskSpecPlacementPreferencesItemNormalizer implements DenormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Spread', $data)) {
+        if (\array_key_exists('Spread', $data) && null !== $data['Spread']) {
             $object->setSpread($this->denormalizer->denormalize($data['Spread'], 'Docker\\API\\Model\\TaskSpecPlacementPreferencesItemSpread', 'json', $context));
+        } elseif (\array_key_exists('Spread', $data) && null === $data['Spread']) {
+            $object->setSpread(null);
         }
 
         return $object;

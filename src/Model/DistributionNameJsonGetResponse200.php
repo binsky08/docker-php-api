@@ -9,20 +9,20 @@ class DistributionNameJsonGetResponse200
     /**
      * A descriptor struct containing digest, media type, and size.
      *
-     * @var DistributionNameJsonGetResponse200Descriptor
+     * @var DistributionNameJsonGetResponse200Descriptor|null
      */
     protected $descriptor;
     /**
      * An array containing all platforms supported by the image.
      *
-     * @var DistributionNameJsonGetResponse200PlatformsItem[]
+     * @var DistributionNameJsonGetResponse200PlatformsItem[]|null
      */
     protected $platforms;
 
     /**
      * A descriptor struct containing digest, media type, and size.
      */
-    public function getDescriptor(): DistributionNameJsonGetResponse200Descriptor
+    public function getDescriptor(): ?DistributionNameJsonGetResponse200Descriptor
     {
         return $this->descriptor;
     }
@@ -30,7 +30,7 @@ class DistributionNameJsonGetResponse200
     /**
      * A descriptor struct containing digest, media type, and size.
      */
-    public function setDescriptor(DistributionNameJsonGetResponse200Descriptor $descriptor): self
+    public function setDescriptor(?DistributionNameJsonGetResponse200Descriptor $descriptor): self
     {
         $this->descriptor = $descriptor;
 
@@ -40,9 +40,9 @@ class DistributionNameJsonGetResponse200
     /**
      * An array containing all platforms supported by the image.
      *
-     * @return DistributionNameJsonGetResponse200PlatformsItem[]
+     * @return DistributionNameJsonGetResponse200PlatformsItem[]|null
      */
-    public function getPlatforms(): array
+    public function getPlatforms(): ?array
     {
         return $this->platforms;
     }
@@ -50,9 +50,9 @@ class DistributionNameJsonGetResponse200
     /**
      * An array containing all platforms supported by the image.
      *
-     * @param DistributionNameJsonGetResponse200PlatformsItem[] $platforms
+     * @param DistributionNameJsonGetResponse200PlatformsItem[]|null $platforms
      */
-    public function setPlatforms(array $platforms): self
+    public function setPlatforms(?array $platforms): self
     {
         $this->platforms = $platforms;
 

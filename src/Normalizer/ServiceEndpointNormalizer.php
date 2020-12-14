@@ -41,22 +41,28 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Spec', $data)) {
+        if (\array_key_exists('Spec', $data) && null !== $data['Spec']) {
             $object->setSpec($this->denormalizer->denormalize($data['Spec'], 'Docker\\API\\Model\\EndpointSpec', 'json', $context));
+        } elseif (\array_key_exists('Spec', $data) && null === $data['Spec']) {
+            $object->setSpec(null);
         }
-        if (\array_key_exists('Ports', $data)) {
+        if (\array_key_exists('Ports', $data) && null !== $data['Ports']) {
             $values = [];
             foreach ($data['Ports'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\EndpointPortConfig', 'json', $context);
             }
             $object->setPorts($values);
+        } elseif (\array_key_exists('Ports', $data) && null === $data['Ports']) {
+            $object->setPorts(null);
         }
-        if (\array_key_exists('VirtualIPs', $data)) {
+        if (\array_key_exists('VirtualIPs', $data) && null !== $data['VirtualIPs']) {
             $values_1 = [];
             foreach ($data['VirtualIPs'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\ServiceEndpointVirtualIPsItem', 'json', $context);
             }
             $object->setVirtualIPs($values_1);
+        } elseif (\array_key_exists('VirtualIPs', $data) && null === $data['VirtualIPs']) {
+            $object->setVirtualIPs(null);
         }
 
         return $object;

@@ -41,12 +41,14 @@ class ContainerSummaryItemNetworkSettingsNormalizer implements DenormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Networks', $data)) {
+        if (\array_key_exists('Networks', $data) && null !== $data['Networks']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Networks'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\EndpointSettings', 'json', $context);
             }
             $object->setNetworks($values);
+        } elseif (\array_key_exists('Networks', $data) && null === $data['Networks']) {
+            $object->setNetworks(null);
         }
 
         return $object;

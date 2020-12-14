@@ -7,40 +7,40 @@ namespace Docker\API\Model;
 class PluginEnv
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $settable;
     /**
-     * @var string
+     * @var string|null
      */
     protected $value;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -48,29 +48,29 @@ class PluginEnv
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getSettable(): array
+    public function getSettable(): ?array
     {
         return $this->settable;
     }
 
     /**
-     * @param string[] $settable
+     * @param string[]|null $settable
      */
-    public function setSettable(array $settable): self
+    public function setSettable(?array $settable): self
     {
         $this->settable = $settable;
 
         return $this;
     }
 
-    public function getValue(): string
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
-    public function setValue(string $value): self
+    public function setValue(?string $value): self
     {
         $this->value = $value;
 

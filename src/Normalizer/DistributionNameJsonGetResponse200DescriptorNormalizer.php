@@ -41,21 +41,29 @@ class DistributionNameJsonGetResponse200DescriptorNormalizer implements Denormal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('MediaType', $data)) {
+        if (\array_key_exists('MediaType', $data) && null !== $data['MediaType']) {
             $object->setMediaType($data['MediaType']);
+        } elseif (\array_key_exists('MediaType', $data) && null === $data['MediaType']) {
+            $object->setMediaType(null);
         }
-        if (\array_key_exists('Size', $data)) {
+        if (\array_key_exists('Size', $data) && null !== $data['Size']) {
             $object->setSize($data['Size']);
+        } elseif (\array_key_exists('Size', $data) && null === $data['Size']) {
+            $object->setSize(null);
         }
-        if (\array_key_exists('Digest', $data)) {
+        if (\array_key_exists('Digest', $data) && null !== $data['Digest']) {
             $object->setDigest($data['Digest']);
+        } elseif (\array_key_exists('Digest', $data) && null === $data['Digest']) {
+            $object->setDigest(null);
         }
-        if (\array_key_exists('URLs', $data)) {
+        if (\array_key_exists('URLs', $data) && null !== $data['URLs']) {
             $values = [];
             foreach ($data['URLs'] as $value) {
                 $values[] = $value;
             }
             $object->setURLs($values);
+        } elseif (\array_key_exists('URLs', $data) && null === $data['URLs']) {
+            $object->setURLs(null);
         }
 
         return $object;

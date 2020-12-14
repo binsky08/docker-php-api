@@ -41,11 +41,15 @@ class GenericResourcesItemDiscreteResourceSpecNormalizer implements Denormalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Kind', $data)) {
+        if (\array_key_exists('Kind', $data) && null !== $data['Kind']) {
             $object->setKind($data['Kind']);
+        } elseif (\array_key_exists('Kind', $data) && null === $data['Kind']) {
+            $object->setKind(null);
         }
-        if (\array_key_exists('Value', $data)) {
+        if (\array_key_exists('Value', $data) && null !== $data['Value']) {
             $object->setValue($data['Value']);
+        } elseif (\array_key_exists('Value', $data) && null === $data['Value']) {
+            $object->setValue(null);
         }
 
         return $object;

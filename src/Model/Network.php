@@ -7,172 +7,172 @@ namespace Docker\API\Model;
 class Network
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
-     * @var string
+     * @var string|null
      */
     protected $created;
     /**
-     * @var string
+     * @var string|null
      */
     protected $scope;
     /**
-     * @var string
+     * @var string|null
      */
     protected $driver;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $enableIPv6;
     /**
-     * @var IPAM
+     * @var IPAM|null
      */
     protected $iPAM;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $internal;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $attachable;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $ingress;
     /**
-     * @var NetworkContainer[]
+     * @var NetworkContainer[]|null
      */
     protected $containers;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $options;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId(string $id): self
+    public function setId(?string $id): self
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getCreated(): string
+    public function getCreated(): ?string
     {
         return $this->created;
     }
 
-    public function setCreated(string $created): self
+    public function setCreated(?string $created): self
     {
         $this->created = $created;
 
         return $this;
     }
 
-    public function getScope(): string
+    public function getScope(): ?string
     {
         return $this->scope;
     }
 
-    public function setScope(string $scope): self
+    public function setScope(?string $scope): self
     {
         $this->scope = $scope;
 
         return $this;
     }
 
-    public function getDriver(): string
+    public function getDriver(): ?string
     {
         return $this->driver;
     }
 
-    public function setDriver(string $driver): self
+    public function setDriver(?string $driver): self
     {
         $this->driver = $driver;
 
         return $this;
     }
 
-    public function getEnableIPv6(): bool
+    public function getEnableIPv6(): ?bool
     {
         return $this->enableIPv6;
     }
 
-    public function setEnableIPv6(bool $enableIPv6): self
+    public function setEnableIPv6(?bool $enableIPv6): self
     {
         $this->enableIPv6 = $enableIPv6;
 
         return $this;
     }
 
-    public function getIPAM(): IPAM
+    public function getIPAM(): ?IPAM
     {
         return $this->iPAM;
     }
 
-    public function setIPAM(IPAM $iPAM): self
+    public function setIPAM(?IPAM $iPAM): self
     {
         $this->iPAM = $iPAM;
 
         return $this;
     }
 
-    public function getInternal(): bool
+    public function getInternal(): ?bool
     {
         return $this->internal;
     }
 
-    public function setInternal(bool $internal): self
+    public function setInternal(?bool $internal): self
     {
         $this->internal = $internal;
 
         return $this;
     }
 
-    public function getAttachable(): bool
+    public function getAttachable(): ?bool
     {
         return $this->attachable;
     }
 
-    public function setAttachable(bool $attachable): self
+    public function setAttachable(?bool $attachable): self
     {
         $this->attachable = $attachable;
 
         return $this;
     }
 
-    public function getIngress(): bool
+    public function getIngress(): ?bool
     {
         return $this->ingress;
     }
 
-    public function setIngress(bool $ingress): self
+    public function setIngress(?bool $ingress): self
     {
         $this->ingress = $ingress;
 
@@ -180,17 +180,17 @@ class Network
     }
 
     /**
-     * @return NetworkContainer[]
+     * @return NetworkContainer[]|null
      */
-    public function getContainers(): iterable
+    public function getContainers(): ?iterable
     {
         return $this->containers;
     }
 
     /**
-     * @param NetworkContainer[] $containers
+     * @param NetworkContainer[]|null $containers
      */
-    public function setContainers(iterable $containers): self
+    public function setContainers(?iterable $containers): self
     {
         $this->containers = $containers;
 
@@ -198,17 +198,17 @@ class Network
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getOptions(): iterable
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
 
     /**
-     * @param string[] $options
+     * @param string[]|null $options
      */
-    public function setOptions(iterable $options): self
+    public function setOptions(?iterable $options): self
     {
         $this->options = $options;
 
@@ -216,17 +216,17 @@ class Network
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getLabels(): iterable
+    public function getLabels(): ?iterable
     {
         return $this->labels;
     }
 
     /**
-     * @param string[] $labels
+     * @param string[]|null $labels
      */
-    public function setLabels(iterable $labels): self
+    public function setLabels(?iterable $labels): self
     {
         $this->labels = $labels;
 

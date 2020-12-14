@@ -41,23 +41,35 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Id', $data)) {
+        if (\array_key_exists('Id', $data) && null !== $data['Id']) {
             $object->setId($data['Id']);
+        } elseif (\array_key_exists('Id', $data) && null === $data['Id']) {
+            $object->setId(null);
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Enabled', $data)) {
+        if (\array_key_exists('Enabled', $data) && null !== $data['Enabled']) {
             $object->setEnabled($data['Enabled']);
+        } elseif (\array_key_exists('Enabled', $data) && null === $data['Enabled']) {
+            $object->setEnabled(null);
         }
-        if (\array_key_exists('Settings', $data)) {
+        if (\array_key_exists('Settings', $data) && null !== $data['Settings']) {
             $object->setSettings($this->denormalizer->denormalize($data['Settings'], 'Docker\\API\\Model\\PluginSettings', 'json', $context));
+        } elseif (\array_key_exists('Settings', $data) && null === $data['Settings']) {
+            $object->setSettings(null);
         }
-        if (\array_key_exists('PluginReference', $data)) {
+        if (\array_key_exists('PluginReference', $data) && null !== $data['PluginReference']) {
             $object->setPluginReference($data['PluginReference']);
+        } elseif (\array_key_exists('PluginReference', $data) && null === $data['PluginReference']) {
+            $object->setPluginReference(null);
         }
-        if (\array_key_exists('Config', $data)) {
+        if (\array_key_exists('Config', $data) && null !== $data['Config']) {
             $object->setConfig($this->denormalizer->denormalize($data['Config'], 'Docker\\API\\Model\\PluginConfig', 'json', $context));
+        } elseif (\array_key_exists('Config', $data) && null === $data['Config']) {
+            $object->setConfig(null);
         }
 
         return $object;

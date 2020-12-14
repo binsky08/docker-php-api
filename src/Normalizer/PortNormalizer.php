@@ -41,17 +41,25 @@ class PortNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('IP', $data)) {
+        if (\array_key_exists('IP', $data) && null !== $data['IP']) {
             $object->setIP($data['IP']);
+        } elseif (\array_key_exists('IP', $data) && null === $data['IP']) {
+            $object->setIP(null);
         }
-        if (\array_key_exists('PrivatePort', $data)) {
+        if (\array_key_exists('PrivatePort', $data) && null !== $data['PrivatePort']) {
             $object->setPrivatePort($data['PrivatePort']);
+        } elseif (\array_key_exists('PrivatePort', $data) && null === $data['PrivatePort']) {
+            $object->setPrivatePort(null);
         }
-        if (\array_key_exists('PublicPort', $data)) {
+        if (\array_key_exists('PublicPort', $data) && null !== $data['PublicPort']) {
             $object->setPublicPort($data['PublicPort']);
+        } elseif (\array_key_exists('PublicPort', $data) && null === $data['PublicPort']) {
+            $object->setPublicPort(null);
         }
-        if (\array_key_exists('Type', $data)) {
+        if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
+        } elseif (\array_key_exists('Type', $data) && null === $data['Type']) {
+            $object->setType(null);
         }
 
         return $object;

@@ -9,30 +9,30 @@ class TaskSpecPluginSpec
     /**
      * The name or 'alias' to use for the plugin.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The plugin image reference to use.
      *
-     * @var string
+     * @var string|null
      */
     protected $remote;
     /**
      * Disable the plugin once scheduled.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $disabled;
     /**
-     * @var TaskSpecPluginSpecPluginPrivilegeItem[]
+     * @var TaskSpecPluginSpecPluginPrivilegeItem[]|null
      */
     protected $pluginPrivilege;
 
     /**
      * The name or 'alias' to use for the plugin.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -40,7 +40,7 @@ class TaskSpecPluginSpec
     /**
      * The name or 'alias' to use for the plugin.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -50,7 +50,7 @@ class TaskSpecPluginSpec
     /**
      * The plugin image reference to use.
      */
-    public function getRemote(): string
+    public function getRemote(): ?string
     {
         return $this->remote;
     }
@@ -58,7 +58,7 @@ class TaskSpecPluginSpec
     /**
      * The plugin image reference to use.
      */
-    public function setRemote(string $remote): self
+    public function setRemote(?string $remote): self
     {
         $this->remote = $remote;
 
@@ -68,7 +68,7 @@ class TaskSpecPluginSpec
     /**
      * Disable the plugin once scheduled.
      */
-    public function getDisabled(): bool
+    public function getDisabled(): ?bool
     {
         return $this->disabled;
     }
@@ -76,7 +76,7 @@ class TaskSpecPluginSpec
     /**
      * Disable the plugin once scheduled.
      */
-    public function setDisabled(bool $disabled): self
+    public function setDisabled(?bool $disabled): self
     {
         $this->disabled = $disabled;
 
@@ -84,17 +84,17 @@ class TaskSpecPluginSpec
     }
 
     /**
-     * @return TaskSpecPluginSpecPluginPrivilegeItem[]
+     * @return TaskSpecPluginSpecPluginPrivilegeItem[]|null
      */
-    public function getPluginPrivilege(): array
+    public function getPluginPrivilege(): ?array
     {
         return $this->pluginPrivilege;
     }
 
     /**
-     * @param TaskSpecPluginSpecPluginPrivilegeItem[] $pluginPrivilege
+     * @param TaskSpecPluginSpecPluginPrivilegeItem[]|null $pluginPrivilege
      */
-    public function setPluginPrivilege(array $pluginPrivilege): self
+    public function setPluginPrivilege(?array $pluginPrivilege): self
     {
         $this->pluginPrivilege = $pluginPrivilege;
 

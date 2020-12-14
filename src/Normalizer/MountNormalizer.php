@@ -41,29 +41,45 @@ class MountNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Target', $data)) {
+        if (\array_key_exists('Target', $data) && null !== $data['Target']) {
             $object->setTarget($data['Target']);
+        } elseif (\array_key_exists('Target', $data) && null === $data['Target']) {
+            $object->setTarget(null);
         }
-        if (\array_key_exists('Source', $data)) {
+        if (\array_key_exists('Source', $data) && null !== $data['Source']) {
             $object->setSource($data['Source']);
+        } elseif (\array_key_exists('Source', $data) && null === $data['Source']) {
+            $object->setSource(null);
         }
-        if (\array_key_exists('Type', $data)) {
+        if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
+        } elseif (\array_key_exists('Type', $data) && null === $data['Type']) {
+            $object->setType(null);
         }
-        if (\array_key_exists('ReadOnly', $data)) {
+        if (\array_key_exists('ReadOnly', $data) && null !== $data['ReadOnly']) {
             $object->setReadOnly($data['ReadOnly']);
+        } elseif (\array_key_exists('ReadOnly', $data) && null === $data['ReadOnly']) {
+            $object->setReadOnly(null);
         }
-        if (\array_key_exists('Consistency', $data)) {
+        if (\array_key_exists('Consistency', $data) && null !== $data['Consistency']) {
             $object->setConsistency($data['Consistency']);
+        } elseif (\array_key_exists('Consistency', $data) && null === $data['Consistency']) {
+            $object->setConsistency(null);
         }
-        if (\array_key_exists('BindOptions', $data)) {
+        if (\array_key_exists('BindOptions', $data) && null !== $data['BindOptions']) {
             $object->setBindOptions($this->denormalizer->denormalize($data['BindOptions'], 'Docker\\API\\Model\\MountBindOptions', 'json', $context));
+        } elseif (\array_key_exists('BindOptions', $data) && null === $data['BindOptions']) {
+            $object->setBindOptions(null);
         }
-        if (\array_key_exists('VolumeOptions', $data)) {
+        if (\array_key_exists('VolumeOptions', $data) && null !== $data['VolumeOptions']) {
             $object->setVolumeOptions($this->denormalizer->denormalize($data['VolumeOptions'], 'Docker\\API\\Model\\MountVolumeOptions', 'json', $context));
+        } elseif (\array_key_exists('VolumeOptions', $data) && null === $data['VolumeOptions']) {
+            $object->setVolumeOptions(null);
         }
-        if (\array_key_exists('TmpfsOptions', $data)) {
+        if (\array_key_exists('TmpfsOptions', $data) && null !== $data['TmpfsOptions']) {
             $object->setTmpfsOptions($this->denormalizer->denormalize($data['TmpfsOptions'], 'Docker\\API\\Model\\MountTmpfsOptions', 'json', $context));
+        } elseif (\array_key_exists('TmpfsOptions', $data) && null === $data['TmpfsOptions']) {
+            $object->setTmpfsOptions(null);
         }
 
         return $object;

@@ -41,24 +41,34 @@ class ProcessConfigNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('privileged', $data)) {
+        if (\array_key_exists('privileged', $data) && null !== $data['privileged']) {
             $object->setPrivileged($data['privileged']);
+        } elseif (\array_key_exists('privileged', $data) && null === $data['privileged']) {
+            $object->setPrivileged(null);
         }
-        if (\array_key_exists('user', $data)) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
             $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
+            $object->setUser(null);
         }
-        if (\array_key_exists('tty', $data)) {
+        if (\array_key_exists('tty', $data) && null !== $data['tty']) {
             $object->setTty($data['tty']);
+        } elseif (\array_key_exists('tty', $data) && null === $data['tty']) {
+            $object->setTty(null);
         }
-        if (\array_key_exists('entrypoint', $data)) {
+        if (\array_key_exists('entrypoint', $data) && null !== $data['entrypoint']) {
             $object->setEntrypoint($data['entrypoint']);
+        } elseif (\array_key_exists('entrypoint', $data) && null === $data['entrypoint']) {
+            $object->setEntrypoint(null);
         }
-        if (\array_key_exists('arguments', $data)) {
+        if (\array_key_exists('arguments', $data) && null !== $data['arguments']) {
             $values = [];
             foreach ($data['arguments'] as $value) {
                 $values[] = $value;
             }
             $object->setArguments($values);
+        } elseif (\array_key_exists('arguments', $data) && null === $data['arguments']) {
+            $object->setArguments(null);
         }
 
         return $object;

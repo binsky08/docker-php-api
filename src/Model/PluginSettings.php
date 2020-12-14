@@ -7,34 +7,34 @@ namespace Docker\API\Model;
 class PluginSettings
 {
     /**
-     * @var PluginMount[]
+     * @var PluginMount[]|null
      */
     protected $mounts;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $env;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $args;
     /**
-     * @var PluginDevice[]
+     * @var PluginDevice[]|null
      */
     protected $devices;
 
     /**
-     * @return PluginMount[]
+     * @return PluginMount[]|null
      */
-    public function getMounts(): array
+    public function getMounts(): ?array
     {
         return $this->mounts;
     }
 
     /**
-     * @param PluginMount[] $mounts
+     * @param PluginMount[]|null $mounts
      */
-    public function setMounts(array $mounts): self
+    public function setMounts(?array $mounts): self
     {
         $this->mounts = $mounts;
 
@@ -42,17 +42,17 @@ class PluginSettings
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getEnv(): array
+    public function getEnv(): ?array
     {
         return $this->env;
     }
 
     /**
-     * @param string[] $env
+     * @param string[]|null $env
      */
-    public function setEnv(array $env): self
+    public function setEnv(?array $env): self
     {
         $this->env = $env;
 
@@ -60,17 +60,17 @@ class PluginSettings
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getArgs(): array
+    public function getArgs(): ?array
     {
         return $this->args;
     }
 
     /**
-     * @param string[] $args
+     * @param string[]|null $args
      */
-    public function setArgs(array $args): self
+    public function setArgs(?array $args): self
     {
         $this->args = $args;
 
@@ -78,17 +78,17 @@ class PluginSettings
     }
 
     /**
-     * @return PluginDevice[]
+     * @return PluginDevice[]|null
      */
-    public function getDevices(): array
+    public function getDevices(): ?array
     {
         return $this->devices;
     }
 
     /**
-     * @param PluginDevice[] $devices
+     * @param PluginDevice[]|null $devices
      */
-    public function setDevices(array $devices): self
+    public function setDevices(?array $devices): self
     {
         $this->devices = $devices;
 

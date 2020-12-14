@@ -41,107 +41,151 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Image', $data)) {
+        if (\array_key_exists('Image', $data) && null !== $data['Image']) {
             $object->setImage($data['Image']);
+        } elseif (\array_key_exists('Image', $data) && null === $data['Image']) {
+            $object->setImage(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setLabels($values);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('Command', $data)) {
+        if (\array_key_exists('Command', $data) && null !== $data['Command']) {
             $values_1 = [];
             foreach ($data['Command'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setCommand($values_1);
+        } elseif (\array_key_exists('Command', $data) && null === $data['Command']) {
+            $object->setCommand(null);
         }
-        if (\array_key_exists('Args', $data)) {
+        if (\array_key_exists('Args', $data) && null !== $data['Args']) {
             $values_2 = [];
             foreach ($data['Args'] as $value_2) {
                 $values_2[] = $value_2;
             }
             $object->setArgs($values_2);
+        } elseif (\array_key_exists('Args', $data) && null === $data['Args']) {
+            $object->setArgs(null);
         }
-        if (\array_key_exists('Hostname', $data)) {
+        if (\array_key_exists('Hostname', $data) && null !== $data['Hostname']) {
             $object->setHostname($data['Hostname']);
+        } elseif (\array_key_exists('Hostname', $data) && null === $data['Hostname']) {
+            $object->setHostname(null);
         }
-        if (\array_key_exists('Env', $data)) {
+        if (\array_key_exists('Env', $data) && null !== $data['Env']) {
             $values_3 = [];
             foreach ($data['Env'] as $value_3) {
                 $values_3[] = $value_3;
             }
             $object->setEnv($values_3);
+        } elseif (\array_key_exists('Env', $data) && null === $data['Env']) {
+            $object->setEnv(null);
         }
-        if (\array_key_exists('Dir', $data)) {
+        if (\array_key_exists('Dir', $data) && null !== $data['Dir']) {
             $object->setDir($data['Dir']);
+        } elseif (\array_key_exists('Dir', $data) && null === $data['Dir']) {
+            $object->setDir(null);
         }
-        if (\array_key_exists('User', $data)) {
+        if (\array_key_exists('User', $data) && null !== $data['User']) {
             $object->setUser($data['User']);
+        } elseif (\array_key_exists('User', $data) && null === $data['User']) {
+            $object->setUser(null);
         }
-        if (\array_key_exists('Groups', $data)) {
+        if (\array_key_exists('Groups', $data) && null !== $data['Groups']) {
             $values_4 = [];
             foreach ($data['Groups'] as $value_4) {
                 $values_4[] = $value_4;
             }
             $object->setGroups($values_4);
+        } elseif (\array_key_exists('Groups', $data) && null === $data['Groups']) {
+            $object->setGroups(null);
         }
-        if (\array_key_exists('Privileges', $data)) {
+        if (\array_key_exists('Privileges', $data) && null !== $data['Privileges']) {
             $object->setPrivileges($this->denormalizer->denormalize($data['Privileges'], 'Docker\\API\\Model\\TaskSpecContainerSpecPrivileges', 'json', $context));
+        } elseif (\array_key_exists('Privileges', $data) && null === $data['Privileges']) {
+            $object->setPrivileges(null);
         }
-        if (\array_key_exists('TTY', $data)) {
+        if (\array_key_exists('TTY', $data) && null !== $data['TTY']) {
             $object->setTTY($data['TTY']);
+        } elseif (\array_key_exists('TTY', $data) && null === $data['TTY']) {
+            $object->setTTY(null);
         }
-        if (\array_key_exists('OpenStdin', $data)) {
+        if (\array_key_exists('OpenStdin', $data) && null !== $data['OpenStdin']) {
             $object->setOpenStdin($data['OpenStdin']);
+        } elseif (\array_key_exists('OpenStdin', $data) && null === $data['OpenStdin']) {
+            $object->setOpenStdin(null);
         }
-        if (\array_key_exists('ReadOnly', $data)) {
+        if (\array_key_exists('ReadOnly', $data) && null !== $data['ReadOnly']) {
             $object->setReadOnly($data['ReadOnly']);
+        } elseif (\array_key_exists('ReadOnly', $data) && null === $data['ReadOnly']) {
+            $object->setReadOnly(null);
         }
-        if (\array_key_exists('Mounts', $data)) {
+        if (\array_key_exists('Mounts', $data) && null !== $data['Mounts']) {
             $values_5 = [];
             foreach ($data['Mounts'] as $value_5) {
                 $values_5[] = $this->denormalizer->denormalize($value_5, 'Docker\\API\\Model\\Mount', 'json', $context);
             }
             $object->setMounts($values_5);
+        } elseif (\array_key_exists('Mounts', $data) && null === $data['Mounts']) {
+            $object->setMounts(null);
         }
-        if (\array_key_exists('StopSignal', $data)) {
+        if (\array_key_exists('StopSignal', $data) && null !== $data['StopSignal']) {
             $object->setStopSignal($data['StopSignal']);
+        } elseif (\array_key_exists('StopSignal', $data) && null === $data['StopSignal']) {
+            $object->setStopSignal(null);
         }
-        if (\array_key_exists('StopGracePeriod', $data)) {
+        if (\array_key_exists('StopGracePeriod', $data) && null !== $data['StopGracePeriod']) {
             $object->setStopGracePeriod($data['StopGracePeriod']);
+        } elseif (\array_key_exists('StopGracePeriod', $data) && null === $data['StopGracePeriod']) {
+            $object->setStopGracePeriod(null);
         }
-        if (\array_key_exists('HealthCheck', $data)) {
+        if (\array_key_exists('HealthCheck', $data) && null !== $data['HealthCheck']) {
             $object->setHealthCheck($this->denormalizer->denormalize($data['HealthCheck'], 'Docker\\API\\Model\\HealthConfig', 'json', $context));
+        } elseif (\array_key_exists('HealthCheck', $data) && null === $data['HealthCheck']) {
+            $object->setHealthCheck(null);
         }
-        if (\array_key_exists('Hosts', $data)) {
+        if (\array_key_exists('Hosts', $data) && null !== $data['Hosts']) {
             $values_6 = [];
             foreach ($data['Hosts'] as $value_6) {
                 $values_6[] = $value_6;
             }
             $object->setHosts($values_6);
+        } elseif (\array_key_exists('Hosts', $data) && null === $data['Hosts']) {
+            $object->setHosts(null);
         }
-        if (\array_key_exists('DNSConfig', $data)) {
+        if (\array_key_exists('DNSConfig', $data) && null !== $data['DNSConfig']) {
             $object->setDNSConfig($this->denormalizer->denormalize($data['DNSConfig'], 'Docker\\API\\Model\\TaskSpecContainerSpecDNSConfig', 'json', $context));
+        } elseif (\array_key_exists('DNSConfig', $data) && null === $data['DNSConfig']) {
+            $object->setDNSConfig(null);
         }
-        if (\array_key_exists('Secrets', $data)) {
+        if (\array_key_exists('Secrets', $data) && null !== $data['Secrets']) {
             $values_7 = [];
             foreach ($data['Secrets'] as $value_7) {
                 $values_7[] = $this->denormalizer->denormalize($value_7, 'Docker\\API\\Model\\TaskSpecContainerSpecSecretsItem', 'json', $context);
             }
             $object->setSecrets($values_7);
+        } elseif (\array_key_exists('Secrets', $data) && null === $data['Secrets']) {
+            $object->setSecrets(null);
         }
-        if (\array_key_exists('Configs', $data)) {
+        if (\array_key_exists('Configs', $data) && null !== $data['Configs']) {
             $values_8 = [];
             foreach ($data['Configs'] as $value_8) {
                 $values_8[] = $this->denormalizer->denormalize($value_8, 'Docker\\API\\Model\\TaskSpecContainerSpecConfigsItem', 'json', $context);
             }
             $object->setConfigs($values_8);
+        } elseif (\array_key_exists('Configs', $data) && null === $data['Configs']) {
+            $object->setConfigs(null);
         }
-        if (\array_key_exists('Isolation', $data)) {
+        if (\array_key_exists('Isolation', $data) && null !== $data['Isolation']) {
             $object->setIsolation($data['Isolation']);
+        } elseif (\array_key_exists('Isolation', $data) && null === $data['Isolation']) {
+            $object->setIsolation(null);
         }
 
         return $object;

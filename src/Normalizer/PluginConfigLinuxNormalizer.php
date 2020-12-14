@@ -41,22 +41,28 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Capabilities', $data)) {
+        if (\array_key_exists('Capabilities', $data) && null !== $data['Capabilities']) {
             $values = [];
             foreach ($data['Capabilities'] as $value) {
                 $values[] = $value;
             }
             $object->setCapabilities($values);
+        } elseif (\array_key_exists('Capabilities', $data) && null === $data['Capabilities']) {
+            $object->setCapabilities(null);
         }
-        if (\array_key_exists('AllowAllDevices', $data)) {
+        if (\array_key_exists('AllowAllDevices', $data) && null !== $data['AllowAllDevices']) {
             $object->setAllowAllDevices($data['AllowAllDevices']);
+        } elseif (\array_key_exists('AllowAllDevices', $data) && null === $data['AllowAllDevices']) {
+            $object->setAllowAllDevices(null);
         }
-        if (\array_key_exists('Devices', $data)) {
+        if (\array_key_exists('Devices', $data) && null !== $data['Devices']) {
             $values_1 = [];
             foreach ($data['Devices'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\PluginDevice', 'json', $context);
             }
             $object->setDevices($values_1);
+        } elseif (\array_key_exists('Devices', $data) && null === $data['Devices']) {
+            $object->setDevices(null);
         }
 
         return $object;

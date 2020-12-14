@@ -41,29 +41,45 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ID', $data)) {
+        if (\array_key_exists('ID', $data) && null !== $data['ID']) {
             $object->setID($data['ID']);
+        } elseif (\array_key_exists('ID', $data) && null === $data['ID']) {
+            $object->setID(null);
         }
-        if (\array_key_exists('Version', $data)) {
+        if (\array_key_exists('Version', $data) && null !== $data['Version']) {
             $object->setVersion($this->denormalizer->denormalize($data['Version'], 'Docker\\API\\Model\\ObjectVersion', 'json', $context));
+        } elseif (\array_key_exists('Version', $data) && null === $data['Version']) {
+            $object->setVersion(null);
         }
-        if (\array_key_exists('CreatedAt', $data)) {
+        if (\array_key_exists('CreatedAt', $data) && null !== $data['CreatedAt']) {
             $object->setCreatedAt($data['CreatedAt']);
+        } elseif (\array_key_exists('CreatedAt', $data) && null === $data['CreatedAt']) {
+            $object->setCreatedAt(null);
         }
-        if (\array_key_exists('UpdatedAt', $data)) {
+        if (\array_key_exists('UpdatedAt', $data) && null !== $data['UpdatedAt']) {
             $object->setUpdatedAt($data['UpdatedAt']);
+        } elseif (\array_key_exists('UpdatedAt', $data) && null === $data['UpdatedAt']) {
+            $object->setUpdatedAt(null);
         }
-        if (\array_key_exists('Spec', $data)) {
+        if (\array_key_exists('Spec', $data) && null !== $data['Spec']) {
             $object->setSpec($this->denormalizer->denormalize($data['Spec'], 'Docker\\API\\Model\\SwarmSpec', 'json', $context));
+        } elseif (\array_key_exists('Spec', $data) && null === $data['Spec']) {
+            $object->setSpec(null);
         }
-        if (\array_key_exists('TLSInfo', $data)) {
+        if (\array_key_exists('TLSInfo', $data) && null !== $data['TLSInfo']) {
             $object->setTLSInfo($this->denormalizer->denormalize($data['TLSInfo'], 'Docker\\API\\Model\\TLSInfo', 'json', $context));
+        } elseif (\array_key_exists('TLSInfo', $data) && null === $data['TLSInfo']) {
+            $object->setTLSInfo(null);
         }
-        if (\array_key_exists('RootRotationInProgress', $data)) {
+        if (\array_key_exists('RootRotationInProgress', $data) && null !== $data['RootRotationInProgress']) {
             $object->setRootRotationInProgress($data['RootRotationInProgress']);
+        } elseif (\array_key_exists('RootRotationInProgress', $data) && null === $data['RootRotationInProgress']) {
+            $object->setRootRotationInProgress(null);
         }
-        if (\array_key_exists('JoinTokens', $data)) {
+        if (\array_key_exists('JoinTokens', $data) && null !== $data['JoinTokens']) {
             $object->setJoinTokens($this->denormalizer->denormalize($data['JoinTokens'], 'Docker\\API\\Model\\JoinTokens', 'json', $context));
+        } elseif (\array_key_exists('JoinTokens', $data) && null === $data['JoinTokens']) {
+            $object->setJoinTokens(null);
         }
 
         return $object;

@@ -9,14 +9,14 @@ class SwarmUnlockPostBody
     /**
      * The swarm's unlock key.
      *
-     * @var string
+     * @var string|null
      */
     protected $unlockKey;
 
     /**
      * The swarm's unlock key.
      */
-    public function getUnlockKey(): string
+    public function getUnlockKey(): ?string
     {
         return $this->unlockKey;
     }
@@ -24,7 +24,7 @@ class SwarmUnlockPostBody
     /**
      * The swarm's unlock key.
      */
-    public function setUnlockKey(string $unlockKey): self
+    public function setUnlockKey(?string $unlockKey): self
     {
         $this->unlockKey = $unlockKey;
 

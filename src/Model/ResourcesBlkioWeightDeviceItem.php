@@ -7,32 +7,32 @@ namespace Docker\API\Model;
 class ResourcesBlkioWeightDeviceItem
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $path;
     /**
-     * @var int
+     * @var int|null
      */
     protected $weight;
 
-    public function getPath(): string
+    public function getPath(): ?string
     {
         return $this->path;
     }
 
-    public function setPath(string $path): self
+    public function setPath(?string $path): self
     {
         $this->path = $path;
 
         return $this;
     }
 
-    public function getWeight(): int
+    public function getWeight(): ?int
     {
         return $this->weight;
     }
 
-    public function setWeight(int $weight): self
+    public function setWeight(?int $weight): self
     {
         $this->weight = $weight;
 

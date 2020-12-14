@@ -41,14 +41,20 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Soft', $data)) {
+        if (\array_key_exists('Soft', $data) && null !== $data['Soft']) {
             $object->setSoft($data['Soft']);
+        } elseif (\array_key_exists('Soft', $data) && null === $data['Soft']) {
+            $object->setSoft(null);
         }
-        if (\array_key_exists('Hard', $data)) {
+        if (\array_key_exists('Hard', $data) && null !== $data['Hard']) {
             $object->setHard($data['Hard']);
+        } elseif (\array_key_exists('Hard', $data) && null === $data['Hard']) {
+            $object->setHard(null);
         }
 
         return $object;

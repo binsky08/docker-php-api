@@ -41,22 +41,28 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('EngineVersion', $data)) {
+        if (\array_key_exists('EngineVersion', $data) && null !== $data['EngineVersion']) {
             $object->setEngineVersion($data['EngineVersion']);
+        } elseif (\array_key_exists('EngineVersion', $data) && null === $data['EngineVersion']) {
+            $object->setEngineVersion(null);
         }
-        if (\array_key_exists('Labels', $data)) {
+        if (\array_key_exists('Labels', $data) && null !== $data['Labels']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setLabels($values);
+        } elseif (\array_key_exists('Labels', $data) && null === $data['Labels']) {
+            $object->setLabels(null);
         }
-        if (\array_key_exists('Plugins', $data)) {
+        if (\array_key_exists('Plugins', $data) && null !== $data['Plugins']) {
             $values_1 = [];
             foreach ($data['Plugins'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\EngineDescriptionPluginsItem', 'json', $context);
             }
             $object->setPlugins($values_1);
+        } elseif (\array_key_exists('Plugins', $data) && null === $data['Plugins']) {
+            $object->setPlugins(null);
         }
 
         return $object;

@@ -41,11 +41,15 @@ class MountTmpfsOptionsNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('SizeBytes', $data)) {
+        if (\array_key_exists('SizeBytes', $data) && null !== $data['SizeBytes']) {
             $object->setSizeBytes($data['SizeBytes']);
+        } elseif (\array_key_exists('SizeBytes', $data) && null === $data['SizeBytes']) {
+            $object->setSizeBytes(null);
         }
-        if (\array_key_exists('Mode', $data)) {
+        if (\array_key_exists('Mode', $data) && null !== $data['Mode']) {
             $object->setMode($data['Mode']);
+        } elseif (\array_key_exists('Mode', $data) && null === $data['Mode']) {
+            $object->setMode(null);
         }
 
         return $object;

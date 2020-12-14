@@ -9,7 +9,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The status of the container. For example, `"running"` or `"exited"`.
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
@@ -24,64 +24,64 @@ class ContainersIdJsonGetResponse200State
      *
      * Use the `Status` field instead to determine if a container's state is "running".
      *
-     * @var bool
+     * @var bool|null
      */
     protected $running;
     /**
      * Whether this container is paused.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $paused;
     /**
      * Whether this container is restarting.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $restarting;
     /**
      * Whether this container has been killed because it ran out of memory.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $oOMKilled;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $dead;
     /**
      * The process ID of this container.
      *
-     * @var int
+     * @var int|null
      */
     protected $pid;
     /**
      * The last exit code of this container.
      *
-     * @var int
+     * @var int|null
      */
     protected $exitCode;
     /**
-     * @var string
+     * @var string|null
      */
     protected $error;
     /**
      * The time when this container was last started.
      *
-     * @var string
+     * @var string|null
      */
     protected $startedAt;
     /**
      * The time when this container last exited.
      *
-     * @var string
+     * @var string|null
      */
     protected $finishedAt;
 
     /**
      * The status of the container. For example, `"running"` or `"exited"`.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -89,7 +89,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The status of the container. For example, `"running"` or `"exited"`.
      */
-    public function setStatus(string $status): self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
@@ -108,7 +108,7 @@ class ContainersIdJsonGetResponse200State
      *
      * Use the `Status` field instead to determine if a container's state is "running".
      */
-    public function getRunning(): bool
+    public function getRunning(): ?bool
     {
         return $this->running;
     }
@@ -125,7 +125,7 @@ class ContainersIdJsonGetResponse200State
      *
      * Use the `Status` field instead to determine if a container's state is "running".
      */
-    public function setRunning(bool $running): self
+    public function setRunning(?bool $running): self
     {
         $this->running = $running;
 
@@ -135,7 +135,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container is paused.
      */
-    public function getPaused(): bool
+    public function getPaused(): ?bool
     {
         return $this->paused;
     }
@@ -143,7 +143,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container is paused.
      */
-    public function setPaused(bool $paused): self
+    public function setPaused(?bool $paused): self
     {
         $this->paused = $paused;
 
@@ -153,7 +153,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container is restarting.
      */
-    public function getRestarting(): bool
+    public function getRestarting(): ?bool
     {
         return $this->restarting;
     }
@@ -161,7 +161,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container is restarting.
      */
-    public function setRestarting(bool $restarting): self
+    public function setRestarting(?bool $restarting): self
     {
         $this->restarting = $restarting;
 
@@ -171,7 +171,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container has been killed because it ran out of memory.
      */
-    public function getOOMKilled(): bool
+    public function getOOMKilled(): ?bool
     {
         return $this->oOMKilled;
     }
@@ -179,19 +179,19 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container has been killed because it ran out of memory.
      */
-    public function setOOMKilled(bool $oOMKilled): self
+    public function setOOMKilled(?bool $oOMKilled): self
     {
         $this->oOMKilled = $oOMKilled;
 
         return $this;
     }
 
-    public function getDead(): bool
+    public function getDead(): ?bool
     {
         return $this->dead;
     }
 
-    public function setDead(bool $dead): self
+    public function setDead(?bool $dead): self
     {
         $this->dead = $dead;
 
@@ -201,7 +201,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The process ID of this container.
      */
-    public function getPid(): int
+    public function getPid(): ?int
     {
         return $this->pid;
     }
@@ -209,7 +209,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The process ID of this container.
      */
-    public function setPid(int $pid): self
+    public function setPid(?int $pid): self
     {
         $this->pid = $pid;
 
@@ -219,7 +219,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The last exit code of this container.
      */
-    public function getExitCode(): int
+    public function getExitCode(): ?int
     {
         return $this->exitCode;
     }
@@ -227,19 +227,19 @@ class ContainersIdJsonGetResponse200State
     /**
      * The last exit code of this container.
      */
-    public function setExitCode(int $exitCode): self
+    public function setExitCode(?int $exitCode): self
     {
         $this->exitCode = $exitCode;
 
         return $this;
     }
 
-    public function getError(): string
+    public function getError(): ?string
     {
         return $this->error;
     }
 
-    public function setError(string $error): self
+    public function setError(?string $error): self
     {
         $this->error = $error;
 
@@ -249,7 +249,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The time when this container was last started.
      */
-    public function getStartedAt(): string
+    public function getStartedAt(): ?string
     {
         return $this->startedAt;
     }
@@ -257,7 +257,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The time when this container was last started.
      */
-    public function setStartedAt(string $startedAt): self
+    public function setStartedAt(?string $startedAt): self
     {
         $this->startedAt = $startedAt;
 
@@ -267,7 +267,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The time when this container last exited.
      */
-    public function getFinishedAt(): string
+    public function getFinishedAt(): ?string
     {
         return $this->finishedAt;
     }
@@ -275,7 +275,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The time when this container last exited.
      */
-    public function setFinishedAt(string $finishedAt): self
+    public function setFinishedAt(?string $finishedAt): self
     {
         $this->finishedAt = $finishedAt;
 

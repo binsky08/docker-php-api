@@ -41,11 +41,15 @@ class ContainersIdArchiveHeadResponse400Normalizer implements DenormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ErrorResponse', $data)) {
+        if (\array_key_exists('ErrorResponse', $data) && null !== $data['ErrorResponse']) {
             $object->setErrorResponse($this->denormalizer->denormalize($data['ErrorResponse'], 'Docker\\API\\Model\\ErrorResponse', 'json', $context));
+        } elseif (\array_key_exists('ErrorResponse', $data) && null === $data['ErrorResponse']) {
+            $object->setErrorResponse(null);
         }
-        if (\array_key_exists('message', $data)) {
+        if (\array_key_exists('message', $data) && null !== $data['message']) {
             $object->setMessage($data['message']);
+        } elseif (\array_key_exists('message', $data) && null === $data['message']) {
+            $object->setMessage(null);
         }
 
         return $object;

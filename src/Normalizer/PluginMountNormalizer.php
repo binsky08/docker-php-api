@@ -41,34 +41,48 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
             $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Description', $data)) {
+        if (\array_key_exists('Description', $data) && null !== $data['Description']) {
             $object->setDescription($data['Description']);
+        } elseif (\array_key_exists('Description', $data) && null === $data['Description']) {
+            $object->setDescription(null);
         }
-        if (\array_key_exists('Settable', $data)) {
+        if (\array_key_exists('Settable', $data) && null !== $data['Settable']) {
             $values = [];
             foreach ($data['Settable'] as $value) {
                 $values[] = $value;
             }
             $object->setSettable($values);
+        } elseif (\array_key_exists('Settable', $data) && null === $data['Settable']) {
+            $object->setSettable(null);
         }
-        if (\array_key_exists('Source', $data)) {
+        if (\array_key_exists('Source', $data) && null !== $data['Source']) {
             $object->setSource($data['Source']);
+        } elseif (\array_key_exists('Source', $data) && null === $data['Source']) {
+            $object->setSource(null);
         }
-        if (\array_key_exists('Destination', $data)) {
+        if (\array_key_exists('Destination', $data) && null !== $data['Destination']) {
             $object->setDestination($data['Destination']);
+        } elseif (\array_key_exists('Destination', $data) && null === $data['Destination']) {
+            $object->setDestination(null);
         }
-        if (\array_key_exists('Type', $data)) {
+        if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
+        } elseif (\array_key_exists('Type', $data) && null === $data['Type']) {
+            $object->setType(null);
         }
-        if (\array_key_exists('Options', $data)) {
+        if (\array_key_exists('Options', $data) && null !== $data['Options']) {
             $values_1 = [];
             foreach ($data['Options'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setOptions($values_1);
+        } elseif (\array_key_exists('Options', $data) && null === $data['Options']) {
+            $object->setOptions(null);
         }
 
         return $object;

@@ -41,20 +41,30 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ListenAddr', $data)) {
+        if (\array_key_exists('ListenAddr', $data) && null !== $data['ListenAddr']) {
             $object->setListenAddr($data['ListenAddr']);
+        } elseif (\array_key_exists('ListenAddr', $data) && null === $data['ListenAddr']) {
+            $object->setListenAddr(null);
         }
-        if (\array_key_exists('AdvertiseAddr', $data)) {
+        if (\array_key_exists('AdvertiseAddr', $data) && null !== $data['AdvertiseAddr']) {
             $object->setAdvertiseAddr($data['AdvertiseAddr']);
+        } elseif (\array_key_exists('AdvertiseAddr', $data) && null === $data['AdvertiseAddr']) {
+            $object->setAdvertiseAddr(null);
         }
-        if (\array_key_exists('DataPathAddr', $data)) {
+        if (\array_key_exists('DataPathAddr', $data) && null !== $data['DataPathAddr']) {
             $object->setDataPathAddr($data['DataPathAddr']);
+        } elseif (\array_key_exists('DataPathAddr', $data) && null === $data['DataPathAddr']) {
+            $object->setDataPathAddr(null);
         }
-        if (\array_key_exists('ForceNewCluster', $data)) {
+        if (\array_key_exists('ForceNewCluster', $data) && null !== $data['ForceNewCluster']) {
             $object->setForceNewCluster($data['ForceNewCluster']);
+        } elseif (\array_key_exists('ForceNewCluster', $data) && null === $data['ForceNewCluster']) {
+            $object->setForceNewCluster(null);
         }
-        if (\array_key_exists('Spec', $data)) {
+        if (\array_key_exists('Spec', $data) && null !== $data['Spec']) {
             $object->setSpec($this->denormalizer->denormalize($data['Spec'], 'Docker\\API\\Model\\SwarmSpec', 'json', $context));
+        } elseif (\array_key_exists('Spec', $data) && null === $data['Spec']) {
+            $object->setSpec(null);
         }
 
         return $object;

@@ -41,38 +41,60 @@ class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Status', $data)) {
+        if (\array_key_exists('Status', $data) && null !== $data['Status']) {
             $object->setStatus($data['Status']);
+        } elseif (\array_key_exists('Status', $data) && null === $data['Status']) {
+            $object->setStatus(null);
         }
-        if (\array_key_exists('Running', $data)) {
+        if (\array_key_exists('Running', $data) && null !== $data['Running']) {
             $object->setRunning($data['Running']);
+        } elseif (\array_key_exists('Running', $data) && null === $data['Running']) {
+            $object->setRunning(null);
         }
-        if (\array_key_exists('Paused', $data)) {
+        if (\array_key_exists('Paused', $data) && null !== $data['Paused']) {
             $object->setPaused($data['Paused']);
+        } elseif (\array_key_exists('Paused', $data) && null === $data['Paused']) {
+            $object->setPaused(null);
         }
-        if (\array_key_exists('Restarting', $data)) {
+        if (\array_key_exists('Restarting', $data) && null !== $data['Restarting']) {
             $object->setRestarting($data['Restarting']);
+        } elseif (\array_key_exists('Restarting', $data) && null === $data['Restarting']) {
+            $object->setRestarting(null);
         }
-        if (\array_key_exists('OOMKilled', $data)) {
+        if (\array_key_exists('OOMKilled', $data) && null !== $data['OOMKilled']) {
             $object->setOOMKilled($data['OOMKilled']);
+        } elseif (\array_key_exists('OOMKilled', $data) && null === $data['OOMKilled']) {
+            $object->setOOMKilled(null);
         }
-        if (\array_key_exists('Dead', $data)) {
+        if (\array_key_exists('Dead', $data) && null !== $data['Dead']) {
             $object->setDead($data['Dead']);
+        } elseif (\array_key_exists('Dead', $data) && null === $data['Dead']) {
+            $object->setDead(null);
         }
-        if (\array_key_exists('Pid', $data)) {
+        if (\array_key_exists('Pid', $data) && null !== $data['Pid']) {
             $object->setPid($data['Pid']);
+        } elseif (\array_key_exists('Pid', $data) && null === $data['Pid']) {
+            $object->setPid(null);
         }
-        if (\array_key_exists('ExitCode', $data)) {
+        if (\array_key_exists('ExitCode', $data) && null !== $data['ExitCode']) {
             $object->setExitCode($data['ExitCode']);
+        } elseif (\array_key_exists('ExitCode', $data) && null === $data['ExitCode']) {
+            $object->setExitCode(null);
         }
-        if (\array_key_exists('Error', $data)) {
+        if (\array_key_exists('Error', $data) && null !== $data['Error']) {
             $object->setError($data['Error']);
+        } elseif (\array_key_exists('Error', $data) && null === $data['Error']) {
+            $object->setError(null);
         }
-        if (\array_key_exists('StartedAt', $data)) {
+        if (\array_key_exists('StartedAt', $data) && null !== $data['StartedAt']) {
             $object->setStartedAt($data['StartedAt']);
+        } elseif (\array_key_exists('StartedAt', $data) && null === $data['StartedAt']) {
+            $object->setStartedAt(null);
         }
-        if (\array_key_exists('FinishedAt', $data)) {
+        if (\array_key_exists('FinishedAt', $data) && null !== $data['FinishedAt']) {
             $object->setFinishedAt($data['FinishedAt']);
+        } elseif (\array_key_exists('FinishedAt', $data) && null === $data['FinishedAt']) {
+            $object->setFinishedAt(null);
         }
 
         return $object;

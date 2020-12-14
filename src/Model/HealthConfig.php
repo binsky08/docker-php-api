@@ -14,31 +14,31 @@ class HealthConfig
      * - `["CMD", args...]` exec arguments directly
      * - `["CMD-SHELL", command]` run command with system's default shell
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $test;
     /**
      * The time to wait between checks in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
      *
-     * @var int
+     * @var int|null
      */
     protected $interval;
     /**
      * The time to wait before considering the check to have hung. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
      *
-     * @var int
+     * @var int|null
      */
     protected $timeout;
     /**
      * The number of consecutive failures needed to consider a container as unhealthy. 0 means inherit.
      *
-     * @var int
+     * @var int|null
      */
     protected $retries;
     /**
      * Start period for the container to initialize before starting health-retries countdown in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
      *
-     * @var int
+     * @var int|null
      */
     protected $startPeriod;
 
@@ -50,9 +50,9 @@ class HealthConfig
      * - `["CMD", args...]` exec arguments directly
      * - `["CMD-SHELL", command]` run command with system's default shell
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getTest(): array
+    public function getTest(): ?array
     {
         return $this->test;
     }
@@ -65,9 +65,9 @@ class HealthConfig
      * - `["CMD", args...]` exec arguments directly
      * - `["CMD-SHELL", command]` run command with system's default shell
      *
-     * @param string[] $test
+     * @param string[]|null $test
      */
-    public function setTest(array $test): self
+    public function setTest(?array $test): self
     {
         $this->test = $test;
 
@@ -77,7 +77,7 @@ class HealthConfig
     /**
      * The time to wait between checks in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
      */
-    public function getInterval(): int
+    public function getInterval(): ?int
     {
         return $this->interval;
     }
@@ -85,7 +85,7 @@ class HealthConfig
     /**
      * The time to wait between checks in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
      */
-    public function setInterval(int $interval): self
+    public function setInterval(?int $interval): self
     {
         $this->interval = $interval;
 
@@ -95,7 +95,7 @@ class HealthConfig
     /**
      * The time to wait before considering the check to have hung. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
      */
-    public function getTimeout(): int
+    public function getTimeout(): ?int
     {
         return $this->timeout;
     }
@@ -103,7 +103,7 @@ class HealthConfig
     /**
      * The time to wait before considering the check to have hung. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
      */
-    public function setTimeout(int $timeout): self
+    public function setTimeout(?int $timeout): self
     {
         $this->timeout = $timeout;
 
@@ -113,7 +113,7 @@ class HealthConfig
     /**
      * The number of consecutive failures needed to consider a container as unhealthy. 0 means inherit.
      */
-    public function getRetries(): int
+    public function getRetries(): ?int
     {
         return $this->retries;
     }
@@ -121,7 +121,7 @@ class HealthConfig
     /**
      * The number of consecutive failures needed to consider a container as unhealthy. 0 means inherit.
      */
-    public function setRetries(int $retries): self
+    public function setRetries(?int $retries): self
     {
         $this->retries = $retries;
 
@@ -131,7 +131,7 @@ class HealthConfig
     /**
      * Start period for the container to initialize before starting health-retries countdown in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
      */
-    public function getStartPeriod(): int
+    public function getStartPeriod(): ?int
     {
         return $this->startPeriod;
     }
@@ -139,7 +139,7 @@ class HealthConfig
     /**
      * Start period for the container to initialize before starting health-retries countdown in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
      */
-    public function setStartPeriod(int $startPeriod): self
+    public function setStartPeriod(?int $startPeriod): self
     {
         $this->startPeriod = $startPeriod;
 

@@ -9,20 +9,20 @@ class AuthPostResponse200
     /**
      * The status of the authentication.
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
      * An opaque token used to authenticate a user after a successful login.
      *
-     * @var string
+     * @var string|null
      */
     protected $identityToken;
 
     /**
      * The status of the authentication.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -30,7 +30,7 @@ class AuthPostResponse200
     /**
      * The status of the authentication.
      */
-    public function setStatus(string $status): self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
@@ -40,7 +40,7 @@ class AuthPostResponse200
     /**
      * An opaque token used to authenticate a user after a successful login.
      */
-    public function getIdentityToken(): string
+    public function getIdentityToken(): ?string
     {
         return $this->identityToken;
     }
@@ -48,7 +48,7 @@ class AuthPostResponse200
     /**
      * An opaque token used to authenticate a user after a successful login.
      */
-    public function setIdentityToken(string $identityToken): self
+    public function setIdentityToken(?string $identityToken): self
     {
         $this->identityToken = $identityToken;
 

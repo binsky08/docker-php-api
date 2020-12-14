@@ -7,20 +7,20 @@ namespace Docker\API\Model;
 class ServiceSpecNetworksItem
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $target;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $aliases;
 
-    public function getTarget(): string
+    public function getTarget(): ?string
     {
         return $this->target;
     }
 
-    public function setTarget(string $target): self
+    public function setTarget(?string $target): self
     {
         $this->target = $target;
 
@@ -28,17 +28,17 @@ class ServiceSpecNetworksItem
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getAliases(): array
+    public function getAliases(): ?array
     {
         return $this->aliases;
     }
 
     /**
-     * @param string[] $aliases
+     * @param string[]|null $aliases
      */
-    public function setAliases(array $aliases): self
+    public function setAliases(?array $aliases): self
     {
         $this->aliases = $aliases;
 

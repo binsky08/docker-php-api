@@ -41,26 +41,40 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('ID', $data)) {
+        if (\array_key_exists('ID', $data) && null !== $data['ID']) {
             $object->setID($data['ID']);
+        } elseif (\array_key_exists('ID', $data) && null === $data['ID']) {
+            $object->setID(null);
         }
-        if (\array_key_exists('Version', $data)) {
+        if (\array_key_exists('Version', $data) && null !== $data['Version']) {
             $object->setVersion($this->denormalizer->denormalize($data['Version'], 'Docker\\API\\Model\\ObjectVersion', 'json', $context));
+        } elseif (\array_key_exists('Version', $data) && null === $data['Version']) {
+            $object->setVersion(null);
         }
-        if (\array_key_exists('CreatedAt', $data)) {
+        if (\array_key_exists('CreatedAt', $data) && null !== $data['CreatedAt']) {
             $object->setCreatedAt($data['CreatedAt']);
+        } elseif (\array_key_exists('CreatedAt', $data) && null === $data['CreatedAt']) {
+            $object->setCreatedAt(null);
         }
-        if (\array_key_exists('UpdatedAt', $data)) {
+        if (\array_key_exists('UpdatedAt', $data) && null !== $data['UpdatedAt']) {
             $object->setUpdatedAt($data['UpdatedAt']);
+        } elseif (\array_key_exists('UpdatedAt', $data) && null === $data['UpdatedAt']) {
+            $object->setUpdatedAt(null);
         }
-        if (\array_key_exists('Spec', $data)) {
+        if (\array_key_exists('Spec', $data) && null !== $data['Spec']) {
             $object->setSpec($this->denormalizer->denormalize($data['Spec'], 'Docker\\API\\Model\\ServiceSpec', 'json', $context));
+        } elseif (\array_key_exists('Spec', $data) && null === $data['Spec']) {
+            $object->setSpec(null);
         }
-        if (\array_key_exists('Endpoint', $data)) {
+        if (\array_key_exists('Endpoint', $data) && null !== $data['Endpoint']) {
             $object->setEndpoint($this->denormalizer->denormalize($data['Endpoint'], 'Docker\\API\\Model\\ServiceEndpoint', 'json', $context));
+        } elseif (\array_key_exists('Endpoint', $data) && null === $data['Endpoint']) {
+            $object->setEndpoint(null);
         }
-        if (\array_key_exists('UpdateStatus', $data)) {
+        if (\array_key_exists('UpdateStatus', $data) && null !== $data['UpdateStatus']) {
             $object->setUpdateStatus($this->denormalizer->denormalize($data['UpdateStatus'], 'Docker\\API\\Model\\ServiceUpdateStatus', 'json', $context));
+        } elseif (\array_key_exists('UpdateStatus', $data) && null === $data['UpdateStatus']) {
+            $object->setUpdateStatus(null);
         }
 
         return $object;

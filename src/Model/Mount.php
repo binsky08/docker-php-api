@@ -9,13 +9,13 @@ class Mount
     /**
      * Container path.
      *
-     * @var string
+     * @var string|null
      */
     protected $target;
     /**
      * Mount source (e.g. a volume name, a host path).
      *
-     * @var string
+     * @var string|null
      */
     protected $source;
     /**
@@ -25,44 +25,44 @@ class Mount
      * - `volume` Creates a volume with the given name and options (or uses a pre-existing volume with the same name and options). These are **not** removed when the container is removed.
      * - `tmpfs` Create a tmpfs with the given options. The mount source cannot be specified for tmpfs.
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * Whether the mount should be read-only.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $readOnly;
     /**
      * The consistency requirement for the mount: `default`, `consistent`, `cached`, or `delegated`.
      *
-     * @var string
+     * @var string|null
      */
     protected $consistency;
     /**
      * Optional configuration for the `bind` type.
      *
-     * @var MountBindOptions
+     * @var MountBindOptions|null
      */
     protected $bindOptions;
     /**
      * Optional configuration for the `volume` type.
      *
-     * @var MountVolumeOptions
+     * @var MountVolumeOptions|null
      */
     protected $volumeOptions;
     /**
      * Optional configuration for the `tmpfs` type.
      *
-     * @var MountTmpfsOptions
+     * @var MountTmpfsOptions|null
      */
     protected $tmpfsOptions;
 
     /**
      * Container path.
      */
-    public function getTarget(): string
+    public function getTarget(): ?string
     {
         return $this->target;
     }
@@ -70,7 +70,7 @@ class Mount
     /**
      * Container path.
      */
-    public function setTarget(string $target): self
+    public function setTarget(?string $target): self
     {
         $this->target = $target;
 
@@ -80,7 +80,7 @@ class Mount
     /**
      * Mount source (e.g. a volume name, a host path).
      */
-    public function getSource(): string
+    public function getSource(): ?string
     {
         return $this->source;
     }
@@ -88,7 +88,7 @@ class Mount
     /**
      * Mount source (e.g. a volume name, a host path).
      */
-    public function setSource(string $source): self
+    public function setSource(?string $source): self
     {
         $this->source = $source;
 
@@ -102,7 +102,7 @@ class Mount
      * - `volume` Creates a volume with the given name and options (or uses a pre-existing volume with the same name and options). These are **not** removed when the container is removed.
      * - `tmpfs` Create a tmpfs with the given options. The mount source cannot be specified for tmpfs.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -114,7 +114,7 @@ class Mount
      * - `volume` Creates a volume with the given name and options (or uses a pre-existing volume with the same name and options). These are **not** removed when the container is removed.
      * - `tmpfs` Create a tmpfs with the given options. The mount source cannot be specified for tmpfs.
      */
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
@@ -124,7 +124,7 @@ class Mount
     /**
      * Whether the mount should be read-only.
      */
-    public function getReadOnly(): bool
+    public function getReadOnly(): ?bool
     {
         return $this->readOnly;
     }
@@ -132,7 +132,7 @@ class Mount
     /**
      * Whether the mount should be read-only.
      */
-    public function setReadOnly(bool $readOnly): self
+    public function setReadOnly(?bool $readOnly): self
     {
         $this->readOnly = $readOnly;
 
@@ -142,7 +142,7 @@ class Mount
     /**
      * The consistency requirement for the mount: `default`, `consistent`, `cached`, or `delegated`.
      */
-    public function getConsistency(): string
+    public function getConsistency(): ?string
     {
         return $this->consistency;
     }
@@ -150,7 +150,7 @@ class Mount
     /**
      * The consistency requirement for the mount: `default`, `consistent`, `cached`, or `delegated`.
      */
-    public function setConsistency(string $consistency): self
+    public function setConsistency(?string $consistency): self
     {
         $this->consistency = $consistency;
 
@@ -160,7 +160,7 @@ class Mount
     /**
      * Optional configuration for the `bind` type.
      */
-    public function getBindOptions(): MountBindOptions
+    public function getBindOptions(): ?MountBindOptions
     {
         return $this->bindOptions;
     }
@@ -168,7 +168,7 @@ class Mount
     /**
      * Optional configuration for the `bind` type.
      */
-    public function setBindOptions(MountBindOptions $bindOptions): self
+    public function setBindOptions(?MountBindOptions $bindOptions): self
     {
         $this->bindOptions = $bindOptions;
 
@@ -178,7 +178,7 @@ class Mount
     /**
      * Optional configuration for the `volume` type.
      */
-    public function getVolumeOptions(): MountVolumeOptions
+    public function getVolumeOptions(): ?MountVolumeOptions
     {
         return $this->volumeOptions;
     }
@@ -186,7 +186,7 @@ class Mount
     /**
      * Optional configuration for the `volume` type.
      */
-    public function setVolumeOptions(MountVolumeOptions $volumeOptions): self
+    public function setVolumeOptions(?MountVolumeOptions $volumeOptions): self
     {
         $this->volumeOptions = $volumeOptions;
 
@@ -196,7 +196,7 @@ class Mount
     /**
      * Optional configuration for the `tmpfs` type.
      */
-    public function getTmpfsOptions(): MountTmpfsOptions
+    public function getTmpfsOptions(): ?MountTmpfsOptions
     {
         return $this->tmpfsOptions;
     }
@@ -204,7 +204,7 @@ class Mount
     /**
      * Optional configuration for the `tmpfs` type.
      */
-    public function setTmpfsOptions(MountTmpfsOptions $tmpfsOptions): self
+    public function setTmpfsOptions(?MountTmpfsOptions $tmpfsOptions): self
     {
         $this->tmpfsOptions = $tmpfsOptions;
 

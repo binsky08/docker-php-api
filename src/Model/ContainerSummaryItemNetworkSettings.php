@@ -7,22 +7,22 @@ namespace Docker\API\Model;
 class ContainerSummaryItemNetworkSettings
 {
     /**
-     * @var EndpointSettings[]
+     * @var EndpointSettings[]|null
      */
     protected $networks;
 
     /**
-     * @return EndpointSettings[]
+     * @return EndpointSettings[]|null
      */
-    public function getNetworks(): iterable
+    public function getNetworks(): ?iterable
     {
         return $this->networks;
     }
 
     /**
-     * @param EndpointSettings[] $networks
+     * @param EndpointSettings[]|null $networks
      */
-    public function setNetworks(iterable $networks): self
+    public function setNetworks(?iterable $networks): self
     {
         $this->networks = $networks;
 

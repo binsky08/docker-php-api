@@ -7,56 +7,56 @@ namespace Docker\API\Model;
 class Plugin
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * True if the plugin is running. False if the plugin is not running, only installed.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $enabled;
     /**
      * Settings that can be modified by users.
      *
-     * @var PluginSettings
+     * @var PluginSettings|null
      */
     protected $settings;
     /**
      * plugin remote reference used to push/pull the plugin.
      *
-     * @var string
+     * @var string|null
      */
     protected $pluginReference;
     /**
      * The config of a plugin.
      *
-     * @var PluginConfig
+     * @var PluginConfig|null
      */
     protected $config;
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId(string $id): self
+    public function setId(?string $id): self
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -66,7 +66,7 @@ class Plugin
     /**
      * True if the plugin is running. False if the plugin is not running, only installed.
      */
-    public function getEnabled(): bool
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
@@ -74,7 +74,7 @@ class Plugin
     /**
      * True if the plugin is running. False if the plugin is not running, only installed.
      */
-    public function setEnabled(bool $enabled): self
+    public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
 
@@ -84,7 +84,7 @@ class Plugin
     /**
      * Settings that can be modified by users.
      */
-    public function getSettings(): PluginSettings
+    public function getSettings(): ?PluginSettings
     {
         return $this->settings;
     }
@@ -92,7 +92,7 @@ class Plugin
     /**
      * Settings that can be modified by users.
      */
-    public function setSettings(PluginSettings $settings): self
+    public function setSettings(?PluginSettings $settings): self
     {
         $this->settings = $settings;
 
@@ -102,7 +102,7 @@ class Plugin
     /**
      * plugin remote reference used to push/pull the plugin.
      */
-    public function getPluginReference(): string
+    public function getPluginReference(): ?string
     {
         return $this->pluginReference;
     }
@@ -110,7 +110,7 @@ class Plugin
     /**
      * plugin remote reference used to push/pull the plugin.
      */
-    public function setPluginReference(string $pluginReference): self
+    public function setPluginReference(?string $pluginReference): self
     {
         $this->pluginReference = $pluginReference;
 
@@ -120,7 +120,7 @@ class Plugin
     /**
      * The config of a plugin.
      */
-    public function getConfig(): PluginConfig
+    public function getConfig(): ?PluginConfig
     {
         return $this->config;
     }
@@ -128,7 +128,7 @@ class Plugin
     /**
      * The config of a plugin.
      */
-    public function setConfig(PluginConfig $config): self
+    public function setConfig(?PluginConfig $config): self
     {
         $this->config = $config;
 

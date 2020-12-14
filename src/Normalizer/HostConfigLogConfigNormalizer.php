@@ -41,15 +41,19 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Type', $data)) {
+        if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
+        } elseif (\array_key_exists('Type', $data) && null === $data['Type']) {
+            $object->setType(null);
         }
-        if (\array_key_exists('Config', $data)) {
+        if (\array_key_exists('Config', $data) && null !== $data['Config']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Config'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setConfig($values);
+        } elseif (\array_key_exists('Config', $data) && null === $data['Config']) {
+            $object->setConfig(null);
         }
 
         return $object;

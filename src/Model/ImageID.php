@@ -7,16 +7,16 @@ namespace Docker\API\Model;
 class ImageID
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $iD;
 
-    public function getID(): string
+    public function getID(): ?string
     {
         return $this->iD;
     }
 
-    public function setID(string $iD): self
+    public function setID(?string $iD): self
     {
         $this->iD = $iD;
 

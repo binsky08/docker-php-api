@@ -41,8 +41,10 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('LastTagTime', $data)) {
+        if (\array_key_exists('LastTagTime', $data) && null !== $data['LastTagTime']) {
             $object->setLastTagTime($data['LastTagTime']);
+        } elseif (\array_key_exists('LastTagTime', $data) && null === $data['LastTagTime']) {
+            $object->setLastTagTime(null);
         }
 
         return $object;

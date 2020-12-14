@@ -41,20 +41,30 @@ class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('SnapshotInterval', $data)) {
+        if (\array_key_exists('SnapshotInterval', $data) && null !== $data['SnapshotInterval']) {
             $object->setSnapshotInterval($data['SnapshotInterval']);
+        } elseif (\array_key_exists('SnapshotInterval', $data) && null === $data['SnapshotInterval']) {
+            $object->setSnapshotInterval(null);
         }
-        if (\array_key_exists('KeepOldSnapshots', $data)) {
+        if (\array_key_exists('KeepOldSnapshots', $data) && null !== $data['KeepOldSnapshots']) {
             $object->setKeepOldSnapshots($data['KeepOldSnapshots']);
+        } elseif (\array_key_exists('KeepOldSnapshots', $data) && null === $data['KeepOldSnapshots']) {
+            $object->setKeepOldSnapshots(null);
         }
-        if (\array_key_exists('LogEntriesForSlowFollowers', $data)) {
+        if (\array_key_exists('LogEntriesForSlowFollowers', $data) && null !== $data['LogEntriesForSlowFollowers']) {
             $object->setLogEntriesForSlowFollowers($data['LogEntriesForSlowFollowers']);
+        } elseif (\array_key_exists('LogEntriesForSlowFollowers', $data) && null === $data['LogEntriesForSlowFollowers']) {
+            $object->setLogEntriesForSlowFollowers(null);
         }
-        if (\array_key_exists('ElectionTick', $data)) {
+        if (\array_key_exists('ElectionTick', $data) && null !== $data['ElectionTick']) {
             $object->setElectionTick($data['ElectionTick']);
+        } elseif (\array_key_exists('ElectionTick', $data) && null === $data['ElectionTick']) {
+            $object->setElectionTick(null);
         }
-        if (\array_key_exists('HeartbeatTick', $data)) {
+        if (\array_key_exists('HeartbeatTick', $data) && null !== $data['HeartbeatTick']) {
             $object->setHeartbeatTick($data['HeartbeatTick']);
+        } elseif (\array_key_exists('HeartbeatTick', $data) && null === $data['HeartbeatTick']) {
+            $object->setHeartbeatTick(null);
         }
 
         return $object;

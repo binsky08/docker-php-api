@@ -9,38 +9,38 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * Disable SELinux.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $disable;
     /**
      * SELinux user label.
      *
-     * @var string
+     * @var string|null
      */
     protected $user;
     /**
      * SELinux role label.
      *
-     * @var string
+     * @var string|null
      */
     protected $role;
     /**
      * SELinux type label.
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * SELinux level label.
      *
-     * @var string
+     * @var string|null
      */
     protected $level;
 
     /**
      * Disable SELinux.
      */
-    public function getDisable(): bool
+    public function getDisable(): ?bool
     {
         return $this->disable;
     }
@@ -48,7 +48,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * Disable SELinux.
      */
-    public function setDisable(bool $disable): self
+    public function setDisable(?bool $disable): self
     {
         $this->disable = $disable;
 
@@ -58,7 +58,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux user label.
      */
-    public function getUser(): string
+    public function getUser(): ?string
     {
         return $this->user;
     }
@@ -66,7 +66,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux user label.
      */
-    public function setUser(string $user): self
+    public function setUser(?string $user): self
     {
         $this->user = $user;
 
@@ -76,7 +76,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux role label.
      */
-    public function getRole(): string
+    public function getRole(): ?string
     {
         return $this->role;
     }
@@ -84,7 +84,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux role label.
      */
-    public function setRole(string $role): self
+    public function setRole(?string $role): self
     {
         $this->role = $role;
 
@@ -94,7 +94,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux type label.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -102,7 +102,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux type label.
      */
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
@@ -112,7 +112,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux level label.
      */
-    public function getLevel(): string
+    public function getLevel(): ?string
     {
         return $this->level;
     }
@@ -120,7 +120,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux level label.
      */
-    public function setLevel(string $level): self
+    public function setLevel(?string $level): self
     {
         $this->level = $level;
 
