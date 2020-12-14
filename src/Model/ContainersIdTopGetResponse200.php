@@ -13,7 +13,8 @@ class ContainersIdTopGetResponse200
      */
     protected $titles;
     /**
-     * Each process running in the container, where each is process is an array of values corresponding to the titles.
+     * Each process running in the container, where each is process.
+     * is an array of values corresponding to the titles.
      *
      * @var string[][]|null
      */
@@ -42,7 +43,8 @@ class ContainersIdTopGetResponse200
     }
 
     /**
-     * Each process running in the container, where each is process is an array of values corresponding to the titles.
+     * Each process running in the container, where each is process.
+     * is an array of values corresponding to the titles.
      *
      * @return string[][]|null
      */
@@ -52,7 +54,8 @@ class ContainersIdTopGetResponse200
     }
 
     /**
-     * Each process running in the container, where each is process is an array of values corresponding to the titles.
+     * Each process running in the container, where each is process.
+     * is an array of values corresponding to the titles.
      *
      * @param string[][]|null $processes
      */

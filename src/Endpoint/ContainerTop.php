@@ -9,7 +9,8 @@ class ContainerTop extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     protected $id;
 
     /**
-     * On Unix systems, this is done by running the `ps` command. This endpoint is not supported on Windows.
+     * On Unix systems, this is done by running the `ps` command. This endpoint.
+     * is not supported on Windows.
      *
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {

@@ -60,14 +60,13 @@ class ContainerStop extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @throws \Docker\API\Exception\ContainerStopNotFoundException
      * @throws \Docker\API\Exception\ContainerStopInternalServerErrorException
      *
-     * @return \Docker\API\Model\ErrorResponse|null
+     * @return null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (204 === $status) {
         }
-        if (304 === $status && false !== \mb_strpos($contentType, 'application/json')) {
-            return $serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json');
+        if (304 === $status) {
         }
         if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
             throw new \Docker\API\Exception\ContainerStopNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));

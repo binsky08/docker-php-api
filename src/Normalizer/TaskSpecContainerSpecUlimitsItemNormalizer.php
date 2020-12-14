@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class TaskSpecNetworksItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class TaskSpecContainerSpecUlimitsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -21,12 +21,12 @@ class TaskSpecNetworksItemNormalizer implements DenormalizerInterface, Normalize
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Docker\\API\\Model\\TaskSpecNetworksItem' === $type;
+        return 'Docker\\API\\Model\\TaskSpecContainerSpecUlimitsItem' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\TaskSpecNetworksItem' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\TaskSpecContainerSpecUlimitsItem' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,23 +37,24 @@ class TaskSpecNetworksItemNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\API\Model\TaskSpecNetworksItem();
+        $object = new \Docker\API\Model\TaskSpecContainerSpecUlimitsItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Target', $data) && null !== $data['Target']) {
-            $object->setTarget($data['Target']);
-        } elseif (\array_key_exists('Target', $data) && null === $data['Target']) {
-            $object->setTarget(null);
+        if (\array_key_exists('Name', $data) && null !== $data['Name']) {
+            $object->setName($data['Name']);
+        } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
+            $object->setName(null);
         }
-        if (\array_key_exists('Aliases', $data) && null !== $data['Aliases']) {
-            $values = [];
-            foreach ($data['Aliases'] as $value) {
-                $values[] = $value;
-            }
-            $object->setAliases($values);
-        } elseif (\array_key_exists('Aliases', $data) && null === $data['Aliases']) {
-            $object->setAliases(null);
+        if (\array_key_exists('Soft', $data) && null !== $data['Soft']) {
+            $object->setSoft($data['Soft']);
+        } elseif (\array_key_exists('Soft', $data) && null === $data['Soft']) {
+            $object->setSoft(null);
+        }
+        if (\array_key_exists('Hard', $data) && null !== $data['Hard']) {
+            $object->setHard($data['Hard']);
+        } elseif (\array_key_exists('Hard', $data) && null === $data['Hard']) {
+            $object->setHard(null);
         }
 
         return $object;
@@ -62,15 +63,14 @@ class TaskSpecNetworksItemNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getTarget()) {
-            $data['Target'] = $object->getTarget();
+        if (null !== $object->getName()) {
+            $data['Name'] = $object->getName();
         }
-        if (null !== $object->getAliases()) {
-            $values = [];
-            foreach ($object->getAliases() as $value) {
-                $values[] = $value;
-            }
-            $data['Aliases'] = $values;
+        if (null !== $object->getSoft()) {
+            $data['Soft'] = $object->getSoft();
+        }
+        if (null !== $object->getHard()) {
+            $data['Hard'] = $object->getHard();
         }
 
         return $data;

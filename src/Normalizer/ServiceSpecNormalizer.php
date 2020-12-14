@@ -78,7 +78,7 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('Networks', $data) && null !== $data['Networks']) {
             $values_1 = [];
             foreach ($data['Networks'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\ServiceSpecNetworksItem', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\API\\Model\\NetworkAttachmentConfig', 'json', $context);
             }
             $object->setNetworks($values_1);
         } elseif (\array_key_exists('Networks', $data) && null === $data['Networks']) {

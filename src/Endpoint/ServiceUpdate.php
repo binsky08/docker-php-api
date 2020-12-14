@@ -12,14 +12,18 @@ class ServiceUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param string $id              ID or name of service
      * @param array  $queryParameters {
      *
-     *     @var int $version The version number of the service object being updated. This is required to avoid conflicting writes.
-     *     @var string $registryAuthFrom If the X-Registry-Auth header is not specified, this parameter indicates where to find registry authorization credentials. The valid values are `spec` and `previous-spec`.
-     *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback to the previous service spec. The supplied spec will be ignored in this case.
+     *     @var int $version The version number of the service object being updated. This is
+     *     @var string $registryAuthFrom If the `X-Registry-Auth` header is not specified, this parameter
+     *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback
      * }
-     *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64-encoded auth configuration for pulling from private registries. [See the authentication section for details.](#section/Authentication)
+     *     @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
+     * registries.
+     *
+     * Refer to the [authentication section](#section/Authentication) for
+     * details.
+     *
      * }
      */
     public function __construct(string $id, \Docker\API\Model\ServicesIdUpdatePostBody $requestBody, array $queryParameters = [], array $headerParameters = [])

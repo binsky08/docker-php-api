@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class VersionGetResponse200ComponentsItemDetailsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class TaskSpecNetworkAttachmentSpecNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -21,12 +21,12 @@ class VersionGetResponse200ComponentsItemDetailsNormalizer implements Denormaliz
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Docker\\API\\Model\\VersionGetResponse200ComponentsItemDetails' === $type;
+        return 'Docker\\API\\Model\\TaskSpecNetworkAttachmentSpec' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\VersionGetResponse200ComponentsItemDetails' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\TaskSpecNetworkAttachmentSpec' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,9 +37,14 @@ class VersionGetResponse200ComponentsItemDetailsNormalizer implements Denormaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\API\Model\VersionGetResponse200ComponentsItemDetails();
+        $object = new \Docker\API\Model\TaskSpecNetworkAttachmentSpec();
         if (null === $data || false === \is_array($data)) {
             return $object;
+        }
+        if (\array_key_exists('ContainerID', $data) && null !== $data['ContainerID']) {
+            $object->setContainerID($data['ContainerID']);
+        } elseif (\array_key_exists('ContainerID', $data) && null === $data['ContainerID']) {
+            $object->setContainerID(null);
         }
 
         return $object;
@@ -48,6 +53,9 @@ class VersionGetResponse200ComponentsItemDetailsNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
+        if (null !== $object->getContainerID()) {
+            $data['ContainerID'] = $object->getContainerID();
+        }
 
         return $data;
     }

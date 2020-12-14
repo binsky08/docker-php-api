@@ -12,8 +12,7 @@ class ImageList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
      * @param array $queryParameters {
      *
      *     @var bool $all Show all images. Only images from a final layer (no children) are shown by default.
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to process on the images list. Available filters:
-     *
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
      *     @var bool $digests Show digest information as a `RepoDigests` field on each image.
      * }
      */

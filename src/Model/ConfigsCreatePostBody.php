@@ -19,12 +19,18 @@ class ConfigsCreatePostBody
      */
     protected $labels;
     /**
-     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-3.2)).
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5)).
      * config data.
      *
      * @var string|null
      */
     protected $data;
+    /**
+     * Driver represents a driver (network, logging, secrets).
+     *
+     * @var Driver|null
+     */
+    protected $templating;
 
     /**
      * User-defined name of the config.
@@ -67,7 +73,7 @@ class ConfigsCreatePostBody
     }
 
     /**
-     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-3.2)).
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5)).
      * config data.
      */
     public function getData(): ?string
@@ -76,12 +82,30 @@ class ConfigsCreatePostBody
     }
 
     /**
-     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-3.2)).
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5)).
      * config data.
      */
     public function setData(?string $data): self
     {
         $this->data = $data;
+
+        return $this;
+    }
+
+    /**
+     * Driver represents a driver (network, logging, secrets).
+     */
+    public function getTemplating(): ?Driver
+    {
+        return $this->templating;
+    }
+
+    /**
+     * Driver represents a driver (network, logging, secrets).
+     */
+    public function setTemplating(?Driver $templating): self
+    {
+        $this->templating = $templating;
 
         return $this;
     }

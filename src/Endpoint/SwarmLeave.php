@@ -9,7 +9,9 @@ class SwarmLeave extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     /**
      * @param array $queryParameters {
      *
-     *     @var bool $force Force leave swarm, even if this is the last manager or that it will break the cluster.
+     *     @var bool $force Force leave swarm, even if this is the last manager or that it will
+     * break the cluster.
+     *
      * }
      */
     public function __construct(array $queryParameters = [])

@@ -76,6 +76,25 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         } elseif (\array_key_exists('RootRotationInProgress', $data) && null === $data['RootRotationInProgress']) {
             $object->setRootRotationInProgress(null);
         }
+        if (\array_key_exists('DataPathPort', $data) && null !== $data['DataPathPort']) {
+            $object->setDataPathPort($data['DataPathPort']);
+        } elseif (\array_key_exists('DataPathPort', $data) && null === $data['DataPathPort']) {
+            $object->setDataPathPort(null);
+        }
+        if (\array_key_exists('DefaultAddrPool', $data) && null !== $data['DefaultAddrPool']) {
+            $values = [];
+            foreach ($data['DefaultAddrPool'] as $value) {
+                $values[] = $value;
+            }
+            $object->setDefaultAddrPool($values);
+        } elseif (\array_key_exists('DefaultAddrPool', $data) && null === $data['DefaultAddrPool']) {
+            $object->setDefaultAddrPool(null);
+        }
+        if (\array_key_exists('SubnetSize', $data) && null !== $data['SubnetSize']) {
+            $object->setSubnetSize($data['SubnetSize']);
+        } elseif (\array_key_exists('SubnetSize', $data) && null === $data['SubnetSize']) {
+            $object->setSubnetSize(null);
+        }
 
         return $object;
     }
@@ -103,6 +122,19 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getRootRotationInProgress()) {
             $data['RootRotationInProgress'] = $object->getRootRotationInProgress();
+        }
+        if (null !== $object->getDataPathPort()) {
+            $data['DataPathPort'] = $object->getDataPathPort();
+        }
+        if (null !== $object->getDefaultAddrPool()) {
+            $values = [];
+            foreach ($object->getDefaultAddrPool() as $value) {
+                $values[] = $value;
+            }
+            $data['DefaultAddrPool'] = $values;
+        }
+        if (null !== $object->getSubnetSize()) {
+            $data['SubnetSize'] = $object->getSubnetSize();
         }
 
         return $data;

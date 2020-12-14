@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -21,12 +21,12 @@ class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInter
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Docker\\API\\Model\\ContainersIdJsonGetResponse200State' === $type;
+        return 'Docker\\API\\Model\\ContainerState' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\ContainersIdJsonGetResponse200State' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\ContainerState' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,7 +37,7 @@ class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\API\Model\ContainersIdJsonGetResponse200State();
+        $object = new \Docker\API\Model\ContainerState();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -96,6 +96,11 @@ class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInter
         } elseif (\array_key_exists('FinishedAt', $data) && null === $data['FinishedAt']) {
             $object->setFinishedAt(null);
         }
+        if (\array_key_exists('Health', $data) && null !== $data['Health']) {
+            $object->setHealth($this->denormalizer->denormalize($data['Health'], 'Docker\\API\\Model\\Health', 'json', $context));
+        } elseif (\array_key_exists('Health', $data) && null === $data['Health']) {
+            $object->setHealth(null);
+        }
 
         return $object;
     }
@@ -135,6 +140,9 @@ class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInter
         }
         if (null !== $object->getFinishedAt()) {
             $data['FinishedAt'] = $object->getFinishedAt();
+        }
+        if (null !== $object->getHealth()) {
+            $data['Health'] = $this->normalizer->normalize($object->getHealth(), 'json', $context);
         }
 
         return $data;

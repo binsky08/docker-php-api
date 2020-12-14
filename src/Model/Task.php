@@ -13,13 +13,16 @@ class Task
      */
     protected $iD;
     /**
-     * The version number of the object such as node, service, etc. This is needed to avoid conflicting writes.
-     * The client must send the version number along with the modified specification when updating these objects.
-     * This approach ensures safe concurrency and determinism in that the change on the object
-     * may not be applied if the version number has changed from the last read. In other words,
-     * if two update requests specify the same base version, only one of the requests can succeed.
-     * As a result, two separate update requests that happen at the same time will not
-     * unintentionally overwrite each other.
+     * The version number of the object such as node, service, etc. This is needed.
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     *
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
      *
      * @var ObjectVersion|null
      */
@@ -67,7 +70,8 @@ class Task
      */
     protected $nodeID;
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * String resources (e.g, `GPU=UUID1`).
      *
      * @var GenericResourcesItem[]|null
      */
@@ -80,6 +84,21 @@ class Task
      * @var string|null
      */
     protected $desiredState;
+    /**
+     * The version number of the object such as node, service, etc. This is needed.
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     *
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
+     *
+     * @var ObjectVersion|null
+     */
+    protected $jobIteration;
 
     /**
      * The ID of the task.
@@ -100,13 +119,16 @@ class Task
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed to avoid conflicting writes.
-     * The client must send the version number along with the modified specification when updating these objects.
-     * This approach ensures safe concurrency and determinism in that the change on the object
-     * may not be applied if the version number has changed from the last read. In other words,
-     * if two update requests specify the same base version, only one of the requests can succeed.
-     * As a result, two separate update requests that happen at the same time will not
-     * unintentionally overwrite each other.
+     * The version number of the object such as node, service, etc. This is needed.
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     *
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
      */
     public function getVersion(): ?ObjectVersion
     {
@@ -114,13 +136,16 @@ class Task
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed to avoid conflicting writes.
-     * The client must send the version number along with the modified specification when updating these objects.
-     * This approach ensures safe concurrency and determinism in that the change on the object
-     * may not be applied if the version number has changed from the last read. In other words,
-     * if two update requests specify the same base version, only one of the requests can succeed.
-     * As a result, two separate update requests that happen at the same time will not
-     * unintentionally overwrite each other.
+     * The version number of the object such as node, service, etc. This is needed.
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     *
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
      */
     public function setVersion(?ObjectVersion $version): self
     {
@@ -260,7 +285,8 @@ class Task
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * String resources (e.g, `GPU=UUID1`).
      *
      * @return GenericResourcesItem[]|null
      */
@@ -270,7 +296,8 @@ class Task
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * String resources (e.g, `GPU=UUID1`).
      *
      * @param GenericResourcesItem[]|null $assignedGenericResources
      */
@@ -301,6 +328,42 @@ class Task
     public function setDesiredState(?string $desiredState): self
     {
         $this->desiredState = $desiredState;
+
+        return $this;
+    }
+
+    /**
+     * The version number of the object such as node, service, etc. This is needed.
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     *
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
+     */
+    public function getJobIteration(): ?ObjectVersion
+    {
+        return $this->jobIteration;
+    }
+
+    /**
+     * The version number of the object such as node, service, etc. This is needed.
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     *
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
+     */
+    public function setJobIteration(?ObjectVersion $jobIteration): self
+    {
+        $this->jobIteration = $jobIteration;
 
         return $this;
     }

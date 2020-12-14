@@ -9,12 +9,8 @@ class ServiceList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to process on the services list. Available filters:
-     *
-     * - `id=<service id>`
-     * - `label=<service label>`
-     * - `mode=["replicated"|"global"]`
-     * - `name=<service name>`
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *     @var bool $status Include service status, with count of running and desired tasks.
      *
      * }
      */
@@ -48,10 +44,11 @@ class ServiceList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['filters']);
+        $optionsResolver->setDefined(['filters', 'status']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('filters', ['string']);
+        $optionsResolver->setAllowedTypes('status', ['bool']);
 
         return $optionsResolver;
     }

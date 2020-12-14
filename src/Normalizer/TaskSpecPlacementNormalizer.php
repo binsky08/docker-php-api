@@ -59,6 +59,11 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
         } elseif (\array_key_exists('Preferences', $data) && null === $data['Preferences']) {
             $object->setPreferences(null);
         }
+        if (\array_key_exists('MaxReplicas', $data) && null !== $data['MaxReplicas']) {
+            $object->setMaxReplicas($data['MaxReplicas']);
+        } elseif (\array_key_exists('MaxReplicas', $data) && null === $data['MaxReplicas']) {
+            $object->setMaxReplicas(null);
+        }
         if (\array_key_exists('Platforms', $data) && null !== $data['Platforms']) {
             $values_2 = [];
             foreach ($data['Platforms'] as $value_2) {
@@ -88,6 +93,9 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['Preferences'] = $values_1;
+        }
+        if (null !== $object->getMaxReplicas()) {
+            $data['MaxReplicas'] = $object->getMaxReplicas();
         }
         if (null !== $object->getPlatforms()) {
             $values_2 = [];

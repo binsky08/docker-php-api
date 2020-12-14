@@ -9,7 +9,9 @@ class ContainerArchiveInfo extends \Docker\API\Runtime\Client\BaseEndpoint imple
     protected $id;
 
     /**
-     * A response header `X-Docker-Container-Path-Stat` is return containing a base64 - encoded JSON object with some filesystem header information about the path.
+     * A response header `X-Docker-Container-Path-Stat` is returned, containing.
+     * a base64 - encoded JSON object with some filesystem header information
+     * about the path.
      *
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {

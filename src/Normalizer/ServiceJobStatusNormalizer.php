@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ContainersCreatePostBodyNetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -21,12 +21,12 @@ class ContainersCreatePostBodyNetworkingConfigNormalizer implements Denormalizer
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Docker\\API\\Model\\ContainersCreatePostBodyNetworkingConfig' === $type;
+        return 'Docker\\API\\Model\\ServiceJobStatus' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\ContainersCreatePostBodyNetworkingConfig' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\ServiceJobStatus' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,18 +37,19 @@ class ContainersCreatePostBodyNetworkingConfigNormalizer implements Denormalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\API\Model\ContainersCreatePostBodyNetworkingConfig();
+        $object = new \Docker\API\Model\ServiceJobStatus();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('EndpointsConfig', $data) && null !== $data['EndpointsConfig']) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['EndpointsConfig'] as $key => $value) {
-                $values[$key] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\EndpointSettings', 'json', $context);
-            }
-            $object->setEndpointsConfig($values);
-        } elseif (\array_key_exists('EndpointsConfig', $data) && null === $data['EndpointsConfig']) {
-            $object->setEndpointsConfig(null);
+        if (\array_key_exists('JobIteration', $data) && null !== $data['JobIteration']) {
+            $object->setJobIteration($this->denormalizer->denormalize($data['JobIteration'], 'Docker\\API\\Model\\ObjectVersion', 'json', $context));
+        } elseif (\array_key_exists('JobIteration', $data) && null === $data['JobIteration']) {
+            $object->setJobIteration(null);
+        }
+        if (\array_key_exists('LastExecution', $data) && null !== $data['LastExecution']) {
+            $object->setLastExecution($data['LastExecution']);
+        } elseif (\array_key_exists('LastExecution', $data) && null === $data['LastExecution']) {
+            $object->setLastExecution(null);
         }
 
         return $object;
@@ -57,12 +58,11 @@ class ContainersCreatePostBodyNetworkingConfigNormalizer implements Denormalizer
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getEndpointsConfig()) {
-            $values = [];
-            foreach ($object->getEndpointsConfig() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['EndpointsConfig'] = $values;
+        if (null !== $object->getJobIteration()) {
+            $data['JobIteration'] = $this->normalizer->normalize($object->getJobIteration(), 'json', $context);
+        }
+        if (null !== $object->getLastExecution()) {
+            $data['LastExecution'] = $object->getLastExecution();
         }
 
         return $data;

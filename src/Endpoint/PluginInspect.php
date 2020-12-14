@@ -9,7 +9,8 @@ class PluginInspect extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     protected $name;
 
     /**
-     * @param string $name The name of the plugin. The `:latest` tag is optional, and is the default if omitted.
+     * @param string $name The name of the plugin. The `:latest` tag is optional, and is the
+     *                     default if omitted.
      */
     public function __construct(string $name)
     {

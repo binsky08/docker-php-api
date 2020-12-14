@@ -46,6 +46,11 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
         } elseif (\array_key_exists('File', $data) && null === $data['File']) {
             $object->setFile(null);
         }
+        if (\array_key_exists('Runtime', $data) && null !== $data['Runtime']) {
+            $object->setRuntime($this->denormalizer->denormalize($data['Runtime'], 'Docker\\API\\Model\\TaskSpecContainerSpecConfigsItemRuntime', 'json', $context));
+        } elseif (\array_key_exists('Runtime', $data) && null === $data['Runtime']) {
+            $object->setRuntime(null);
+        }
         if (\array_key_exists('ConfigID', $data) && null !== $data['ConfigID']) {
             $object->setConfigID($data['ConfigID']);
         } elseif (\array_key_exists('ConfigID', $data) && null === $data['ConfigID']) {
@@ -65,6 +70,9 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
         $data = [];
         if (null !== $object->getFile()) {
             $data['File'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
+        }
+        if (null !== $object->getRuntime()) {
+            $data['Runtime'] = $this->normalizer->normalize($object->getRuntime(), 'json', $context);
         }
         if (null !== $object->getConfigID()) {
             $data['ConfigID'] = $object->getConfigID();

@@ -19,7 +19,7 @@ class SecretsCreatePostBody
      */
     protected $labels;
     /**
-     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-3.2)).
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5)).
      * data to store as secret.
      *
      * This field is only used to _create_ a secret, and is not returned by
@@ -34,6 +34,12 @@ class SecretsCreatePostBody
      * @var Driver|null
      */
     protected $driver;
+    /**
+     * Driver represents a driver (network, logging, secrets).
+     *
+     * @var Driver|null
+     */
+    protected $templating;
 
     /**
      * User-defined name of the secret.
@@ -76,7 +82,7 @@ class SecretsCreatePostBody
     }
 
     /**
-     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-3.2)).
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5)).
      * data to store as secret.
      *
      * This field is only used to _create_ a secret, and is not returned by
@@ -88,7 +94,7 @@ class SecretsCreatePostBody
     }
 
     /**
-     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-3.2)).
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5)).
      * data to store as secret.
      *
      * This field is only used to _create_ a secret, and is not returned by
@@ -115,6 +121,24 @@ class SecretsCreatePostBody
     public function setDriver(?Driver $driver): self
     {
         $this->driver = $driver;
+
+        return $this;
+    }
+
+    /**
+     * Driver represents a driver (network, logging, secrets).
+     */
+    public function getTemplating(): ?Driver
+    {
+        return $this->templating;
+    }
+
+    /**
+     * Driver represents a driver (network, logging, secrets).
+     */
+    public function setTemplating(?Driver $templating): self
+    {
+        $this->templating = $templating;
 
         return $this;
     }

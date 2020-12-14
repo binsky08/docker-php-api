@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class VersionGetResponse200PlatformNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -21,12 +21,12 @@ class VersionGetResponse200PlatformNormalizer implements DenormalizerInterface, 
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Docker\\API\\Model\\VersionGetResponse200Platform' === $type;
+        return 'Docker\\API\\Model\\SystemVersionComponentsItem' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\VersionGetResponse200Platform' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\SystemVersionComponentsItem' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,7 +37,7 @@ class VersionGetResponse200PlatformNormalizer implements DenormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\API\Model\VersionGetResponse200Platform();
+        $object = new \Docker\API\Model\SystemVersionComponentsItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -45,6 +45,16 @@ class VersionGetResponse200PlatformNormalizer implements DenormalizerInterface, 
             $object->setName($data['Name']);
         } elseif (\array_key_exists('Name', $data) && null === $data['Name']) {
             $object->setName(null);
+        }
+        if (\array_key_exists('Version', $data) && null !== $data['Version']) {
+            $object->setVersion($data['Version']);
+        } elseif (\array_key_exists('Version', $data) && null === $data['Version']) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('Details', $data) && null !== $data['Details']) {
+            $object->setDetails($this->denormalizer->denormalize($data['Details'], 'Docker\\API\\Model\\SystemVersionComponentsItemDetails', 'json', $context));
+        } elseif (\array_key_exists('Details', $data) && null === $data['Details']) {
+            $object->setDetails(null);
         }
 
         return $object;
@@ -54,6 +64,10 @@ class VersionGetResponse200PlatformNormalizer implements DenormalizerInterface, 
     {
         $data = [];
         $data['Name'] = $object->getName();
+        $data['Version'] = $object->getVersion();
+        if (null !== $object->getDetails()) {
+            $data['Details'] = $this->normalizer->normalize($object->getDetails(), 'json', $context);
+        }
 
         return $data;
     }

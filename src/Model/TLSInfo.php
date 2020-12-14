@@ -7,7 +7,8 @@ namespace Docker\API\Model;
 class TLSInfo
 {
     /**
-     * The root CA certificate(s) that are used to validate leaf TLS certificates.
+     * The root CA certificate(s) that are used to validate leaf TLS.
+     * certificates.
      *
      * @var string|null
      */
@@ -26,7 +27,8 @@ class TLSInfo
     protected $certIssuerPublicKey;
 
     /**
-     * The root CA certificate(s) that are used to validate leaf TLS certificates.
+     * The root CA certificate(s) that are used to validate leaf TLS.
+     * certificates.
      */
     public function getTrustRoot(): ?string
     {
@@ -34,7 +36,8 @@ class TLSInfo
     }
 
     /**
-     * The root CA certificate(s) that are used to validate leaf TLS certificates.
+     * The root CA certificate(s) that are used to validate leaf TLS.
+     * certificates.
      */
     public function setTrustRoot(?string $trustRoot): self
     {

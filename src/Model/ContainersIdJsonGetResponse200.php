@@ -31,13 +31,14 @@ class ContainersIdJsonGetResponse200
      */
     protected $args;
     /**
-     * The state of the container.
+     * ContainerState stores container's running state. It's part of ContainerJSONBase.
+     * and will be returned by the "inspect" command.
      *
-     * @var ContainersIdJsonGetResponse200State|null
+     * @var ContainerState|null
      */
     protected $state;
     /**
-     * The container's image.
+     * The container's image ID.
      *
      * @var string|null
      */
@@ -59,12 +60,6 @@ class ContainersIdJsonGetResponse200
      */
     protected $logPath;
     /**
-     * TODO.
-     *
-     * @var ContainersIdJsonGetResponse200Node|null
-     */
-    protected $node;
-    /**
      * @var string|null
      */
     protected $name;
@@ -79,6 +74,10 @@ class ContainersIdJsonGetResponse200
     /**
      * @var string|null
      */
+    protected $platform;
+    /**
+     * @var string|null
+     */
     protected $mountLabel;
     /**
      * @var string|null
@@ -89,7 +88,9 @@ class ContainersIdJsonGetResponse200
      */
     protected $appArmorProfile;
     /**
-     * @var string|null
+     * IDs of exec instances that are running in the container.
+     *
+     * @var string[]|null
      */
     protected $execIDs;
     /**
@@ -105,7 +106,8 @@ class ContainersIdJsonGetResponse200
      */
     protected $graphDriver;
     /**
-     * The size of files that have been created or changed by this container.
+     * The size of files that have been created or changed by this.
+     * container.
      *
      * @var int|null
      */
@@ -210,17 +212,19 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * The state of the container.
+     * ContainerState stores container's running state. It's part of ContainerJSONBase.
+     * and will be returned by the "inspect" command.
      */
-    public function getState(): ?ContainersIdJsonGetResponse200State
+    public function getState(): ?ContainerState
     {
         return $this->state;
     }
 
     /**
-     * The state of the container.
+     * ContainerState stores container's running state. It's part of ContainerJSONBase.
+     * and will be returned by the "inspect" command.
      */
-    public function setState(?ContainersIdJsonGetResponse200State $state): self
+    public function setState(?ContainerState $state): self
     {
         $this->state = $state;
 
@@ -228,7 +232,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * The container's image.
+     * The container's image ID.
      */
     public function getImage(): ?string
     {
@@ -236,7 +240,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * The container's image.
+     * The container's image ID.
      */
     public function setImage(?string $image): self
     {
@@ -293,24 +297,6 @@ class ContainersIdJsonGetResponse200
         return $this;
     }
 
-    /**
-     * TODO.
-     */
-    public function getNode(): ?ContainersIdJsonGetResponse200Node
-    {
-        return $this->node;
-    }
-
-    /**
-     * TODO.
-     */
-    public function setNode(?ContainersIdJsonGetResponse200Node $node): self
-    {
-        $this->node = $node;
-
-        return $this;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -343,6 +329,18 @@ class ContainersIdJsonGetResponse200
     public function setDriver(?string $driver): self
     {
         $this->driver = $driver;
+
+        return $this;
+    }
+
+    public function getPlatform(): ?string
+    {
+        return $this->platform;
+    }
+
+    public function setPlatform(?string $platform): self
+    {
+        $this->platform = $platform;
 
         return $this;
     }
@@ -383,12 +381,22 @@ class ContainersIdJsonGetResponse200
         return $this;
     }
 
-    public function getExecIDs(): ?string
+    /**
+     * IDs of exec instances that are running in the container.
+     *
+     * @return string[]|null
+     */
+    public function getExecIDs(): ?array
     {
         return $this->execIDs;
     }
 
-    public function setExecIDs(?string $execIDs): self
+    /**
+     * IDs of exec instances that are running in the container.
+     *
+     * @param string[]|null $execIDs
+     */
+    public function setExecIDs(?array $execIDs): self
     {
         $this->execIDs = $execIDs;
 
@@ -432,7 +440,8 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * The size of files that have been created or changed by this container.
+     * The size of files that have been created or changed by this.
+     * container.
      */
     public function getSizeRw(): ?int
     {
@@ -440,7 +449,8 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * The size of files that have been created or changed by this container.
+     * The size of files that have been created or changed by this.
+     * container.
      */
     public function setSizeRw(?int $sizeRw): self
     {

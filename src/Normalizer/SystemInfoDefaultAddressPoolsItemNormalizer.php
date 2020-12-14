@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ServiceSpecNetworksItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class SystemInfoDefaultAddressPoolsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -21,12 +21,12 @@ class ServiceSpecNetworksItemNormalizer implements DenormalizerInterface, Normal
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Docker\\API\\Model\\ServiceSpecNetworksItem' === $type;
+        return 'Docker\\API\\Model\\SystemInfoDefaultAddressPoolsItem' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\ServiceSpecNetworksItem' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\SystemInfoDefaultAddressPoolsItem' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,23 +37,19 @@ class ServiceSpecNetworksItemNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\API\Model\ServiceSpecNetworksItem();
+        $object = new \Docker\API\Model\SystemInfoDefaultAddressPoolsItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('Target', $data) && null !== $data['Target']) {
-            $object->setTarget($data['Target']);
-        } elseif (\array_key_exists('Target', $data) && null === $data['Target']) {
-            $object->setTarget(null);
+        if (\array_key_exists('Base', $data) && null !== $data['Base']) {
+            $object->setBase($data['Base']);
+        } elseif (\array_key_exists('Base', $data) && null === $data['Base']) {
+            $object->setBase(null);
         }
-        if (\array_key_exists('Aliases', $data) && null !== $data['Aliases']) {
-            $values = [];
-            foreach ($data['Aliases'] as $value) {
-                $values[] = $value;
-            }
-            $object->setAliases($values);
-        } elseif (\array_key_exists('Aliases', $data) && null === $data['Aliases']) {
-            $object->setAliases(null);
+        if (\array_key_exists('Size', $data) && null !== $data['Size']) {
+            $object->setSize($data['Size']);
+        } elseif (\array_key_exists('Size', $data) && null === $data['Size']) {
+            $object->setSize(null);
         }
 
         return $object;
@@ -62,15 +58,11 @@ class ServiceSpecNetworksItemNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getTarget()) {
-            $data['Target'] = $object->getTarget();
+        if (null !== $object->getBase()) {
+            $data['Base'] = $object->getBase();
         }
-        if (null !== $object->getAliases()) {
-            $values = [];
-            foreach ($object->getAliases() as $value) {
-                $values[] = $value;
-            }
-            $data['Aliases'] = $values;
+        if (null !== $object->getSize()) {
+            $data['Size'] = $object->getSize();
         }
 
         return $data;

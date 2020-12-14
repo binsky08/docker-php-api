@@ -7,6 +7,8 @@ namespace Docker\API\Model;
 class Port
 {
     /**
+     * Host IP address that the container's port is mapped to.
+     *
      * @var string|null
      */
     protected $iP;
@@ -27,11 +29,17 @@ class Port
      */
     protected $type;
 
+    /**
+     * Host IP address that the container's port is mapped to.
+     */
     public function getIP(): ?string
     {
         return $this->iP;
     }
 
+    /**
+     * Host IP address that the container's port is mapped to.
+     */
     public function setIP(?string $iP): self
     {
         $this->iP = $iP;

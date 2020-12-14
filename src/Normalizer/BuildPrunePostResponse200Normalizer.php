@@ -41,6 +41,15 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('CachesDeleted', $data) && null !== $data['CachesDeleted']) {
+            $values = [];
+            foreach ($data['CachesDeleted'] as $value) {
+                $values[] = $value;
+            }
+            $object->setCachesDeleted($values);
+        } elseif (\array_key_exists('CachesDeleted', $data) && null === $data['CachesDeleted']) {
+            $object->setCachesDeleted(null);
+        }
         if (\array_key_exists('SpaceReclaimed', $data) && null !== $data['SpaceReclaimed']) {
             $object->setSpaceReclaimed($data['SpaceReclaimed']);
         } elseif (\array_key_exists('SpaceReclaimed', $data) && null === $data['SpaceReclaimed']) {
@@ -53,6 +62,13 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
+        if (null !== $object->getCachesDeleted()) {
+            $values = [];
+            foreach ($object->getCachesDeleted() as $value) {
+                $values[] = $value;
+            }
+            $data['CachesDeleted'] = $values;
+        }
         if (null !== $object->getSpaceReclaimed()) {
             $data['SpaceReclaimed'] = $object->getSpaceReclaimed();
         }

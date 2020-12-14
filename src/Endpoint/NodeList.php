@@ -16,6 +16,7 @@ class NodeList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
      * - `label=<engine label>`
      * - `membership=`(`accepted`|`pending`)`
      * - `name=<node name>`
+     * - `node.label=<node label>`
      * - `role=`(`manager`|`worker`)`
      *
      * }

@@ -76,6 +76,16 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         } elseif (\array_key_exists('UpdateStatus', $data) && null === $data['UpdateStatus']) {
             $object->setUpdateStatus(null);
         }
+        if (\array_key_exists('ServiceStatus', $data) && null !== $data['ServiceStatus']) {
+            $object->setServiceStatus($this->denormalizer->denormalize($data['ServiceStatus'], 'Docker\\API\\Model\\ServiceServiceStatus', 'json', $context));
+        } elseif (\array_key_exists('ServiceStatus', $data) && null === $data['ServiceStatus']) {
+            $object->setServiceStatus(null);
+        }
+        if (\array_key_exists('JobStatus', $data) && null !== $data['JobStatus']) {
+            $object->setJobStatus($this->denormalizer->denormalize($data['JobStatus'], 'Docker\\API\\Model\\ServiceJobStatus', 'json', $context));
+        } elseif (\array_key_exists('JobStatus', $data) && null === $data['JobStatus']) {
+            $object->setJobStatus(null);
+        }
 
         return $object;
     }
@@ -103,6 +113,12 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getUpdateStatus()) {
             $data['UpdateStatus'] = $this->normalizer->normalize($object->getUpdateStatus(), 'json', $context);
+        }
+        if (null !== $object->getServiceStatus()) {
+            $data['ServiceStatus'] = $this->normalizer->normalize($object->getServiceStatus(), 'json', $context);
+        }
+        if (null !== $object->getJobStatus()) {
+            $data['JobStatus'] = $this->normalizer->normalize($object->getJobStatus(), 'json', $context);
         }
 
         return $data;

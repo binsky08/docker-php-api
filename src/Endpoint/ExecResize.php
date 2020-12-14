@@ -9,7 +9,8 @@ class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     protected $id;
 
     /**
-     * Resize the TTY session used by an exec instance. This endpoint only works if `tty` was specified as part of creating and starting the exec instance.
+     * Resize the TTY session used by an exec instance. This endpoint only works.
+     * if `tty` was specified as part of creating and starting the exec instance.
      *
      * @param string $id              Exec instance ID
      * @param array  $queryParameters {

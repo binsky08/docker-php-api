@@ -65,6 +65,11 @@ class SecretSpecNormalizer implements DenormalizerInterface, NormalizerInterface
         } elseif (\array_key_exists('Driver', $data) && null === $data['Driver']) {
             $object->setDriver(null);
         }
+        if (\array_key_exists('Templating', $data) && null !== $data['Templating']) {
+            $object->setTemplating($this->denormalizer->denormalize($data['Templating'], 'Docker\\API\\Model\\Driver', 'json', $context));
+        } elseif (\array_key_exists('Templating', $data) && null === $data['Templating']) {
+            $object->setTemplating(null);
+        }
 
         return $object;
     }
@@ -87,6 +92,9 @@ class SecretSpecNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getDriver()) {
             $data['Driver'] = $this->normalizer->normalize($object->getDriver(), 'json', $context);
+        }
+        if (null !== $object->getTemplating()) {
+            $data['Templating'] = $this->normalizer->normalize($object->getTemplating(), 'json', $context);
         }
 
         return $data;

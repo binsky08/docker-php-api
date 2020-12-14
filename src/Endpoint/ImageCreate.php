@@ -15,12 +15,17 @@ class ImageCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
      *     @var string $fromSrc Source to import. The value may be a URL from which the image can be retrieved or `-` to read the image from the request body. This parameter may only be used when importing an image.
      *     @var string $repo Repository name given to an image when it is imported. The repo may include a tag. This parameter may only be used when importing an image.
      *     @var string $tag Tag or digest. If empty when pulling an image, this causes all tags for the given image to be pulled.
+     *     @var string $message set commit message for imported image
      *     @var string $platform Platform in the format os[/arch[/variant]]
      * }
      *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64-encoded auth configuration. [See the authentication section for details.](#section/Authentication)
+     *     @var string $X-Registry-Auth A base64url-encoded auth configuration.
+     *
+     * Refer to the [authentication section](#section/Authentication) for
+     * details.
+     *
      * }
      */
     public function __construct(string $requestBody, array $queryParameters = [], array $headerParameters = [])
@@ -62,13 +67,14 @@ class ImageCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['fromImage', 'fromSrc', 'repo', 'tag', 'platform']);
+        $optionsResolver->setDefined(['fromImage', 'fromSrc', 'repo', 'tag', 'message', 'platform']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('fromImage', ['string']);
         $optionsResolver->setAllowedTypes('fromSrc', ['string']);
         $optionsResolver->setAllowedTypes('repo', ['string']);
         $optionsResolver->setAllowedTypes('tag', ['string']);
+        $optionsResolver->setAllowedTypes('message', ['string']);
         $optionsResolver->setAllowedTypes('platform', ['string']);
 
         return $optionsResolver;

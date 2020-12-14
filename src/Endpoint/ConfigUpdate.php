@@ -12,7 +12,9 @@ class ConfigUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      * @param string $id              The ID or name of the config
      * @param array  $queryParameters {
      *
-     *     @var int $version The version number of the config object being updated. This is required to avoid conflicting writes.
+     *     @var int $version The version number of the config object being updated. This is
+     * required to avoid conflicting writes.
+     *
      * }
      */
     public function __construct(string $id, \Docker\API\Model\ConfigSpec $requestBody, array $queryParameters = [])

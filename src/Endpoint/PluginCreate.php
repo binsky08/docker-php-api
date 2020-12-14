@@ -10,7 +10,9 @@ class PluginCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
      * @param array                                             $queryParameters {
      *
-     *     @var string $name The name of the plugin. The `:latest` tag is optional, and is the default if omitted.
+     *     @var string $name The name of the plugin. The `:latest` tag is optional, and is the
+     * default if omitted.
+     *
      * }
      */
     public function __construct($requestBody, array $queryParameters = [])

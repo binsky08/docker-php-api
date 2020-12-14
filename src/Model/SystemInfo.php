@@ -82,18 +82,6 @@ class SystemInfo
      */
     protected $dockerRootDir;
     /**
-     * Status information about this node (standalone Swarm API).
-     *
-     * <p><br /></p>
-     *
-     * > **Note**: The information returned in this field is only propagated
-     * > by the Swarm standalone API, and is empty (`null`) when using
-     * > built-in swarm mode.
-     *
-     * @var string[][]|null
-     */
-    protected $systemStatus;
-    /**
      * Available plugins per type.
      *
      * <p><br /></p>
@@ -120,17 +108,24 @@ class SystemInfo
     /**
      * Indicates if the host has kernel memory limit support enabled.
      *
+     * <p><br /></p>
+     *
+     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
+     * > `kmem.limit_in_bytes`.
+     *
      * @var bool|null
      */
     protected $kernelMemory;
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by the host.
+     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by.
+     * the host.
      *
      * @var bool|null
      */
     protected $cpuCfsPeriod;
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by the host.
+     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by.
+     * the host.
      *
      * @var bool|null
      */
@@ -149,6 +144,12 @@ class SystemInfo
      * @var bool|null
      */
     protected $cPUSet;
+    /**
+     * Indicates if the host kernel has PID limit support enabled.
+     *
+     * @var bool|null
+     */
+    protected $pidsLimit;
     /**
      * Indicates if OOM killer disable is supported on the host.
      *
@@ -174,7 +175,8 @@ class SystemInfo
      */
     protected $bridgeNfIp6tables;
     /**
-     * Indicates if the daemon is running in debug-mode / with debug-level logging enabled.
+     * Indicates if the daemon is running in debug-mode / with debug-level.
+     * logging enabled.
      *
      * @var bool|null
      */
@@ -215,6 +217,12 @@ class SystemInfo
      */
     protected $cgroupDriver = 'cgroupfs';
     /**
+     * The version of the cgroup.
+     *
+     * @var string|null
+     */
+    protected $cgroupVersion = '1';
+    /**
      * Number of event listeners subscribed.
      *
      * @var int|null
@@ -237,6 +245,18 @@ class SystemInfo
      * @var string|null
      */
     protected $operatingSystem;
+    /**
+     * Version of the host's operating system.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: The information returned in this field, including its
+     * > very existence, and the formatting of values, should not be considered
+     * > stable, and may change without notice.
+     *
+     * @var string|null
+     */
+    protected $oSVersion;
     /**
      * Generic type of the operating system of the host, as returned by the.
      * Go runtime (`GOOS`).
@@ -267,7 +287,7 @@ class SystemInfo
      */
     protected $nCPU;
     /**
-     * Total amount of physical memory available on the host, in kilobytes (kB).
+     * Total amount of physical memory available on the host, in bytes.
      *
      * @var int|null
      */
@@ -286,7 +306,8 @@ class SystemInfo
      */
     protected $registryConfig;
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * String resources (e.g, `GPU=UUID1`).
      *
      * @var GenericResourcesItem[]|null
      */
@@ -294,6 +315,8 @@ class SystemInfo
     /**
      * HTTP-proxy configured for the daemon. This value is obtained from the.
      * [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
      *
      * Containers do not automatically inherit this configuration.
      *
@@ -303,6 +326,8 @@ class SystemInfo
     /**
      * HTTPS-proxy configured for the daemon. This value is obtained from the.
      * [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
      *
      * Containers do not automatically inherit this configuration.
      *
@@ -363,7 +388,7 @@ class SystemInfo
      *
      * <p><br /></p>
      *
-     * > **Note**: This field is only propagated when using standalone Swarm
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
      * > mode, and overlay networking using an external k/v store. Overlay
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
@@ -378,7 +403,7 @@ class SystemInfo
      *
      * <p><br /></p>
      *
-     * > **Note**: This field is only propagated when using standalone Swarm
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
      * > mode, and overlay networking using an external k/v store. Overlay
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
@@ -437,7 +462,7 @@ class SystemInfo
      */
     protected $isolation = 'default';
     /**
-     * Name and, optional, path of the the `docker-init` binary.
+     * Name and, optional, path of the `docker-init` binary.
      *
      * If the path is omitted, the daemon searches the host's `$PATH` for the
      * binary and uses the first result.
@@ -471,7 +496,7 @@ class SystemInfo
     protected $initCommit;
     /**
      * List of security features that are enabled on the daemon, such as.
-     * apparmor, seccomp, SELinux, and user-namespaces (userns).
+     * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
      *
      * Additional configuration options for each security feature may
      * be present, and are included as a comma-separated list of key/value
@@ -480,6 +505,34 @@ class SystemInfo
      * @var string[]|null
      */
     protected $securityOptions;
+    /**
+     * Reports a summary of the product license on the daemon.
+     *
+     * If a commercial license has been applied to the daemon, information
+     * such as number of nodes, and expiration are included.
+     *
+     * @var string|null
+     */
+    protected $productLicense;
+    /**
+     * List of custom default address pools for local networks, which can be.
+     * specified in the daemon.json file or dockerd option.
+     *
+     * Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
+     * 10.10.[0-255].0/24 address pools.
+     *
+     * @var SystemInfoDefaultAddressPoolsItem[]|null
+     */
+    protected $defaultAddressPools;
+    /**
+     * List of warnings / informational messages about missing features, or.
+     * issues related to the daemon configuration.
+     *
+     * These messages can be printed by the client as information to the user.
+     *
+     * @var string[]|null
+     */
+    protected $warnings;
 
     /**
      * Unique identifier of the daemon.
@@ -690,40 +743,6 @@ class SystemInfo
     }
 
     /**
-     * Status information about this node (standalone Swarm API).
-     *
-     * <p><br /></p>
-     *
-     * > **Note**: The information returned in this field is only propagated
-     * > by the Swarm standalone API, and is empty (`null`) when using
-     * > built-in swarm mode.
-     *
-     * @return string[][]|null
-     */
-    public function getSystemStatus(): ?array
-    {
-        return $this->systemStatus;
-    }
-
-    /**
-     * Status information about this node (standalone Swarm API).
-     *
-     * <p><br /></p>
-     *
-     * > **Note**: The information returned in this field is only propagated
-     * > by the Swarm standalone API, and is empty (`null`) when using
-     * > built-in swarm mode.
-     *
-     * @param string[][]|null $systemStatus
-     */
-    public function setSystemStatus(?array $systemStatus): self
-    {
-        $this->systemStatus = $systemStatus;
-
-        return $this;
-    }
-
-    /**
      * Available plugins per type.
      *
      * <p><br /></p>
@@ -791,6 +810,11 @@ class SystemInfo
 
     /**
      * Indicates if the host has kernel memory limit support enabled.
+     *
+     * <p><br /></p>
+     *
+     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
+     * > `kmem.limit_in_bytes`.
      */
     public function getKernelMemory(): ?bool
     {
@@ -799,6 +823,11 @@ class SystemInfo
 
     /**
      * Indicates if the host has kernel memory limit support enabled.
+     *
+     * <p><br /></p>
+     *
+     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
+     * > `kmem.limit_in_bytes`.
      */
     public function setKernelMemory(?bool $kernelMemory): self
     {
@@ -808,7 +837,8 @@ class SystemInfo
     }
 
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by the host.
+     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by.
+     * the host.
      */
     public function getCpuCfsPeriod(): ?bool
     {
@@ -816,7 +846,8 @@ class SystemInfo
     }
 
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by the host.
+     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by.
+     * the host.
      */
     public function setCpuCfsPeriod(?bool $cpuCfsPeriod): self
     {
@@ -826,7 +857,8 @@ class SystemInfo
     }
 
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by the host.
+     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by.
+     * the host.
      */
     public function getCpuCfsQuota(): ?bool
     {
@@ -834,7 +866,8 @@ class SystemInfo
     }
 
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by the host.
+     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by.
+     * the host.
      */
     public function setCpuCfsQuota(?bool $cpuCfsQuota): self
     {
@@ -879,6 +912,24 @@ class SystemInfo
     public function setCPUSet(?bool $cPUSet): self
     {
         $this->cPUSet = $cPUSet;
+
+        return $this;
+    }
+
+    /**
+     * Indicates if the host kernel has PID limit support enabled.
+     */
+    public function getPidsLimit(): ?bool
+    {
+        return $this->pidsLimit;
+    }
+
+    /**
+     * Indicates if the host kernel has PID limit support enabled.
+     */
+    public function setPidsLimit(?bool $pidsLimit): self
+    {
+        $this->pidsLimit = $pidsLimit;
 
         return $this;
     }
@@ -956,7 +1007,8 @@ class SystemInfo
     }
 
     /**
-     * Indicates if the daemon is running in debug-mode / with debug-level logging enabled.
+     * Indicates if the daemon is running in debug-mode / with debug-level.
+     * logging enabled.
      */
     public function getDebug(): ?bool
     {
@@ -964,7 +1016,8 @@ class SystemInfo
     }
 
     /**
-     * Indicates if the daemon is running in debug-mode / with debug-level logging enabled.
+     * Indicates if the daemon is running in debug-mode / with debug-level.
+     * logging enabled.
      */
     public function setDebug(?bool $debug): self
     {
@@ -1074,6 +1127,24 @@ class SystemInfo
     }
 
     /**
+     * The version of the cgroup.
+     */
+    public function getCgroupVersion(): ?string
+    {
+        return $this->cgroupVersion;
+    }
+
+    /**
+     * The version of the cgroup.
+     */
+    public function setCgroupVersion(?string $cgroupVersion): self
+    {
+        $this->cgroupVersion = $cgroupVersion;
+
+        return $this;
+    }
+
+    /**
      * Number of event listeners subscribed.
      */
     public function getNEventsListener(): ?int
@@ -1133,6 +1204,36 @@ class SystemInfo
     public function setOperatingSystem(?string $operatingSystem): self
     {
         $this->operatingSystem = $operatingSystem;
+
+        return $this;
+    }
+
+    /**
+     * Version of the host's operating system.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: The information returned in this field, including its
+     * > very existence, and the formatting of values, should not be considered
+     * > stable, and may change without notice.
+     */
+    public function getOSVersion(): ?string
+    {
+        return $this->oSVersion;
+    }
+
+    /**
+     * Version of the host's operating system.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: The information returned in this field, including its
+     * > very existence, and the formatting of values, should not be considered
+     * > stable, and may change without notice.
+     */
+    public function setOSVersion(?string $oSVersion): self
+    {
+        $this->oSVersion = $oSVersion;
 
         return $this;
     }
@@ -1214,7 +1315,7 @@ class SystemInfo
     }
 
     /**
-     * Total amount of physical memory available on the host, in kilobytes (kB).
+     * Total amount of physical memory available on the host, in bytes.
      */
     public function getMemTotal(): ?int
     {
@@ -1222,7 +1323,7 @@ class SystemInfo
     }
 
     /**
-     * Total amount of physical memory available on the host, in kilobytes (kB).
+     * Total amount of physical memory available on the host, in bytes.
      */
     public function setMemTotal(?int $memTotal): self
     {
@@ -1270,7 +1371,8 @@ class SystemInfo
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * String resources (e.g, `GPU=UUID1`).
      *
      * @return GenericResourcesItem[]|null
      */
@@ -1280,7 +1382,8 @@ class SystemInfo
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * String resources (e.g, `GPU=UUID1`).
      *
      * @param GenericResourcesItem[]|null $genericResources
      */
@@ -1294,6 +1397,8 @@ class SystemInfo
     /**
      * HTTP-proxy configured for the daemon. This value is obtained from the.
      * [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
      *
      * Containers do not automatically inherit this configuration.
      */
@@ -1305,6 +1410,8 @@ class SystemInfo
     /**
      * HTTP-proxy configured for the daemon. This value is obtained from the.
      * [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
      *
      * Containers do not automatically inherit this configuration.
      */
@@ -1318,6 +1425,8 @@ class SystemInfo
     /**
      * HTTPS-proxy configured for the daemon. This value is obtained from the.
      * [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
      *
      * Containers do not automatically inherit this configuration.
      */
@@ -1329,6 +1438,8 @@ class SystemInfo
     /**
      * HTTPS-proxy configured for the daemon. This value is obtained from the.
      * [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
      *
      * Containers do not automatically inherit this configuration.
      */
@@ -1473,7 +1584,7 @@ class SystemInfo
      *
      * <p><br /></p>
      *
-     * > **Note**: This field is only propagated when using standalone Swarm
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
      * > mode, and overlay networking using an external k/v store. Overlay
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
@@ -1491,7 +1602,7 @@ class SystemInfo
      *
      * <p><br /></p>
      *
-     * > **Note**: This field is only propagated when using standalone Swarm
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
      * > mode, and overlay networking using an external k/v store. Overlay
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
@@ -1510,7 +1621,7 @@ class SystemInfo
      *
      * <p><br /></p>
      *
-     * > **Note**: This field is only propagated when using standalone Swarm
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
      * > mode, and overlay networking using an external k/v store. Overlay
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
@@ -1527,7 +1638,7 @@ class SystemInfo
      *
      * <p><br /></p>
      *
-     * > **Note**: This field is only propagated when using standalone Swarm
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
      * > mode, and overlay networking using an external k/v store. Overlay
      * > networks with Swarm mode enabled use the built-in raft store, and
      * > this field will be empty.
@@ -1674,7 +1785,7 @@ class SystemInfo
     }
 
     /**
-     * Name and, optional, path of the the `docker-init` binary.
+     * Name and, optional, path of the `docker-init` binary.
      *
      * If the path is omitted, the daemon searches the host's `$PATH` for the
      * binary and uses the first result.
@@ -1685,7 +1796,7 @@ class SystemInfo
     }
 
     /**
-     * Name and, optional, path of the the `docker-init` binary.
+     * Name and, optional, path of the `docker-init` binary.
      *
      * If the path is omitted, the daemon searches the host's `$PATH` for the
      * binary and uses the first result.
@@ -1765,7 +1876,7 @@ class SystemInfo
 
     /**
      * List of security features that are enabled on the daemon, such as.
-     * apparmor, seccomp, SELinux, and user-namespaces (userns).
+     * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
      *
      * Additional configuration options for each security feature may
      * be present, and are included as a comma-separated list of key/value
@@ -1780,7 +1891,7 @@ class SystemInfo
 
     /**
      * List of security features that are enabled on the daemon, such as.
-     * apparmor, seccomp, SELinux, and user-namespaces (userns).
+     * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
      *
      * Additional configuration options for each security feature may
      * be present, and are included as a comma-separated list of key/value
@@ -1791,6 +1902,88 @@ class SystemInfo
     public function setSecurityOptions(?array $securityOptions): self
     {
         $this->securityOptions = $securityOptions;
+
+        return $this;
+    }
+
+    /**
+     * Reports a summary of the product license on the daemon.
+     *
+     * If a commercial license has been applied to the daemon, information
+     * such as number of nodes, and expiration are included.
+     */
+    public function getProductLicense(): ?string
+    {
+        return $this->productLicense;
+    }
+
+    /**
+     * Reports a summary of the product license on the daemon.
+     *
+     * If a commercial license has been applied to the daemon, information
+     * such as number of nodes, and expiration are included.
+     */
+    public function setProductLicense(?string $productLicense): self
+    {
+        $this->productLicense = $productLicense;
+
+        return $this;
+    }
+
+    /**
+     * List of custom default address pools for local networks, which can be.
+     * specified in the daemon.json file or dockerd option.
+     *
+     * Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
+     * 10.10.[0-255].0/24 address pools.
+     *
+     * @return SystemInfoDefaultAddressPoolsItem[]|null
+     */
+    public function getDefaultAddressPools(): ?array
+    {
+        return $this->defaultAddressPools;
+    }
+
+    /**
+     * List of custom default address pools for local networks, which can be.
+     * specified in the daemon.json file or dockerd option.
+     *
+     * Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
+     * 10.10.[0-255].0/24 address pools.
+     *
+     * @param SystemInfoDefaultAddressPoolsItem[]|null $defaultAddressPools
+     */
+    public function setDefaultAddressPools(?array $defaultAddressPools): self
+    {
+        $this->defaultAddressPools = $defaultAddressPools;
+
+        return $this;
+    }
+
+    /**
+     * List of warnings / informational messages about missing features, or.
+     * issues related to the daemon configuration.
+     *
+     * These messages can be printed by the client as information to the user.
+     *
+     * @return string[]|null
+     */
+    public function getWarnings(): ?array
+    {
+        return $this->warnings;
+    }
+
+    /**
+     * List of warnings / informational messages about missing features, or.
+     * issues related to the daemon configuration.
+     *
+     * These messages can be printed by the client as information to the user.
+     *
+     * @param string[]|null $warnings
+     */
+    public function setWarnings(?array $warnings): self
+    {
+        $this->warnings = $warnings;
 
         return $this;
     }

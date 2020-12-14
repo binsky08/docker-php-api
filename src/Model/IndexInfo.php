@@ -19,7 +19,7 @@ class IndexInfo
      */
     protected $mirrors;
     /**
-     * Indicates if the the registry is part of the list of insecure.
+     * Indicates if the registry is part of the list of insecure.
      * registries.
      *
      * If `false`, the registry is insecure. Insecure registries accept
@@ -83,7 +83,7 @@ class IndexInfo
     }
 
     /**
-     * Indicates if the the registry is part of the list of insecure.
+     * Indicates if the registry is part of the list of insecure.
      * registries.
      *
      * If `false`, the registry is insecure. Insecure registries accept
@@ -102,7 +102,7 @@ class IndexInfo
     }
 
     /**
-     * Indicates if the the registry is part of the list of insecure.
+     * Indicates if the registry is part of the list of insecure.
      * registries.
      *
      * If `false`, the registry is insecure. Insecure registries accept

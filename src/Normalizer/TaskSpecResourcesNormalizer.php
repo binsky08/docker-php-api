@@ -42,7 +42,7 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
             return $object;
         }
         if (\array_key_exists('Limits', $data) && null !== $data['Limits']) {
-            $object->setLimits($this->denormalizer->denormalize($data['Limits'], 'Docker\\API\\Model\\ResourceObject', 'json', $context));
+            $object->setLimits($this->denormalizer->denormalize($data['Limits'], 'Docker\\API\\Model\\Limit', 'json', $context));
         } elseif (\array_key_exists('Limits', $data) && null === $data['Limits']) {
             $object->setLimits(null);
         }

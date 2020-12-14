@@ -13,7 +13,11 @@ class IPAM
      */
     protected $driver = 'default';
     /**
-     * List of IPAM configuration options, specified as a map: `{"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}`.
+     * List of IPAM configuration options, specified as a map:.
+     *
+     * ```
+     * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
+     * ```
      *
      * @var string[][]|null
      */
@@ -21,7 +25,7 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @var string[][]|null
+     * @var string[]|null
      */
     protected $options;
 
@@ -44,7 +48,11 @@ class IPAM
     }
 
     /**
-     * List of IPAM configuration options, specified as a map: `{"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}`.
+     * List of IPAM configuration options, specified as a map:.
+     *
+     * ```
+     * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
+     * ```
      *
      * @return string[][]|null
      */
@@ -54,7 +62,11 @@ class IPAM
     }
 
     /**
-     * List of IPAM configuration options, specified as a map: `{"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}`.
+     * List of IPAM configuration options, specified as a map:.
+     *
+     * ```
+     * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
+     * ```
      *
      * @param string[][]|null $config
      */
@@ -68,9 +80,9 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @return string[][]|null
+     * @return string[]|null
      */
-    public function getOptions(): ?array
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
@@ -78,9 +90,9 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @param string[][]|null $options
+     * @param string[]|null $options
      */
-    public function setOptions(?array $options): self
+    public function setOptions(?iterable $options): self
     {
         $this->options = $options;
 

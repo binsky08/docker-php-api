@@ -12,7 +12,7 @@ class ContainerDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var bool $v remove the volumes associated with the container
+     *     @var bool $v remove anonymous volumes associated with the container
      *     @var bool $force if the container is running, kill it before removing it
      *     @var bool $link Remove the specified link associated with the container.
      * }

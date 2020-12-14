@@ -22,6 +22,10 @@ class SystemDfGetResponse200
      * @var Volume[]|null
      */
     protected $volumes;
+    /**
+     * @var BuildCache[]|null
+     */
+    protected $buildCache;
 
     public function getLayersSize(): ?int
     {
@@ -85,6 +89,24 @@ class SystemDfGetResponse200
     public function setVolumes(?array $volumes): self
     {
         $this->volumes = $volumes;
+
+        return $this;
+    }
+
+    /**
+     * @return BuildCache[]|null
+     */
+    public function getBuildCache(): ?array
+    {
+        return $this->buildCache;
+    }
+
+    /**
+     * @param BuildCache[]|null $buildCache
+     */
+    public function setBuildCache(?array $buildCache): self
+    {
+        $this->buildCache = $buildCache;
 
         return $this;
     }

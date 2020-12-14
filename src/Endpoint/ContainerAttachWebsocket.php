@@ -12,7 +12,7 @@ class ContainerAttachWebsocket extends \Docker\API\Runtime\Client\BaseEndpoint i
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var string $detachKeys Override the key sequence for detaching a container.Format is a single character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`, `@`, `^`, `[`, `,`, or `_`.
+     *     @var string $detachKeys Override the key sequence for detaching a container.Format is a single
      *     @var bool $logs Return logs
      *     @var bool $stream Return stream
      *     @var bool $stdin Attach to `stdin`

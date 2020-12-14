@@ -9,7 +9,7 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     protected $name;
 
     /**
-     * @param string                                             $name            The name of the plugin. The `:latest` tag is optional, and is the default if omitted.
+     * @param string                                             $name            The name of the plugin. The `:latest` tag is optional, and is the
      * @param \Docker\API\Model\PluginsNameUpgradePostBodyItem[] $requestBody
      * @param array                                              $queryParameters {
      *
@@ -21,7 +21,12 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64-encoded auth configuration to use when pulling a plugin from a registry. [See the authentication section for details.](#section/Authentication)
+     *     @var string $X-Registry-Auth A base64url-encoded auth configuration to use when pulling a plugin
+     * from a registry.
+     *
+     * Refer to the [authentication section](#section/Authentication) for
+     * details.
+     *
      * }
      */
     public function __construct(string $name, array $requestBody, array $queryParameters = [], array $headerParameters = [])

@@ -19,13 +19,15 @@ class TaskSpecRestartPolicy
      */
     protected $delay;
     /**
-     * Maximum attempts to restart a given container before giving up (default value is 0, which is ignored).
+     * Maximum attempts to restart a given container before giving up.
+     * (default value is 0, which is ignored).
      *
      * @var int|null
      */
     protected $maxAttempts = 0;
     /**
-     * Windows is the time window used to evaluate the restart policy (default value is 0, which is unbounded).
+     * Windows is the time window used to evaluate the restart policy.
+     * (default value is 0, which is unbounded).
      *
      * @var int|null
      */
@@ -68,7 +70,8 @@ class TaskSpecRestartPolicy
     }
 
     /**
-     * Maximum attempts to restart a given container before giving up (default value is 0, which is ignored).
+     * Maximum attempts to restart a given container before giving up.
+     * (default value is 0, which is ignored).
      */
     public function getMaxAttempts(): ?int
     {
@@ -76,7 +79,8 @@ class TaskSpecRestartPolicy
     }
 
     /**
-     * Maximum attempts to restart a given container before giving up (default value is 0, which is ignored).
+     * Maximum attempts to restart a given container before giving up.
+     * (default value is 0, which is ignored).
      */
     public function setMaxAttempts(?int $maxAttempts): self
     {
@@ -86,7 +90,8 @@ class TaskSpecRestartPolicy
     }
 
     /**
-     * Windows is the time window used to evaluate the restart policy (default value is 0, which is unbounded).
+     * Windows is the time window used to evaluate the restart policy.
+     * (default value is 0, which is unbounded).
      */
     public function getWindow(): ?int
     {
@@ -94,7 +99,8 @@ class TaskSpecRestartPolicy
     }
 
     /**
-     * Windows is the time window used to evaluate the restart policy (default value is 0, which is unbounded).
+     * Windows is the time window used to evaluate the restart policy.
+     * (default value is 0, which is unbounded).
      */
     public function setWindow(?int $window): self
     {

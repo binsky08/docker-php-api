@@ -9,7 +9,10 @@ class ConfigList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to process on the configs list. Available filters:
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     * process on the configs list.
+     *
+     * Available filters:
      *
      * - `id=<config id>`
      * - `label=<key> or label=<key>=value`

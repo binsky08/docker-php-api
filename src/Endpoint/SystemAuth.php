@@ -7,7 +7,8 @@ namespace Docker\API\Endpoint;
 class SystemAuth extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
     /**
-     * Validate credentials for a registry and, if available, get an identity token for accessing the registry without password.
+     * Validate credentials for a registry and, if available, get an identity.
+     * token for accessing the registry without password.
      */
     public function __construct(\Docker\API\Model\AuthConfig $requestBody)
     {

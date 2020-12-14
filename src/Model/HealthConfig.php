@@ -18,25 +18,30 @@ class HealthConfig
      */
     protected $test;
     /**
-     * The time to wait between checks in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
+     * The time to wait between checks in nanoseconds. It should be 0 or at.
+     * least 1000000 (1 ms). 0 means inherit.
      *
      * @var int|null
      */
     protected $interval;
     /**
-     * The time to wait before considering the check to have hung. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
+     * The time to wait before considering the check to have hung. It should.
+     * be 0 or at least 1000000 (1 ms). 0 means inherit.
      *
      * @var int|null
      */
     protected $timeout;
     /**
-     * The number of consecutive failures needed to consider a container as unhealthy. 0 means inherit.
+     * The number of consecutive failures needed to consider a container as.
+     * unhealthy. 0 means inherit.
      *
      * @var int|null
      */
     protected $retries;
     /**
-     * Start period for the container to initialize before starting health-retries countdown in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
+     * Start period for the container to initialize before starting.
+     * health-retries countdown in nanoseconds. It should be 0 or at least
+     * 1000000 (1 ms). 0 means inherit.
      *
      * @var int|null
      */
@@ -75,7 +80,8 @@ class HealthConfig
     }
 
     /**
-     * The time to wait between checks in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
+     * The time to wait between checks in nanoseconds. It should be 0 or at.
+     * least 1000000 (1 ms). 0 means inherit.
      */
     public function getInterval(): ?int
     {
@@ -83,7 +89,8 @@ class HealthConfig
     }
 
     /**
-     * The time to wait between checks in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
+     * The time to wait between checks in nanoseconds. It should be 0 or at.
+     * least 1000000 (1 ms). 0 means inherit.
      */
     public function setInterval(?int $interval): self
     {
@@ -93,7 +100,8 @@ class HealthConfig
     }
 
     /**
-     * The time to wait before considering the check to have hung. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
+     * The time to wait before considering the check to have hung. It should.
+     * be 0 or at least 1000000 (1 ms). 0 means inherit.
      */
     public function getTimeout(): ?int
     {
@@ -101,7 +109,8 @@ class HealthConfig
     }
 
     /**
-     * The time to wait before considering the check to have hung. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
+     * The time to wait before considering the check to have hung. It should.
+     * be 0 or at least 1000000 (1 ms). 0 means inherit.
      */
     public function setTimeout(?int $timeout): self
     {
@@ -111,7 +120,8 @@ class HealthConfig
     }
 
     /**
-     * The number of consecutive failures needed to consider a container as unhealthy. 0 means inherit.
+     * The number of consecutive failures needed to consider a container as.
+     * unhealthy. 0 means inherit.
      */
     public function getRetries(): ?int
     {
@@ -119,7 +129,8 @@ class HealthConfig
     }
 
     /**
-     * The number of consecutive failures needed to consider a container as unhealthy. 0 means inherit.
+     * The number of consecutive failures needed to consider a container as.
+     * unhealthy. 0 means inherit.
      */
     public function setRetries(?int $retries): self
     {
@@ -129,7 +140,9 @@ class HealthConfig
     }
 
     /**
-     * Start period for the container to initialize before starting health-retries countdown in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
+     * Start period for the container to initialize before starting.
+     * health-retries countdown in nanoseconds. It should be 0 or at least
+     * 1000000 (1 ms). 0 means inherit.
      */
     public function getStartPeriod(): ?int
     {
@@ -137,7 +150,9 @@ class HealthConfig
     }
 
     /**
-     * Start period for the container to initialize before starting health-retries countdown in nanoseconds. It should be 0 or at least 1000000 (1 ms). 0 means inherit.
+     * Start period for the container to initialize before starting.
+     * health-retries countdown in nanoseconds. It should be 0 or at least
+     * 1000000 (1 ms). 0 means inherit.
      */
     public function setStartPeriod(?int $startPeriod): self
     {

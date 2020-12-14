@@ -204,7 +204,7 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $object->setHostConfig(null);
         }
         if (\array_key_exists('NetworkingConfig', $data) && null !== $data['NetworkingConfig']) {
-            $object->setNetworkingConfig($this->denormalizer->denormalize($data['NetworkingConfig'], 'Docker\\API\\Model\\ContainersCreatePostBodyNetworkingConfig', 'json', $context));
+            $object->setNetworkingConfig($this->denormalizer->denormalize($data['NetworkingConfig'], 'Docker\\API\\Model\\NetworkingConfig', 'json', $context));
         } elseif (\array_key_exists('NetworkingConfig', $data) && null === $data['NetworkingConfig']) {
             $object->setNetworkingConfig(null);
         }

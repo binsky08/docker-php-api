@@ -25,7 +25,9 @@ class ContainersIdExecPostBody
      */
     protected $attachStderr;
     /**
-     * Override the key sequence for detaching a container. Format is a single character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
+     * Override the key sequence for detaching a container. Format is.
+     * a single character `[a-Z]` or `ctrl-<value>` where `<value>`
+     * is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      *
      * @var string|null
      */
@@ -55,7 +57,9 @@ class ContainersIdExecPostBody
      */
     protected $privileged = false;
     /**
-     * The user, and optionally, group to run the exec process inside the container. Format is one of: `user`, `user:group`, `uid`, or `uid:gid`.
+     * The user, and optionally, group to run the exec process inside.
+     * the container. Format is one of: `user`, `user:group`, `uid`,
+     * or `uid:gid`.
      *
      * @var string|null
      */
@@ -122,7 +126,9 @@ class ContainersIdExecPostBody
     }
 
     /**
-     * Override the key sequence for detaching a container. Format is a single character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
+     * Override the key sequence for detaching a container. Format is.
+     * a single character `[a-Z]` or `ctrl-<value>` where `<value>`
+     * is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      */
     public function getDetachKeys(): ?string
     {
@@ -130,7 +136,9 @@ class ContainersIdExecPostBody
     }
 
     /**
-     * Override the key sequence for detaching a container. Format is a single character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
+     * Override the key sequence for detaching a container. Format is.
+     * a single character `[a-Z]` or `ctrl-<value>` where `<value>`
+     * is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      */
     public function setDetachKeys(?string $detachKeys): self
     {
@@ -220,7 +228,9 @@ class ContainersIdExecPostBody
     }
 
     /**
-     * The user, and optionally, group to run the exec process inside the container. Format is one of: `user`, `user:group`, `uid`, or `uid:gid`.
+     * The user, and optionally, group to run the exec process inside.
+     * the container. Format is one of: `user`, `user:group`, `uid`,
+     * or `uid:gid`.
      */
     public function getUser(): ?string
     {
@@ -228,7 +238,9 @@ class ContainersIdExecPostBody
     }
 
     /**
-     * The user, and optionally, group to run the exec process inside the container. Format is one of: `user`, `user:group`, `uid`, or `uid:gid`.
+     * The user, and optionally, group to run the exec process inside.
+     * the container. Format is one of: `user`, `user:group`, `uid`,
+     * or `uid:gid`.
      */
     public function setUser(?string $user): self
     {

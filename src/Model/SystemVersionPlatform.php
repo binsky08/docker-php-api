@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Model;
 
-class VersionGetResponse200Platform
+class SystemVersionPlatform
 {
     /**
      * @var string|null

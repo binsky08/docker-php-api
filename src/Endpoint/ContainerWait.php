@@ -14,7 +14,9 @@ class ContainerWait extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var string $condition Wait until a container state reaches the given condition, either 'not-running' (default), 'next-exit', or 'removed'.
+     *     @var string $condition Wait until a container state reaches the given condition, either
+     * 'not-running' (default), 'next-exit', or 'removed'.
+     *
      * }
      */
     public function __construct(string $id, array $queryParameters = [])

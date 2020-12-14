@@ -7,17 +7,25 @@ namespace Docker\API\Endpoint;
 class ContainerList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
     /**
-     * Returns a list of containers. For details on the format, see [the inspect endpoint](#operation/ContainerInspect).
+     * Returns a list of containers. For details on the format, see the.
+     * [inspect endpoint](#operation/ContainerInspect).
      *
-     * Note that it uses a different, smaller representation of a container than inspecting a single container. For example,
-     * the list of linked containers is not propagated .
+     * Note that it uses a different, smaller representation of a container
+     * than inspecting a single container. For example, the list of linked
+     * containers is not propagated .
      *
      * @param array $queryParameters {
      *
-     *     @var bool $all Return all containers. By default, only running containers are shown
-     *     @var int $limit return this number of most recently created containers, including non-running ones
-     *     @var bool $size return the size of container as fields `SizeRw` and `SizeRootFs`
-     *     @var string $filters Filters to process on the container list, encoded as JSON (a `map[string][]string`). For example, `{"status": ["paused"]}` will only return paused containers. Available filters:
+     *     @var bool $all Return all containers. By default, only running containers are shown.
+     *
+     *     @var int $limit Return this number of most recently created containers, including
+     *     @var bool $size Return the size of container as fields `SizeRw` and `SizeRootFs`.
+     *
+     *     @var string $filters Filters to process on the container list, encoded as JSON (a
+     * `map[string][]string`). For example, `{"status": ["paused"]}` will
+     * only return paused containers.
+     *
+     * Available filters:
      *
      * - `ancestor`=(`<image-name>[:<tag>]`, `<image id>`, or `<image@digest>`)
      * - `before`=(`<container id>` or `<container name>`)

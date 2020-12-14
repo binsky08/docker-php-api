@@ -11,7 +11,9 @@ class ImagePush extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
     /**
      * Push an image to a registry.
      *
-     * If you wish to push an image on to a private registry, that image must already have a tag which references the registry. For example, `registry.example.com/myimage:latest`.
+     * If you wish to push an image on to a private registry, that image must
+     * already have a tag which references the registry. For example,
+     * `registry.example.com/myimage:latest`.
      *
      * The push is cancelled if the HTTP connection is closed.
      *
@@ -23,7 +25,11 @@ class ImagePush extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
      *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64-encoded auth configuration. [See the authentication section for details.](#section/Authentication)
+     *     @var string $X-Registry-Auth A base64url-encoded auth configuration.
+     *
+     * Refer to the [authentication section](#section/Authentication) for
+     * details.
+     *
      * }
      */
     public function __construct(string $name, array $queryParameters = [], array $headerParameters = [])

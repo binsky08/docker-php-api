@@ -55,6 +55,11 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
         } elseif (\array_key_exists('Socket', $data) && null === $data['Socket']) {
             $object->setSocket(null);
         }
+        if (\array_key_exists('ProtocolScheme', $data) && null !== $data['ProtocolScheme']) {
+            $object->setProtocolScheme($data['ProtocolScheme']);
+        } elseif (\array_key_exists('ProtocolScheme', $data) && null === $data['ProtocolScheme']) {
+            $object->setProtocolScheme(null);
+        }
 
         return $object;
     }
@@ -68,6 +73,9 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
         }
         $data['Types'] = $values;
         $data['Socket'] = $object->getSocket();
+        if (null !== $object->getProtocolScheme()) {
+            $data['ProtocolScheme'] = $object->getProtocolScheme();
+        }
 
         return $data;
     }

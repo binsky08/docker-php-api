@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace Docker\API\Model;
 
-class ContainersIdJsonGetResponse200Node
+class ServiceSpecModeGlobalJob
 {
 }

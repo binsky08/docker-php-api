@@ -9,7 +9,10 @@ class TaskList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to process on the tasks list. Available filters:
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     * process on the tasks list.
+     *
+     * Available filters:
      *
      * - `desired-state=(running | shutdown | accepted)`
      * - `id=<task id>`

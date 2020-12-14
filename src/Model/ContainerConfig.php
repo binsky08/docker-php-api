@@ -45,7 +45,7 @@ class ContainerConfig
     /**
      * An object mapping ports to an empty object in the form:.
      *
-     * `{"<port>/<tcp|udp>": {}}`
+     * `{"<port>/<tcp|udp|sctp>": {}}`
      *
      * @var ContainerConfigExposedPortsItem[]|null
      */
@@ -69,7 +69,9 @@ class ContainerConfig
      */
     protected $stdinOnce = false;
     /**
-     * A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value.
+     * A list of environment variables to set inside the container in the.
+     * form `["VAR=value", ...]`. A variable without `=` is removed from the
+     * environment, rather than to have an empty value.
      *
      * @var string[]|null
      */
@@ -93,13 +95,14 @@ class ContainerConfig
      */
     protected $argsEscaped;
     /**
-     * The name of the image to use when creating the container.
+     * The name of the image to use when creating the container/.
      *
      * @var string|null
      */
     protected $image;
     /**
-     * An object mapping mount point paths inside the container to empty objects.
+     * An object mapping mount point paths inside the container to empty.
+     * objects.
      *
      * @var ContainerConfigVolumesItem[]|null
      */
@@ -113,7 +116,9 @@ class ContainerConfig
     /**
      * The entry point for the container as a string or an array of strings.
      *
-     * If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
+     * If the array consists of exactly one empty string (`[""]`) then the
+     * entry point is reset to system default (i.e., the entry point used by
+     * docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
      *
      * @var string[]|null
      */
@@ -272,7 +277,7 @@ class ContainerConfig
     /**
      * An object mapping ports to an empty object in the form:.
      *
-     * `{"<port>/<tcp|udp>": {}}`
+     * `{"<port>/<tcp|udp|sctp>": {}}`
      *
      * @return ContainerConfigExposedPortsItem[]|null
      */
@@ -284,7 +289,7 @@ class ContainerConfig
     /**
      * An object mapping ports to an empty object in the form:.
      *
-     * `{"<port>/<tcp|udp>": {}}`
+     * `{"<port>/<tcp|udp|sctp>": {}}`
      *
      * @param ContainerConfigExposedPortsItem[]|null $exposedPorts
      */
@@ -350,7 +355,9 @@ class ContainerConfig
     }
 
     /**
-     * A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value.
+     * A list of environment variables to set inside the container in the.
+     * form `["VAR=value", ...]`. A variable without `=` is removed from the
+     * environment, rather than to have an empty value.
      *
      * @return string[]|null
      */
@@ -360,7 +367,9 @@ class ContainerConfig
     }
 
     /**
-     * A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value.
+     * A list of environment variables to set inside the container in the.
+     * form `["VAR=value", ...]`. A variable without `=` is removed from the
+     * environment, rather than to have an empty value.
      *
      * @param string[]|null $env
      */
@@ -430,7 +439,7 @@ class ContainerConfig
     }
 
     /**
-     * The name of the image to use when creating the container.
+     * The name of the image to use when creating the container/.
      */
     public function getImage(): ?string
     {
@@ -438,7 +447,7 @@ class ContainerConfig
     }
 
     /**
-     * The name of the image to use when creating the container.
+     * The name of the image to use when creating the container/.
      */
     public function setImage(?string $image): self
     {
@@ -448,7 +457,8 @@ class ContainerConfig
     }
 
     /**
-     * An object mapping mount point paths inside the container to empty objects.
+     * An object mapping mount point paths inside the container to empty.
+     * objects.
      *
      * @return ContainerConfigVolumesItem[]|null
      */
@@ -458,7 +468,8 @@ class ContainerConfig
     }
 
     /**
-     * An object mapping mount point paths inside the container to empty objects.
+     * An object mapping mount point paths inside the container to empty.
+     * objects.
      *
      * @param ContainerConfigVolumesItem[]|null $volumes
      */
@@ -490,7 +501,9 @@ class ContainerConfig
     /**
      * The entry point for the container as a string or an array of strings.
      *
-     * If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
+     * If the array consists of exactly one empty string (`[""]`) then the
+     * entry point is reset to system default (i.e., the entry point used by
+     * docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
      *
      * @return string[]|null
      */
@@ -502,7 +515,9 @@ class ContainerConfig
     /**
      * The entry point for the container as a string or an array of strings.
      *
-     * If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
+     * If the array consists of exactly one empty string (`[""]`) then the
+     * entry point is reset to system default (i.e., the entry point used by
+     * docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
      *
      * @param string[]|null $entrypoint
      */

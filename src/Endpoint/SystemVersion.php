@@ -33,12 +33,12 @@ class SystemVersion extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * @throws \Docker\API\Exception\SystemVersionInternalServerErrorException
      *
-     * @return \Docker\API\Model\VersionGetResponse200|null
+     * @return \Docker\API\Model\SystemVersion|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && false !== \mb_strpos($contentType, 'application/json')) {
-            return $serializer->deserialize($body, 'Docker\\API\\Model\\VersionGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Docker\\API\\Model\\SystemVersion', 'json');
         }
         if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
             throw new \Docker\API\Exception\SystemVersionInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));

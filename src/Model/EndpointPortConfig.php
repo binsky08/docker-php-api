@@ -31,7 +31,7 @@ class EndpointPortConfig
      *
      * <p><br /></p>
      *
-     * - "ingress" makes the target port accessible on on every node,
+     * - "ingress" makes the target port accessible on every node,
      * regardless of whether there is a task for the service running on
      * that node or not.
      * - "host" bypasses the routing mesh and publish the port directly on
@@ -106,7 +106,7 @@ class EndpointPortConfig
      *
      * <p><br /></p>
      *
-     * - "ingress" makes the target port accessible on on every node,
+     * - "ingress" makes the target port accessible on every node,
      * regardless of whether there is a task for the service running on
      * that node or not.
      * - "host" bypasses the routing mesh and publish the port directly on
@@ -122,7 +122,7 @@ class EndpointPortConfig
      *
      * <p><br /></p>
      *
-     * - "ingress" makes the target port accessible on on every node,
+     * - "ingress" makes the target port accessible on every node,
      * regardless of whether there is a task for the service running on
      * that node or not.
      * - "host" bypasses the routing mesh and publish the port directly on

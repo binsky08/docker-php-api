@@ -7,25 +7,55 @@ namespace Docker\API\Model;
 class TaskSpec
 {
     /**
-     * Invalid when specified with `ContainerSpec`. *(Experimental release only.)*.
+     * Plugin spec for the service.  *(Experimental release only.)*.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
      *
      * @var TaskSpecPluginSpec|null
      */
     protected $pluginSpec;
     /**
-     * Invalid when specified with `PluginSpec`.
+     * Container spec for the service.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
      *
      * @var TaskSpecContainerSpec|null
      */
     protected $containerSpec;
     /**
-     * Resource requirements which apply to each individual container created as part of the service.
+     * Read-only spec type for non-swarm containers attached to swarm overlay.
+     * networks.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
+     *
+     * @var TaskSpecNetworkAttachmentSpec|null
+     */
+    protected $networkAttachmentSpec;
+    /**
+     * Resource requirements which apply to each individual container created.
+     * as part of the service.
      *
      * @var TaskSpecResources|null
      */
     protected $resources;
     /**
-     * Specification for the restart policy which applies to containers created as part of this service.
+     * Specification for the restart policy which applies to containers.
+     * created as part of this service.
      *
      * @var TaskSpecRestartPolicy|null
      */
@@ -35,7 +65,8 @@ class TaskSpec
      */
     protected $placement;
     /**
-     * A counter that triggers an update even if no relevant parameters have been changed.
+     * A counter that triggers an update even if no relevant parameters have.
+     * been changed.
      *
      * @var int|null
      */
@@ -47,18 +78,29 @@ class TaskSpec
      */
     protected $runtime;
     /**
-     * @var TaskSpecNetworksItem[]|null
+     * Specifies which networks the service should attach to.
+     *
+     * @var NetworkAttachmentConfig[]|null
      */
     protected $networks;
     /**
-     * Specifies the log driver to use for tasks created from this spec. If not present, the default one for the swarm will be used, finally falling back to the engine default if not specified.
+     * Specifies the log driver to use for tasks created from this spec. If.
+     * not present, the default one for the swarm will be used, finally
+     * falling back to the engine default if not specified.
      *
      * @var TaskSpecLogDriver|null
      */
     protected $logDriver;
 
     /**
-     * Invalid when specified with `ContainerSpec`. *(Experimental release only.)*.
+     * Plugin spec for the service.  *(Experimental release only.)*.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
      */
     public function getPluginSpec(): ?TaskSpecPluginSpec
     {
@@ -66,7 +108,14 @@ class TaskSpec
     }
 
     /**
-     * Invalid when specified with `ContainerSpec`. *(Experimental release only.)*.
+     * Plugin spec for the service.  *(Experimental release only.)*.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
      */
     public function setPluginSpec(?TaskSpecPluginSpec $pluginSpec): self
     {
@@ -76,7 +125,14 @@ class TaskSpec
     }
 
     /**
-     * Invalid when specified with `PluginSpec`.
+     * Container spec for the service.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
      */
     public function getContainerSpec(): ?TaskSpecContainerSpec
     {
@@ -84,7 +140,14 @@ class TaskSpec
     }
 
     /**
-     * Invalid when specified with `PluginSpec`.
+     * Container spec for the service.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
      */
     public function setContainerSpec(?TaskSpecContainerSpec $containerSpec): self
     {
@@ -94,7 +157,42 @@ class TaskSpec
     }
 
     /**
-     * Resource requirements which apply to each individual container created as part of the service.
+     * Read-only spec type for non-swarm containers attached to swarm overlay.
+     * networks.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
+     */
+    public function getNetworkAttachmentSpec(): ?TaskSpecNetworkAttachmentSpec
+    {
+        return $this->networkAttachmentSpec;
+    }
+
+    /**
+     * Read-only spec type for non-swarm containers attached to swarm overlay.
+     * networks.
+     *
+     * <p><br /></p>
+     *
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
+     */
+    public function setNetworkAttachmentSpec(?TaskSpecNetworkAttachmentSpec $networkAttachmentSpec): self
+    {
+        $this->networkAttachmentSpec = $networkAttachmentSpec;
+
+        return $this;
+    }
+
+    /**
+     * Resource requirements which apply to each individual container created.
+     * as part of the service.
      */
     public function getResources(): ?TaskSpecResources
     {
@@ -102,7 +200,8 @@ class TaskSpec
     }
 
     /**
-     * Resource requirements which apply to each individual container created as part of the service.
+     * Resource requirements which apply to each individual container created.
+     * as part of the service.
      */
     public function setResources(?TaskSpecResources $resources): self
     {
@@ -112,7 +211,8 @@ class TaskSpec
     }
 
     /**
-     * Specification for the restart policy which applies to containers created as part of this service.
+     * Specification for the restart policy which applies to containers.
+     * created as part of this service.
      */
     public function getRestartPolicy(): ?TaskSpecRestartPolicy
     {
@@ -120,7 +220,8 @@ class TaskSpec
     }
 
     /**
-     * Specification for the restart policy which applies to containers created as part of this service.
+     * Specification for the restart policy which applies to containers.
+     * created as part of this service.
      */
     public function setRestartPolicy(?TaskSpecRestartPolicy $restartPolicy): self
     {
@@ -142,7 +243,8 @@ class TaskSpec
     }
 
     /**
-     * A counter that triggers an update even if no relevant parameters have been changed.
+     * A counter that triggers an update even if no relevant parameters have.
+     * been changed.
      */
     public function getForceUpdate(): ?int
     {
@@ -150,7 +252,8 @@ class TaskSpec
     }
 
     /**
-     * A counter that triggers an update even if no relevant parameters have been changed.
+     * A counter that triggers an update even if no relevant parameters have.
+     * been changed.
      */
     public function setForceUpdate(?int $forceUpdate): self
     {
@@ -178,7 +281,9 @@ class TaskSpec
     }
 
     /**
-     * @return TaskSpecNetworksItem[]|null
+     * Specifies which networks the service should attach to.
+     *
+     * @return NetworkAttachmentConfig[]|null
      */
     public function getNetworks(): ?array
     {
@@ -186,7 +291,9 @@ class TaskSpec
     }
 
     /**
-     * @param TaskSpecNetworksItem[]|null $networks
+     * Specifies which networks the service should attach to.
+     *
+     * @param NetworkAttachmentConfig[]|null $networks
      */
     public function setNetworks(?array $networks): self
     {
@@ -196,7 +303,9 @@ class TaskSpec
     }
 
     /**
-     * Specifies the log driver to use for tasks created from this spec. If not present, the default one for the swarm will be used, finally falling back to the engine default if not specified.
+     * Specifies the log driver to use for tasks created from this spec. If.
+     * not present, the default one for the swarm will be used, finally
+     * falling back to the engine default if not specified.
      */
     public function getLogDriver(): ?TaskSpecLogDriver
     {
@@ -204,7 +313,9 @@ class TaskSpec
     }
 
     /**
-     * Specifies the log driver to use for tasks created from this spec. If not present, the default one for the swarm will be used, finally falling back to the engine default if not specified.
+     * Specifies the log driver to use for tasks created from this spec. If.
+     * not present, the default one for the swarm will be used, finally
+     * falling back to the engine default if not specified.
      */
     public function setLogDriver(?TaskSpecLogDriver $logDriver): self
     {

@@ -48,7 +48,8 @@ class Volume
      */
     protected $labels;
     /**
-     * The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level.
+     * The level at which the volume exists. Either `global` for cluster-wide,.
+     * or `local` for machine level.
      *
      * @var string|null
      */
@@ -194,7 +195,8 @@ class Volume
     }
 
     /**
-     * The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level.
+     * The level at which the volume exists. Either `global` for cluster-wide,.
+     * or `local` for machine level.
      */
     public function getScope(): ?string
     {
@@ -202,7 +204,8 @@ class Volume
     }
 
     /**
-     * The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level.
+     * The level at which the volume exists. Either `global` for cluster-wide,.
+     * or `local` for machine level.
      */
     public function setScope(?string $scope): self
     {

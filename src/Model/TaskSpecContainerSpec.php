@@ -31,7 +31,8 @@ class TaskSpecContainerSpec
      */
     protected $args;
     /**
-     * The hostname to use for the container, as a valid RFC 1123 hostname.
+     * The hostname to use for the container, as a valid.
+     * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
      *
      * @var string|null
      */
@@ -85,7 +86,8 @@ class TaskSpecContainerSpec
      */
     protected $readOnly;
     /**
-     * Specification for mounts to be added to containers created as part of the service.
+     * Specification for mounts to be added to containers created as part.
+     * of the service.
      *
      * @var Mount[]|null
      */
@@ -97,7 +99,8 @@ class TaskSpecContainerSpec
      */
     protected $stopSignal;
     /**
-     * Amount of time to wait for the container to terminate before forcefully killing it.
+     * Amount of time to wait for the container to terminate before.
+     * forcefully killing it.
      *
      * @var int|null
      */
@@ -120,29 +123,73 @@ class TaskSpecContainerSpec
      */
     protected $hosts;
     /**
-     * Specification for DNS related configurations in resolver configuration file (`resolv.conf`).
+     * Specification for DNS related configurations in resolver configuration.
+     * file (`resolv.conf`).
      *
      * @var TaskSpecContainerSpecDNSConfig|null
      */
     protected $dNSConfig;
     /**
-     * Secrets contains references to zero or more secrets that will be exposed to the service.
+     * Secrets contains references to zero or more secrets that will be.
+     * exposed to the service.
      *
      * @var TaskSpecContainerSpecSecretsItem[]|null
      */
     protected $secrets;
     /**
-     * Configs contains references to zero or more configs that will be exposed to the service.
+     * Configs contains references to zero or more configs that will be.
+     * exposed to the service.
      *
      * @var TaskSpecContainerSpecConfigsItem[]|null
      */
     protected $configs;
     /**
-     * Isolation technology of the containers running the service. (Windows only).
+     * Isolation technology of the containers running the service.
+     * (Windows only)
      *
      * @var string|null
      */
     protected $isolation;
+    /**
+     * Run an init inside the container that forwards signals and reaps.
+     * processes. This field is omitted if empty, and the default (as
+     * configured on the daemon) is used.
+     *
+     * @var bool|null
+     */
+    protected $init;
+    /**
+     * Set kernel namedspaced parameters (sysctls) in the container.
+     * The Sysctls option on services accepts the same sysctls as the
+     * are supported on containers. Note that while the same sysctls are
+     * supported, no guarantees or checks are made about their
+     * suitability for a clustered environment, and it's up to the user
+     * to determine whether a given sysctl will work properly in a
+     * Service.
+     *
+     * @var string[]|null
+     */
+    protected $sysctls;
+    /**
+     * A list of kernel capabilities to add to the default set.
+     * for the container.
+     *
+     * @var string[]|null
+     */
+    protected $capabilityAdd;
+    /**
+     * A list of kernel capabilities to drop from the default set.
+     * for the container.
+     *
+     * @var string[]|null
+     */
+    protected $capabilityDrop;
+    /**
+     * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`".
+     *
+     * @var TaskSpecContainerSpecUlimitsItem[]|null
+     */
+    protected $ulimits;
 
     /**
      * The image name to use for the container.
@@ -229,7 +276,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * The hostname to use for the container, as a valid RFC 1123 hostname.
+     * The hostname to use for the container, as a valid.
+     * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
      */
     public function getHostname(): ?string
     {
@@ -237,7 +285,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * The hostname to use for the container, as a valid RFC 1123 hostname.
+     * The hostname to use for the container, as a valid.
+     * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
      */
     public function setHostname(?string $hostname): self
     {
@@ -399,7 +448,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Specification for mounts to be added to containers created as part of the service.
+     * Specification for mounts to be added to containers created as part.
+     * of the service.
      *
      * @return Mount[]|null
      */
@@ -409,7 +459,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Specification for mounts to be added to containers created as part of the service.
+     * Specification for mounts to be added to containers created as part.
+     * of the service.
      *
      * @param Mount[]|null $mounts
      */
@@ -439,7 +490,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Amount of time to wait for the container to terminate before forcefully killing it.
+     * Amount of time to wait for the container to terminate before.
+     * forcefully killing it.
      */
     public function getStopGracePeriod(): ?int
     {
@@ -447,7 +499,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Amount of time to wait for the container to terminate before forcefully killing it.
+     * Amount of time to wait for the container to terminate before.
+     * forcefully killing it.
      */
     public function setStopGracePeriod(?int $stopGracePeriod): self
     {
@@ -507,7 +560,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Specification for DNS related configurations in resolver configuration file (`resolv.conf`).
+     * Specification for DNS related configurations in resolver configuration.
+     * file (`resolv.conf`).
      */
     public function getDNSConfig(): ?TaskSpecContainerSpecDNSConfig
     {
@@ -515,7 +569,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Specification for DNS related configurations in resolver configuration file (`resolv.conf`).
+     * Specification for DNS related configurations in resolver configuration.
+     * file (`resolv.conf`).
      */
     public function setDNSConfig(?TaskSpecContainerSpecDNSConfig $dNSConfig): self
     {
@@ -525,7 +580,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Secrets contains references to zero or more secrets that will be exposed to the service.
+     * Secrets contains references to zero or more secrets that will be.
+     * exposed to the service.
      *
      * @return TaskSpecContainerSpecSecretsItem[]|null
      */
@@ -535,7 +591,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Secrets contains references to zero or more secrets that will be exposed to the service.
+     * Secrets contains references to zero or more secrets that will be.
+     * exposed to the service.
      *
      * @param TaskSpecContainerSpecSecretsItem[]|null $secrets
      */
@@ -547,7 +604,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Configs contains references to zero or more configs that will be exposed to the service.
+     * Configs contains references to zero or more configs that will be.
+     * exposed to the service.
      *
      * @return TaskSpecContainerSpecConfigsItem[]|null
      */
@@ -557,7 +615,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Configs contains references to zero or more configs that will be exposed to the service.
+     * Configs contains references to zero or more configs that will be.
+     * exposed to the service.
      *
      * @param TaskSpecContainerSpecConfigsItem[]|null $configs
      */
@@ -569,7 +628,8 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Isolation technology of the containers running the service. (Windows only).
+     * Isolation technology of the containers running the service.
+     * (Windows only)
      */
     public function getIsolation(): ?string
     {
@@ -577,11 +637,138 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Isolation technology of the containers running the service. (Windows only).
+     * Isolation technology of the containers running the service.
+     * (Windows only)
      */
     public function setIsolation(?string $isolation): self
     {
         $this->isolation = $isolation;
+
+        return $this;
+    }
+
+    /**
+     * Run an init inside the container that forwards signals and reaps.
+     * processes. This field is omitted if empty, and the default (as
+     * configured on the daemon) is used.
+     */
+    public function getInit(): ?bool
+    {
+        return $this->init;
+    }
+
+    /**
+     * Run an init inside the container that forwards signals and reaps.
+     * processes. This field is omitted if empty, and the default (as
+     * configured on the daemon) is used.
+     */
+    public function setInit(?bool $init): self
+    {
+        $this->init = $init;
+
+        return $this;
+    }
+
+    /**
+     * Set kernel namedspaced parameters (sysctls) in the container.
+     * The Sysctls option on services accepts the same sysctls as the
+     * are supported on containers. Note that while the same sysctls are
+     * supported, no guarantees or checks are made about their
+     * suitability for a clustered environment, and it's up to the user
+     * to determine whether a given sysctl will work properly in a
+     * Service.
+     *
+     * @return string[]|null
+     */
+    public function getSysctls(): ?iterable
+    {
+        return $this->sysctls;
+    }
+
+    /**
+     * Set kernel namedspaced parameters (sysctls) in the container.
+     * The Sysctls option on services accepts the same sysctls as the
+     * are supported on containers. Note that while the same sysctls are
+     * supported, no guarantees or checks are made about their
+     * suitability for a clustered environment, and it's up to the user
+     * to determine whether a given sysctl will work properly in a
+     * Service.
+     *
+     * @param string[]|null $sysctls
+     */
+    public function setSysctls(?iterable $sysctls): self
+    {
+        $this->sysctls = $sysctls;
+
+        return $this;
+    }
+
+    /**
+     * A list of kernel capabilities to add to the default set.
+     * for the container.
+     *
+     * @return string[]|null
+     */
+    public function getCapabilityAdd(): ?array
+    {
+        return $this->capabilityAdd;
+    }
+
+    /**
+     * A list of kernel capabilities to add to the default set.
+     * for the container.
+     *
+     * @param string[]|null $capabilityAdd
+     */
+    public function setCapabilityAdd(?array $capabilityAdd): self
+    {
+        $this->capabilityAdd = $capabilityAdd;
+
+        return $this;
+    }
+
+    /**
+     * A list of kernel capabilities to drop from the default set.
+     * for the container.
+     *
+     * @return string[]|null
+     */
+    public function getCapabilityDrop(): ?array
+    {
+        return $this->capabilityDrop;
+    }
+
+    /**
+     * A list of kernel capabilities to drop from the default set.
+     * for the container.
+     *
+     * @param string[]|null $capabilityDrop
+     */
+    public function setCapabilityDrop(?array $capabilityDrop): self
+    {
+        $this->capabilityDrop = $capabilityDrop;
+
+        return $this;
+    }
+
+    /**
+     * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`".
+     *
+     * @return TaskSpecContainerSpecUlimitsItem[]|null
+     */
+    public function getUlimits(): ?array
+    {
+        return $this->ulimits;
+    }
+
+    /**
+     * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`".
+     *
+     * @param TaskSpecContainerSpecUlimitsItem[]|null $ulimits
+     */
+    public function setUlimits(?array $ulimits): self
+    {
+        $this->ulimits = $ulimits;
 
         return $this;
     }

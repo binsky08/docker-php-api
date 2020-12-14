@@ -19,7 +19,8 @@ class TaskSpecContainerSpecDNSConfig
      */
     protected $search;
     /**
-     * A list of internal resolver variables to be modified (e.g., `debug`, `ndots:3`, etc.).
+     * A list of internal resolver variables to be modified (e.g.,.
+     * `debug`, `ndots:3`, etc.).
      *
      * @var string[]|null
      */
@@ -70,7 +71,8 @@ class TaskSpecContainerSpecDNSConfig
     }
 
     /**
-     * A list of internal resolver variables to be modified (e.g., `debug`, `ndots:3`, etc.).
+     * A list of internal resolver variables to be modified (e.g.,.
+     * `debug`, `ndots:3`, etc.).
      *
      * @return string[]|null
      */
@@ -80,7 +82,8 @@ class TaskSpecContainerSpecDNSConfig
     }
 
     /**
-     * A list of internal resolver variables to be modified (e.g., `debug`, `ndots:3`, etc.).
+     * A list of internal resolver variables to be modified (e.g.,.
+     * `debug`, `ndots:3`, etc.).
      *
      * @param string[]|null $options
      */

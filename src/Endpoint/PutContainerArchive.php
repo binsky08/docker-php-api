@@ -11,14 +11,18 @@ class PutContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implem
     /**
      * Upload a tar archive to be extracted to a path in the filesystem of container id.
      *
-     * @param string $id              ID or name of the container
-     * @param array  $queryParameters {
+     * @param string                                            $id              ID or name of the container
+     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     * @param array                                             $queryParameters {
      *
      *     @var string $path path to a directory in the container to extract the archive’s contents into
-     *     @var string $noOverwriteDirNonDir If “1”, “true”, or “True” then it will be an error if unpacking the given content would cause an existing directory to be replaced with a non-directory and vice versa.
+     *     @var string $noOverwriteDirNonDir If `1`, `true`, or `True` then it will be an error if unpacking the
+     *     @var string $copyUIDGID If `1`, `true`, then it will copy UID/GID maps to the dest file or
+     * dir
+     *
      * }
      */
-    public function __construct(string $id, string $requestBody, array $queryParameters = [])
+    public function __construct(string $id, $requestBody, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -39,10 +43,10 @@ class PutContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implem
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if (\is_string($this->body)) {
+        if (\is_string($this->body) || \is_resource($this->body) || $this->body instanceof \Psr\Http\Message\StreamInterface) {
             return [['Content-Type' => ['application/x-tar']], $this->body];
         }
-        if (\is_string($this->body)) {
+        if (\is_string($this->body) || \is_resource($this->body) || $this->body instanceof \Psr\Http\Message\StreamInterface) {
             return [['Content-Type' => ['application/octet-stream']], $this->body];
         }
 
@@ -57,11 +61,12 @@ class PutContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implem
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['path', 'noOverwriteDirNonDir']);
+        $optionsResolver->setDefined(['path', 'noOverwriteDirNonDir', 'copyUIDGID']);
         $optionsResolver->setRequired(['path']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('path', ['string']);
         $optionsResolver->setAllowedTypes('noOverwriteDirNonDir', ['string']);
+        $optionsResolver->setAllowedTypes('copyUIDGID', ['string']);
 
         return $optionsResolver;
     }

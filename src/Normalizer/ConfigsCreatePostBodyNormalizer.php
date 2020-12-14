@@ -60,6 +60,11 @@ class ConfigsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
         } elseif (\array_key_exists('Data', $data) && null === $data['Data']) {
             $object->setData(null);
         }
+        if (\array_key_exists('Templating', $data) && null !== $data['Templating']) {
+            $object->setTemplating($this->denormalizer->denormalize($data['Templating'], 'Docker\\API\\Model\\Driver', 'json', $context));
+        } elseif (\array_key_exists('Templating', $data) && null === $data['Templating']) {
+            $object->setTemplating(null);
+        }
 
         return $object;
     }
@@ -79,6 +84,9 @@ class ConfigsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getData()) {
             $data['Data'] = $object->getData();
+        }
+        if (null !== $object->getTemplating()) {
+            $data['Templating'] = $this->normalizer->normalize($object->getTemplating(), 'json', $context);
         }
 
         return $data;

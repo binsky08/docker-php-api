@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ContainersIdJsonGetResponse200NodeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class NetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -21,12 +21,12 @@ class ContainersIdJsonGetResponse200NodeNormalizer implements DenormalizerInterf
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Docker\\API\\Model\\ContainersIdJsonGetResponse200Node' === $type;
+        return 'Docker\\API\\Model\\NetworkingConfig' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\ContainersIdJsonGetResponse200Node' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\NetworkingConfig' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,9 +37,18 @@ class ContainersIdJsonGetResponse200NodeNormalizer implements DenormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\API\Model\ContainersIdJsonGetResponse200Node();
+        $object = new \Docker\API\Model\NetworkingConfig();
         if (null === $data || false === \is_array($data)) {
             return $object;
+        }
+        if (\array_key_exists('EndpointsConfig', $data) && null !== $data['EndpointsConfig']) {
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['EndpointsConfig'] as $key => $value) {
+                $values[$key] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\EndpointSettings', 'json', $context);
+            }
+            $object->setEndpointsConfig($values);
+        } elseif (\array_key_exists('EndpointsConfig', $data) && null === $data['EndpointsConfig']) {
+            $object->setEndpointsConfig(null);
         }
 
         return $object;
@@ -48,6 +57,13 @@ class ContainersIdJsonGetResponse200NodeNormalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
+        if (null !== $object->getEndpointsConfig()) {
+            $values = [];
+            foreach ($object->getEndpointsConfig() as $key => $value) {
+                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['EndpointsConfig'] = $values;
+        }
 
         return $data;
     }

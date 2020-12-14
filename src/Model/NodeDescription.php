@@ -17,7 +17,8 @@ class NodeDescription
      */
     protected $platform;
     /**
-     * An object describing the resources which can be advertised by a node and requested by a task.
+     * An object describing the resources which can be advertised by a node and.
+     * requested by a task.
      *
      * @var ResourceObject|null
      */
@@ -29,7 +30,8 @@ class NodeDescription
      */
     protected $engine;
     /**
-     * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
+     * Information about the issuer of leaf TLS certificates and the trusted root.
+     * CA certificate.
      *
      * @var TLSInfo|null
      */
@@ -66,7 +68,8 @@ class NodeDescription
     }
 
     /**
-     * An object describing the resources which can be advertised by a node and requested by a task.
+     * An object describing the resources which can be advertised by a node and.
+     * requested by a task.
      */
     public function getResources(): ?ResourceObject
     {
@@ -74,7 +77,8 @@ class NodeDescription
     }
 
     /**
-     * An object describing the resources which can be advertised by a node and requested by a task.
+     * An object describing the resources which can be advertised by a node and.
+     * requested by a task.
      */
     public function setResources(?ResourceObject $resources): self
     {
@@ -102,7 +106,8 @@ class NodeDescription
     }
 
     /**
-     * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
+     * Information about the issuer of leaf TLS certificates and the trusted root.
+     * CA certificate.
      */
     public function getTLSInfo(): ?TLSInfo
     {
@@ -110,7 +115,8 @@ class NodeDescription
     }
 
     /**
-     * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
+     * Information about the issuer of leaf TLS certificates and the trusted root.
+     * CA certificate.
      */
     public function setTLSInfo(?TLSInfo $tLSInfo): self
     {

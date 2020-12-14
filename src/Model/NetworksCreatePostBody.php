@@ -13,7 +13,13 @@ class NetworksCreatePostBody
      */
     protected $name;
     /**
-     * Check for networks with duplicate names. Since Network is primarily keyed based on a random ID and not on the name, and network name is strictly a user-friendly alias to the network which is uniquely identified using ID, there is no guaranteed way to check for duplicates. CheckDuplicate is there to provide a best effort checking of any networks which has the same name but it is not guaranteed to catch all name collisions.
+     * Check for networks with duplicate names. Since Network is.
+     * primarily keyed based on a random ID and not on the name, and
+     * network name is strictly a user-friendly alias to the network
+     * which is uniquely identified using ID, there is no guaranteed
+     * way to check for duplicates. CheckDuplicate is there to provide
+     * a best effort checking of any networks which has the same name
+     * but it is not guaranteed to catch all name collisions.
      *
      * @var bool|null
      */
@@ -31,13 +37,15 @@ class NetworksCreatePostBody
      */
     protected $internal;
     /**
-     * Globally scoped network is manually attachable by regular containers from workers in swarm mode.
+     * Globally scoped network is manually attachable by regular.
+     * containers from workers in swarm mode.
      *
      * @var bool|null
      */
     protected $attachable;
     /**
-     * Ingress network is the network which provides the routing-mesh in swarm mode.
+     * Ingress network is the network which provides the routing-mesh.
+     * in swarm mode.
      *
      * @var bool|null
      */
@@ -84,7 +92,13 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Check for networks with duplicate names. Since Network is primarily keyed based on a random ID and not on the name, and network name is strictly a user-friendly alias to the network which is uniquely identified using ID, there is no guaranteed way to check for duplicates. CheckDuplicate is there to provide a best effort checking of any networks which has the same name but it is not guaranteed to catch all name collisions.
+     * Check for networks with duplicate names. Since Network is.
+     * primarily keyed based on a random ID and not on the name, and
+     * network name is strictly a user-friendly alias to the network
+     * which is uniquely identified using ID, there is no guaranteed
+     * way to check for duplicates. CheckDuplicate is there to provide
+     * a best effort checking of any networks which has the same name
+     * but it is not guaranteed to catch all name collisions.
      */
     public function getCheckDuplicate(): ?bool
     {
@@ -92,7 +106,13 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Check for networks with duplicate names. Since Network is primarily keyed based on a random ID and not on the name, and network name is strictly a user-friendly alias to the network which is uniquely identified using ID, there is no guaranteed way to check for duplicates. CheckDuplicate is there to provide a best effort checking of any networks which has the same name but it is not guaranteed to catch all name collisions.
+     * Check for networks with duplicate names. Since Network is.
+     * primarily keyed based on a random ID and not on the name, and
+     * network name is strictly a user-friendly alias to the network
+     * which is uniquely identified using ID, there is no guaranteed
+     * way to check for duplicates. CheckDuplicate is there to provide
+     * a best effort checking of any networks which has the same name
+     * but it is not guaranteed to catch all name collisions.
      */
     public function setCheckDuplicate(?bool $checkDuplicate): self
     {
@@ -138,7 +158,8 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Globally scoped network is manually attachable by regular containers from workers in swarm mode.
+     * Globally scoped network is manually attachable by regular.
+     * containers from workers in swarm mode.
      */
     public function getAttachable(): ?bool
     {
@@ -146,7 +167,8 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Globally scoped network is manually attachable by regular containers from workers in swarm mode.
+     * Globally scoped network is manually attachable by regular.
+     * containers from workers in swarm mode.
      */
     public function setAttachable(?bool $attachable): self
     {
@@ -156,7 +178,8 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Ingress network is the network which provides the routing-mesh in swarm mode.
+     * Ingress network is the network which provides the routing-mesh.
+     * in swarm mode.
      */
     public function getIngress(): ?bool
     {
@@ -164,7 +187,8 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Ingress network is the network which provides the routing-mesh in swarm mode.
+     * Ingress network is the network which provides the routing-mesh.
+     * in swarm mode.
      */
     public function setIngress(?bool $ingress): self
     {

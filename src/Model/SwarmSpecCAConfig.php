@@ -13,25 +13,30 @@ class SwarmSpecCAConfig
      */
     protected $nodeCertExpiry;
     /**
-     * Configuration for forwarding signing requests to an external certificate authority.
+     * Configuration for forwarding signing requests to an external.
+     * certificate authority.
      *
      * @var SwarmSpecCAConfigExternalCAsItem[]|null
      */
     protected $externalCAs;
     /**
-     * The desired signing CA certificate for all swarm node TLS leaf certificates, in PEM format.
+     * The desired signing CA certificate for all swarm node TLS leaf.
+     * certificates, in PEM format.
      *
      * @var string|null
      */
     protected $signingCACert;
     /**
-     * The desired signing CA key for all swarm node TLS leaf certificates, in PEM format.
+     * The desired signing CA key for all swarm node TLS leaf certificates,.
+     * in PEM format.
      *
      * @var string|null
      */
     protected $signingCAKey;
     /**
-     * An integer whose purpose is to force swarm to generate a new signing CA certificate and key, if none have been specified in `SigningCACert` and `SigningCAKey`.
+     * An integer whose purpose is to force swarm to generate a new.
+     * signing CA certificate and key, if none have been specified in
+     * `SigningCACert` and `SigningCAKey`
      *
      * @var int|null
      */
@@ -56,7 +61,8 @@ class SwarmSpecCAConfig
     }
 
     /**
-     * Configuration for forwarding signing requests to an external certificate authority.
+     * Configuration for forwarding signing requests to an external.
+     * certificate authority.
      *
      * @return SwarmSpecCAConfigExternalCAsItem[]|null
      */
@@ -66,7 +72,8 @@ class SwarmSpecCAConfig
     }
 
     /**
-     * Configuration for forwarding signing requests to an external certificate authority.
+     * Configuration for forwarding signing requests to an external.
+     * certificate authority.
      *
      * @param SwarmSpecCAConfigExternalCAsItem[]|null $externalCAs
      */
@@ -78,7 +85,8 @@ class SwarmSpecCAConfig
     }
 
     /**
-     * The desired signing CA certificate for all swarm node TLS leaf certificates, in PEM format.
+     * The desired signing CA certificate for all swarm node TLS leaf.
+     * certificates, in PEM format.
      */
     public function getSigningCACert(): ?string
     {
@@ -86,7 +94,8 @@ class SwarmSpecCAConfig
     }
 
     /**
-     * The desired signing CA certificate for all swarm node TLS leaf certificates, in PEM format.
+     * The desired signing CA certificate for all swarm node TLS leaf.
+     * certificates, in PEM format.
      */
     public function setSigningCACert(?string $signingCACert): self
     {
@@ -96,7 +105,8 @@ class SwarmSpecCAConfig
     }
 
     /**
-     * The desired signing CA key for all swarm node TLS leaf certificates, in PEM format.
+     * The desired signing CA key for all swarm node TLS leaf certificates,.
+     * in PEM format.
      */
     public function getSigningCAKey(): ?string
     {
@@ -104,7 +114,8 @@ class SwarmSpecCAConfig
     }
 
     /**
-     * The desired signing CA key for all swarm node TLS leaf certificates, in PEM format.
+     * The desired signing CA key for all swarm node TLS leaf certificates,.
+     * in PEM format.
      */
     public function setSigningCAKey(?string $signingCAKey): self
     {
@@ -114,7 +125,9 @@ class SwarmSpecCAConfig
     }
 
     /**
-     * An integer whose purpose is to force swarm to generate a new signing CA certificate and key, if none have been specified in `SigningCACert` and `SigningCAKey`.
+     * An integer whose purpose is to force swarm to generate a new.
+     * signing CA certificate and key, if none have been specified in
+     * `SigningCACert` and `SigningCAKey`
      */
     public function getForceRotate(): ?int
     {
@@ -122,7 +135,9 @@ class SwarmSpecCAConfig
     }
 
     /**
-     * An integer whose purpose is to force swarm to generate a new signing CA certificate and key, if none have been specified in `SigningCACert` and `SigningCAKey`.
+     * An integer whose purpose is to force swarm to generate a new.
+     * signing CA certificate and key, if none have been specified in
+     * `SigningCACert` and `SigningCAKey`
      */
     public function setForceRotate(?int $forceRotate): self
     {

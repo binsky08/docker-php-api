@@ -41,6 +41,11 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('Config', $data) && null !== $data['Config']) {
+            $object->setConfig($data['Config']);
+        } elseif (\array_key_exists('Config', $data) && null === $data['Config']) {
+            $object->setConfig(null);
+        }
         if (\array_key_exists('File', $data) && null !== $data['File']) {
             $object->setFile($data['File']);
         } elseif (\array_key_exists('File', $data) && null === $data['File']) {
@@ -58,6 +63,9 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
+        if (null !== $object->getConfig()) {
+            $data['Config'] = $object->getConfig();
+        }
         if (null !== $object->getFile()) {
             $data['File'] = $object->getFile();
         }

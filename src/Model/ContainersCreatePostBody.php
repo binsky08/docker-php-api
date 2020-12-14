@@ -45,7 +45,7 @@ class ContainersCreatePostBody
     /**
      * An object mapping ports to an empty object in the form:.
      *
-     * `{"<port>/<tcp|udp>": {}}`
+     * `{"<port>/<tcp|udp|sctp>": {}}`
      *
      * @var ContainerConfigExposedPortsItem[]|null
      */
@@ -69,7 +69,9 @@ class ContainersCreatePostBody
      */
     protected $stdinOnce = false;
     /**
-     * A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value.
+     * A list of environment variables to set inside the container in the.
+     * form `["VAR=value", ...]`. A variable without `=` is removed from the
+     * environment, rather than to have an empty value.
      *
      * @var string[]|null
      */
@@ -93,13 +95,14 @@ class ContainersCreatePostBody
      */
     protected $argsEscaped;
     /**
-     * The name of the image to use when creating the container.
+     * The name of the image to use when creating the container/.
      *
      * @var string|null
      */
     protected $image;
     /**
-     * An object mapping mount point paths inside the container to empty objects.
+     * An object mapping mount point paths inside the container to empty.
+     * objects.
      *
      * @var ContainerConfigVolumesItem[]|null
      */
@@ -113,7 +116,9 @@ class ContainersCreatePostBody
     /**
      * The entry point for the container as a string or an array of strings.
      *
-     * If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
+     * If the array consists of exactly one empty string (`[""]`) then the
+     * entry point is reset to system default (i.e., the entry point used by
+     * docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
      *
      * @var string[]|null
      */
@@ -167,9 +172,12 @@ class ContainersCreatePostBody
      */
     protected $hostConfig;
     /**
-     * This container's networking configuration.
+     * NetworkingConfig represents the container's networking configuration for.
+     * each of its interfaces.
+     * It is used for the networking configs specified in the `docker create`
+     * and `docker network connect` commands.
      *
-     * @var ContainersCreatePostBodyNetworkingConfig|null
+     * @var NetworkingConfig|null
      */
     protected $networkingConfig;
 
@@ -284,7 +292,7 @@ class ContainersCreatePostBody
     /**
      * An object mapping ports to an empty object in the form:.
      *
-     * `{"<port>/<tcp|udp>": {}}`
+     * `{"<port>/<tcp|udp|sctp>": {}}`
      *
      * @return ContainerConfigExposedPortsItem[]|null
      */
@@ -296,7 +304,7 @@ class ContainersCreatePostBody
     /**
      * An object mapping ports to an empty object in the form:.
      *
-     * `{"<port>/<tcp|udp>": {}}`
+     * `{"<port>/<tcp|udp|sctp>": {}}`
      *
      * @param ContainerConfigExposedPortsItem[]|null $exposedPorts
      */
@@ -362,7 +370,9 @@ class ContainersCreatePostBody
     }
 
     /**
-     * A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value.
+     * A list of environment variables to set inside the container in the.
+     * form `["VAR=value", ...]`. A variable without `=` is removed from the
+     * environment, rather than to have an empty value.
      *
      * @return string[]|null
      */
@@ -372,7 +382,9 @@ class ContainersCreatePostBody
     }
 
     /**
-     * A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value.
+     * A list of environment variables to set inside the container in the.
+     * form `["VAR=value", ...]`. A variable without `=` is removed from the
+     * environment, rather than to have an empty value.
      *
      * @param string[]|null $env
      */
@@ -442,7 +454,7 @@ class ContainersCreatePostBody
     }
 
     /**
-     * The name of the image to use when creating the container.
+     * The name of the image to use when creating the container/.
      */
     public function getImage(): ?string
     {
@@ -450,7 +462,7 @@ class ContainersCreatePostBody
     }
 
     /**
-     * The name of the image to use when creating the container.
+     * The name of the image to use when creating the container/.
      */
     public function setImage(?string $image): self
     {
@@ -460,7 +472,8 @@ class ContainersCreatePostBody
     }
 
     /**
-     * An object mapping mount point paths inside the container to empty objects.
+     * An object mapping mount point paths inside the container to empty.
+     * objects.
      *
      * @return ContainerConfigVolumesItem[]|null
      */
@@ -470,7 +483,8 @@ class ContainersCreatePostBody
     }
 
     /**
-     * An object mapping mount point paths inside the container to empty objects.
+     * An object mapping mount point paths inside the container to empty.
+     * objects.
      *
      * @param ContainerConfigVolumesItem[]|null $volumes
      */
@@ -502,7 +516,9 @@ class ContainersCreatePostBody
     /**
      * The entry point for the container as a string or an array of strings.
      *
-     * If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
+     * If the array consists of exactly one empty string (`[""]`) then the
+     * entry point is reset to system default (i.e., the entry point used by
+     * docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
      *
      * @return string[]|null
      */
@@ -514,7 +530,9 @@ class ContainersCreatePostBody
     /**
      * The entry point for the container as a string or an array of strings.
      *
-     * If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
+     * If the array consists of exactly one empty string (`[""]`) then the
+     * entry point is reset to system default (i.e., the entry point used by
+     * docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
      *
      * @param string[]|null $entrypoint
      */
@@ -682,17 +700,23 @@ class ContainersCreatePostBody
     }
 
     /**
-     * This container's networking configuration.
+     * NetworkingConfig represents the container's networking configuration for.
+     * each of its interfaces.
+     * It is used for the networking configs specified in the `docker create`
+     * and `docker network connect` commands.
      */
-    public function getNetworkingConfig(): ?ContainersCreatePostBodyNetworkingConfig
+    public function getNetworkingConfig(): ?NetworkingConfig
     {
         return $this->networkingConfig;
     }
 
     /**
-     * This container's networking configuration.
+     * NetworkingConfig represents the container's networking configuration for.
+     * each of its interfaces.
+     * It is used for the networking configs specified in the `docker create`
+     * and `docker network connect` commands.
      */
-    public function setNetworkingConfig(?ContainersCreatePostBodyNetworkingConfig $networkingConfig): self
+    public function setNetworkingConfig(?NetworkingConfig $networkingConfig): self
     {
         $this->networkingConfig = $networkingConfig;
 

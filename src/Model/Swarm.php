@@ -13,13 +13,16 @@ class Swarm
      */
     protected $iD;
     /**
-     * The version number of the object such as node, service, etc. This is needed to avoid conflicting writes.
-     * The client must send the version number along with the modified specification when updating these objects.
-     * This approach ensures safe concurrency and determinism in that the change on the object
-     * may not be applied if the version number has changed from the last read. In other words,
-     * if two update requests specify the same base version, only one of the requests can succeed.
-     * As a result, two separate update requests that happen at the same time will not
-     * unintentionally overwrite each other.
+     * The version number of the object such as node, service, etc. This is needed.
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     *
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
      *
      * @var ObjectVersion|null
      */
@@ -45,7 +48,8 @@ class Swarm
      */
     protected $spec;
     /**
-     * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
+     * Information about the issuer of leaf TLS certificates and the trusted root.
+     * CA certificate.
      *
      * @var TLSInfo|null
      */
@@ -56,6 +60,28 @@ class Swarm
      * @var bool|null
      */
     protected $rootRotationInProgress;
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+     * Acceptable port range is 1024 to 49151.
+     * If no port is set or is set to 0, the default port (4789) is used.
+     *
+     * @var int|null
+     */
+    protected $dataPathPort;
+    /**
+     * Default Address Pool specifies default subnet pools for global scope.
+     * networks.
+     *
+     * @var string[]|null
+     */
+    protected $defaultAddrPool;
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the.
+     * default subnet pool.
+     *
+     * @var int|null
+     */
+    protected $subnetSize;
     /**
      * JoinTokens contains the tokens workers and managers need to join the swarm.
      *
@@ -82,13 +108,16 @@ class Swarm
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed to avoid conflicting writes.
-     * The client must send the version number along with the modified specification when updating these objects.
-     * This approach ensures safe concurrency and determinism in that the change on the object
-     * may not be applied if the version number has changed from the last read. In other words,
-     * if two update requests specify the same base version, only one of the requests can succeed.
-     * As a result, two separate update requests that happen at the same time will not
-     * unintentionally overwrite each other.
+     * The version number of the object such as node, service, etc. This is needed.
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     *
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
      */
     public function getVersion(): ?ObjectVersion
     {
@@ -96,13 +125,16 @@ class Swarm
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed to avoid conflicting writes.
-     * The client must send the version number along with the modified specification when updating these objects.
-     * This approach ensures safe concurrency and determinism in that the change on the object
-     * may not be applied if the version number has changed from the last read. In other words,
-     * if two update requests specify the same base version, only one of the requests can succeed.
-     * As a result, two separate update requests that happen at the same time will not
-     * unintentionally overwrite each other.
+     * The version number of the object such as node, service, etc. This is needed.
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     *
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
      */
     public function setVersion(?ObjectVersion $version): self
     {
@@ -170,7 +202,8 @@ class Swarm
     }
 
     /**
-     * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
+     * Information about the issuer of leaf TLS certificates and the trusted root.
+     * CA certificate.
      */
     public function getTLSInfo(): ?TLSInfo
     {
@@ -178,7 +211,8 @@ class Swarm
     }
 
     /**
-     * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
+     * Information about the issuer of leaf TLS certificates and the trusted root.
+     * CA certificate.
      */
     public function setTLSInfo(?TLSInfo $tLSInfo): self
     {
@@ -201,6 +235,72 @@ class Swarm
     public function setRootRotationInProgress(?bool $rootRotationInProgress): self
     {
         $this->rootRotationInProgress = $rootRotationInProgress;
+
+        return $this;
+    }
+
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+     * Acceptable port range is 1024 to 49151.
+     * If no port is set or is set to 0, the default port (4789) is used.
+     */
+    public function getDataPathPort(): ?int
+    {
+        return $this->dataPathPort;
+    }
+
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+     * Acceptable port range is 1024 to 49151.
+     * If no port is set or is set to 0, the default port (4789) is used.
+     */
+    public function setDataPathPort(?int $dataPathPort): self
+    {
+        $this->dataPathPort = $dataPathPort;
+
+        return $this;
+    }
+
+    /**
+     * Default Address Pool specifies default subnet pools for global scope.
+     * networks.
+     *
+     * @return string[]|null
+     */
+    public function getDefaultAddrPool(): ?array
+    {
+        return $this->defaultAddrPool;
+    }
+
+    /**
+     * Default Address Pool specifies default subnet pools for global scope.
+     * networks.
+     *
+     * @param string[]|null $defaultAddrPool
+     */
+    public function setDefaultAddrPool(?array $defaultAddrPool): self
+    {
+        $this->defaultAddrPool = $defaultAddrPool;
+
+        return $this;
+    }
+
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the.
+     * default subnet pool.
+     */
+    public function getSubnetSize(): ?int
+    {
+        return $this->subnetSize;
+    }
+
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the.
+     * default subnet pool.
+     */
+    public function setSubnetSize(?int $subnetSize): self
+    {
+        $this->subnetSize = $subnetSize;
 
         return $this;
     }

@@ -9,7 +9,7 @@ class SwarmUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     /**
      * @param array $queryParameters {
      *
-     *     @var int $version The version number of the swarm object being updated. This is required to avoid conflicting writes.
+     *     @var int $version The version number of the swarm object being updated. This is
      *     @var bool $rotateWorkerToken rotate the worker join token
      *     @var bool $rotateManagerToken rotate the manager join token
      *     @var bool $rotateManagerUnlockKey Rotate the manager unlock key.

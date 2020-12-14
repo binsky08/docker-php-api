@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class VersionGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -21,12 +21,12 @@ class VersionGetResponse200Normalizer implements DenormalizerInterface, Normaliz
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Docker\\API\\Model\\VersionGetResponse200' === $type;
+        return 'Docker\\API\\Model\\SystemVersion' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\VersionGetResponse200' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\SystemVersion' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,19 +37,19 @@ class VersionGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\API\Model\VersionGetResponse200();
+        $object = new \Docker\API\Model\SystemVersion();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('Platform', $data) && null !== $data['Platform']) {
-            $object->setPlatform($this->denormalizer->denormalize($data['Platform'], 'Docker\\API\\Model\\VersionGetResponse200Platform', 'json', $context));
+            $object->setPlatform($this->denormalizer->denormalize($data['Platform'], 'Docker\\API\\Model\\SystemVersionPlatform', 'json', $context));
         } elseif (\array_key_exists('Platform', $data) && null === $data['Platform']) {
             $object->setPlatform(null);
         }
         if (\array_key_exists('Components', $data) && null !== $data['Components']) {
             $values = [];
             foreach ($data['Components'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\VersionGetResponse200ComponentsItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\SystemVersionComponentsItem', 'json', $context);
             }
             $object->setComponents($values);
         } elseif (\array_key_exists('Components', $data) && null === $data['Components']) {

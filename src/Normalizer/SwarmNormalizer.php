@@ -76,6 +76,25 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         } elseif (\array_key_exists('RootRotationInProgress', $data) && null === $data['RootRotationInProgress']) {
             $object->setRootRotationInProgress(null);
         }
+        if (\array_key_exists('DataPathPort', $data) && null !== $data['DataPathPort']) {
+            $object->setDataPathPort($data['DataPathPort']);
+        } elseif (\array_key_exists('DataPathPort', $data) && null === $data['DataPathPort']) {
+            $object->setDataPathPort(null);
+        }
+        if (\array_key_exists('DefaultAddrPool', $data) && null !== $data['DefaultAddrPool']) {
+            $values = [];
+            foreach ($data['DefaultAddrPool'] as $value) {
+                $values[] = $value;
+            }
+            $object->setDefaultAddrPool($values);
+        } elseif (\array_key_exists('DefaultAddrPool', $data) && null === $data['DefaultAddrPool']) {
+            $object->setDefaultAddrPool(null);
+        }
+        if (\array_key_exists('SubnetSize', $data) && null !== $data['SubnetSize']) {
+            $object->setSubnetSize($data['SubnetSize']);
+        } elseif (\array_key_exists('SubnetSize', $data) && null === $data['SubnetSize']) {
+            $object->setSubnetSize(null);
+        }
         if (\array_key_exists('JoinTokens', $data) && null !== $data['JoinTokens']) {
             $object->setJoinTokens($this->denormalizer->denormalize($data['JoinTokens'], 'Docker\\API\\Model\\JoinTokens', 'json', $context));
         } elseif (\array_key_exists('JoinTokens', $data) && null === $data['JoinTokens']) {
@@ -108,6 +127,19 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (null !== $object->getRootRotationInProgress()) {
             $data['RootRotationInProgress'] = $object->getRootRotationInProgress();
+        }
+        if (null !== $object->getDataPathPort()) {
+            $data['DataPathPort'] = $object->getDataPathPort();
+        }
+        if (null !== $object->getDefaultAddrPool()) {
+            $values = [];
+            foreach ($object->getDefaultAddrPool() as $value) {
+                $values[] = $value;
+            }
+            $data['DefaultAddrPool'] = $values;
+        }
+        if (null !== $object->getSubnetSize()) {
+            $data['SubnetSize'] = $object->getSubnetSize();
         }
         if (null !== $object->getJoinTokens()) {
             $data['JoinTokens'] = $this->normalizer->normalize($object->getJoinTokens(), 'json', $context);

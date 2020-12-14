@@ -51,6 +51,16 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
         } elseif (\array_key_exists('Global', $data) && null === $data['Global']) {
             $object->setGlobal(null);
         }
+        if (\array_key_exists('ReplicatedJob', $data) && null !== $data['ReplicatedJob']) {
+            $object->setReplicatedJob($this->denormalizer->denormalize($data['ReplicatedJob'], 'Docker\\API\\Model\\ServiceSpecModeReplicatedJob', 'json', $context));
+        } elseif (\array_key_exists('ReplicatedJob', $data) && null === $data['ReplicatedJob']) {
+            $object->setReplicatedJob(null);
+        }
+        if (\array_key_exists('GlobalJob', $data) && null !== $data['GlobalJob']) {
+            $object->setGlobalJob($this->denormalizer->denormalize($data['GlobalJob'], 'Docker\\API\\Model\\ServiceSpecModeGlobalJob', 'json', $context));
+        } elseif (\array_key_exists('GlobalJob', $data) && null === $data['GlobalJob']) {
+            $object->setGlobalJob(null);
+        }
 
         return $object;
     }
@@ -63,6 +73,12 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getGlobal()) {
             $data['Global'] = $this->normalizer->normalize($object->getGlobal(), 'json', $context);
+        }
+        if (null !== $object->getReplicatedJob()) {
+            $data['ReplicatedJob'] = $this->normalizer->normalize($object->getReplicatedJob(), 'json', $context);
+        }
+        if (null !== $object->getGlobalJob()) {
+            $data['GlobalJob'] = $this->normalizer->normalize($object->getGlobalJob(), 'json', $context);
         }
 
         return $data;

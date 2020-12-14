@@ -34,12 +34,15 @@ class ImageBuild extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *     @var string $cpusetcpus CPUs in which to allow execution (e.g., `0-3`, `0,1`).
      *     @var int $cpuperiod the length of a CPU period in microseconds
      *     @var int $cpuquota microseconds of CPU time that the container can get in a CPU period
-     *     @var string $buildargs JSON map of string pairs for build-time variables. Users pass these values at build-time. Docker uses the buildargs as the environment context for commands run via the `Dockerfile` RUN instruction, or for variable expansion in other `Dockerfile` instructions. This is not meant for passing secret values. [Read more about the buildargs instruction.](https://docs.docker.com/engine/reference/builder/#arg)
+     *     @var string $buildargs JSON map of string pairs for build-time variables. Users pass these values at build-time. Docker uses the buildargs as the environment context for commands run via the `Dockerfile` RUN instruction, or for variable expansion in other `Dockerfile` instructions. This is not meant for passing secret values.
+     *
      *     @var int $shmsize Size of `/dev/shm` in bytes. The size must be greater than 0. If omitted the system uses 64MB.
      *     @var bool $squash Squash the resulting images layers into a single layer. *(Experimental release only.)*
      *     @var string $labels arbitrary key/value labels to set on the image, as a JSON map of string pairs
-     *     @var string $networkmode Sets the networking mode for the run commands during build. Supported standard values are: `bridge`, `host`, `none`, and `container:<name|id>`. Any other value is taken as a custom network's name to which this container should connect to.
+     *     @var string $networkmode Sets the networking mode for the run commands during build. Supported
      *     @var string $platform Platform in the format os[/arch[/variant]]
+     *     @var string $target Target build stage
+     *     @var string $outputs BuildKit output configuration
      * }
      *
      * @param array $headerParameters {
@@ -102,7 +105,7 @@ class ImageBuild extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['dockerfile', 't', 'extrahosts', 'remote', 'q', 'nocache', 'cachefrom', 'pull', 'rm', 'forcerm', 'memory', 'memswap', 'cpushares', 'cpusetcpus', 'cpuperiod', 'cpuquota', 'buildargs', 'shmsize', 'squash', 'labels', 'networkmode', 'platform']);
+        $optionsResolver->setDefined(['dockerfile', 't', 'extrahosts', 'remote', 'q', 'nocache', 'cachefrom', 'pull', 'rm', 'forcerm', 'memory', 'memswap', 'cpushares', 'cpusetcpus', 'cpuperiod', 'cpuquota', 'buildargs', 'shmsize', 'squash', 'labels', 'networkmode', 'platform', 'target', 'outputs']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults(['dockerfile' => 'Dockerfile', 'q' => false, 'nocache' => false, 'rm' => true, 'forcerm' => false]);
         $optionsResolver->setAllowedTypes('dockerfile', ['string']);
@@ -127,6 +130,8 @@ class ImageBuild extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
         $optionsResolver->setAllowedTypes('labels', ['string']);
         $optionsResolver->setAllowedTypes('networkmode', ['string']);
         $optionsResolver->setAllowedTypes('platform', ['string']);
+        $optionsResolver->setAllowedTypes('target', ['string']);
+        $optionsResolver->setAllowedTypes('outputs', ['string']);
 
         return $optionsResolver;
     }

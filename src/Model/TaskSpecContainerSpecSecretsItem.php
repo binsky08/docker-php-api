@@ -13,14 +13,16 @@ class TaskSpecContainerSpecSecretsItem
      */
     protected $file;
     /**
-     * SecretID represents the ID of the specific secret that we're referencing.
+     * SecretID represents the ID of the specific secret that we're.
+     * referencing.
      *
      * @var string|null
      */
     protected $secretID;
     /**
-     * SecretName is the name of the secret that this references, but this is just provided for.
-     * lookup/display purposes. The secret in the reference will be identified by its ID.
+     * SecretName is the name of the secret that this references,.
+     * but this is just provided for lookup/display purposes. The
+     * secret in the reference will be identified by its ID.
      *
      * @var string|null
      */
@@ -45,7 +47,8 @@ class TaskSpecContainerSpecSecretsItem
     }
 
     /**
-     * SecretID represents the ID of the specific secret that we're referencing.
+     * SecretID represents the ID of the specific secret that we're.
+     * referencing.
      */
     public function getSecretID(): ?string
     {
@@ -53,7 +56,8 @@ class TaskSpecContainerSpecSecretsItem
     }
 
     /**
-     * SecretID represents the ID of the specific secret that we're referencing.
+     * SecretID represents the ID of the specific secret that we're.
+     * referencing.
      */
     public function setSecretID(?string $secretID): self
     {
@@ -63,8 +67,9 @@ class TaskSpecContainerSpecSecretsItem
     }
 
     /**
-     * SecretName is the name of the secret that this references, but this is just provided for.
-     * lookup/display purposes. The secret in the reference will be identified by its ID.
+     * SecretName is the name of the secret that this references,.
+     * but this is just provided for lookup/display purposes. The
+     * secret in the reference will be identified by its ID.
      */
     public function getSecretName(): ?string
     {
@@ -72,8 +77,9 @@ class TaskSpecContainerSpecSecretsItem
     }
 
     /**
-     * SecretName is the name of the secret that this references, but this is just provided for.
-     * lookup/display purposes. The secret in the reference will be identified by its ID.
+     * SecretName is the name of the secret that this references,.
+     * but this is just provided for lookup/display purposes. The
+     * secret in the reference will be identified by its ID.
      */
     public function setSecretName(?string $secretName): self
     {

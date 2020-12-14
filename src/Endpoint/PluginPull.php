@@ -7,7 +7,8 @@ namespace Docker\API\Endpoint;
 class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
     /**
-     * Pulls and installs a plugin. After the plugin is installed, it can be enabled using the [`POST /plugins/{name}/enable` endpoint](#operation/PostPluginsEnable).
+     * Pulls and installs a plugin. After the plugin is installed, it can be.
+     * enabled using the [`POST /plugins/{name}/enable` endpoint](#operation/PostPluginsEnable).
      *
      * @param \Docker\API\Model\PluginsPullPostBodyItem[] $requestBody
      * @param array                                       $queryParameters {
@@ -22,7 +23,12 @@ class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64-encoded auth configuration to use when pulling a plugin from a registry. [See the authentication section for details.](#section/Authentication)
+     *     @var string $X-Registry-Auth A base64url-encoded auth configuration to use when pulling a plugin
+     * from a registry.
+     *
+     * Refer to the [authentication section](#section/Authentication) for
+     * details.
+     *
      * }
      */
     public function __construct(array $requestBody, array $queryParameters = [], array $headerParameters = [])

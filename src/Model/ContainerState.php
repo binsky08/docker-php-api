@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Docker\API\Model;
 
-class ContainersIdJsonGetResponse200State
+class ContainerState
 {
     /**
-     * The status of the container. For example, `"running"` or `"exited"`.
+     * String representation of the container state. Can be one of "created",.
+     * "running", "paused", "restarting", "removing", "exited", or "dead".
      *
      * @var string|null
      */
@@ -18,7 +19,7 @@ class ContainersIdJsonGetResponse200State
      * Note that a running container can be _paused_. The `Running` and `Paused`
      * booleans are not mutually exclusive:
      *
-     * When pausing a container (on Linux), the cgroups freezer is used to suspend
+     * When pausing a container (on Linux), the freezer cgroup is used to suspend
      * all processes in the container. Freezing the process requires the process to
      * be running. As a result, paused containers are both `Running` _and_ `Paused`.
      *
@@ -77,9 +78,16 @@ class ContainersIdJsonGetResponse200State
      * @var string|null
      */
     protected $finishedAt;
+    /**
+     * Health stores information about the container's healthcheck results.
+     *
+     * @var Health|null
+     */
+    protected $health;
 
     /**
-     * The status of the container. For example, `"running"` or `"exited"`.
+     * String representation of the container state. Can be one of "created",.
+     * "running", "paused", "restarting", "removing", "exited", or "dead".
      */
     public function getStatus(): ?string
     {
@@ -87,7 +95,8 @@ class ContainersIdJsonGetResponse200State
     }
 
     /**
-     * The status of the container. For example, `"running"` or `"exited"`.
+     * String representation of the container state. Can be one of "created",.
+     * "running", "paused", "restarting", "removing", "exited", or "dead".
      */
     public function setStatus(?string $status): self
     {
@@ -102,7 +111,7 @@ class ContainersIdJsonGetResponse200State
      * Note that a running container can be _paused_. The `Running` and `Paused`
      * booleans are not mutually exclusive:
      *
-     * When pausing a container (on Linux), the cgroups freezer is used to suspend
+     * When pausing a container (on Linux), the freezer cgroup is used to suspend
      * all processes in the container. Freezing the process requires the process to
      * be running. As a result, paused containers are both `Running` _and_ `Paused`.
      *
@@ -119,7 +128,7 @@ class ContainersIdJsonGetResponse200State
      * Note that a running container can be _paused_. The `Running` and `Paused`
      * booleans are not mutually exclusive:
      *
-     * When pausing a container (on Linux), the cgroups freezer is used to suspend
+     * When pausing a container (on Linux), the freezer cgroup is used to suspend
      * all processes in the container. Freezing the process requires the process to
      * be running. As a result, paused containers are both `Running` _and_ `Paused`.
      *
@@ -278,6 +287,24 @@ class ContainersIdJsonGetResponse200State
     public function setFinishedAt(?string $finishedAt): self
     {
         $this->finishedAt = $finishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Health stores information about the container's healthcheck results.
+     */
+    public function getHealth(): ?Health
+    {
+        return $this->health;
+    }
+
+    /**
+     * Health stores information about the container's healthcheck results.
+     */
+    public function setHealth(?Health $health): self
+    {
+        $this->health = $health;
 
         return $this;
     }

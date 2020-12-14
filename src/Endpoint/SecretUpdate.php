@@ -12,7 +12,9 @@ class SecretUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      * @param string $id              The ID or name of the secret
      * @param array  $queryParameters {
      *
-     *     @var int $version The version number of the secret object being updated. This is required to avoid conflicting writes.
+     *     @var int $version The version number of the secret object being updated. This is
+     * required to avoid conflicting writes.
+     *
      * }
      */
     public function __construct(string $id, \Docker\API\Model\SecretSpec $requestBody, array $queryParameters = [])

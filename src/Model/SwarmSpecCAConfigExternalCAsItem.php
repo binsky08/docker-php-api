@@ -7,7 +7,8 @@ namespace Docker\API\Model;
 class SwarmSpecCAConfigExternalCAsItem
 {
     /**
-     * Protocol for communication with the external CA (currently only `cfssl` is supported).
+     * Protocol for communication with the external CA (currently.
+     * only `cfssl` is supported).
      *
      * @var string|null
      */
@@ -19,20 +20,24 @@ class SwarmSpecCAConfigExternalCAsItem
      */
     protected $uRL;
     /**
-     * An object with key/value pairs that are interpreted as protocol-specific options for the external CA driver.
+     * An object with key/value pairs that are interpreted as.
+     * protocol-specific options for the external CA driver.
      *
      * @var string[]|null
      */
     protected $options;
     /**
-     * The root CA certificate (in PEM format) this external CA uses to issue TLS certificates (assumed to be to the current swarm root CA certificate if not provided).
+     * The root CA certificate (in PEM format) this external CA uses.
+     * to issue TLS certificates (assumed to be to the current swarm
+     * root CA certificate if not provided).
      *
      * @var string|null
      */
     protected $cACert;
 
     /**
-     * Protocol for communication with the external CA (currently only `cfssl` is supported).
+     * Protocol for communication with the external CA (currently.
+     * only `cfssl` is supported).
      */
     public function getProtocol(): ?string
     {
@@ -40,7 +45,8 @@ class SwarmSpecCAConfigExternalCAsItem
     }
 
     /**
-     * Protocol for communication with the external CA (currently only `cfssl` is supported).
+     * Protocol for communication with the external CA (currently.
+     * only `cfssl` is supported).
      */
     public function setProtocol(?string $protocol): self
     {
@@ -68,7 +74,8 @@ class SwarmSpecCAConfigExternalCAsItem
     }
 
     /**
-     * An object with key/value pairs that are interpreted as protocol-specific options for the external CA driver.
+     * An object with key/value pairs that are interpreted as.
+     * protocol-specific options for the external CA driver.
      *
      * @return string[]|null
      */
@@ -78,7 +85,8 @@ class SwarmSpecCAConfigExternalCAsItem
     }
 
     /**
-     * An object with key/value pairs that are interpreted as protocol-specific options for the external CA driver.
+     * An object with key/value pairs that are interpreted as.
+     * protocol-specific options for the external CA driver.
      *
      * @param string[]|null $options
      */
@@ -90,7 +98,9 @@ class SwarmSpecCAConfigExternalCAsItem
     }
 
     /**
-     * The root CA certificate (in PEM format) this external CA uses to issue TLS certificates (assumed to be to the current swarm root CA certificate if not provided).
+     * The root CA certificate (in PEM format) this external CA uses.
+     * to issue TLS certificates (assumed to be to the current swarm
+     * root CA certificate if not provided).
      */
     public function getCACert(): ?string
     {
@@ -98,7 +108,9 @@ class SwarmSpecCAConfigExternalCAsItem
     }
 
     /**
-     * The root CA certificate (in PEM format) this external CA uses to issue TLS certificates (assumed to be to the current swarm root CA certificate if not provided).
+     * The root CA certificate (in PEM format) this external CA uses.
+     * to issue TLS certificates (assumed to be to the current swarm
+     * root CA certificate if not provided).
      */
     public function setCACert(?string $cACert): self
     {

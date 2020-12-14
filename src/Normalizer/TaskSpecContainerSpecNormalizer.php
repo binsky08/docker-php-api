@@ -187,6 +187,47 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         } elseif (\array_key_exists('Isolation', $data) && null === $data['Isolation']) {
             $object->setIsolation(null);
         }
+        if (\array_key_exists('Init', $data) && null !== $data['Init']) {
+            $object->setInit($data['Init']);
+        } elseif (\array_key_exists('Init', $data) && null === $data['Init']) {
+            $object->setInit(null);
+        }
+        if (\array_key_exists('Sysctls', $data) && null !== $data['Sysctls']) {
+            $values_9 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['Sysctls'] as $key_1 => $value_9) {
+                $values_9[$key_1] = $value_9;
+            }
+            $object->setSysctls($values_9);
+        } elseif (\array_key_exists('Sysctls', $data) && null === $data['Sysctls']) {
+            $object->setSysctls(null);
+        }
+        if (\array_key_exists('CapabilityAdd', $data) && null !== $data['CapabilityAdd']) {
+            $values_10 = [];
+            foreach ($data['CapabilityAdd'] as $value_10) {
+                $values_10[] = $value_10;
+            }
+            $object->setCapabilityAdd($values_10);
+        } elseif (\array_key_exists('CapabilityAdd', $data) && null === $data['CapabilityAdd']) {
+            $object->setCapabilityAdd(null);
+        }
+        if (\array_key_exists('CapabilityDrop', $data) && null !== $data['CapabilityDrop']) {
+            $values_11 = [];
+            foreach ($data['CapabilityDrop'] as $value_11) {
+                $values_11[] = $value_11;
+            }
+            $object->setCapabilityDrop($values_11);
+        } elseif (\array_key_exists('CapabilityDrop', $data) && null === $data['CapabilityDrop']) {
+            $object->setCapabilityDrop(null);
+        }
+        if (\array_key_exists('Ulimits', $data) && null !== $data['Ulimits']) {
+            $values_12 = [];
+            foreach ($data['Ulimits'] as $value_12) {
+                $values_12[] = $this->denormalizer->denormalize($value_12, 'Docker\\API\\Model\\TaskSpecContainerSpecUlimitsItem', 'json', $context);
+            }
+            $object->setUlimits($values_12);
+        } elseif (\array_key_exists('Ulimits', $data) && null === $data['Ulimits']) {
+            $object->setUlimits(null);
+        }
 
         return $object;
     }
@@ -295,6 +336,37 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getIsolation()) {
             $data['Isolation'] = $object->getIsolation();
+        }
+        if (null !== $object->getInit()) {
+            $data['Init'] = $object->getInit();
+        }
+        if (null !== $object->getSysctls()) {
+            $values_9 = [];
+            foreach ($object->getSysctls() as $key_1 => $value_9) {
+                $values_9[$key_1] = $value_9;
+            }
+            $data['Sysctls'] = $values_9;
+        }
+        if (null !== $object->getCapabilityAdd()) {
+            $values_10 = [];
+            foreach ($object->getCapabilityAdd() as $value_10) {
+                $values_10[] = $value_10;
+            }
+            $data['CapabilityAdd'] = $values_10;
+        }
+        if (null !== $object->getCapabilityDrop()) {
+            $values_11 = [];
+            foreach ($object->getCapabilityDrop() as $value_11) {
+                $values_11[] = $value_11;
+            }
+            $data['CapabilityDrop'] = $values_11;
+        }
+        if (null !== $object->getUlimits()) {
+            $values_12 = [];
+            foreach ($object->getUlimits() as $value_12) {
+                $values_12[] = $this->normalizer->normalize($value_12, 'json', $context);
+            }
+            $data['Ulimits'] = $values_12;
         }
 
         return $data;

@@ -10,20 +10,23 @@ class TaskLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
 
     /**
      * Get `stdout` and `stderr` logs from a task.
+     * See also [`/containers/{id}/logs`](#operation/ContainerLogs).
      *
-     **Note**: This endpoint works only for services with the `json-file` or `journald` logging drivers.
+     **Note**: This endpoint works only for services with the `local`,
+     * `json-file` or `journald` logging drivers.
      *
      * @param string $id              ID of the task
      * @param array  $queryParameters {
      *
      *     @var bool $details show task context and extra details provided to logs
-     *     @var bool $follow Return the logs as a stream.
-     *
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
      *     @var bool $timestamps Add timestamps to every log line
-     *     @var string $tail Only return this number of log lines from the end of the logs. Specify as an integer or `all` to output all log lines.
+     *     @var string $tail Only return this number of log lines from the end of the logs.
+     * Specify as an integer or `all` to output all log lines.
+     *
      * }
      */
     public function __construct(string $id, array $queryParameters = [])
@@ -82,9 +85,6 @@ class TaskLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (101 === $status && false !== \mb_strpos($contentType, 'application/json')) {
-            return \json_decode($body);
-        }
         if (200 === $status && false !== \mb_strpos($contentType, 'application/json')) {
             return \json_decode($body);
         }

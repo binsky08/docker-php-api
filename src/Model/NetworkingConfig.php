@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Model;
 
-class ContainersCreatePostBodyNetworkingConfig
+class NetworkingConfig
 {
     /**
      * A mapping of network name to endpoint configuration for that network.

@@ -6,6 +6,32 @@ namespace Docker\API\Endpoint;
 
 class BuildPrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    /**
+     * @param array $queryParameters {
+     *
+     *     @var int $keep-storage Amount of disk space in bytes to keep for cache
+     *     @var bool $all Remove all types of build cache
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     * process on the list of build cache objects.
+     *
+     * Available filters:
+     *
+     * - `until=<duration>`: duration relative to daemon's time, during which build cache was not used, in Go's duration format (e.g., '24h')
+     * - `id=<id>`
+     * - `parent=<id>`
+     * - `type=<string>`
+     * - `description=<string>`
+     * - `inuse`
+     * - `shared`
+     * - `private`
+     *
+     * }
+     */
+    public function __construct(array $queryParameters = [])
+    {
+        $this->queryParameters = $queryParameters;
+    }
+
     use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
@@ -26,6 +52,19 @@ class BuildPrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['keep-storage', 'all', 'filters']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('keep-storage', ['int']);
+        $optionsResolver->setAllowedTypes('all', ['bool']);
+        $optionsResolver->setAllowedTypes('filters', ['string']);
+
+        return $optionsResolver;
     }
 
     /**
