@@ -4,13 +4,23 @@
     "type": "library",
     "description": "Docker API generated files from OpenAPI Specification",
     "config": {
-        "sort-packages": true
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "preferred-install": "dist"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Docker\\API\\": "src/"
         }
     },
+    "funding": [
+        {
+            "type": "patreon",
+            "url": "https://www.patreon.com/flavioheleno"
+        }
+    ],
     "require": {
         "php": ">=7.1",
         "jane-php/open-api-runtime": "^6.3"
@@ -36,7 +46,5 @@
             "6.1.41": "6.1.41.x-dev",
             "6.1.36": "6.1.36.x-dev"
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
