@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class NodeDeleteNotFoundException extends \RuntimeException implements ClientException
+class NodeDeleteNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

@@ -13,7 +13,7 @@ class SwarmInfo
      */
     protected $nodeID = '';
     /**
-     * IP address at which this node can be reached by other nodes in the.
+     * IP address at which this node can be reached by other nodes in the
      * swarm.
      *
      * @var string|null
@@ -52,7 +52,7 @@ class SwarmInfo
      */
     protected $managers;
     /**
-     * ClusterInfo represents information about the swarm as is returned by the.
+     * ClusterInfo represents information about the swarm as is returned by the
      * "/info" endpoint. Join-tokens are not included.
      *
      * @var ClusterInfo|null
@@ -78,7 +78,7 @@ class SwarmInfo
     }
 
     /**
-     * IP address at which this node can be reached by other nodes in the.
+     * IP address at which this node can be reached by other nodes in the
      * swarm.
      */
     public function getNodeAddr(): ?string
@@ -87,7 +87,7 @@ class SwarmInfo
     }
 
     /**
-     * IP address at which this node can be reached by other nodes in the.
+     * IP address at which this node can be reached by other nodes in the
      * swarm.
      */
     public function setNodeAddr(?string $nodeAddr): self
@@ -198,7 +198,7 @@ class SwarmInfo
     }
 
     /**
-     * ClusterInfo represents information about the swarm as is returned by the.
+     * ClusterInfo represents information about the swarm as is returned by the
      * "/info" endpoint. Join-tokens are not included.
      */
     public function getCluster(): ?ClusterInfo
@@ -207,7 +207,7 @@ class SwarmInfo
     }
 
     /**
-     * ClusterInfo represents information about the swarm as is returned by the.
+     * ClusterInfo represents information about the swarm as is returned by the
      * "/info" endpoint. Join-tokens are not included.
      */
     public function setCluster(?ClusterInfo $cluster): self

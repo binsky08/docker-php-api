@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageDeleteNotFoundException extends \RuntimeException implements ClientException
+class ImageDeleteNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

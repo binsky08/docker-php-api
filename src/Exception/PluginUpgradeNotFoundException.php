@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class PluginUpgradeNotFoundException extends \RuntimeException implements ClientException
+class PluginUpgradeNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

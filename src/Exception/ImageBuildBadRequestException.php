@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageBuildBadRequestException extends \RuntimeException implements ClientException
+class ImageBuildBadRequestException extends BadRequestException
 {
     private $errorResponse;
 

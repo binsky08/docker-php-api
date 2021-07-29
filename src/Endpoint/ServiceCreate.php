@@ -6,6 +6,8 @@ namespace Docker\API\Endpoint;
 
 class ServiceCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
      * @param array $headerParameters {
      *
@@ -17,13 +19,11 @@ class ServiceCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * }
      */
-    public function __construct(\Docker\API\Model\ServicesCreatePostBody $requestBody, array $headerParameters = [])
+    public function __construct(?\Docker\API\Model\ServicesCreatePostBody $requestBody = null, array $headerParameters = [])
     {
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -73,22 +73,22 @@ class ServiceCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (201 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\ServicesCreatePostResponse201', 'json');
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceCreateBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (403 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (403 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceCreateForbiddenException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (409 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (409 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceCreateConflictException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceCreateInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (503 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (503 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceCreateServiceUnavailableException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

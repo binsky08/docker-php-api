@@ -6,10 +6,11 @@ namespace Docker\API\Endpoint;
 
 class ContainerArchiveInfo extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
-     * A response header `X-Docker-Container-Path-Stat` is returned, containing.
+     * A response header `X-Docker-Container-Path-Stat` is returned, containing
      * a base64 - encoded JSON object with some filesystem header information
      * about the path.
      *
@@ -24,8 +25,6 @@ class ContainerArchiveInfo extends \Docker\API\Runtime\Client\BaseEndpoint imple
         $this->id = $id;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -71,13 +70,13 @@ class ContainerArchiveInfo extends \Docker\API\Runtime\Client\BaseEndpoint imple
     {
         if (200 === $status) {
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerArchiveInfoBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ContainersIdArchiveHeadResponse400', 'json'));
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerArchiveInfoNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerArchiveInfoInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

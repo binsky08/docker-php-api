@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerArchiveNotFoundException extends \RuntimeException implements ClientException
+class ContainerArchiveNotFoundException extends NotFoundException
 {
     public function __construct()
     {
-        parent::__construct('Container or path does not exist', 404);
+        parent::__construct('Container or path does not exist');
     }
 }

@@ -6,6 +6,8 @@ namespace Docker\API\Endpoint;
 
 class ImageBuild extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
      * Build an image from a tar archive with a `Dockerfile` in it.
      *
@@ -15,8 +17,8 @@ class ImageBuild extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *
      * The build is canceled if the client drops the connection by quitting or being killed.
      *
-     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
-     * @param array                                             $queryParameters {
+     * @param string|resource|\Psr\Http\Message\StreamInterface|null $requestBody
+     * @param array                                                  $queryParameters {
      *
      *     @var string $dockerfile Path within the build context to the `Dockerfile`. This is ignored if `remote` is specified and points to an external `Dockerfile`.
      *     @var string $t A name and optional tag to apply to the image in the `name:tag` format. If you omit the tag the default `latest` value is assumed. You can provide several `t` parameters.
@@ -36,10 +38,16 @@ class ImageBuild extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *     @var int $cpuquota microseconds of CPU time that the container can get in a CPU period
      *     @var string $buildargs JSON map of string pairs for build-time variables. Users pass these values at build-time. Docker uses the buildargs as the environment context for commands run via the `Dockerfile` RUN instruction, or for variable expansion in other `Dockerfile` instructions. This is not meant for passing secret values.
      *
+     * For example, the build arg `FOO=bar` would become `{"FOO":"bar"}` in JSON. This would result in the the query parameter `buildargs={"FOO":"bar"}`. Note that `{"FOO":"bar"}` should be URI component encoded.
+     *
+     * [Read more about the buildargs instruction.](https://docs.docker.com/engine/reference/builder/#arg)
      *     @var int $shmsize Size of `/dev/shm` in bytes. The size must be greater than 0. If omitted the system uses 64MB.
      *     @var bool $squash Squash the resulting images layers into a single layer. *(Experimental release only.)*
      *     @var string $labels arbitrary key/value labels to set on the image, as a JSON map of string pairs
      *     @var string $networkmode Sets the networking mode for the run commands during build. Supported
+     * standard values are: `bridge`, `host`, `none`, and `container:<name|id>`.
+     * Any other value is taken as a custom network's name or ID to which this
+     * container should connect to.
      *     @var string $platform Platform in the format os[/arch[/variant]]
      *     @var string $target Target build stage
      *     @var string $outputs BuildKit output configuration
@@ -69,14 +77,12 @@ class ImageBuild extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *
      * }
      */
-    public function __construct($requestBody, array $queryParameters = [], array $headerParameters = [])
+    public function __construct($requestBody = null, array $queryParameters = [], array $headerParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -160,10 +166,10 @@ class ImageBuild extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     {
         if (200 === $status) {
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ImageBuildBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ImageBuildInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

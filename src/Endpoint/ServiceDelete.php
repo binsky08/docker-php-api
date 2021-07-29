@@ -6,6 +6,7 @@ namespace Docker\API\Endpoint;
 
 class ServiceDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
@@ -15,8 +16,6 @@ class ServiceDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     {
         $this->id = $id;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -51,13 +50,13 @@ class ServiceDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     {
         if (200 === $status) {
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceDeleteNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceDeleteInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (503 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (503 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceDeleteServiceUnavailableException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

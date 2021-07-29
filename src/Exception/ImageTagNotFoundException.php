@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageTagNotFoundException extends \RuntimeException implements ClientException
+class ImageTagNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

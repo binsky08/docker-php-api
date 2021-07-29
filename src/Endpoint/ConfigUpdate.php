@@ -6,6 +6,7 @@ namespace Docker\API\Endpoint;
 
 class ConfigUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
@@ -17,14 +18,12 @@ class ConfigUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      *
      * }
      */
-    public function __construct(string $id, \Docker\API\Model\ConfigSpec $requestBody, array $queryParameters = [])
+    public function __construct(string $id, ?\Docker\API\Model\ConfigSpec $requestBody = null, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -78,16 +77,16 @@ class ConfigUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     {
         if (200 === $status) {
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ConfigUpdateBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ConfigUpdateNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ConfigUpdateInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (503 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (503 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ConfigUpdateServiceUnavailableException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

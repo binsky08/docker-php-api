@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageTagBadRequestException extends \RuntimeException implements ClientException
+class ImageTagBadRequestException extends BadRequestException
 {
     private $errorResponse;
 

@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class SwarmSpecEncryptionConfig
 {
     /**
-     * If set, generate a key and use it to lock data stored on the.
+     * If set, generate a key and use it to lock data stored on the
      * managers.
      *
      * @var bool|null
@@ -15,7 +15,7 @@ class SwarmSpecEncryptionConfig
     protected $autoLockManagers;
 
     /**
-     * If set, generate a key and use it to lock data stored on the.
+     * If set, generate a key and use it to lock data stored on the
      * managers.
      */
     public function getAutoLockManagers(): ?bool
@@ -24,7 +24,7 @@ class SwarmSpecEncryptionConfig
     }
 
     /**
-     * If set, generate a key and use it to lock data stored on the.
+     * If set, generate a key and use it to lock data stored on the
      * managers.
      */
     public function setAutoLockManagers(?bool $autoLockManagers): self

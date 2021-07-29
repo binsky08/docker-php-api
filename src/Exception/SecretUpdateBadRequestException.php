@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class SecretUpdateBadRequestException extends \RuntimeException implements ClientException
+class SecretUpdateBadRequestException extends BadRequestException
 {
     private $errorResponse;
 

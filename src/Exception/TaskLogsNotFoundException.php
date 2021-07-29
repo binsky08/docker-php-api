@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class TaskLogsNotFoundException extends \RuntimeException implements ClientException
+class TaskLogsNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

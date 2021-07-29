@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class DistributionInspectUnauthorizedException extends \RuntimeException implements ClientException
+class DistributionInspectUnauthorizedException extends UnauthorizedException
 {
     private $errorResponse;
 

@@ -56,7 +56,7 @@ class SystemInfo
      */
     protected $driver;
     /**
-     * Information specific to the storage driver, provided as.
+     * Information specific to the storage driver, provided as
      * "label" / "value" pairs.
      *
      * This information is provided by the storage driver, and formatted
@@ -117,14 +117,14 @@ class SystemInfo
      */
     protected $kernelMemory;
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by.
+     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by
      * the host.
      *
      * @var bool|null
      */
     protected $cpuCfsPeriod;
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by.
+     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by
      * the host.
      *
      * @var bool|null
@@ -175,7 +175,7 @@ class SystemInfo
      */
     protected $bridgeNfIp6tables;
     /**
-     * Indicates if the daemon is running in debug-mode / with debug-level.
+     * Indicates if the daemon is running in debug-mode / with debug-level
      * logging enabled.
      *
      * @var bool|null
@@ -198,7 +198,7 @@ class SystemInfo
      */
     protected $nGoroutines;
     /**
-     * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt).
+     * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt)
      * format with nano-seconds.
      *
      * @var string|null
@@ -239,8 +239,8 @@ class SystemInfo
      */
     protected $kernelVersion;
     /**
-     * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS".
-     * or "Windows Server 2016 Datacenter"
+     * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS"
+     * or "Windows Server 2016 Datacenter".
      *
      * @var string|null
      */
@@ -258,7 +258,7 @@ class SystemInfo
      */
     protected $oSVersion;
     /**
-     * Generic type of the operating system of the host, as returned by the.
+     * Generic type of the operating system of the host, as returned by the
      * Go runtime (`GOOS`).
      *
      * Currently returned values are "linux" and "windows". A full list of
@@ -268,7 +268,7 @@ class SystemInfo
      */
     protected $oSType;
     /**
-     * Hardware architecture of the host, as returned by the Go runtime.
+     * Hardware architecture of the host, as returned by the Go runtime
      * (`GOARCH`).
      *
      * A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
@@ -293,7 +293,7 @@ class SystemInfo
      */
     protected $memTotal;
     /**
-     * Address / URL of the index server that is used for image search,.
+     * Address / URL of the index server that is used for image search,
      * and as a default for user authentication for Docker Hub and Docker Cloud.
      *
      * @var string|null
@@ -306,14 +306,14 @@ class SystemInfo
      */
     protected $registryConfig;
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
      * String resources (e.g, `GPU=UUID1`).
      *
      * @var GenericResourcesItem[]|null
      */
     protected $genericResources;
     /**
-     * HTTP-proxy configured for the daemon. This value is obtained from the.
+     * HTTP-proxy configured for the daemon. This value is obtained from the
      * [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
      * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
      * are masked in the API response.
@@ -324,7 +324,7 @@ class SystemInfo
      */
     protected $httpProxy;
     /**
-     * HTTPS-proxy configured for the daemon. This value is obtained from the.
+     * HTTPS-proxy configured for the daemon. This value is obtained from the
      * [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
      * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
      * are masked in the API response.
@@ -335,7 +335,7 @@ class SystemInfo
      */
     protected $httpsProxy;
     /**
-     * Comma-separated list of domain extensions for which no proxy should be.
+     * Comma-separated list of domain extensions for which no proxy should be
      * used. This value is obtained from the [`NO_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html)
      * environment variable.
      *
@@ -397,7 +397,7 @@ class SystemInfo
      */
     protected $clusterStore;
     /**
-     * The network endpoint that the Engine advertises for the purpose of.
+     * The network endpoint that the Engine advertises for the purpose of
      * node discovery. ClusterAdvertise is a `host:port` combination on which
      * the daemon is reachable by other hosts.
      *
@@ -412,7 +412,7 @@ class SystemInfo
      */
     protected $clusterAdvertise;
     /**
-     * List of [OCI compliant](https://github.com/opencontainers/runtime-spec).
+     * List of [OCI compliant](https://github.com/opencontainers/runtime-spec)
      * runtimes configured on the daemon. Keys hold the "name" used to
      * reference the runtime.
      *
@@ -471,7 +471,7 @@ class SystemInfo
      */
     protected $initBinary;
     /**
-     * Commit holds the Git-commit (SHA1) that a binary was built from, as.
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      *
@@ -479,7 +479,7 @@ class SystemInfo
      */
     protected $containerdCommit;
     /**
-     * Commit holds the Git-commit (SHA1) that a binary was built from, as.
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      *
@@ -487,7 +487,7 @@ class SystemInfo
      */
     protected $runcCommit;
     /**
-     * Commit holds the Git-commit (SHA1) that a binary was built from, as.
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      *
@@ -495,7 +495,7 @@ class SystemInfo
      */
     protected $initCommit;
     /**
-     * List of security features that are enabled on the daemon, such as.
+     * List of security features that are enabled on the daemon, such as
      * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
      *
      * Additional configuration options for each security feature may
@@ -515,7 +515,7 @@ class SystemInfo
      */
     protected $productLicense;
     /**
-     * List of custom default address pools for local networks, which can be.
+     * List of custom default address pools for local networks, which can be
      * specified in the daemon.json file or dockerd option.
      *
      * Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
@@ -525,7 +525,7 @@ class SystemInfo
      */
     protected $defaultAddressPools;
     /**
-     * List of warnings / informational messages about missing features, or.
+     * List of warnings / informational messages about missing features, or
      * issues related to the daemon configuration.
      *
      * These messages can be printed by the client as information to the user.
@@ -675,7 +675,7 @@ class SystemInfo
     }
 
     /**
-     * Information specific to the storage driver, provided as.
+     * Information specific to the storage driver, provided as
      * "label" / "value" pairs.
      *
      * This information is provided by the storage driver, and formatted
@@ -696,7 +696,7 @@ class SystemInfo
     }
 
     /**
-     * Information specific to the storage driver, provided as.
+     * Information specific to the storage driver, provided as
      * "label" / "value" pairs.
      *
      * This information is provided by the storage driver, and formatted
@@ -837,7 +837,7 @@ class SystemInfo
     }
 
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by.
+     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by
      * the host.
      */
     public function getCpuCfsPeriod(): ?bool
@@ -846,7 +846,7 @@ class SystemInfo
     }
 
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by.
+     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by
      * the host.
      */
     public function setCpuCfsPeriod(?bool $cpuCfsPeriod): self
@@ -857,7 +857,7 @@ class SystemInfo
     }
 
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by.
+     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by
      * the host.
      */
     public function getCpuCfsQuota(): ?bool
@@ -866,7 +866,7 @@ class SystemInfo
     }
 
     /**
-     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by.
+     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by
      * the host.
      */
     public function setCpuCfsQuota(?bool $cpuCfsQuota): self
@@ -1007,7 +1007,7 @@ class SystemInfo
     }
 
     /**
-     * Indicates if the daemon is running in debug-mode / with debug-level.
+     * Indicates if the daemon is running in debug-mode / with debug-level
      * logging enabled.
      */
     public function getDebug(): ?bool
@@ -1016,7 +1016,7 @@ class SystemInfo
     }
 
     /**
-     * Indicates if the daemon is running in debug-mode / with debug-level.
+     * Indicates if the daemon is running in debug-mode / with debug-level
      * logging enabled.
      */
     public function setDebug(?bool $debug): self
@@ -1071,7 +1071,7 @@ class SystemInfo
     }
 
     /**
-     * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt).
+     * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt)
      * format with nano-seconds.
      */
     public function getSystemTime(): ?string
@@ -1080,7 +1080,7 @@ class SystemInfo
     }
 
     /**
-     * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt).
+     * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt)
      * format with nano-seconds.
      */
     public function setSystemTime(?string $systemTime): self
@@ -1189,8 +1189,8 @@ class SystemInfo
     }
 
     /**
-     * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS".
-     * or "Windows Server 2016 Datacenter"
+     * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS"
+     * or "Windows Server 2016 Datacenter".
      */
     public function getOperatingSystem(): ?string
     {
@@ -1198,8 +1198,8 @@ class SystemInfo
     }
 
     /**
-     * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS".
-     * or "Windows Server 2016 Datacenter"
+     * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS"
+     * or "Windows Server 2016 Datacenter".
      */
     public function setOperatingSystem(?string $operatingSystem): self
     {
@@ -1239,7 +1239,7 @@ class SystemInfo
     }
 
     /**
-     * Generic type of the operating system of the host, as returned by the.
+     * Generic type of the operating system of the host, as returned by the
      * Go runtime (`GOOS`).
      *
      * Currently returned values are "linux" and "windows". A full list of
@@ -1251,7 +1251,7 @@ class SystemInfo
     }
 
     /**
-     * Generic type of the operating system of the host, as returned by the.
+     * Generic type of the operating system of the host, as returned by the
      * Go runtime (`GOOS`).
      *
      * Currently returned values are "linux" and "windows". A full list of
@@ -1265,7 +1265,7 @@ class SystemInfo
     }
 
     /**
-     * Hardware architecture of the host, as returned by the Go runtime.
+     * Hardware architecture of the host, as returned by the Go runtime
      * (`GOARCH`).
      *
      * A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
@@ -1276,7 +1276,7 @@ class SystemInfo
     }
 
     /**
-     * Hardware architecture of the host, as returned by the Go runtime.
+     * Hardware architecture of the host, as returned by the Go runtime
      * (`GOARCH`).
      *
      * A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
@@ -1333,7 +1333,7 @@ class SystemInfo
     }
 
     /**
-     * Address / URL of the index server that is used for image search,.
+     * Address / URL of the index server that is used for image search,
      * and as a default for user authentication for Docker Hub and Docker Cloud.
      */
     public function getIndexServerAddress(): ?string
@@ -1342,7 +1342,7 @@ class SystemInfo
     }
 
     /**
-     * Address / URL of the index server that is used for image search,.
+     * Address / URL of the index server that is used for image search,
      * and as a default for user authentication for Docker Hub and Docker Cloud.
      */
     public function setIndexServerAddress(?string $indexServerAddress): self
@@ -1371,7 +1371,7 @@ class SystemInfo
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
      * String resources (e.g, `GPU=UUID1`).
      *
      * @return GenericResourcesItem[]|null
@@ -1382,7 +1382,7 @@ class SystemInfo
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
      * String resources (e.g, `GPU=UUID1`).
      *
      * @param GenericResourcesItem[]|null $genericResources
@@ -1395,7 +1395,7 @@ class SystemInfo
     }
 
     /**
-     * HTTP-proxy configured for the daemon. This value is obtained from the.
+     * HTTP-proxy configured for the daemon. This value is obtained from the
      * [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
      * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
      * are masked in the API response.
@@ -1408,7 +1408,7 @@ class SystemInfo
     }
 
     /**
-     * HTTP-proxy configured for the daemon. This value is obtained from the.
+     * HTTP-proxy configured for the daemon. This value is obtained from the
      * [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
      * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
      * are masked in the API response.
@@ -1423,7 +1423,7 @@ class SystemInfo
     }
 
     /**
-     * HTTPS-proxy configured for the daemon. This value is obtained from the.
+     * HTTPS-proxy configured for the daemon. This value is obtained from the
      * [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
      * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
      * are masked in the API response.
@@ -1436,7 +1436,7 @@ class SystemInfo
     }
 
     /**
-     * HTTPS-proxy configured for the daemon. This value is obtained from the.
+     * HTTPS-proxy configured for the daemon. This value is obtained from the
      * [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
      * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
      * are masked in the API response.
@@ -1451,7 +1451,7 @@ class SystemInfo
     }
 
     /**
-     * Comma-separated list of domain extensions for which no proxy should be.
+     * Comma-separated list of domain extensions for which no proxy should be
      * used. This value is obtained from the [`NO_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html)
      * environment variable.
      *
@@ -1463,7 +1463,7 @@ class SystemInfo
     }
 
     /**
-     * Comma-separated list of domain extensions for which no proxy should be.
+     * Comma-separated list of domain extensions for which no proxy should be
      * used. This value is obtained from the [`NO_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html)
      * environment variable.
      *
@@ -1615,7 +1615,7 @@ class SystemInfo
     }
 
     /**
-     * The network endpoint that the Engine advertises for the purpose of.
+     * The network endpoint that the Engine advertises for the purpose of
      * node discovery. ClusterAdvertise is a `host:port` combination on which
      * the daemon is reachable by other hosts.
      *
@@ -1632,7 +1632,7 @@ class SystemInfo
     }
 
     /**
-     * The network endpoint that the Engine advertises for the purpose of.
+     * The network endpoint that the Engine advertises for the purpose of
      * node discovery. ClusterAdvertise is a `host:port` combination on which
      * the daemon is reachable by other hosts.
      *
@@ -1651,7 +1651,7 @@ class SystemInfo
     }
 
     /**
-     * List of [OCI compliant](https://github.com/opencontainers/runtime-spec).
+     * List of [OCI compliant](https://github.com/opencontainers/runtime-spec)
      * runtimes configured on the daemon. Keys hold the "name" used to
      * reference the runtime.
      *
@@ -1670,7 +1670,7 @@ class SystemInfo
     }
 
     /**
-     * List of [OCI compliant](https://github.com/opencontainers/runtime-spec).
+     * List of [OCI compliant](https://github.com/opencontainers/runtime-spec)
      * runtimes configured on the daemon. Keys hold the "name" used to
      * reference the runtime.
      *
@@ -1809,7 +1809,7 @@ class SystemInfo
     }
 
     /**
-     * Commit holds the Git-commit (SHA1) that a binary was built from, as.
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
@@ -1819,7 +1819,7 @@ class SystemInfo
     }
 
     /**
-     * Commit holds the Git-commit (SHA1) that a binary was built from, as.
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
@@ -1831,7 +1831,7 @@ class SystemInfo
     }
 
     /**
-     * Commit holds the Git-commit (SHA1) that a binary was built from, as.
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
@@ -1841,7 +1841,7 @@ class SystemInfo
     }
 
     /**
-     * Commit holds the Git-commit (SHA1) that a binary was built from, as.
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
@@ -1853,7 +1853,7 @@ class SystemInfo
     }
 
     /**
-     * Commit holds the Git-commit (SHA1) that a binary was built from, as.
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
@@ -1863,7 +1863,7 @@ class SystemInfo
     }
 
     /**
-     * Commit holds the Git-commit (SHA1) that a binary was built from, as.
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
      * reported in the version-string of external tools, such as `containerd`,
      * or `runC`.
      */
@@ -1875,7 +1875,7 @@ class SystemInfo
     }
 
     /**
-     * List of security features that are enabled on the daemon, such as.
+     * List of security features that are enabled on the daemon, such as
      * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
      *
      * Additional configuration options for each security feature may
@@ -1890,7 +1890,7 @@ class SystemInfo
     }
 
     /**
-     * List of security features that are enabled on the daemon, such as.
+     * List of security features that are enabled on the daemon, such as
      * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
      *
      * Additional configuration options for each security feature may
@@ -1931,7 +1931,7 @@ class SystemInfo
     }
 
     /**
-     * List of custom default address pools for local networks, which can be.
+     * List of custom default address pools for local networks, which can be
      * specified in the daemon.json file or dockerd option.
      *
      * Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
@@ -1945,7 +1945,7 @@ class SystemInfo
     }
 
     /**
-     * List of custom default address pools for local networks, which can be.
+     * List of custom default address pools for local networks, which can be
      * specified in the daemon.json file or dockerd option.
      *
      * Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
@@ -1961,7 +1961,7 @@ class SystemInfo
     }
 
     /**
-     * List of warnings / informational messages about missing features, or.
+     * List of warnings / informational messages about missing features, or
      * issues related to the daemon configuration.
      *
      * These messages can be printed by the client as information to the user.
@@ -1974,7 +1974,7 @@ class SystemInfo
     }
 
     /**
-     * List of warnings / informational messages about missing features, or.
+     * List of warnings / informational messages about missing features, or
      * issues related to the daemon configuration.
      *
      * These messages can be printed by the client as information to the user.

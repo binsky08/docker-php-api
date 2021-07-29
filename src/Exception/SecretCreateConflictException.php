@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class SecretCreateConflictException extends \RuntimeException implements ClientException
+class SecretCreateConflictException extends ConflictException
 {
     private $errorResponse;
 

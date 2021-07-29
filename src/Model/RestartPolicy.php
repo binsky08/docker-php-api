@@ -7,10 +7,10 @@ namespace Docker\API\Model;
 class RestartPolicy
 {
     /**
-     * - Empty string means not to restart.
+     * - Empty string means not to restart
      * - `always` Always restart
      * - `unless-stopped` Restart always except when the user has manually stopped the container
-     * - `on-failure` Restart only when the container exit code is non-zero
+     * - `on-failure` Restart only when the container exit code is non-zero.
      *
      * @var string|null
      */
@@ -23,10 +23,10 @@ class RestartPolicy
     protected $maximumRetryCount;
 
     /**
-     * - Empty string means not to restart.
+     * - Empty string means not to restart
      * - `always` Always restart
      * - `unless-stopped` Restart always except when the user has manually stopped the container
-     * - `on-failure` Restart only when the container exit code is non-zero
+     * - `on-failure` Restart only when the container exit code is non-zero.
      */
     public function getName(): ?string
     {
@@ -34,10 +34,10 @@ class RestartPolicy
     }
 
     /**
-     * - Empty string means not to restart.
+     * - Empty string means not to restart
      * - `always` Always restart
      * - `unless-stopped` Restart always except when the user has manually stopped the container
-     * - `on-failure` Restart only when the container exit code is non-zero
+     * - `on-failure` Restart only when the container exit code is non-zero.
      */
     public function setName(?string $name): self
     {

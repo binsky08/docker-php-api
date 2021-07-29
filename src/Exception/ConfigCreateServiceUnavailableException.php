@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ConfigCreateServiceUnavailableException extends \RuntimeException implements ServerException
+class ConfigCreateServiceUnavailableException extends ServiceUnavailableException
 {
     private $errorResponse;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class SwarmUnlockkeyServiceUnavailableException extends \RuntimeException implements ServerException
+class SwarmUnlockkeyServiceUnavailableException extends ServiceUnavailableException
 {
     private $errorResponse;
 

@@ -6,10 +6,11 @@ namespace Docker\API\Endpoint;
 
 class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
-     * Attach to a container to read its output or send it input. You can attach.
+     * Attach to a container to read its output or send it input. You can attach
      * to the same container multiple times and you can reattach to containers
      * that have been detached.
      *
@@ -107,10 +108,17 @@ class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements
      * @param array  $queryParameters {
      *
      *     @var string $detachKeys Override the key sequence for detaching a container.Format is a single
+     * character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`,
+     * `@`, `^`, `[`, `,` or `_`.
      *     @var bool $logs Replay previous logs from the container.
      *
-     *     @var bool $stream Stream attached streams from the time the request was made onwards.
+     * This is useful for attaching to a container that has started and you
+     * want to output everything since the container started.
      *
+     * If `stream` is also enabled, once all the previous output has been
+     * returned, it will seamlessly transition into streaming current
+     * output.
+     *     @var bool $stream stream attached streams from the time the request was made onwards
      *     @var bool $stdin Attach to `stdin`
      *     @var bool $stdout Attach to `stdout`
      *     @var bool $stderr Attach to `stderr`
@@ -121,8 +129,6 @@ class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements
         $this->id = $id;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -175,7 +181,7 @@ class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements
         }
         if (400 === $status) {
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerAttachNotFoundException();
         }
         if (500 === $status) {

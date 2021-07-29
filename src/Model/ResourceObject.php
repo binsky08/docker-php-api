@@ -15,7 +15,7 @@ class ResourceObject
      */
     protected $memoryBytes;
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
      * String resources (e.g, `GPU=UUID1`).
      *
      * @var GenericResourcesItem[]|null
@@ -47,7 +47,7 @@ class ResourceObject
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
      * String resources (e.g, `GPU=UUID1`).
      *
      * @return GenericResourcesItem[]|null
@@ -58,7 +58,7 @@ class ResourceObject
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
      * String resources (e.g, `GPU=UUID1`).
      *
      * @param GenericResourcesItem[]|null $genericResources

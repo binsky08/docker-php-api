@@ -11,7 +11,7 @@ class Service
      */
     protected $iD;
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -50,14 +50,14 @@ class Service
      */
     protected $updateStatus;
     /**
-     * The status of the service's tasks. Provided only when requested as.
+     * The status of the service's tasks. Provided only when requested as
      * part of a ServiceList operation.
      *
      * @var ServiceServiceStatus|null
      */
     protected $serviceStatus;
     /**
-     * The status of the service when it is in one of ReplicatedJob or.
+     * The status of the service when it is in one of ReplicatedJob or
      * GlobalJob modes. Absent on Replicated and Global mode services. The
      * JobIteration is an ObjectVersion, but unlike the Service's version,
      * does not need to be sent with an update request.
@@ -79,7 +79,7 @@ class Service
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -96,7 +96,7 @@ class Service
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -187,7 +187,7 @@ class Service
     }
 
     /**
-     * The status of the service's tasks. Provided only when requested as.
+     * The status of the service's tasks. Provided only when requested as
      * part of a ServiceList operation.
      */
     public function getServiceStatus(): ?ServiceServiceStatus
@@ -196,7 +196,7 @@ class Service
     }
 
     /**
-     * The status of the service's tasks. Provided only when requested as.
+     * The status of the service's tasks. Provided only when requested as
      * part of a ServiceList operation.
      */
     public function setServiceStatus(?ServiceServiceStatus $serviceStatus): self
@@ -207,7 +207,7 @@ class Service
     }
 
     /**
-     * The status of the service when it is in one of ReplicatedJob or.
+     * The status of the service when it is in one of ReplicatedJob or
      * GlobalJob modes. Absent on Replicated and Global mode services. The
      * JobIteration is an ObjectVersion, but unlike the Service's version,
      * does not need to be sent with an update request.
@@ -218,7 +218,7 @@ class Service
     }
 
     /**
-     * The status of the service when it is in one of ReplicatedJob or.
+     * The status of the service when it is in one of ReplicatedJob or
      * GlobalJob modes. Absent on Replicated and Global mode services. The
      * JobIteration is an ObjectVersion, but unlike the Service's version,
      * does not need to be sent with an update request.

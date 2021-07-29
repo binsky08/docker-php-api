@@ -25,7 +25,7 @@ class DeviceRequest
      */
     protected $capabilities;
     /**
-     * Driver-specific options, specified as a key/value pairs. These options.
+     * Driver-specific options, specified as a key/value pairs. These options
      * are passed directly to the driver.
      *
      * @var string[]|null
@@ -97,7 +97,7 @@ class DeviceRequest
     }
 
     /**
-     * Driver-specific options, specified as a key/value pairs. These options.
+     * Driver-specific options, specified as a key/value pairs. These options
      * are passed directly to the driver.
      *
      * @return string[]|null
@@ -108,7 +108,7 @@ class DeviceRequest
     }
 
     /**
-     * Driver-specific options, specified as a key/value pairs. These options.
+     * Driver-specific options, specified as a key/value pairs. These options
      * are passed directly to the driver.
      *
      * @param string[]|null $options

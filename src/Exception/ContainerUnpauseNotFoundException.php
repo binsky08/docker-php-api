@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerUnpauseNotFoundException extends \RuntimeException implements ClientException
+class ContainerUnpauseNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

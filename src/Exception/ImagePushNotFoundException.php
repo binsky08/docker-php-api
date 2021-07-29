@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImagePushNotFoundException extends \RuntimeException implements ClientException
+class ImagePushNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

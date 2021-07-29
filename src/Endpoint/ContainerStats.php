@@ -6,10 +6,11 @@ namespace Docker\API\Endpoint;
 
 class ContainerStats extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
-     * This endpoint returns a live stream of a container’s resource usage.
+     * This endpoint returns a live stream of a container’s resource usage
      * statistics.
      *
      * The `precpu_stats` is the CPU statistic of the *previous* read, and is
@@ -40,6 +41,7 @@ class ContainerStats extends \Docker\API\Runtime\Client\BaseEndpoint implements 
      * @param array  $queryParameters {
      *
      *     @var bool $stream Stream the output. If false, the stats will be output once and then
+     * it will disconnect.
      *     @var bool $one-shot Only get a single stat instead of waiting for 2 cycles. Must be used
      * with `stream=false`.
      *
@@ -50,8 +52,6 @@ class ContainerStats extends \Docker\API\Runtime\Client\BaseEndpoint implements 
         $this->id = $id;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -95,13 +95,13 @@ class ContainerStats extends \Docker\API\Runtime\Client\BaseEndpoint implements 
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (200 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             return \json_decode($body);
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerStatsNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerStatsInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerUpdateNotFoundException extends \RuntimeException implements ClientException
+class ContainerUpdateNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class SwarmInitServiceUnavailableException extends \RuntimeException implements ServerException
+class SwarmInitServiceUnavailableException extends ServiceUnavailableException
 {
     private $errorResponse;
 

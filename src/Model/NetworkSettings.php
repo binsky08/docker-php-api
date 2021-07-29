@@ -37,7 +37,7 @@ class NetworkSettings
      */
     protected $linkLocalIPv6PrefixLen;
     /**
-     * PortMap describes the mapping of container ports to host ports, using the.
+     * PortMap describes the mapping of container ports to host ports, using the
      * container's port-number and protocol as key in the format `<port>/<protocol>`,
      * for example, `80/udp`.
      *
@@ -271,7 +271,7 @@ class NetworkSettings
     }
 
     /**
-     * PortMap describes the mapping of container ports to host ports, using the.
+     * PortMap describes the mapping of container ports to host ports, using the
      * container's port-number and protocol as key in the format `<port>/<protocol>`,
      * for example, `80/udp`.
      *
@@ -286,7 +286,7 @@ class NetworkSettings
     }
 
     /**
-     * PortMap describes the mapping of container ports to host ports, using the.
+     * PortMap describes the mapping of container ports to host ports, using the
      * container's port-number and protocol as key in the format `<port>/<protocol>`,
      * for example, `80/udp`.
      *

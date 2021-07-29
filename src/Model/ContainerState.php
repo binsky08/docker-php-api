@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class ContainerState
 {
     /**
-     * String representation of the container state. Can be one of "created",.
+     * String representation of the container state. Can be one of "created",
      * "running", "paused", "restarting", "removing", "exited", or "dead".
      *
      * @var string|null
@@ -86,7 +86,7 @@ class ContainerState
     protected $health;
 
     /**
-     * String representation of the container state. Can be one of "created",.
+     * String representation of the container state. Can be one of "created",
      * "running", "paused", "restarting", "removing", "exited", or "dead".
      */
     public function getStatus(): ?string
@@ -95,7 +95,7 @@ class ContainerState
     }
 
     /**
-     * String representation of the container state. Can be one of "created",.
+     * String representation of the container state. Can be one of "created",
      * "running", "paused", "restarting", "removing", "exited", or "dead".
      */
     public function setStatus(?string $status): self

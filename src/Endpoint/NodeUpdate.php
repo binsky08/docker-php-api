@@ -6,6 +6,7 @@ namespace Docker\API\Endpoint;
 
 class NodeUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
@@ -17,14 +18,12 @@ class NodeUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *
      * }
      */
-    public function __construct(string $id, \Docker\API\Model\NodeSpec $requestBody, array $queryParameters = [])
+    public function __construct(string $id, ?\Docker\API\Model\NodeSpec $requestBody = null, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -78,16 +77,16 @@ class NodeUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     {
         if (200 === $status) {
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\NodeUpdateBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\NodeUpdateNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\NodeUpdateInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (503 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (503 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\NodeUpdateServiceUnavailableException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

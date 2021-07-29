@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerKillNotFoundException extends \RuntimeException implements ClientException
+class ContainerKillNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

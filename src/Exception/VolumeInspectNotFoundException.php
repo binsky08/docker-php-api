@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class VolumeInspectNotFoundException extends \RuntimeException implements ClientException
+class VolumeInspectNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

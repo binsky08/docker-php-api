@@ -13,7 +13,7 @@ class SwarmSpecTaskDefaultsLogDriver
      */
     protected $name;
     /**
-     * Driver-specific options for the selectd log driver, specified.
+     * Driver-specific options for the selectd log driver, specified
      * as key/value pairs.
      *
      * @var string[]|null
@@ -39,7 +39,7 @@ class SwarmSpecTaskDefaultsLogDriver
     }
 
     /**
-     * Driver-specific options for the selectd log driver, specified.
+     * Driver-specific options for the selectd log driver, specified
      * as key/value pairs.
      *
      * @return string[]|null
@@ -50,7 +50,7 @@ class SwarmSpecTaskDefaultsLogDriver
     }
 
     /**
-     * Driver-specific options for the selectd log driver, specified.
+     * Driver-specific options for the selectd log driver, specified
      * as key/value pairs.
      *
      * @param string[]|null $options

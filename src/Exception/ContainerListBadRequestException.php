@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerListBadRequestException extends \RuntimeException implements ClientException
+class ContainerListBadRequestException extends BadRequestException
 {
     private $errorResponse;
 

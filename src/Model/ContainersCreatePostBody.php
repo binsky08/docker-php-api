@@ -69,7 +69,7 @@ class ContainersCreatePostBody
      */
     protected $stdinOnce = false;
     /**
-     * A list of environment variables to set inside the container in the.
+     * A list of environment variables to set inside the container in the
      * form `["VAR=value", ...]`. A variable without `=` is removed from the
      * environment, rather than to have an empty value.
      *
@@ -101,7 +101,7 @@ class ContainersCreatePostBody
      */
     protected $image;
     /**
-     * An object mapping mount point paths inside the container to empty.
+     * An object mapping mount point paths inside the container to empty
      * objects.
      *
      * @var ContainerConfigVolumesItem[]|null
@@ -172,7 +172,7 @@ class ContainersCreatePostBody
      */
     protected $hostConfig;
     /**
-     * NetworkingConfig represents the container's networking configuration for.
+     * NetworkingConfig represents the container's networking configuration for
      * each of its interfaces.
      * It is used for the networking configs specified in the `docker create`
      * and `docker network connect` commands.
@@ -370,7 +370,7 @@ class ContainersCreatePostBody
     }
 
     /**
-     * A list of environment variables to set inside the container in the.
+     * A list of environment variables to set inside the container in the
      * form `["VAR=value", ...]`. A variable without `=` is removed from the
      * environment, rather than to have an empty value.
      *
@@ -382,7 +382,7 @@ class ContainersCreatePostBody
     }
 
     /**
-     * A list of environment variables to set inside the container in the.
+     * A list of environment variables to set inside the container in the
      * form `["VAR=value", ...]`. A variable without `=` is removed from the
      * environment, rather than to have an empty value.
      *
@@ -472,7 +472,7 @@ class ContainersCreatePostBody
     }
 
     /**
-     * An object mapping mount point paths inside the container to empty.
+     * An object mapping mount point paths inside the container to empty
      * objects.
      *
      * @return ContainerConfigVolumesItem[]|null
@@ -483,7 +483,7 @@ class ContainersCreatePostBody
     }
 
     /**
-     * An object mapping mount point paths inside the container to empty.
+     * An object mapping mount point paths inside the container to empty
      * objects.
      *
      * @param ContainerConfigVolumesItem[]|null $volumes
@@ -700,7 +700,7 @@ class ContainersCreatePostBody
     }
 
     /**
-     * NetworkingConfig represents the container's networking configuration for.
+     * NetworkingConfig represents the container's networking configuration for
      * each of its interfaces.
      * It is used for the networking configs specified in the `docker create`
      * and `docker network connect` commands.
@@ -711,7 +711,7 @@ class ContainersCreatePostBody
     }
 
     /**
-     * NetworkingConfig represents the container's networking configuration for.
+     * NetworkingConfig represents the container's networking configuration for
      * each of its interfaces.
      * It is used for the networking configs specified in the `docker create`
      * and `docker network connect` commands.

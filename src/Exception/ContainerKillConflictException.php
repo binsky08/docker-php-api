@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerKillConflictException extends \RuntimeException implements ClientException
+class ContainerKillConflictException extends ConflictException
 {
     private $errorResponse;
 

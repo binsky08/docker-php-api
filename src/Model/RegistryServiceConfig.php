@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class RegistryServiceConfig
 {
     /**
-     * List of IP ranges to which nondistributable artifacts can be pushed,.
+     * List of IP ranges to which nondistributable artifacts can be pushed,
      * using the CIDR syntax [RFC 4632](https://tools.ietf.org/html/4632).
      *
      * Some images (for example, Windows base images) contain artifacts
@@ -33,7 +33,7 @@ class RegistryServiceConfig
      */
     protected $allowNondistributableArtifactsCIDRs;
     /**
-     * List of registry hostnames to which nondistributable artifacts can be.
+     * List of registry hostnames to which nondistributable artifacts can be
      * pushed, using the format `<hostname>[:<port>]` or `<IP address>[:<port>]`.
      *
      * Some images (for example, Windows base images) contain artifacts
@@ -58,7 +58,7 @@ class RegistryServiceConfig
      */
     protected $allowNondistributableArtifactsHostnames;
     /**
-     * List of IP ranges of insecure registries, using the CIDR syntax.
+     * List of IP ranges of insecure registries, using the CIDR syntax
      * ([RFC 4632](https://tools.ietf.org/html/4632)). Insecure registries
      * accept un-encrypted (HTTP) and/or untrusted (HTTPS with certificates
      * from unknown CAs) communication.
@@ -90,7 +90,7 @@ class RegistryServiceConfig
      */
     protected $indexConfigs;
     /**
-     * List of registry URLs that act as a mirror for the official.
+     * List of registry URLs that act as a mirror for the official
      * (`docker.io`) registry.
      *
      * @var string[]|null
@@ -98,7 +98,7 @@ class RegistryServiceConfig
     protected $mirrors;
 
     /**
-     * List of IP ranges to which nondistributable artifacts can be pushed,.
+     * List of IP ranges to which nondistributable artifacts can be pushed,
      * using the CIDR syntax [RFC 4632](https://tools.ietf.org/html/4632).
      *
      * Some images (for example, Windows base images) contain artifacts
@@ -128,7 +128,7 @@ class RegistryServiceConfig
     }
 
     /**
-     * List of IP ranges to which nondistributable artifacts can be pushed,.
+     * List of IP ranges to which nondistributable artifacts can be pushed,
      * using the CIDR syntax [RFC 4632](https://tools.ietf.org/html/4632).
      *
      * Some images (for example, Windows base images) contain artifacts
@@ -160,7 +160,7 @@ class RegistryServiceConfig
     }
 
     /**
-     * List of registry hostnames to which nondistributable artifacts can be.
+     * List of registry hostnames to which nondistributable artifacts can be
      * pushed, using the format `<hostname>[:<port>]` or `<IP address>[:<port>]`.
      *
      * Some images (for example, Windows base images) contain artifacts
@@ -189,7 +189,7 @@ class RegistryServiceConfig
     }
 
     /**
-     * List of registry hostnames to which nondistributable artifacts can be.
+     * List of registry hostnames to which nondistributable artifacts can be
      * pushed, using the format `<hostname>[:<port>]` or `<IP address>[:<port>]`.
      *
      * Some images (for example, Windows base images) contain artifacts
@@ -220,7 +220,7 @@ class RegistryServiceConfig
     }
 
     /**
-     * List of IP ranges of insecure registries, using the CIDR syntax.
+     * List of IP ranges of insecure registries, using the CIDR syntax
      * ([RFC 4632](https://tools.ietf.org/html/4632)). Insecure registries
      * accept un-encrypted (HTTP) and/or untrusted (HTTPS with certificates
      * from unknown CAs) communication.
@@ -252,7 +252,7 @@ class RegistryServiceConfig
     }
 
     /**
-     * List of IP ranges of insecure registries, using the CIDR syntax.
+     * List of IP ranges of insecure registries, using the CIDR syntax
      * ([RFC 4632](https://tools.ietf.org/html/4632)). Insecure registries
      * accept un-encrypted (HTTP) and/or untrusted (HTTPS with certificates
      * from unknown CAs) communication.
@@ -304,7 +304,7 @@ class RegistryServiceConfig
     }
 
     /**
-     * List of registry URLs that act as a mirror for the official.
+     * List of registry URLs that act as a mirror for the official
      * (`docker.io`) registry.
      *
      * @return string[]|null
@@ -315,7 +315,7 @@ class RegistryServiceConfig
     }
 
     /**
-     * List of registry URLs that act as a mirror for the official.
+     * List of registry URLs that act as a mirror for the official
      * (`docker.io`) registry.
      *
      * @param string[]|null $mirrors

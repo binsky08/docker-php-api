@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class SecretUpdateNotFoundException extends \RuntimeException implements ClientException
+class SecretUpdateNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

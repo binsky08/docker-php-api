@@ -13,7 +13,7 @@ class NetworksCreatePostBody
      */
     protected $name;
     /**
-     * Check for networks with duplicate names. Since Network is.
+     * Check for networks with duplicate names. Since Network is
      * primarily keyed based on a random ID and not on the name, and
      * network name is strictly a user-friendly alias to the network
      * which is uniquely identified using ID, there is no guaranteed
@@ -37,14 +37,14 @@ class NetworksCreatePostBody
      */
     protected $internal;
     /**
-     * Globally scoped network is manually attachable by regular.
+     * Globally scoped network is manually attachable by regular
      * containers from workers in swarm mode.
      *
      * @var bool|null
      */
     protected $attachable;
     /**
-     * Ingress network is the network which provides the routing-mesh.
+     * Ingress network is the network which provides the routing-mesh
      * in swarm mode.
      *
      * @var bool|null
@@ -92,7 +92,7 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Check for networks with duplicate names. Since Network is.
+     * Check for networks with duplicate names. Since Network is
      * primarily keyed based on a random ID and not on the name, and
      * network name is strictly a user-friendly alias to the network
      * which is uniquely identified using ID, there is no guaranteed
@@ -106,7 +106,7 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Check for networks with duplicate names. Since Network is.
+     * Check for networks with duplicate names. Since Network is
      * primarily keyed based on a random ID and not on the name, and
      * network name is strictly a user-friendly alias to the network
      * which is uniquely identified using ID, there is no guaranteed
@@ -158,7 +158,7 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Globally scoped network is manually attachable by regular.
+     * Globally scoped network is manually attachable by regular
      * containers from workers in swarm mode.
      */
     public function getAttachable(): ?bool
@@ -167,7 +167,7 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Globally scoped network is manually attachable by regular.
+     * Globally scoped network is manually attachable by regular
      * containers from workers in swarm mode.
      */
     public function setAttachable(?bool $attachable): self
@@ -178,7 +178,7 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Ingress network is the network which provides the routing-mesh.
+     * Ingress network is the network which provides the routing-mesh
      * in swarm mode.
      */
     public function getIngress(): ?bool
@@ -187,7 +187,7 @@ class NetworksCreatePostBody
     }
 
     /**
-     * Ingress network is the network which provides the routing-mesh.
+     * Ingress network is the network which provides the routing-mesh
      * in swarm mode.
      */
     public function setIngress(?bool $ingress): self

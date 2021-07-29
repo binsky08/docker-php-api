@@ -37,14 +37,14 @@ class BuildCache
      */
     protected $size;
     /**
-     * Date and time at which the build cache was created in.
+     * Date and time at which the build cache was created in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
      * @var string|null
      */
     protected $createdAt;
     /**
-     * Date and time at which the build cache was last used in.
+     * Date and time at which the build cache was last used in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
      * @var string|null
@@ -146,7 +146,7 @@ class BuildCache
     }
 
     /**
-     * Date and time at which the build cache was created in.
+     * Date and time at which the build cache was created in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function getCreatedAt(): ?string
@@ -155,7 +155,7 @@ class BuildCache
     }
 
     /**
-     * Date and time at which the build cache was created in.
+     * Date and time at which the build cache was created in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function setCreatedAt(?string $createdAt): self
@@ -166,7 +166,7 @@ class BuildCache
     }
 
     /**
-     * Date and time at which the build cache was last used in.
+     * Date and time at which the build cache was last used in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function getLastUsedAt(): ?string
@@ -175,7 +175,7 @@ class BuildCache
     }
 
     /**
-     * Date and time at which the build cache was last used in.
+     * Date and time at which the build cache was last used in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function setLastUsedAt(?string $lastUsedAt): self

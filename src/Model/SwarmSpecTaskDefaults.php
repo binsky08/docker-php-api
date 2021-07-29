@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class SwarmSpecTaskDefaults
 {
     /**
-     * The log driver to use for tasks created in the orchestrator if.
+     * The log driver to use for tasks created in the orchestrator if
      * unspecified by a service.
      *
      * Updating this value only affects new tasks. Existing tasks continue
@@ -18,7 +18,7 @@ class SwarmSpecTaskDefaults
     protected $logDriver;
 
     /**
-     * The log driver to use for tasks created in the orchestrator if.
+     * The log driver to use for tasks created in the orchestrator if
      * unspecified by a service.
      *
      * Updating this value only affects new tasks. Existing tasks continue
@@ -30,7 +30,7 @@ class SwarmSpecTaskDefaults
     }
 
     /**
-     * The log driver to use for tasks created in the orchestrator if.
+     * The log driver to use for tasks created in the orchestrator if
      * unspecified by a service.
      *
      * Updating this value only affects new tasks. Existing tasks continue

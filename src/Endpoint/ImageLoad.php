@@ -6,24 +6,24 @@ namespace Docker\API\Endpoint;
 
 class ImageLoad extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
      * Load a set of images and tags into a repository.
      *
      * For details on the format, see the [export image endpoint](#operation/ImageGet).
      *
-     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
-     * @param array                                             $queryParameters {
+     * @param string|resource|\Psr\Http\Message\StreamInterface|null $requestBody
+     * @param array                                                  $queryParameters {
      *
      *     @var bool $quiet Suppress progress details during load.
      * }
      */
-    public function __construct($requestBody, array $queryParameters = [])
+    public function __construct($requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -71,7 +71,7 @@ class ImageLoad extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
     {
         if (200 === $status) {
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ImageLoadInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

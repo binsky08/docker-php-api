@@ -6,6 +6,7 @@ namespace Docker\API\Endpoint;
 
 class ImageGet extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $name;
 
     /**
@@ -39,8 +40,6 @@ class ImageGet extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
     {
         $this->name = $name;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {

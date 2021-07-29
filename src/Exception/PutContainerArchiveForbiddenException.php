@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class PutContainerArchiveForbiddenException extends \RuntimeException implements ClientException
+class PutContainerArchiveForbiddenException extends ForbiddenException
 {
     private $errorResponse;
 

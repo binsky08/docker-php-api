@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class Platform
 {
     /**
-     * Architecture represents the hardware architecture (for example,.
+     * Architecture represents the hardware architecture (for example,
      * `x86_64`).
      *
      * @var string|null
@@ -21,7 +21,7 @@ class Platform
     protected $oS;
 
     /**
-     * Architecture represents the hardware architecture (for example,.
+     * Architecture represents the hardware architecture (for example,
      * `x86_64`).
      */
     public function getArchitecture(): ?string
@@ -30,7 +30,7 @@ class Platform
     }
 
     /**
-     * Architecture represents the hardware architecture (for example,.
+     * Architecture represents the hardware architecture (for example,
      * `x86_64`).
      */
     public function setArchitecture(?string $architecture): self

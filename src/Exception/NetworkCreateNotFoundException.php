@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class NetworkCreateNotFoundException extends \RuntimeException implements ClientException
+class NetworkCreateNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

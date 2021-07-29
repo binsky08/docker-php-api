@@ -6,6 +6,7 @@ namespace Docker\API\Endpoint;
 
 class ServiceUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
@@ -13,9 +14,18 @@ class ServiceUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param array  $queryParameters {
      *
      *     @var int $version The version number of the service object being updated. This is
-     *     @var string $registryAuthFrom If the `X-Registry-Auth` header is not specified, this parameter
+     * required to avoid conflicting writes.
+     * This version number should be the value as currently set on the
+     * service *before* the update. You can find the current version by
+     * calling `GET /services/{id}`
+     *     @var string $registryAuthFrom if the `X-Registry-Auth` header is not specified, this parameter
+     * indicates where to find registry authorization credentials
      *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback
+     * to the previous service spec. The supplied spec will be ignored in
+     * this case.
+     *
      * }
+     *
      * @param array $headerParameters {
      *
      *     @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
@@ -26,15 +36,13 @@ class ServiceUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * }
      */
-    public function __construct(string $id, \Docker\API\Model\ServicesIdUpdatePostBody $requestBody, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $id, ?\Docker\API\Model\ServicesIdUpdatePostBody $requestBody = null, array $queryParameters = [], array $headerParameters = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -96,19 +104,19 @@ class ServiceUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (200 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\ServiceUpdateResponse', 'json');
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceUpdateBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceUpdateNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceUpdateInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (503 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (503 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ServiceUpdateServiceUnavailableException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

@@ -21,7 +21,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
      */
     protected $config;
     /**
-     * Load credential spec from this file. The file is read by.
+     * Load credential spec from this file. The file is read by
      * the daemon, and must be present in the `CredentialSpecs`
      * subdirectory in the docker data directory, which defaults
      * to `C:\ProgramData\Docker\` on Windows.
@@ -38,8 +38,8 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
      */
     protected $file;
     /**
-     * Load credential spec from this value in the Windows.
-     * registry. The specified registry value must be located in:
+     * Load credential spec from this value in the Windows
+     * registry. The specified registry value must be located in:.
      *
      * `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers\CredentialSpecs`
      *
@@ -88,7 +88,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     }
 
     /**
-     * Load credential spec from this file. The file is read by.
+     * Load credential spec from this file. The file is read by
      * the daemon, and must be present in the `CredentialSpecs`
      * subdirectory in the docker data directory, which defaults
      * to `C:\ProgramData\Docker\` on Windows.
@@ -107,7 +107,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     }
 
     /**
-     * Load credential spec from this file. The file is read by.
+     * Load credential spec from this file. The file is read by
      * the daemon, and must be present in the `CredentialSpecs`
      * subdirectory in the docker data directory, which defaults
      * to `C:\ProgramData\Docker\` on Windows.
@@ -128,8 +128,8 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     }
 
     /**
-     * Load credential spec from this value in the Windows.
-     * registry. The specified registry value must be located in:
+     * Load credential spec from this value in the Windows
+     * registry. The specified registry value must be located in:.
      *
      * `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers\CredentialSpecs`
      *
@@ -145,8 +145,8 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     }
 
     /**
-     * Load credential spec from this value in the Windows.
-     * registry. The specified registry value must be located in:
+     * Load credential spec from this value in the Windows
+     * registry. The specified registry value must be located in:.
      *
      * `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers\CredentialSpecs`
      *

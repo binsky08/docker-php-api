@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class SwarmJoinBadRequestException extends \RuntimeException implements ClientException
+class SwarmJoinBadRequestException extends BadRequestException
 {
     private $errorResponse;
 

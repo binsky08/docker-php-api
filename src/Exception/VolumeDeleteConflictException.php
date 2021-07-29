@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class VolumeDeleteConflictException extends \RuntimeException implements ClientException
+class VolumeDeleteConflictException extends ConflictException
 {
     private $errorResponse;
 

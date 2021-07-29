@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class PluginPushNotFoundException extends \RuntimeException implements ClientException
+class PluginPushNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

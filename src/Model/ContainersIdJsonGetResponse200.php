@@ -31,7 +31,7 @@ class ContainersIdJsonGetResponse200
      */
     protected $args;
     /**
-     * ContainerState stores container's running state. It's part of ContainerJSONBase.
+     * ContainerState stores container's running state. It's part of ContainerJSONBase
      * and will be returned by the "inspect" command.
      *
      * @var ContainerState|null
@@ -106,7 +106,7 @@ class ContainersIdJsonGetResponse200
      */
     protected $graphDriver;
     /**
-     * The size of files that have been created or changed by this.
+     * The size of files that have been created or changed by this
      * container.
      *
      * @var int|null
@@ -212,7 +212,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * ContainerState stores container's running state. It's part of ContainerJSONBase.
+     * ContainerState stores container's running state. It's part of ContainerJSONBase
      * and will be returned by the "inspect" command.
      */
     public function getState(): ?ContainerState
@@ -221,7 +221,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * ContainerState stores container's running state. It's part of ContainerJSONBase.
+     * ContainerState stores container's running state. It's part of ContainerJSONBase
      * and will be returned by the "inspect" command.
      */
     public function setState(?ContainerState $state): self
@@ -440,7 +440,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * The size of files that have been created or changed by this.
+     * The size of files that have been created or changed by this
      * container.
      */
     public function getSizeRw(): ?int
@@ -449,7 +449,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * The size of files that have been created or changed by this.
+     * The size of files that have been created or changed by this
      * container.
      */
     public function setSizeRw(?int $sizeRw): self

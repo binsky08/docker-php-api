@@ -75,7 +75,7 @@ class EndpointSettings
      */
     protected $macAddress;
     /**
-     * DriverOpts is a mapping of driver options and values. These options.
+     * DriverOpts is a mapping of driver options and values. These options
      * are passed directly to the driver and are driver specific.
      *
      * @var string[]|null
@@ -299,7 +299,7 @@ class EndpointSettings
     }
 
     /**
-     * DriverOpts is a mapping of driver options and values. These options.
+     * DriverOpts is a mapping of driver options and values. These options
      * are passed directly to the driver and are driver specific.
      *
      * @return string[]|null
@@ -310,7 +310,7 @@ class EndpointSettings
     }
 
     /**
-     * DriverOpts is a mapping of driver options and values. These options.
+     * DriverOpts is a mapping of driver options and values. These options
      * are passed directly to the driver and are driver specific.
      *
      * @param string[]|null $driverOpts

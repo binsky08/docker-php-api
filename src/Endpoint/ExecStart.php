@@ -6,22 +6,21 @@ namespace Docker\API\Endpoint;
 
 class ExecStart extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
-     * Starts a previously set up exec instance. If detach is true, this endpoint.
+     * Starts a previously set up exec instance. If detach is true, this endpoint
      * returns immediately after starting the command. Otherwise, it sets up an
      * interactive session with the command.
      *
      * @param string $id Exec instance ID
      */
-    public function __construct(string $id, \Docker\API\Model\ExecIdStartPostBody $requestBody)
+    public function __construct(string $id, ?\Docker\API\Model\ExecIdStartPostBody $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {

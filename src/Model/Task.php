@@ -13,7 +13,7 @@ class Task
      */
     protected $iD;
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -70,7 +70,7 @@ class Task
      */
     protected $nodeID;
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
      * String resources (e.g, `GPU=UUID1`).
      *
      * @var GenericResourcesItem[]|null
@@ -85,7 +85,7 @@ class Task
      */
     protected $desiredState;
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -119,7 +119,7 @@ class Task
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -136,7 +136,7 @@ class Task
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -285,7 +285,7 @@ class Task
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
      * String resources (e.g, `GPU=UUID1`).
      *
      * @return GenericResourcesItem[]|null
@@ -296,7 +296,7 @@ class Task
     }
 
     /**
-     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or.
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
      * String resources (e.g, `GPU=UUID1`).
      *
      * @param GenericResourcesItem[]|null $assignedGenericResources
@@ -333,7 +333,7 @@ class Task
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -350,7 +350,7 @@ class Task
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *

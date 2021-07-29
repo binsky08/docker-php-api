@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class SwarmInitPostBody
 {
     /**
-     * Listen address used for inter-manager communication, as well.
+     * Listen address used for inter-manager communication, as well
      * as determining the networking interface used for the VXLAN
      * Tunnel Endpoint (VTEP). This can either be an address/port
      * combination in the form `192.168.1.1:4567`, or an interface
@@ -18,7 +18,7 @@ class SwarmInitPostBody
      */
     protected $listenAddr;
     /**
-     * Externally reachable address advertised to other nodes. This.
+     * Externally reachable address advertised to other nodes. This
      * can either be an address/port combination in the form
      * `192.168.1.1:4567`, or an interface followed by a port number,
      * like `eth0:4567`. If the port number is omitted, the port
@@ -29,7 +29,7 @@ class SwarmInitPostBody
      */
     protected $advertiseAddr;
     /**
-     * Address or interface to use for data path traffic (format:.
+     * Address or interface to use for data path traffic (format:
      * `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
      * like `eth0`. If `DataPathAddr` is unspecified, the same address
      * as `AdvertiseAddr` is used.
@@ -52,7 +52,7 @@ class SwarmInitPostBody
      */
     protected $dataPathPort;
     /**
-     * Default Address Pool specifies default subnet pools for global.
+     * Default Address Pool specifies default subnet pools for global
      * scope networks.
      *
      * @var string[]|null
@@ -65,7 +65,7 @@ class SwarmInitPostBody
      */
     protected $forceNewCluster;
     /**
-     * SubnetSize specifies the subnet size of the networks created.
+     * SubnetSize specifies the subnet size of the networks created
      * from the default subnet pool.
      *
      * @var int|null
@@ -79,7 +79,7 @@ class SwarmInitPostBody
     protected $spec;
 
     /**
-     * Listen address used for inter-manager communication, as well.
+     * Listen address used for inter-manager communication, as well
      * as determining the networking interface used for the VXLAN
      * Tunnel Endpoint (VTEP). This can either be an address/port
      * combination in the form `192.168.1.1:4567`, or an interface
@@ -92,7 +92,7 @@ class SwarmInitPostBody
     }
 
     /**
-     * Listen address used for inter-manager communication, as well.
+     * Listen address used for inter-manager communication, as well
      * as determining the networking interface used for the VXLAN
      * Tunnel Endpoint (VTEP). This can either be an address/port
      * combination in the form `192.168.1.1:4567`, or an interface
@@ -107,7 +107,7 @@ class SwarmInitPostBody
     }
 
     /**
-     * Externally reachable address advertised to other nodes. This.
+     * Externally reachable address advertised to other nodes. This
      * can either be an address/port combination in the form
      * `192.168.1.1:4567`, or an interface followed by a port number,
      * like `eth0:4567`. If the port number is omitted, the port
@@ -120,7 +120,7 @@ class SwarmInitPostBody
     }
 
     /**
-     * Externally reachable address advertised to other nodes. This.
+     * Externally reachable address advertised to other nodes. This
      * can either be an address/port combination in the form
      * `192.168.1.1:4567`, or an interface followed by a port number,
      * like `eth0:4567`. If the port number is omitted, the port
@@ -135,7 +135,7 @@ class SwarmInitPostBody
     }
 
     /**
-     * Address or interface to use for data path traffic (format:.
+     * Address or interface to use for data path traffic (format:
      * `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
      * like `eth0`. If `DataPathAddr` is unspecified, the same address
      * as `AdvertiseAddr` is used.
@@ -152,7 +152,7 @@ class SwarmInitPostBody
     }
 
     /**
-     * Address or interface to use for data path traffic (format:.
+     * Address or interface to use for data path traffic (format:
      * `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
      * like `eth0`. If `DataPathAddr` is unspecified, the same address
      * as `AdvertiseAddr` is used.
@@ -193,7 +193,7 @@ class SwarmInitPostBody
     }
 
     /**
-     * Default Address Pool specifies default subnet pools for global.
+     * Default Address Pool specifies default subnet pools for global
      * scope networks.
      *
      * @return string[]|null
@@ -204,7 +204,7 @@ class SwarmInitPostBody
     }
 
     /**
-     * Default Address Pool specifies default subnet pools for global.
+     * Default Address Pool specifies default subnet pools for global
      * scope networks.
      *
      * @param string[]|null $defaultAddrPool
@@ -235,7 +235,7 @@ class SwarmInitPostBody
     }
 
     /**
-     * SubnetSize specifies the subnet size of the networks created.
+     * SubnetSize specifies the subnet size of the networks created
      * from the default subnet pool.
      */
     public function getSubnetSize(): ?int
@@ -244,7 +244,7 @@ class SwarmInitPostBody
     }
 
     /**
-     * SubnetSize specifies the subnet size of the networks created.
+     * SubnetSize specifies the subnet size of the networks created
      * from the default subnet pool.
      */
     public function setSubnetSize(?int $subnetSize): self

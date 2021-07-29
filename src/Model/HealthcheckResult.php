@@ -7,14 +7,14 @@ namespace Docker\API\Model;
 class HealthcheckResult
 {
     /**
-     * Date and time at which this check started in.
+     * Date and time at which this check started in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
      * @var \DateTimeInterface|null
      */
     protected $start;
     /**
-     * Date and time at which this check ended in.
+     * Date and time at which this check ended in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
      * @var string|null
@@ -39,7 +39,7 @@ class HealthcheckResult
     protected $output;
 
     /**
-     * Date and time at which this check started in.
+     * Date and time at which this check started in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function getStart(): ?\DateTimeInterface
@@ -48,7 +48,7 @@ class HealthcheckResult
     }
 
     /**
-     * Date and time at which this check started in.
+     * Date and time at which this check started in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function setStart(?\DateTimeInterface $start): self
@@ -59,7 +59,7 @@ class HealthcheckResult
     }
 
     /**
-     * Date and time at which this check ended in.
+     * Date and time at which this check ended in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function getEnd(): ?string
@@ -68,7 +68,7 @@ class HealthcheckResult
     }
 
     /**
-     * Date and time at which this check ended in.
+     * Date and time at which this check ended in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function setEnd(?string $end): self

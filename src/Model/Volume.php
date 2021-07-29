@@ -48,7 +48,7 @@ class Volume
      */
     protected $labels;
     /**
-     * The level at which the volume exists. Either `global` for cluster-wide,.
+     * The level at which the volume exists. Either `global` for cluster-wide,
      * or `local` for machine level.
      *
      * @var string|null
@@ -61,7 +61,7 @@ class Volume
      */
     protected $options;
     /**
-     * Usage details about the volume. This information is used by the.
+     * Usage details about the volume. This information is used by the
      * `GET /system/df` endpoint, and omitted in other endpoints.
      *
      * @var VolumeUsageData|null
@@ -195,7 +195,7 @@ class Volume
     }
 
     /**
-     * The level at which the volume exists. Either `global` for cluster-wide,.
+     * The level at which the volume exists. Either `global` for cluster-wide,
      * or `local` for machine level.
      */
     public function getScope(): ?string
@@ -204,7 +204,7 @@ class Volume
     }
 
     /**
-     * The level at which the volume exists. Either `global` for cluster-wide,.
+     * The level at which the volume exists. Either `global` for cluster-wide,
      * or `local` for machine level.
      */
     public function setScope(?string $scope): self
@@ -237,7 +237,7 @@ class Volume
     }
 
     /**
-     * Usage details about the volume. This information is used by the.
+     * Usage details about the volume. This information is used by the
      * `GET /system/df` endpoint, and omitted in other endpoints.
      */
     public function getUsageData(): ?VolumeUsageData
@@ -246,7 +246,7 @@ class Volume
     }
 
     /**
-     * Usage details about the volume. This information is used by the.
+     * Usage details about the volume. This information is used by the
      * `GET /system/df` endpoint, and omitted in other endpoints.
      */
     public function setUsageData(?VolumeUsageData $usageData): self

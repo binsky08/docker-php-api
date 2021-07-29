@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ServiceDeleteServiceUnavailableException extends \RuntimeException implements ServerException
+class ServiceDeleteServiceUnavailableException extends ServiceUnavailableException
 {
     private $errorResponse;
 

@@ -19,7 +19,7 @@ class ConfigsCreatePostBody
      */
     protected $labels;
     /**
-     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5)).
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5))
      * config data.
      *
      * @var string|null
@@ -73,7 +73,7 @@ class ConfigsCreatePostBody
     }
 
     /**
-     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5)).
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5))
      * config data.
      */
     public function getData(): ?string
@@ -82,7 +82,7 @@ class ConfigsCreatePostBody
     }
 
     /**
-     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5)).
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5))
      * config data.
      */
     public function setData(?string $data): self

@@ -6,30 +6,31 @@ namespace Docker\API\Endpoint;
 
 class PutContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
      * Upload a tar archive to be extracted to a path in the filesystem of container id.
      *
-     * @param string                                            $id              ID or name of the container
-     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
-     * @param array                                             $queryParameters {
+     * @param string                                                 $id              ID or name of the container
+     * @param string|resource|\Psr\Http\Message\StreamInterface|null $requestBody
+     * @param array                                                  $queryParameters {
      *
      *     @var string $path path to a directory in the container to extract the archive’s contents into
-     *     @var string $noOverwriteDirNonDir If `1`, `true`, or `True` then it will be an error if unpacking the
+     *     @var string $noOverwriteDirNonDir if `1`, `true`, or `True` then it will be an error if unpacking the
+     * given content would cause an existing directory to be replaced with
+     * a non-directory and vice versa
      *     @var string $copyUIDGID If `1`, `true`, then it will copy UID/GID maps to the dest file or
      * dir
      *
      * }
      */
-    public function __construct(string $id, $requestBody, array $queryParameters = [])
+    public function __construct(string $id, $requestBody = null, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -85,16 +86,16 @@ class PutContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implem
     {
         if (200 === $status) {
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PutContainerArchiveBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (403 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (403 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PutContainerArchiveForbiddenException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PutContainerArchiveNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PutContainerArchiveInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

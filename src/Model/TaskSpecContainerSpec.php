@@ -31,7 +31,7 @@ class TaskSpecContainerSpec
      */
     protected $args;
     /**
-     * The hostname to use for the container, as a valid.
+     * The hostname to use for the container, as a valid
      * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
      *
      * @var string|null
@@ -86,7 +86,7 @@ class TaskSpecContainerSpec
      */
     protected $readOnly;
     /**
-     * Specification for mounts to be added to containers created as part.
+     * Specification for mounts to be added to containers created as part
      * of the service.
      *
      * @var Mount[]|null
@@ -99,7 +99,7 @@ class TaskSpecContainerSpec
      */
     protected $stopSignal;
     /**
-     * Amount of time to wait for the container to terminate before.
+     * Amount of time to wait for the container to terminate before
      * forcefully killing it.
      *
      * @var int|null
@@ -112,10 +112,10 @@ class TaskSpecContainerSpec
      */
     protected $healthCheck;
     /**
-     * A list of hostname/IP mappings to add to the container's `hosts`.
+     * A list of hostname/IP mappings to add to the container's `hosts`
      * file. The format of extra hosts is specified in the
      * [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html)
-     * man page:
+     * man page:.
      *
      * IP_address canonical_hostname [aliases...]
      *
@@ -123,21 +123,21 @@ class TaskSpecContainerSpec
      */
     protected $hosts;
     /**
-     * Specification for DNS related configurations in resolver configuration.
+     * Specification for DNS related configurations in resolver configuration
      * file (`resolv.conf`).
      *
      * @var TaskSpecContainerSpecDNSConfig|null
      */
     protected $dNSConfig;
     /**
-     * Secrets contains references to zero or more secrets that will be.
+     * Secrets contains references to zero or more secrets that will be
      * exposed to the service.
      *
      * @var TaskSpecContainerSpecSecretsItem[]|null
      */
     protected $secrets;
     /**
-     * Configs contains references to zero or more configs that will be.
+     * Configs contains references to zero or more configs that will be
      * exposed to the service.
      *
      * @var TaskSpecContainerSpecConfigsItem[]|null
@@ -145,13 +145,13 @@ class TaskSpecContainerSpec
     protected $configs;
     /**
      * Isolation technology of the containers running the service.
-     * (Windows only)
+     * (Windows only).
      *
      * @var string|null
      */
     protected $isolation;
     /**
-     * Run an init inside the container that forwards signals and reaps.
+     * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
      * configured on the daemon) is used.
      *
@@ -171,14 +171,14 @@ class TaskSpecContainerSpec
      */
     protected $sysctls;
     /**
-     * A list of kernel capabilities to add to the default set.
+     * A list of kernel capabilities to add to the default set
      * for the container.
      *
      * @var string[]|null
      */
     protected $capabilityAdd;
     /**
-     * A list of kernel capabilities to drop from the default set.
+     * A list of kernel capabilities to drop from the default set
      * for the container.
      *
      * @var string[]|null
@@ -276,7 +276,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * The hostname to use for the container, as a valid.
+     * The hostname to use for the container, as a valid
      * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
      */
     public function getHostname(): ?string
@@ -285,7 +285,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * The hostname to use for the container, as a valid.
+     * The hostname to use for the container, as a valid
      * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
      */
     public function setHostname(?string $hostname): self
@@ -448,7 +448,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Specification for mounts to be added to containers created as part.
+     * Specification for mounts to be added to containers created as part
      * of the service.
      *
      * @return Mount[]|null
@@ -459,7 +459,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Specification for mounts to be added to containers created as part.
+     * Specification for mounts to be added to containers created as part
      * of the service.
      *
      * @param Mount[]|null $mounts
@@ -490,7 +490,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Amount of time to wait for the container to terminate before.
+     * Amount of time to wait for the container to terminate before
      * forcefully killing it.
      */
     public function getStopGracePeriod(): ?int
@@ -499,7 +499,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Amount of time to wait for the container to terminate before.
+     * Amount of time to wait for the container to terminate before
      * forcefully killing it.
      */
     public function setStopGracePeriod(?int $stopGracePeriod): self
@@ -528,10 +528,10 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * A list of hostname/IP mappings to add to the container's `hosts`.
+     * A list of hostname/IP mappings to add to the container's `hosts`
      * file. The format of extra hosts is specified in the
      * [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html)
-     * man page:
+     * man page:.
      *
      * IP_address canonical_hostname [aliases...]
      *
@@ -543,10 +543,10 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * A list of hostname/IP mappings to add to the container's `hosts`.
+     * A list of hostname/IP mappings to add to the container's `hosts`
      * file. The format of extra hosts is specified in the
      * [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html)
-     * man page:
+     * man page:.
      *
      * IP_address canonical_hostname [aliases...]
      *
@@ -560,7 +560,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Specification for DNS related configurations in resolver configuration.
+     * Specification for DNS related configurations in resolver configuration
      * file (`resolv.conf`).
      */
     public function getDNSConfig(): ?TaskSpecContainerSpecDNSConfig
@@ -569,7 +569,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Specification for DNS related configurations in resolver configuration.
+     * Specification for DNS related configurations in resolver configuration
      * file (`resolv.conf`).
      */
     public function setDNSConfig(?TaskSpecContainerSpecDNSConfig $dNSConfig): self
@@ -580,7 +580,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Secrets contains references to zero or more secrets that will be.
+     * Secrets contains references to zero or more secrets that will be
      * exposed to the service.
      *
      * @return TaskSpecContainerSpecSecretsItem[]|null
@@ -591,7 +591,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Secrets contains references to zero or more secrets that will be.
+     * Secrets contains references to zero or more secrets that will be
      * exposed to the service.
      *
      * @param TaskSpecContainerSpecSecretsItem[]|null $secrets
@@ -604,7 +604,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Configs contains references to zero or more configs that will be.
+     * Configs contains references to zero or more configs that will be
      * exposed to the service.
      *
      * @return TaskSpecContainerSpecConfigsItem[]|null
@@ -615,7 +615,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Configs contains references to zero or more configs that will be.
+     * Configs contains references to zero or more configs that will be
      * exposed to the service.
      *
      * @param TaskSpecContainerSpecConfigsItem[]|null $configs
@@ -629,7 +629,7 @@ class TaskSpecContainerSpec
 
     /**
      * Isolation technology of the containers running the service.
-     * (Windows only)
+     * (Windows only).
      */
     public function getIsolation(): ?string
     {
@@ -638,7 +638,7 @@ class TaskSpecContainerSpec
 
     /**
      * Isolation technology of the containers running the service.
-     * (Windows only)
+     * (Windows only).
      */
     public function setIsolation(?string $isolation): self
     {
@@ -648,7 +648,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Run an init inside the container that forwards signals and reaps.
+     * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
      * configured on the daemon) is used.
      */
@@ -658,7 +658,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * Run an init inside the container that forwards signals and reaps.
+     * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
      * configured on the daemon) is used.
      */
@@ -704,7 +704,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * A list of kernel capabilities to add to the default set.
+     * A list of kernel capabilities to add to the default set
      * for the container.
      *
      * @return string[]|null
@@ -715,7 +715,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * A list of kernel capabilities to add to the default set.
+     * A list of kernel capabilities to add to the default set
      * for the container.
      *
      * @param string[]|null $capabilityAdd
@@ -728,7 +728,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * A list of kernel capabilities to drop from the default set.
+     * A list of kernel capabilities to drop from the default set
      * for the container.
      *
      * @return string[]|null
@@ -739,7 +739,7 @@ class TaskSpecContainerSpec
     }
 
     /**
-     * A list of kernel capabilities to drop from the default set.
+     * A list of kernel capabilities to drop from the default set
      * for the container.
      *
      * @param string[]|null $capabilityDrop

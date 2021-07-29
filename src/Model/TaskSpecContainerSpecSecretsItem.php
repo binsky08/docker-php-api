@@ -13,14 +13,14 @@ class TaskSpecContainerSpecSecretsItem
      */
     protected $file;
     /**
-     * SecretID represents the ID of the specific secret that we're.
+     * SecretID represents the ID of the specific secret that we're
      * referencing.
      *
      * @var string|null
      */
     protected $secretID;
     /**
-     * SecretName is the name of the secret that this references,.
+     * SecretName is the name of the secret that this references,
      * but this is just provided for lookup/display purposes. The
      * secret in the reference will be identified by its ID.
      *
@@ -47,7 +47,7 @@ class TaskSpecContainerSpecSecretsItem
     }
 
     /**
-     * SecretID represents the ID of the specific secret that we're.
+     * SecretID represents the ID of the specific secret that we're
      * referencing.
      */
     public function getSecretID(): ?string
@@ -56,7 +56,7 @@ class TaskSpecContainerSpecSecretsItem
     }
 
     /**
-     * SecretID represents the ID of the specific secret that we're.
+     * SecretID represents the ID of the specific secret that we're
      * referencing.
      */
     public function setSecretID(?string $secretID): self
@@ -67,7 +67,7 @@ class TaskSpecContainerSpecSecretsItem
     }
 
     /**
-     * SecretName is the name of the secret that this references,.
+     * SecretName is the name of the secret that this references,
      * but this is just provided for lookup/display purposes. The
      * secret in the reference will be identified by its ID.
      */
@@ -77,7 +77,7 @@ class TaskSpecContainerSpecSecretsItem
     }
 
     /**
-     * SecretName is the name of the secret that this references,.
+     * SecretName is the name of the secret that this references,
      * but this is just provided for lookup/display purposes. The
      * secret in the reference will be identified by its ID.
      */

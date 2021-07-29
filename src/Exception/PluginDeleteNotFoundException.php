@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class PluginDeleteNotFoundException extends \RuntimeException implements ClientException
+class PluginDeleteNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

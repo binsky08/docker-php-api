@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageTagInternalServerErrorException extends \RuntimeException implements ServerException
+class ImageTagInternalServerErrorException extends InternalServerErrorException
 {
     private $errorResponse;
 

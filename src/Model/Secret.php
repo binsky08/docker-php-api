@@ -11,7 +11,7 @@ class Secret
      */
     protected $iD;
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -51,7 +51,7 @@ class Secret
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -68,7 +68,7 @@ class Secret
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *

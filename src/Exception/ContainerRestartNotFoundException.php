@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerRestartNotFoundException extends \RuntimeException implements ClientException
+class ContainerRestartNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

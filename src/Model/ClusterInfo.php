@@ -13,7 +13,7 @@ class ClusterInfo
      */
     protected $iD;
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -28,14 +28,14 @@ class ClusterInfo
      */
     protected $version;
     /**
-     * Date and time at which the swarm was initialised in.
+     * Date and time at which the swarm was initialised in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
      * @var string|null
      */
     protected $createdAt;
     /**
-     * Date and time at which the swarm was last updated in.
+     * Date and time at which the swarm was last updated in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
      * @var string|null
@@ -48,7 +48,7 @@ class ClusterInfo
      */
     protected $spec;
     /**
-     * Information about the issuer of leaf TLS certificates and the trusted root.
+     * Information about the issuer of leaf TLS certificates and the trusted root
      * CA certificate.
      *
      * @var TLSInfo|null
@@ -69,14 +69,14 @@ class ClusterInfo
      */
     protected $dataPathPort;
     /**
-     * Default Address Pool specifies default subnet pools for global scope.
+     * Default Address Pool specifies default subnet pools for global scope
      * networks.
      *
      * @var string[]|null
      */
     protected $defaultAddrPool;
     /**
-     * SubnetSize specifies the subnet size of the networks created from the.
+     * SubnetSize specifies the subnet size of the networks created from the
      * default subnet pool.
      *
      * @var int|null
@@ -102,7 +102,7 @@ class ClusterInfo
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -119,7 +119,7 @@ class ClusterInfo
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -138,7 +138,7 @@ class ClusterInfo
     }
 
     /**
-     * Date and time at which the swarm was initialised in.
+     * Date and time at which the swarm was initialised in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function getCreatedAt(): ?string
@@ -147,7 +147,7 @@ class ClusterInfo
     }
 
     /**
-     * Date and time at which the swarm was initialised in.
+     * Date and time at which the swarm was initialised in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function setCreatedAt(?string $createdAt): self
@@ -158,7 +158,7 @@ class ClusterInfo
     }
 
     /**
-     * Date and time at which the swarm was last updated in.
+     * Date and time at which the swarm was last updated in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function getUpdatedAt(): ?string
@@ -167,7 +167,7 @@ class ClusterInfo
     }
 
     /**
-     * Date and time at which the swarm was last updated in.
+     * Date and time at which the swarm was last updated in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function setUpdatedAt(?string $updatedAt): self
@@ -196,7 +196,7 @@ class ClusterInfo
     }
 
     /**
-     * Information about the issuer of leaf TLS certificates and the trusted root.
+     * Information about the issuer of leaf TLS certificates and the trusted root
      * CA certificate.
      */
     public function getTLSInfo(): ?TLSInfo
@@ -205,7 +205,7 @@ class ClusterInfo
     }
 
     /**
-     * Information about the issuer of leaf TLS certificates and the trusted root.
+     * Information about the issuer of leaf TLS certificates and the trusted root
      * CA certificate.
      */
     public function setTLSInfo(?TLSInfo $tLSInfo): self
@@ -256,7 +256,7 @@ class ClusterInfo
     }
 
     /**
-     * Default Address Pool specifies default subnet pools for global scope.
+     * Default Address Pool specifies default subnet pools for global scope
      * networks.
      *
      * @return string[]|null
@@ -267,7 +267,7 @@ class ClusterInfo
     }
 
     /**
-     * Default Address Pool specifies default subnet pools for global scope.
+     * Default Address Pool specifies default subnet pools for global scope
      * networks.
      *
      * @param string[]|null $defaultAddrPool
@@ -280,7 +280,7 @@ class ClusterInfo
     }
 
     /**
-     * SubnetSize specifies the subnet size of the networks created from the.
+     * SubnetSize specifies the subnet size of the networks created from the
      * default subnet pool.
      */
     public function getSubnetSize(): ?int
@@ -289,7 +289,7 @@ class ClusterInfo
     }
 
     /**
-     * SubnetSize specifies the subnet size of the networks created from the.
+     * SubnetSize specifies the subnet size of the networks created from the
      * default subnet pool.
      */
     public function setSubnetSize(?int $subnetSize): self

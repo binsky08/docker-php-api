@@ -6,12 +6,14 @@ namespace Docker\API\Endpoint;
 
 class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $name;
 
     /**
-     * @param string                                             $name            The name of the plugin. The `:latest` tag is optional, and is the
-     * @param \Docker\API\Model\PluginsNameUpgradePostBodyItem[] $requestBody
-     * @param array                                              $queryParameters {
+     * @param string                                                  $name            The name of the plugin. The `:latest` tag is optional, and is the
+     *                                                                                 default if omitted.
+     * @param \Docker\API\Model\PluginsNameUpgradePostBodyItem[]|null $requestBody
+     * @param array                                                   $queryParameters {
      *
      *     @var string $remote Remote reference to upgrade to.
      *
@@ -29,15 +31,13 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * }
      */
-    public function __construct(string $name, array $requestBody, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $name, ?array $requestBody = null, array $queryParameters = [], array $headerParameters = [])
     {
         $this->name = $name;
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -100,10 +100,10 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     {
         if (204 === $status) {
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PluginUpgradeNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PluginUpgradeInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

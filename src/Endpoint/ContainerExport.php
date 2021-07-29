@@ -6,6 +6,7 @@ namespace Docker\API\Endpoint;
 
 class ContainerExport extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
@@ -17,8 +18,6 @@ class ContainerExport extends \Docker\API\Runtime\Client\BaseEndpoint implements
     {
         $this->id = $id;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -51,7 +50,7 @@ class ContainerExport extends \Docker\API\Runtime\Client\BaseEndpoint implements
     {
         if (200 === $status) {
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerExportNotFoundException();
         }
         if (500 === $status) {

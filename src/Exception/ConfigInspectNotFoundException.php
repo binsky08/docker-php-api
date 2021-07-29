@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ConfigInspectNotFoundException extends \RuntimeException implements ClientException
+class ConfigInspectNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerArchiveInfoNotFoundException extends \RuntimeException implements ClientException
+class ContainerArchiveInfoNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

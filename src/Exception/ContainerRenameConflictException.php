@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerRenameConflictException extends \RuntimeException implements ClientException
+class ContainerRenameConflictException extends ConflictException
 {
     private $errorResponse;
 

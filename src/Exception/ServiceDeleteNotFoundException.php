@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ServiceDeleteNotFoundException extends \RuntimeException implements ClientException
+class ServiceDeleteNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

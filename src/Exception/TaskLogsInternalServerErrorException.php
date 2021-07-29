@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class TaskLogsInternalServerErrorException extends \RuntimeException implements ServerException
+class TaskLogsInternalServerErrorException extends InternalServerErrorException
 {
     private $errorResponse;
 

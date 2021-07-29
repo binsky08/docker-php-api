@@ -6,22 +6,22 @@ namespace Docker\API\Endpoint;
 
 class PluginCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
-     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
-     * @param array                                             $queryParameters {
+     * @param string|resource|\Psr\Http\Message\StreamInterface|null $requestBody
+     * @param array                                                  $queryParameters {
      *
      *     @var string $name The name of the plugin. The `:latest` tag is optional, and is the
      * default if omitted.
      *
      * }
      */
-    public function __construct($requestBody, array $queryParameters = [])
+    public function __construct($requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -69,7 +69,7 @@ class PluginCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     {
         if (204 === $status) {
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PluginCreateInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

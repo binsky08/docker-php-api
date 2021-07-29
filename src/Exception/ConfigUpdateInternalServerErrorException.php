@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ConfigUpdateInternalServerErrorException extends \RuntimeException implements ServerException
+class ConfigUpdateInternalServerErrorException extends InternalServerErrorException
 {
     private $errorResponse;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class PluginInspectNotFoundException extends \RuntimeException implements ClientException
+class PluginInspectNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

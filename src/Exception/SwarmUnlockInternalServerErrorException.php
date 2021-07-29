@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class SwarmUnlockInternalServerErrorException extends \RuntimeException implements ServerException
+class SwarmUnlockInternalServerErrorException extends InternalServerErrorException
 {
     private $errorResponse;
 

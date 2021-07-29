@@ -25,7 +25,7 @@ class ContainersIdExecPostBody
      */
     protected $attachStderr;
     /**
-     * Override the key sequence for detaching a container. Format is.
+     * Override the key sequence for detaching a container. Format is
      * a single character `[a-Z]` or `ctrl-<value>` where `<value>`
      * is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      *
@@ -57,7 +57,7 @@ class ContainersIdExecPostBody
      */
     protected $privileged = false;
     /**
-     * The user, and optionally, group to run the exec process inside.
+     * The user, and optionally, group to run the exec process inside
      * the container. Format is one of: `user`, `user:group`, `uid`,
      * or `uid:gid`.
      *
@@ -126,7 +126,7 @@ class ContainersIdExecPostBody
     }
 
     /**
-     * Override the key sequence for detaching a container. Format is.
+     * Override the key sequence for detaching a container. Format is
      * a single character `[a-Z]` or `ctrl-<value>` where `<value>`
      * is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      */
@@ -136,7 +136,7 @@ class ContainersIdExecPostBody
     }
 
     /**
-     * Override the key sequence for detaching a container. Format is.
+     * Override the key sequence for detaching a container. Format is
      * a single character `[a-Z]` or `ctrl-<value>` where `<value>`
      * is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      */
@@ -228,7 +228,7 @@ class ContainersIdExecPostBody
     }
 
     /**
-     * The user, and optionally, group to run the exec process inside.
+     * The user, and optionally, group to run the exec process inside
      * the container. Format is one of: `user`, `user:group`, `uid`,
      * or `uid:gid`.
      */
@@ -238,7 +238,7 @@ class ContainersIdExecPostBody
     }
 
     /**
-     * The user, and optionally, group to run the exec process inside.
+     * The user, and optionally, group to run the exec process inside
      * the container. Format is one of: `user`, `user:group`, `uid`,
      * or `uid:gid`.
      */

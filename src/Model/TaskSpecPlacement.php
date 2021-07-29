@@ -7,11 +7,11 @@ namespace Docker\API\Model;
 class TaskSpecPlacement
 {
     /**
-     * An array of constraint expressions to limit the set of nodes where.
+     * An array of constraint expressions to limit the set of nodes where
      * a task can be scheduled. Constraint expressions can either use a
      * _match_ (`==`) or _exclude_ (`!=`) rule. Multiple constraints find
      * nodes that satisfy every expression (AND match). Constraints can
-     * match node or Docker Engine labels as follows:
+     * match node or Docker Engine labels as follows:.
      *
      * node attribute       | matches                        | example
      * ---------------------|--------------------------------|-----------------------------------------------
@@ -31,7 +31,7 @@ class TaskSpecPlacement
      */
     protected $constraints;
     /**
-     * Preferences provide a way to make the scheduler aware of factors.
+     * Preferences provide a way to make the scheduler aware of factors
      * such as topology. They are provided in order from highest to
      * lowest precedence.
      *
@@ -39,14 +39,14 @@ class TaskSpecPlacement
      */
     protected $preferences;
     /**
-     * Maximum number of replicas for per node (default value is 0, which.
-     * is unlimited)
+     * Maximum number of replicas for per node (default value is 0, which
+     * is unlimited).
      *
      * @var int|null
      */
     protected $maxReplicas = 0;
     /**
-     * Platforms stores all the platforms that the service's image can.
+     * Platforms stores all the platforms that the service's image can
      * run on. This field is used in the platform filter for scheduling.
      * If empty, then the platform filter is off, meaning there are no
      * scheduling restrictions.
@@ -56,11 +56,11 @@ class TaskSpecPlacement
     protected $platforms;
 
     /**
-     * An array of constraint expressions to limit the set of nodes where.
+     * An array of constraint expressions to limit the set of nodes where
      * a task can be scheduled. Constraint expressions can either use a
      * _match_ (`==`) or _exclude_ (`!=`) rule. Multiple constraints find
      * nodes that satisfy every expression (AND match). Constraints can
-     * match node or Docker Engine labels as follows:
+     * match node or Docker Engine labels as follows:.
      *
      * node attribute       | matches                        | example
      * ---------------------|--------------------------------|-----------------------------------------------
@@ -84,11 +84,11 @@ class TaskSpecPlacement
     }
 
     /**
-     * An array of constraint expressions to limit the set of nodes where.
+     * An array of constraint expressions to limit the set of nodes where
      * a task can be scheduled. Constraint expressions can either use a
      * _match_ (`==`) or _exclude_ (`!=`) rule. Multiple constraints find
      * nodes that satisfy every expression (AND match). Constraints can
-     * match node or Docker Engine labels as follows:
+     * match node or Docker Engine labels as follows:.
      *
      * node attribute       | matches                        | example
      * ---------------------|--------------------------------|-----------------------------------------------
@@ -114,7 +114,7 @@ class TaskSpecPlacement
     }
 
     /**
-     * Preferences provide a way to make the scheduler aware of factors.
+     * Preferences provide a way to make the scheduler aware of factors
      * such as topology. They are provided in order from highest to
      * lowest precedence.
      *
@@ -126,7 +126,7 @@ class TaskSpecPlacement
     }
 
     /**
-     * Preferences provide a way to make the scheduler aware of factors.
+     * Preferences provide a way to make the scheduler aware of factors
      * such as topology. They are provided in order from highest to
      * lowest precedence.
      *
@@ -140,8 +140,8 @@ class TaskSpecPlacement
     }
 
     /**
-     * Maximum number of replicas for per node (default value is 0, which.
-     * is unlimited)
+     * Maximum number of replicas for per node (default value is 0, which
+     * is unlimited).
      */
     public function getMaxReplicas(): ?int
     {
@@ -149,8 +149,8 @@ class TaskSpecPlacement
     }
 
     /**
-     * Maximum number of replicas for per node (default value is 0, which.
-     * is unlimited)
+     * Maximum number of replicas for per node (default value is 0, which
+     * is unlimited).
      */
     public function setMaxReplicas(?int $maxReplicas): self
     {
@@ -160,7 +160,7 @@ class TaskSpecPlacement
     }
 
     /**
-     * Platforms stores all the platforms that the service's image can.
+     * Platforms stores all the platforms that the service's image can
      * run on. This field is used in the platform filter for scheduling.
      * If empty, then the platform filter is off, meaning there are no
      * scheduling restrictions.
@@ -173,7 +173,7 @@ class TaskSpecPlacement
     }
 
     /**
-     * Platforms stores all the platforms that the service's image can.
+     * Platforms stores all the platforms that the service's image can
      * run on. This field is used in the platform filter for scheduling.
      * If empty, then the platform filter is off, meaning there are no
      * scheduling restrictions.

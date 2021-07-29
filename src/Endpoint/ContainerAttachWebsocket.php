@@ -6,6 +6,7 @@ namespace Docker\API\Endpoint;
 
 class ContainerAttachWebsocket extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
@@ -13,6 +14,8 @@ class ContainerAttachWebsocket extends \Docker\API\Runtime\Client\BaseEndpoint i
      * @param array  $queryParameters {
      *
      *     @var string $detachKeys Override the key sequence for detaching a container.Format is a single
+     * character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`,
+     * `@`, `^`, `[`, `,`, or `_`.
      *     @var bool $logs Return logs
      *     @var bool $stream Return stream
      *     @var bool $stdin Attach to `stdin`
@@ -25,8 +28,6 @@ class ContainerAttachWebsocket extends \Docker\API\Runtime\Client\BaseEndpoint i
         $this->id = $id;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -79,13 +80,13 @@ class ContainerAttachWebsocket extends \Docker\API\Runtime\Client\BaseEndpoint i
         }
         if (200 === $status) {
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerAttachWebsocketBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerAttachWebsocketNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerAttachWebsocketInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

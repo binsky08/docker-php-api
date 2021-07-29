@@ -41,7 +41,7 @@ class SystemVersion
      */
     protected $gitCommit;
     /**
-     * The version Go used to compile the daemon, and the version of the Go.
+     * The version Go used to compile the daemon, and the version of the Go
      * runtime in use.
      *
      * @var string|null
@@ -189,7 +189,7 @@ class SystemVersion
     }
 
     /**
-     * The version Go used to compile the daemon, and the version of the Go.
+     * The version Go used to compile the daemon, and the version of the Go
      * runtime in use.
      */
     public function getGoVersion(): ?string
@@ -198,7 +198,7 @@ class SystemVersion
     }
 
     /**
-     * The version Go used to compile the daemon, and the version of the Go.
+     * The version Go used to compile the daemon, and the version of the Go
      * runtime in use.
      */
     public function setGoVersion(?string $goVersion): self

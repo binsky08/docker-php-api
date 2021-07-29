@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class VolumeDeleteInternalServerErrorException extends \RuntimeException implements ServerException
+class VolumeDeleteInternalServerErrorException extends InternalServerErrorException
 {
     private $errorResponse;
 

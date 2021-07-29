@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ConfigDeleteServiceUnavailableException extends \RuntimeException implements ServerException
+class ConfigDeleteServiceUnavailableException extends ServiceUnavailableException
 {
     private $errorResponse;
 

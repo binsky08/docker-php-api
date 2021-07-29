@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageSearchInternalServerErrorException extends \RuntimeException implements ServerException
+class ImageSearchInternalServerErrorException extends InternalServerErrorException
 {
     private $errorResponse;
 

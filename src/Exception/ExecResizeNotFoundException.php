@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ExecResizeNotFoundException extends \RuntimeException implements ClientException
+class ExecResizeNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

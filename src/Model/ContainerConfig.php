@@ -69,7 +69,7 @@ class ContainerConfig
      */
     protected $stdinOnce = false;
     /**
-     * A list of environment variables to set inside the container in the.
+     * A list of environment variables to set inside the container in the
      * form `["VAR=value", ...]`. A variable without `=` is removed from the
      * environment, rather than to have an empty value.
      *
@@ -101,7 +101,7 @@ class ContainerConfig
      */
     protected $image;
     /**
-     * An object mapping mount point paths inside the container to empty.
+     * An object mapping mount point paths inside the container to empty
      * objects.
      *
      * @var ContainerConfigVolumesItem[]|null
@@ -355,7 +355,7 @@ class ContainerConfig
     }
 
     /**
-     * A list of environment variables to set inside the container in the.
+     * A list of environment variables to set inside the container in the
      * form `["VAR=value", ...]`. A variable without `=` is removed from the
      * environment, rather than to have an empty value.
      *
@@ -367,7 +367,7 @@ class ContainerConfig
     }
 
     /**
-     * A list of environment variables to set inside the container in the.
+     * A list of environment variables to set inside the container in the
      * form `["VAR=value", ...]`. A variable without `=` is removed from the
      * environment, rather than to have an empty value.
      *
@@ -457,7 +457,7 @@ class ContainerConfig
     }
 
     /**
-     * An object mapping mount point paths inside the container to empty.
+     * An object mapping mount point paths inside the container to empty
      * objects.
      *
      * @return ContainerConfigVolumesItem[]|null
@@ -468,7 +468,7 @@ class ContainerConfig
     }
 
     /**
-     * An object mapping mount point paths inside the container to empty.
+     * An object mapping mount point paths inside the container to empty
      * objects.
      *
      * @param ContainerConfigVolumesItem[]|null $volumes

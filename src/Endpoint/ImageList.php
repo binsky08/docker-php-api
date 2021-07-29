@@ -6,6 +6,8 @@ namespace Docker\API\Endpoint;
 
 class ImageList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
      * Returns a list of images on the server. Note that it uses a different, smaller representation of an image than inspecting a single image.
      *
@@ -13,6 +15,15 @@ class ImageList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
      *
      *     @var bool $all Show all images. Only images from a final layer (no children) are shown by default.
      *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     * process on the images list.
+     *
+     * Available filters:
+     *
+     * - `before`=(`<image-name>[:<tag>]`,  `<image id>` or `<image@digest>`)
+     * - `dangling=true`
+     * - `label=key` or `label="key=value"` of an image label
+     * - `reference`=(`<image-name>[:<tag>]`)
+     * - `since`=(`<image-name>[:<tag>]`,  `<image id>` or `<image@digest>`)
      *     @var bool $digests Show digest information as a `RepoDigests` field on each image.
      * }
      */
@@ -20,8 +31,6 @@ class ImageList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
     {
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -65,10 +74,10 @@ class ImageList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (200 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\ImageSummary[]', 'json');
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ImageListInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

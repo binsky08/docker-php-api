@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ConfigUpdateBadRequestException extends \RuntimeException implements ClientException
+class ConfigUpdateBadRequestException extends BadRequestException
 {
     private $errorResponse;
 

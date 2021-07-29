@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageCreateNotFoundException extends \RuntimeException implements ClientException
+class ImageCreateNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

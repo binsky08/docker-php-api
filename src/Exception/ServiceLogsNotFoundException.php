@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ServiceLogsNotFoundException extends \RuntimeException implements ClientException
+class ServiceLogsNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

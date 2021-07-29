@@ -19,7 +19,7 @@ class SystemVersionComponentsItem
      */
     protected $version;
     /**
-     * Key/value pairs of strings with additional information about the.
+     * Key/value pairs of strings with additional information about the
      * component. These values are intended for informational purposes
      * only, and their content is not defined, and not part of the API
      * specification.
@@ -67,7 +67,7 @@ class SystemVersionComponentsItem
     }
 
     /**
-     * Key/value pairs of strings with additional information about the.
+     * Key/value pairs of strings with additional information about the
      * component. These values are intended for informational purposes
      * only, and their content is not defined, and not part of the API
      * specification.
@@ -80,7 +80,7 @@ class SystemVersionComponentsItem
     }
 
     /**
-     * Key/value pairs of strings with additional information about the.
+     * Key/value pairs of strings with additional information about the
      * component. These values are intended for informational purposes
      * only, and their content is not defined, and not part of the API
      * specification.

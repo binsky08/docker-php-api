@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageInspectNotFoundException extends \RuntimeException implements ClientException
+class ImageInspectNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

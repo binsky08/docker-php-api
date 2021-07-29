@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerAttachWebsocketNotFoundException extends \RuntimeException implements ClientException
+class ContainerAttachWebsocketNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

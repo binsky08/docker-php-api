@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class NodeUpdateNotFoundException extends \RuntimeException implements ClientException
+class NodeUpdateNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

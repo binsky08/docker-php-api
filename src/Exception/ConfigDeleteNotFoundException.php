@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ConfigDeleteNotFoundException extends \RuntimeException implements ClientException
+class ConfigDeleteNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

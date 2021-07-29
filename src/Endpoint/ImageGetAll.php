@@ -6,8 +6,10 @@ namespace Docker\API\Endpoint;
 
 class ImageGetAll extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
-     * Get a tarball containing all images and metadata for several image.
+     * Get a tarball containing all images and metadata for several image
      * repositories.
      *
      * For each value of the `names` parameter: if it is a specific name and
@@ -27,8 +29,6 @@ class ImageGetAll extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     {
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {

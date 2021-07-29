@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerKillInternalServerErrorException extends \RuntimeException implements ServerException
+class ContainerKillInternalServerErrorException extends InternalServerErrorException
 {
     private $errorResponse;
 

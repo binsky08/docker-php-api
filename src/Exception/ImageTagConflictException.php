@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageTagConflictException extends \RuntimeException implements ClientException
+class ImageTagConflictException extends ConflictException
 {
     private $errorResponse;
 

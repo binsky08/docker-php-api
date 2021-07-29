@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class VolumeDeleteNotFoundException extends \RuntimeException implements ClientException
+class VolumeDeleteNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

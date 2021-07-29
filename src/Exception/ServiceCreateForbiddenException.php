@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ServiceCreateForbiddenException extends \RuntimeException implements ClientException
+class ServiceCreateForbiddenException extends ForbiddenException
 {
     private $errorResponse;
 

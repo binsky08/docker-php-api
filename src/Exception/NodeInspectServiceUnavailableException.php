@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class NodeInspectServiceUnavailableException extends \RuntimeException implements ServerException
+class NodeInspectServiceUnavailableException extends ServiceUnavailableException
 {
     private $errorResponse;
 

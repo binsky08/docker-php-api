@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class ServiceJobStatus
 {
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -22,7 +22,7 @@ class ServiceJobStatus
      */
     protected $jobIteration;
     /**
-     * The last time, as observed by the server, that this job was.
+     * The last time, as observed by the server, that this job was
      * started.
      *
      * @var string|null
@@ -30,7 +30,7 @@ class ServiceJobStatus
     protected $lastExecution;
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -47,7 +47,7 @@ class ServiceJobStatus
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -66,7 +66,7 @@ class ServiceJobStatus
     }
 
     /**
-     * The last time, as observed by the server, that this job was.
+     * The last time, as observed by the server, that this job was
      * started.
      */
     public function getLastExecution(): ?string
@@ -75,7 +75,7 @@ class ServiceJobStatus
     }
 
     /**
-     * The last time, as observed by the server, that this job was.
+     * The last time, as observed by the server, that this job was
      * started.
      */
     public function setLastExecution(?string $lastExecution): self

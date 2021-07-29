@@ -33,7 +33,7 @@ class TaskSpec
      */
     protected $containerSpec;
     /**
-     * Read-only spec type for non-swarm containers attached to swarm overlay.
+     * Read-only spec type for non-swarm containers attached to swarm overlay
      * networks.
      *
      * <p><br /></p>
@@ -47,14 +47,14 @@ class TaskSpec
      */
     protected $networkAttachmentSpec;
     /**
-     * Resource requirements which apply to each individual container created.
+     * Resource requirements which apply to each individual container created
      * as part of the service.
      *
      * @var TaskSpecResources|null
      */
     protected $resources;
     /**
-     * Specification for the restart policy which applies to containers.
+     * Specification for the restart policy which applies to containers
      * created as part of this service.
      *
      * @var TaskSpecRestartPolicy|null
@@ -65,7 +65,7 @@ class TaskSpec
      */
     protected $placement;
     /**
-     * A counter that triggers an update even if no relevant parameters have.
+     * A counter that triggers an update even if no relevant parameters have
      * been changed.
      *
      * @var int|null
@@ -84,7 +84,7 @@ class TaskSpec
      */
     protected $networks;
     /**
-     * Specifies the log driver to use for tasks created from this spec. If.
+     * Specifies the log driver to use for tasks created from this spec. If
      * not present, the default one for the swarm will be used, finally
      * falling back to the engine default if not specified.
      *
@@ -157,7 +157,7 @@ class TaskSpec
     }
 
     /**
-     * Read-only spec type for non-swarm containers attached to swarm overlay.
+     * Read-only spec type for non-swarm containers attached to swarm overlay
      * networks.
      *
      * <p><br /></p>
@@ -173,7 +173,7 @@ class TaskSpec
     }
 
     /**
-     * Read-only spec type for non-swarm containers attached to swarm overlay.
+     * Read-only spec type for non-swarm containers attached to swarm overlay
      * networks.
      *
      * <p><br /></p>
@@ -191,7 +191,7 @@ class TaskSpec
     }
 
     /**
-     * Resource requirements which apply to each individual container created.
+     * Resource requirements which apply to each individual container created
      * as part of the service.
      */
     public function getResources(): ?TaskSpecResources
@@ -200,7 +200,7 @@ class TaskSpec
     }
 
     /**
-     * Resource requirements which apply to each individual container created.
+     * Resource requirements which apply to each individual container created
      * as part of the service.
      */
     public function setResources(?TaskSpecResources $resources): self
@@ -211,7 +211,7 @@ class TaskSpec
     }
 
     /**
-     * Specification for the restart policy which applies to containers.
+     * Specification for the restart policy which applies to containers
      * created as part of this service.
      */
     public function getRestartPolicy(): ?TaskSpecRestartPolicy
@@ -220,7 +220,7 @@ class TaskSpec
     }
 
     /**
-     * Specification for the restart policy which applies to containers.
+     * Specification for the restart policy which applies to containers
      * created as part of this service.
      */
     public function setRestartPolicy(?TaskSpecRestartPolicy $restartPolicy): self
@@ -243,7 +243,7 @@ class TaskSpec
     }
 
     /**
-     * A counter that triggers an update even if no relevant parameters have.
+     * A counter that triggers an update even if no relevant parameters have
      * been changed.
      */
     public function getForceUpdate(): ?int
@@ -252,7 +252,7 @@ class TaskSpec
     }
 
     /**
-     * A counter that triggers an update even if no relevant parameters have.
+     * A counter that triggers an update even if no relevant parameters have
      * been changed.
      */
     public function setForceUpdate(?int $forceUpdate): self
@@ -303,7 +303,7 @@ class TaskSpec
     }
 
     /**
-     * Specifies the log driver to use for tasks created from this spec. If.
+     * Specifies the log driver to use for tasks created from this spec. If
      * not present, the default one for the swarm will be used, finally
      * falling back to the engine default if not specified.
      */
@@ -313,7 +313,7 @@ class TaskSpec
     }
 
     /**
-     * Specifies the log driver to use for tasks created from this spec. If.
+     * Specifies the log driver to use for tasks created from this spec. If
      * not present, the default one for the swarm will be used, finally
      * falling back to the engine default if not specified.
      */

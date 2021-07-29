@@ -17,8 +17,8 @@ class TaskSpecContainerSpecConfigsItem
      */
     protected $file;
     /**
-     * Runtime represents a target that is not mounted into the.
-     * container but is used by the task
+     * Runtime represents a target that is not mounted into the
+     * container but is used by the task.
      *
      * <p><br /><p>
      *
@@ -29,14 +29,14 @@ class TaskSpecContainerSpecConfigsItem
      */
     protected $runtime;
     /**
-     * ConfigID represents the ID of the specific config that we're.
+     * ConfigID represents the ID of the specific config that we're
      * referencing.
      *
      * @var string|null
      */
     protected $configID;
     /**
-     * ConfigName is the name of the config that this references,.
+     * ConfigName is the name of the config that this references,
      * but this is just provided for lookup/display purposes. The
      * config in the reference will be identified by its ID.
      *
@@ -71,8 +71,8 @@ class TaskSpecContainerSpecConfigsItem
     }
 
     /**
-     * Runtime represents a target that is not mounted into the.
-     * container but is used by the task
+     * Runtime represents a target that is not mounted into the
+     * container but is used by the task.
      *
      * <p><br /><p>
      *
@@ -85,8 +85,8 @@ class TaskSpecContainerSpecConfigsItem
     }
 
     /**
-     * Runtime represents a target that is not mounted into the.
-     * container but is used by the task
+     * Runtime represents a target that is not mounted into the
+     * container but is used by the task.
      *
      * <p><br /><p>
      *
@@ -101,7 +101,7 @@ class TaskSpecContainerSpecConfigsItem
     }
 
     /**
-     * ConfigID represents the ID of the specific config that we're.
+     * ConfigID represents the ID of the specific config that we're
      * referencing.
      */
     public function getConfigID(): ?string
@@ -110,7 +110,7 @@ class TaskSpecContainerSpecConfigsItem
     }
 
     /**
-     * ConfigID represents the ID of the specific config that we're.
+     * ConfigID represents the ID of the specific config that we're
      * referencing.
      */
     public function setConfigID(?string $configID): self
@@ -121,7 +121,7 @@ class TaskSpecContainerSpecConfigsItem
     }
 
     /**
-     * ConfigName is the name of the config that this references,.
+     * ConfigName is the name of the config that this references,
      * but this is just provided for lookup/display purposes. The
      * config in the reference will be identified by its ID.
      */
@@ -131,7 +131,7 @@ class TaskSpecContainerSpecConfigsItem
     }
 
     /**
-     * ConfigName is the name of the config that this references,.
+     * ConfigName is the name of the config that this references,
      * but this is just provided for lookup/display purposes. The
      * config in the reference will be identified by its ID.
      */

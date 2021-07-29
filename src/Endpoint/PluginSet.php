@@ -6,19 +6,19 @@ namespace Docker\API\Endpoint;
 
 class PluginSet extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $name;
 
     /**
-     * @param string  $name        The name of the plugin. The `:latest` tag is optional, and is the
-     * @param array[] $requestBody
+     * @param string       $name        The name of the plugin. The `:latest` tag is optional, and is the
+     *                                  default if omitted.
+     * @param array[]|null $requestBody
      */
-    public function __construct(string $name, array $requestBody)
+    public function __construct(string $name, ?array $requestBody = null)
     {
         $this->name = $name;
         $this->body = $requestBody;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -56,10 +56,10 @@ class PluginSet extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
     {
         if (204 === $status) {
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PluginSetNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PluginSetInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

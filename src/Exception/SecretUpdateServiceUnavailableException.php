@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class SecretUpdateServiceUnavailableException extends \RuntimeException implements ServerException
+class SecretUpdateServiceUnavailableException extends ServiceUnavailableException
 {
     private $errorResponse;
 

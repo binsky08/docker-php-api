@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class HostConfig
 {
     /**
-     * An integer value representing this container's relative CPU weight.
+     * An integer value representing this container's relative CPU weight
      * versus other containers.
      *
      * @var int|null
@@ -20,7 +20,7 @@ class HostConfig
      */
     protected $memory = 0;
     /**
-     * Path to `cgroups` under which the container's `cgroup` is created. If.
+     * Path to `cgroups` under which the container's `cgroup` is created. If
      * the path is not absolute, the path is considered to be relative to the
      * `cgroups` path of the init process. Cgroups are created if they do not
      * already exist.
@@ -97,14 +97,14 @@ class HostConfig
      */
     protected $cpuQuota;
     /**
-     * The length of a CPU real-time period in microseconds. Set to 0 to.
+     * The length of a CPU real-time period in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      *
      * @var int|null
      */
     protected $cpuRealtimePeriod;
     /**
-     * The length of a CPU real-time runtime in microseconds. Set to 0 to.
+     * The length of a CPU real-time runtime in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      *
      * @var int|null
@@ -117,7 +117,7 @@ class HostConfig
      */
     protected $cpusetCpus;
     /**
-     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only.
+     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
      * effective on NUMA systems.
      *
      * @var string|null
@@ -165,14 +165,14 @@ class HostConfig
      */
     protected $memoryReservation;
     /**
-     * Total memory limit (memory + swap). Set as `-1` to enable unlimited.
+     * Total memory limit (memory + swap). Set as `-1` to enable unlimited
      * swap.
      *
      * @var int|null
      */
     protected $memorySwap;
     /**
-     * Tune a container's memory swappiness behavior. Accepts an integer.
+     * Tune a container's memory swappiness behavior. Accepts an integer
      * between 0 and 100.
      *
      * @var int|null
@@ -191,7 +191,7 @@ class HostConfig
      */
     protected $oomKillDisable;
     /**
-     * Run an init inside the container that forwards signals and reaps.
+     * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
      * configured on the daemon) is used.
      *
@@ -199,7 +199,7 @@ class HostConfig
      */
     protected $init;
     /**
-     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
      * to not change.
      *
      * @var int|null
@@ -242,15 +242,15 @@ class HostConfig
      */
     protected $iOMaximumIOps;
     /**
-     * Maximum IO in bytes per second for the container system drive.
+     * Maximum IO in bytes per second for the container system drive
      * (Windows only).
      *
      * @var int|null
      */
     protected $iOMaximumBandwidth;
     /**
-     * A list of volume bindings for this container. Each volume binding.
-     * is a string in one of these forms:
+     * A list of volume bindings for this container. Each volume binding
+     * is a string in one of these forms:.
      *
      * - `host-src:container-dest[:options]` to bind-mount a host path
      * into the container. Both `host-src`, and `container-dest` must
@@ -304,7 +304,7 @@ class HostConfig
      */
     protected $logConfig;
     /**
-     * Network mode to use for this container. Supported standard values.
+     * Network mode to use for this container. Supported standard values
      * are: `bridge`, `host`, `none`, and `container:<name|id>`. Any
      * other value is taken as a custom network's name to which this
      * container should connect to.
@@ -313,7 +313,7 @@ class HostConfig
      */
     protected $networkMode;
     /**
-     * PortMap describes the mapping of container ports to host ports, using the.
+     * PortMap describes the mapping of container ports to host ports, using the
      * container's port-number and protocol as key in the format `<port>/<protocol>`,
      * for example, `80/udp`.
      *
@@ -324,7 +324,7 @@ class HostConfig
      */
     protected $portBindings;
     /**
-     * The behavior to apply when the container exits. The default is not to.
+     * The behavior to apply when the container exits. The default is not to
      * restart.
      *
      * An ever increasing delay (double the previous delay, starting at 100ms) is
@@ -334,7 +334,7 @@ class HostConfig
      */
     protected $restartPolicy;
     /**
-     * Automatically remove the container when the container's process.
+     * Automatically remove the container when the container's process
      * exits. This has no effect if `RestartPolicy` is set.
      *
      * @var bool|null
@@ -347,7 +347,7 @@ class HostConfig
      */
     protected $volumeDriver;
     /**
-     * A list of volumes to inherit from another container, specified in.
+     * A list of volumes to inherit from another container, specified in
      * the form `<container name>[:<ro|rw>]`.
      *
      * @var string[]|null
@@ -360,14 +360,14 @@ class HostConfig
      */
     protected $mounts;
     /**
-     * A list of kernel capabilities to add to the container. Conflicts.
+     * A list of kernel capabilities to add to the container. Conflicts
      * with option 'Capabilities'.
      *
      * @var string[]|null
      */
     protected $capAdd;
     /**
-     * A list of kernel capabilities to drop from the container. Conflicts.
+     * A list of kernel capabilities to drop from the container. Conflicts
      * with option 'Capabilities'.
      *
      * @var string[]|null
@@ -404,7 +404,7 @@ class HostConfig
      */
     protected $dnsSearch;
     /**
-     * A list of hostnames/IP mappings to add to the container's `/etc/hosts`.
+     * A list of hostnames/IP mappings to add to the container's `/etc/hosts`
      * file. Specified in the form `["hostname:IP"]`.
      *
      * @var string[]|null
@@ -444,15 +444,15 @@ class HostConfig
      */
     protected $links;
     /**
-     * An integer value containing the score given to the container in.
+     * An integer value containing the score given to the container in
      * order to tune OOM killer preferences.
      *
      * @var int|null
      */
     protected $oomScoreAdj;
     /**
-     * Set the PID (Process) Namespace mode for the container. It can be.
-     * either:
+     * Set the PID (Process) Namespace mode for the container. It can be
+     * either:.
      *
      * - `"container:<name|id>"`: joins another container's PID namespace
      * - `"host"`: use the host's PID namespace inside the container
@@ -467,7 +467,7 @@ class HostConfig
      */
     protected $privileged;
     /**
-     * Allocates an ephemeral host port for all of a container's.
+     * Allocates an ephemeral host port for all of a container's
      * exposed ports.
      *
      * Ports are de-allocated when the container stops and allocated when
@@ -500,8 +500,8 @@ class HostConfig
      */
     protected $storageOpt;
     /**
-     * A map of container directories which should be replaced by tmpfs.
-     * mounts, and their corresponding mount options. For example:
+     * A map of container directories which should be replaced by tmpfs
+     * mounts, and their corresponding mount options. For example:.
      *
      * ```
      * { "/run": "rw,noexec,nosuid,size=65536k" }
@@ -517,7 +517,7 @@ class HostConfig
      */
     protected $uTSMode;
     /**
-     * Sets the usernamespace mode for the container when usernamespace.
+     * Sets the usernamespace mode for the container when usernamespace
      * remapping option is enabled.
      *
      * @var string|null
@@ -531,7 +531,7 @@ class HostConfig
     protected $shmSize;
     /**
      * A list of kernel parameters (sysctls) to set in the container.
-     * For example:
+     * For example:.
      *
      * ```
      * {"net.ipv4.ip_forward": "1"}
@@ -559,14 +559,14 @@ class HostConfig
      */
     protected $isolation;
     /**
-     * The list of paths to be masked inside the container (this overrides.
+     * The list of paths to be masked inside the container (this overrides
      * the default set of paths).
      *
      * @var string[]|null
      */
     protected $maskedPaths;
     /**
-     * The list of paths to be set as read-only inside the container.
+     * The list of paths to be set as read-only inside the container
      * (this overrides the default set of paths).
      *
      * @var string[]|null
@@ -574,7 +574,7 @@ class HostConfig
     protected $readonlyPaths;
 
     /**
-     * An integer value representing this container's relative CPU weight.
+     * An integer value representing this container's relative CPU weight
      * versus other containers.
      */
     public function getCpuShares(): ?int
@@ -583,7 +583,7 @@ class HostConfig
     }
 
     /**
-     * An integer value representing this container's relative CPU weight.
+     * An integer value representing this container's relative CPU weight
      * versus other containers.
      */
     public function setCpuShares(?int $cpuShares): self
@@ -612,7 +612,7 @@ class HostConfig
     }
 
     /**
-     * Path to `cgroups` under which the container's `cgroup` is created. If.
+     * Path to `cgroups` under which the container's `cgroup` is created. If
      * the path is not absolute, the path is considered to be relative to the
      * `cgroups` path of the init process. Cgroups are created if they do not
      * already exist.
@@ -623,7 +623,7 @@ class HostConfig
     }
 
     /**
-     * Path to `cgroups` under which the container's `cgroup` is created. If.
+     * Path to `cgroups` under which the container's `cgroup` is created. If
      * the path is not absolute, the path is considered to be relative to the
      * `cgroups` path of the init process. Cgroups are created if they do not
      * already exist.
@@ -840,7 +840,7 @@ class HostConfig
     }
 
     /**
-     * The length of a CPU real-time period in microseconds. Set to 0 to.
+     * The length of a CPU real-time period in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      */
     public function getCpuRealtimePeriod(): ?int
@@ -849,7 +849,7 @@ class HostConfig
     }
 
     /**
-     * The length of a CPU real-time period in microseconds. Set to 0 to.
+     * The length of a CPU real-time period in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      */
     public function setCpuRealtimePeriod(?int $cpuRealtimePeriod): self
@@ -860,7 +860,7 @@ class HostConfig
     }
 
     /**
-     * The length of a CPU real-time runtime in microseconds. Set to 0 to.
+     * The length of a CPU real-time runtime in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      */
     public function getCpuRealtimeRuntime(): ?int
@@ -869,7 +869,7 @@ class HostConfig
     }
 
     /**
-     * The length of a CPU real-time runtime in microseconds. Set to 0 to.
+     * The length of a CPU real-time runtime in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      */
     public function setCpuRealtimeRuntime(?int $cpuRealtimeRuntime): self
@@ -898,7 +898,7 @@ class HostConfig
     }
 
     /**
-     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only.
+     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
      * effective on NUMA systems.
      */
     public function getCpusetMems(): ?string
@@ -907,7 +907,7 @@ class HostConfig
     }
 
     /**
-     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only.
+     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
      * effective on NUMA systems.
      */
     public function setCpusetMems(?string $cpusetMems): self
@@ -1048,7 +1048,7 @@ class HostConfig
     }
 
     /**
-     * Total memory limit (memory + swap). Set as `-1` to enable unlimited.
+     * Total memory limit (memory + swap). Set as `-1` to enable unlimited
      * swap.
      */
     public function getMemorySwap(): ?int
@@ -1057,7 +1057,7 @@ class HostConfig
     }
 
     /**
-     * Total memory limit (memory + swap). Set as `-1` to enable unlimited.
+     * Total memory limit (memory + swap). Set as `-1` to enable unlimited
      * swap.
      */
     public function setMemorySwap(?int $memorySwap): self
@@ -1068,7 +1068,7 @@ class HostConfig
     }
 
     /**
-     * Tune a container's memory swappiness behavior. Accepts an integer.
+     * Tune a container's memory swappiness behavior. Accepts an integer
      * between 0 and 100.
      */
     public function getMemorySwappiness(): ?int
@@ -1077,7 +1077,7 @@ class HostConfig
     }
 
     /**
-     * Tune a container's memory swappiness behavior. Accepts an integer.
+     * Tune a container's memory swappiness behavior. Accepts an integer
      * between 0 and 100.
      */
     public function setMemorySwappiness(?int $memorySwappiness): self
@@ -1124,7 +1124,7 @@ class HostConfig
     }
 
     /**
-     * Run an init inside the container that forwards signals and reaps.
+     * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
      * configured on the daemon) is used.
      */
@@ -1134,7 +1134,7 @@ class HostConfig
     }
 
     /**
-     * Run an init inside the container that forwards signals and reaps.
+     * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
      * configured on the daemon) is used.
      */
@@ -1146,7 +1146,7 @@ class HostConfig
     }
 
     /**
-     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
      * to not change.
      */
     public function getPidsLimit(): ?int
@@ -1155,7 +1155,7 @@ class HostConfig
     }
 
     /**
-     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
      * to not change.
      */
     public function setPidsLimit(?int $pidsLimit): self
@@ -1266,7 +1266,7 @@ class HostConfig
     }
 
     /**
-     * Maximum IO in bytes per second for the container system drive.
+     * Maximum IO in bytes per second for the container system drive
      * (Windows only).
      */
     public function getIOMaximumBandwidth(): ?int
@@ -1275,7 +1275,7 @@ class HostConfig
     }
 
     /**
-     * Maximum IO in bytes per second for the container system drive.
+     * Maximum IO in bytes per second for the container system drive
      * (Windows only).
      */
     public function setIOMaximumBandwidth(?int $iOMaximumBandwidth): self
@@ -1286,8 +1286,8 @@ class HostConfig
     }
 
     /**
-     * A list of volume bindings for this container. Each volume binding.
-     * is a string in one of these forms:
+     * A list of volume bindings for this container. Each volume binding
+     * is a string in one of these forms:.
      *
      * - `host-src:container-dest[:options]` to bind-mount a host path
      * into the container. Both `host-src`, and `container-dest` must
@@ -1333,8 +1333,8 @@ class HostConfig
     }
 
     /**
-     * A list of volume bindings for this container. Each volume binding.
-     * is a string in one of these forms:
+     * A list of volume bindings for this container. Each volume binding
+     * is a string in one of these forms:.
      *
      * - `host-src:container-dest[:options]` to bind-mount a host path
      * into the container. Both `host-src`, and `container-dest` must
@@ -1418,7 +1418,7 @@ class HostConfig
     }
 
     /**
-     * Network mode to use for this container. Supported standard values.
+     * Network mode to use for this container. Supported standard values
      * are: `bridge`, `host`, `none`, and `container:<name|id>`. Any
      * other value is taken as a custom network's name to which this
      * container should connect to.
@@ -1429,7 +1429,7 @@ class HostConfig
     }
 
     /**
-     * Network mode to use for this container. Supported standard values.
+     * Network mode to use for this container. Supported standard values
      * are: `bridge`, `host`, `none`, and `container:<name|id>`. Any
      * other value is taken as a custom network's name to which this
      * container should connect to.
@@ -1442,7 +1442,7 @@ class HostConfig
     }
 
     /**
-     * PortMap describes the mapping of container ports to host ports, using the.
+     * PortMap describes the mapping of container ports to host ports, using the
      * container's port-number and protocol as key in the format `<port>/<protocol>`,
      * for example, `80/udp`.
      *
@@ -1457,7 +1457,7 @@ class HostConfig
     }
 
     /**
-     * PortMap describes the mapping of container ports to host ports, using the.
+     * PortMap describes the mapping of container ports to host ports, using the
      * container's port-number and protocol as key in the format `<port>/<protocol>`,
      * for example, `80/udp`.
      *
@@ -1474,7 +1474,7 @@ class HostConfig
     }
 
     /**
-     * The behavior to apply when the container exits. The default is not to.
+     * The behavior to apply when the container exits. The default is not to
      * restart.
      *
      * An ever increasing delay (double the previous delay, starting at 100ms) is
@@ -1486,7 +1486,7 @@ class HostConfig
     }
 
     /**
-     * The behavior to apply when the container exits. The default is not to.
+     * The behavior to apply when the container exits. The default is not to
      * restart.
      *
      * An ever increasing delay (double the previous delay, starting at 100ms) is
@@ -1500,7 +1500,7 @@ class HostConfig
     }
 
     /**
-     * Automatically remove the container when the container's process.
+     * Automatically remove the container when the container's process
      * exits. This has no effect if `RestartPolicy` is set.
      */
     public function getAutoRemove(): ?bool
@@ -1509,7 +1509,7 @@ class HostConfig
     }
 
     /**
-     * Automatically remove the container when the container's process.
+     * Automatically remove the container when the container's process
      * exits. This has no effect if `RestartPolicy` is set.
      */
     public function setAutoRemove(?bool $autoRemove): self
@@ -1538,7 +1538,7 @@ class HostConfig
     }
 
     /**
-     * A list of volumes to inherit from another container, specified in.
+     * A list of volumes to inherit from another container, specified in
      * the form `<container name>[:<ro|rw>]`.
      *
      * @return string[]|null
@@ -1549,7 +1549,7 @@ class HostConfig
     }
 
     /**
-     * A list of volumes to inherit from another container, specified in.
+     * A list of volumes to inherit from another container, specified in
      * the form `<container name>[:<ro|rw>]`.
      *
      * @param string[]|null $volumesFrom
@@ -1584,7 +1584,7 @@ class HostConfig
     }
 
     /**
-     * A list of kernel capabilities to add to the container. Conflicts.
+     * A list of kernel capabilities to add to the container. Conflicts
      * with option 'Capabilities'.
      *
      * @return string[]|null
@@ -1595,7 +1595,7 @@ class HostConfig
     }
 
     /**
-     * A list of kernel capabilities to add to the container. Conflicts.
+     * A list of kernel capabilities to add to the container. Conflicts
      * with option 'Capabilities'.
      *
      * @param string[]|null $capAdd
@@ -1608,7 +1608,7 @@ class HostConfig
     }
 
     /**
-     * A list of kernel capabilities to drop from the container. Conflicts.
+     * A list of kernel capabilities to drop from the container. Conflicts
      * with option 'Capabilities'.
      *
      * @return string[]|null
@@ -1619,7 +1619,7 @@ class HostConfig
     }
 
     /**
-     * A list of kernel capabilities to drop from the container. Conflicts.
+     * A list of kernel capabilities to drop from the container. Conflicts
      * with option 'Capabilities'.
      *
      * @param string[]|null $capDrop
@@ -1728,7 +1728,7 @@ class HostConfig
     }
 
     /**
-     * A list of hostnames/IP mappings to add to the container's `/etc/hosts`.
+     * A list of hostnames/IP mappings to add to the container's `/etc/hosts`
      * file. Specified in the form `["hostname:IP"]`.
      *
      * @return string[]|null
@@ -1739,7 +1739,7 @@ class HostConfig
     }
 
     /**
-     * A list of hostnames/IP mappings to add to the container's `/etc/hosts`.
+     * A list of hostnames/IP mappings to add to the container's `/etc/hosts`
      * file. Specified in the form `["hostname:IP"]`.
      *
      * @param string[]|null $extraHosts
@@ -1850,7 +1850,7 @@ class HostConfig
     }
 
     /**
-     * An integer value containing the score given to the container in.
+     * An integer value containing the score given to the container in
      * order to tune OOM killer preferences.
      */
     public function getOomScoreAdj(): ?int
@@ -1859,7 +1859,7 @@ class HostConfig
     }
 
     /**
-     * An integer value containing the score given to the container in.
+     * An integer value containing the score given to the container in
      * order to tune OOM killer preferences.
      */
     public function setOomScoreAdj(?int $oomScoreAdj): self
@@ -1870,8 +1870,8 @@ class HostConfig
     }
 
     /**
-     * Set the PID (Process) Namespace mode for the container. It can be.
-     * either:
+     * Set the PID (Process) Namespace mode for the container. It can be
+     * either:.
      *
      * - `"container:<name|id>"`: joins another container's PID namespace
      * - `"host"`: use the host's PID namespace inside the container
@@ -1882,8 +1882,8 @@ class HostConfig
     }
 
     /**
-     * Set the PID (Process) Namespace mode for the container. It can be.
-     * either:
+     * Set the PID (Process) Namespace mode for the container. It can be
+     * either:.
      *
      * - `"container:<name|id>"`: joins another container's PID namespace
      * - `"host"`: use the host's PID namespace inside the container
@@ -1914,7 +1914,7 @@ class HostConfig
     }
 
     /**
-     * Allocates an ephemeral host port for all of a container's.
+     * Allocates an ephemeral host port for all of a container's
      * exposed ports.
      *
      * Ports are de-allocated when the container stops and allocated when
@@ -1931,7 +1931,7 @@ class HostConfig
     }
 
     /**
-     * Allocates an ephemeral host port for all of a container's.
+     * Allocates an ephemeral host port for all of a container's
      * exposed ports.
      *
      * Ports are de-allocated when the container stops and allocated when
@@ -2012,8 +2012,8 @@ class HostConfig
     }
 
     /**
-     * A map of container directories which should be replaced by tmpfs.
-     * mounts, and their corresponding mount options. For example:
+     * A map of container directories which should be replaced by tmpfs
+     * mounts, and their corresponding mount options. For example:.
      *
      * ```
      * { "/run": "rw,noexec,nosuid,size=65536k" }
@@ -2027,8 +2027,8 @@ class HostConfig
     }
 
     /**
-     * A map of container directories which should be replaced by tmpfs.
-     * mounts, and their corresponding mount options. For example:
+     * A map of container directories which should be replaced by tmpfs
+     * mounts, and their corresponding mount options. For example:.
      *
      * ```
      * { "/run": "rw,noexec,nosuid,size=65536k" }
@@ -2062,7 +2062,7 @@ class HostConfig
     }
 
     /**
-     * Sets the usernamespace mode for the container when usernamespace.
+     * Sets the usernamespace mode for the container when usernamespace
      * remapping option is enabled.
      */
     public function getUsernsMode(): ?string
@@ -2071,7 +2071,7 @@ class HostConfig
     }
 
     /**
-     * Sets the usernamespace mode for the container when usernamespace.
+     * Sets the usernamespace mode for the container when usernamespace
      * remapping option is enabled.
      */
     public function setUsernsMode(?string $usernsMode): self
@@ -2101,7 +2101,7 @@ class HostConfig
 
     /**
      * A list of kernel parameters (sysctls) to set in the container.
-     * For example:
+     * For example:.
      *
      * ```
      * {"net.ipv4.ip_forward": "1"}
@@ -2116,7 +2116,7 @@ class HostConfig
 
     /**
      * A list of kernel parameters (sysctls) to set in the container.
-     * For example:
+     * For example:.
      *
      * ```
      * {"net.ipv4.ip_forward": "1"}
@@ -2190,7 +2190,7 @@ class HostConfig
     }
 
     /**
-     * The list of paths to be masked inside the container (this overrides.
+     * The list of paths to be masked inside the container (this overrides
      * the default set of paths).
      *
      * @return string[]|null
@@ -2201,7 +2201,7 @@ class HostConfig
     }
 
     /**
-     * The list of paths to be masked inside the container (this overrides.
+     * The list of paths to be masked inside the container (this overrides
      * the default set of paths).
      *
      * @param string[]|null $maskedPaths
@@ -2214,7 +2214,7 @@ class HostConfig
     }
 
     /**
-     * The list of paths to be set as read-only inside the container.
+     * The list of paths to be set as read-only inside the container
      * (this overrides the default set of paths).
      *
      * @return string[]|null
@@ -2225,7 +2225,7 @@ class HostConfig
     }
 
     /**
-     * The list of paths to be set as read-only inside the container.
+     * The list of paths to be set as read-only inside the container
      * (this overrides the default set of paths).
      *
      * @param string[]|null $readonlyPaths

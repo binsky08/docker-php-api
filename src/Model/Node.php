@@ -11,7 +11,7 @@ class Node
      */
     protected $iD;
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -26,14 +26,14 @@ class Node
      */
     protected $version;
     /**
-     * Date and time at which the node was added to the swarm in.
+     * Date and time at which the node was added to the swarm in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
      * @var string|null
      */
     protected $createdAt;
     /**
-     * Date and time at which the node was last updated in.
+     * Date and time at which the node was last updated in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      *
      * @var string|null
@@ -44,7 +44,7 @@ class Node
      */
     protected $spec;
     /**
-     * NodeDescription encapsulates the properties of the Node as reported by the.
+     * NodeDescription encapsulates the properties of the Node as reported by the
      * agent.
      *
      * @var NodeDescription|null
@@ -81,7 +81,7 @@ class Node
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -98,7 +98,7 @@ class Node
     }
 
     /**
-     * The version number of the object such as node, service, etc. This is needed.
+     * The version number of the object such as node, service, etc. This is needed
      * to avoid conflicting writes. The client must send the version number along
      * with the modified specification when updating these objects.
      *
@@ -117,7 +117,7 @@ class Node
     }
 
     /**
-     * Date and time at which the node was added to the swarm in.
+     * Date and time at which the node was added to the swarm in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function getCreatedAt(): ?string
@@ -126,7 +126,7 @@ class Node
     }
 
     /**
-     * Date and time at which the node was added to the swarm in.
+     * Date and time at which the node was added to the swarm in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function setCreatedAt(?string $createdAt): self
@@ -137,7 +137,7 @@ class Node
     }
 
     /**
-     * Date and time at which the node was last updated in.
+     * Date and time at which the node was last updated in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function getUpdatedAt(): ?string
@@ -146,7 +146,7 @@ class Node
     }
 
     /**
-     * Date and time at which the node was last updated in.
+     * Date and time at which the node was last updated in
      * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      */
     public function setUpdatedAt(?string $updatedAt): self
@@ -169,7 +169,7 @@ class Node
     }
 
     /**
-     * NodeDescription encapsulates the properties of the Node as reported by the.
+     * NodeDescription encapsulates the properties of the Node as reported by the
      * agent.
      */
     public function getDescription(): ?NodeDescription
@@ -178,7 +178,7 @@ class Node
     }
 
     /**
-     * NodeDescription encapsulates the properties of the Node as reported by the.
+     * NodeDescription encapsulates the properties of the Node as reported by the
      * agent.
      */
     public function setDescription(?NodeDescription $description): self

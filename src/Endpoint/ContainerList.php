@@ -6,8 +6,10 @@ namespace Docker\API\Endpoint;
 
 class ContainerList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
-     * Returns a list of containers. For details on the format, see the.
+     * Returns a list of containers. For details on the format, see the
      * [inspect endpoint](#operation/ContainerInspect).
      *
      * Note that it uses a different, smaller representation of a container
@@ -17,10 +19,9 @@ class ContainerList extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param array $queryParameters {
      *
      *     @var bool $all Return all containers. By default, only running containers are shown.
-     *
-     *     @var int $limit Return this number of most recently created containers, including
-     *     @var bool $size Return the size of container as fields `SizeRw` and `SizeRootFs`.
-     *
+     *     @var int $limit return this number of most recently created containers, including
+     * non-running ones
+     *     @var bool $size return the size of container as fields `SizeRw` and `SizeRootFs`
      *     @var string $filters Filters to process on the container list, encoded as JSON (a
      * `map[string][]string`). For example, `{"status": ["paused"]}` will
      * only return paused containers.
@@ -49,8 +50,6 @@ class ContainerList extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     {
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -96,13 +95,13 @@ class ContainerList extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (200 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainerSummaryItem[]', 'json');
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerListBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerListInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

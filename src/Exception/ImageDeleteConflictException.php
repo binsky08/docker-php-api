@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImageDeleteConflictException extends \RuntimeException implements ClientException
+class ImageDeleteConflictException extends ConflictException
 {
     private $errorResponse;
 

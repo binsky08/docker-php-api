@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ImagePushInternalServerErrorException extends \RuntimeException implements ServerException
+class ImagePushInternalServerErrorException extends InternalServerErrorException
 {
     private $errorResponse;
 

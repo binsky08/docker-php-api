@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class NetworkDeleteInternalServerErrorException extends \RuntimeException implements ServerException
+class NetworkDeleteInternalServerErrorException extends InternalServerErrorException
 {
     private $errorResponse;
 

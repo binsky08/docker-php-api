@@ -6,16 +6,16 @@ namespace Docker\API\Endpoint;
 
 class SystemAuth extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
-     * Validate credentials for a registry and, if available, get an identity.
+     * Validate credentials for a registry and, if available, get an identity
      * token for accessing the registry without password.
      */
-    public function __construct(\Docker\API\Model\AuthConfig $requestBody)
+    public function __construct(?\Docker\API\Model\AuthConfig $requestBody = null)
     {
         $this->body = $requestBody;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -50,12 +50,12 @@ class SystemAuth extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (200 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\AuthPostResponse200', 'json');
         }
         if (204 === $status) {
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\SystemAuthInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

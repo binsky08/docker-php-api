@@ -6,6 +6,7 @@ namespace Docker\API\Endpoint;
 
 class ContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
@@ -22,8 +23,6 @@ class ContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implement
         $this->id = $id;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -69,7 +68,7 @@ class ContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implement
         }
         if (400 === $status) {
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerArchiveNotFoundException();
         }
         if (500 === $status) {

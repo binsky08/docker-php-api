@@ -6,22 +6,23 @@ namespace Docker\API\Endpoint;
 
 class SwarmUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
      * @param array $queryParameters {
      *
      *     @var int $version The version number of the swarm object being updated. This is
+     * required to avoid conflicting writes.
      *     @var bool $rotateWorkerToken rotate the worker join token
      *     @var bool $rotateManagerToken rotate the manager join token
      *     @var bool $rotateManagerUnlockKey Rotate the manager unlock key.
      * }
      */
-    public function __construct(\Docker\API\Model\SwarmSpec $requestBody, array $queryParameters = [])
+    public function __construct(?\Docker\API\Model\SwarmSpec $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -77,13 +78,13 @@ class SwarmUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     {
         if (200 === $status) {
         }
-        if (400 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\SwarmUpdateBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\SwarmUpdateInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (503 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (503 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\SwarmUpdateServiceUnavailableException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

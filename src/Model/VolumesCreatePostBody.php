@@ -19,7 +19,7 @@ class VolumesCreatePostBody
      */
     protected $driver = 'local';
     /**
-     * A mapping of driver options and values. These options are.
+     * A mapping of driver options and values. These options are
      * passed directly to the driver and are driver specific.
      *
      * @var string[]|null
@@ -69,7 +69,7 @@ class VolumesCreatePostBody
     }
 
     /**
-     * A mapping of driver options and values. These options are.
+     * A mapping of driver options and values. These options are
      * passed directly to the driver and are driver specific.
      *
      * @return string[]|null
@@ -80,7 +80,7 @@ class VolumesCreatePostBody
     }
 
     /**
-     * A mapping of driver options and values. These options are.
+     * A mapping of driver options and values. These options are
      * passed directly to the driver and are driver specific.
      *
      * @param string[]|null $driverOpts

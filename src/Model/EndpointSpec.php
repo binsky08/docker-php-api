@@ -13,7 +13,7 @@ class EndpointSpec
      */
     protected $mode = 'vip';
     /**
-     * List of exposed ports that this service is accessible on from the.
+     * List of exposed ports that this service is accessible on from the
      * outside. Ports can only be provided if `vip` resolution mode is used.
      *
      * @var EndpointPortConfig[]|null
@@ -39,7 +39,7 @@ class EndpointSpec
     }
 
     /**
-     * List of exposed ports that this service is accessible on from the.
+     * List of exposed ports that this service is accessible on from the
      * outside. Ports can only be provided if `vip` resolution mode is used.
      *
      * @return EndpointPortConfig[]|null
@@ -50,7 +50,7 @@ class EndpointSpec
     }
 
     /**
-     * List of exposed ports that this service is accessible on from the.
+     * List of exposed ports that this service is accessible on from the
      * outside. Ports can only be provided if `vip` resolution mode is used.
      *
      * @param EndpointPortConfig[]|null $ports

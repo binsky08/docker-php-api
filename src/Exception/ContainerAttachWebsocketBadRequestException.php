@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerAttachWebsocketBadRequestException extends \RuntimeException implements ClientException
+class ContainerAttachWebsocketBadRequestException extends BadRequestException
 {
     private $errorResponse;
 

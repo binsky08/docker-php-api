@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class TaskListServiceUnavailableException extends \RuntimeException implements ServerException
+class TaskListServiceUnavailableException extends ServiceUnavailableException
 {
     private $errorResponse;
 

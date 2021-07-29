@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class SwarmInspectNotFoundException extends \RuntimeException implements ClientException
+class SwarmInspectNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

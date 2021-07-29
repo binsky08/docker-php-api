@@ -6,10 +6,11 @@ namespace Docker\API\Endpoint;
 
 class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $id;
 
     /**
-     * Resize the TTY session used by an exec instance. This endpoint only works.
+     * Resize the TTY session used by an exec instance. This endpoint only works
      * if `tty` was specified as part of creating and starting the exec instance.
      *
      * @param string $id              Exec instance ID
@@ -24,8 +25,6 @@ class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
         $this->id = $id;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -70,7 +69,7 @@ class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     {
         if (201 === $status) {
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ExecResizeNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class NetworkDisconnectNotFoundException extends \RuntimeException implements ClientException
+class NetworkDisconnectNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

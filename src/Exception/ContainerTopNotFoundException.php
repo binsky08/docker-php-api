@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Exception;
 
-class ContainerTopNotFoundException extends \RuntimeException implements ClientException
+class ContainerTopNotFoundException extends NotFoundException
 {
     private $errorResponse;
 

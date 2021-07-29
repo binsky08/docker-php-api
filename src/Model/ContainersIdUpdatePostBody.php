@@ -7,7 +7,7 @@ namespace Docker\API\Model;
 class ContainersIdUpdatePostBody
 {
     /**
-     * An integer value representing this container's relative CPU weight.
+     * An integer value representing this container's relative CPU weight
      * versus other containers.
      *
      * @var int|null
@@ -20,7 +20,7 @@ class ContainersIdUpdatePostBody
      */
     protected $memory = 0;
     /**
-     * Path to `cgroups` under which the container's `cgroup` is created. If.
+     * Path to `cgroups` under which the container's `cgroup` is created. If
      * the path is not absolute, the path is considered to be relative to the
      * `cgroups` path of the init process. Cgroups are created if they do not
      * already exist.
@@ -97,14 +97,14 @@ class ContainersIdUpdatePostBody
      */
     protected $cpuQuota;
     /**
-     * The length of a CPU real-time period in microseconds. Set to 0 to.
+     * The length of a CPU real-time period in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      *
      * @var int|null
      */
     protected $cpuRealtimePeriod;
     /**
-     * The length of a CPU real-time runtime in microseconds. Set to 0 to.
+     * The length of a CPU real-time runtime in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      *
      * @var int|null
@@ -117,7 +117,7 @@ class ContainersIdUpdatePostBody
      */
     protected $cpusetCpus;
     /**
-     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only.
+     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
      * effective on NUMA systems.
      *
      * @var string|null
@@ -165,14 +165,14 @@ class ContainersIdUpdatePostBody
      */
     protected $memoryReservation;
     /**
-     * Total memory limit (memory + swap). Set as `-1` to enable unlimited.
+     * Total memory limit (memory + swap). Set as `-1` to enable unlimited
      * swap.
      *
      * @var int|null
      */
     protected $memorySwap;
     /**
-     * Tune a container's memory swappiness behavior. Accepts an integer.
+     * Tune a container's memory swappiness behavior. Accepts an integer
      * between 0 and 100.
      *
      * @var int|null
@@ -191,7 +191,7 @@ class ContainersIdUpdatePostBody
      */
     protected $oomKillDisable;
     /**
-     * Run an init inside the container that forwards signals and reaps.
+     * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
      * configured on the daemon) is used.
      *
@@ -199,7 +199,7 @@ class ContainersIdUpdatePostBody
      */
     protected $init;
     /**
-     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
      * to not change.
      *
      * @var int|null
@@ -242,14 +242,14 @@ class ContainersIdUpdatePostBody
      */
     protected $iOMaximumIOps;
     /**
-     * Maximum IO in bytes per second for the container system drive.
+     * Maximum IO in bytes per second for the container system drive
      * (Windows only).
      *
      * @var int|null
      */
     protected $iOMaximumBandwidth;
     /**
-     * The behavior to apply when the container exits. The default is not to.
+     * The behavior to apply when the container exits. The default is not to
      * restart.
      *
      * An ever increasing delay (double the previous delay, starting at 100ms) is
@@ -260,7 +260,7 @@ class ContainersIdUpdatePostBody
     protected $restartPolicy;
 
     /**
-     * An integer value representing this container's relative CPU weight.
+     * An integer value representing this container's relative CPU weight
      * versus other containers.
      */
     public function getCpuShares(): ?int
@@ -269,7 +269,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * An integer value representing this container's relative CPU weight.
+     * An integer value representing this container's relative CPU weight
      * versus other containers.
      */
     public function setCpuShares(?int $cpuShares): self
@@ -298,7 +298,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Path to `cgroups` under which the container's `cgroup` is created. If.
+     * Path to `cgroups` under which the container's `cgroup` is created. If
      * the path is not absolute, the path is considered to be relative to the
      * `cgroups` path of the init process. Cgroups are created if they do not
      * already exist.
@@ -309,7 +309,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Path to `cgroups` under which the container's `cgroup` is created. If.
+     * Path to `cgroups` under which the container's `cgroup` is created. If
      * the path is not absolute, the path is considered to be relative to the
      * `cgroups` path of the init process. Cgroups are created if they do not
      * already exist.
@@ -526,7 +526,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * The length of a CPU real-time period in microseconds. Set to 0 to.
+     * The length of a CPU real-time period in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      */
     public function getCpuRealtimePeriod(): ?int
@@ -535,7 +535,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * The length of a CPU real-time period in microseconds. Set to 0 to.
+     * The length of a CPU real-time period in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      */
     public function setCpuRealtimePeriod(?int $cpuRealtimePeriod): self
@@ -546,7 +546,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * The length of a CPU real-time runtime in microseconds. Set to 0 to.
+     * The length of a CPU real-time runtime in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      */
     public function getCpuRealtimeRuntime(): ?int
@@ -555,7 +555,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * The length of a CPU real-time runtime in microseconds. Set to 0 to.
+     * The length of a CPU real-time runtime in microseconds. Set to 0 to
      * allocate no time allocated to real-time tasks.
      */
     public function setCpuRealtimeRuntime(?int $cpuRealtimeRuntime): self
@@ -584,7 +584,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only.
+     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
      * effective on NUMA systems.
      */
     public function getCpusetMems(): ?string
@@ -593,7 +593,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only.
+     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
      * effective on NUMA systems.
      */
     public function setCpusetMems(?string $cpusetMems): self
@@ -734,7 +734,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Total memory limit (memory + swap). Set as `-1` to enable unlimited.
+     * Total memory limit (memory + swap). Set as `-1` to enable unlimited
      * swap.
      */
     public function getMemorySwap(): ?int
@@ -743,7 +743,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Total memory limit (memory + swap). Set as `-1` to enable unlimited.
+     * Total memory limit (memory + swap). Set as `-1` to enable unlimited
      * swap.
      */
     public function setMemorySwap(?int $memorySwap): self
@@ -754,7 +754,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Tune a container's memory swappiness behavior. Accepts an integer.
+     * Tune a container's memory swappiness behavior. Accepts an integer
      * between 0 and 100.
      */
     public function getMemorySwappiness(): ?int
@@ -763,7 +763,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Tune a container's memory swappiness behavior. Accepts an integer.
+     * Tune a container's memory swappiness behavior. Accepts an integer
      * between 0 and 100.
      */
     public function setMemorySwappiness(?int $memorySwappiness): self
@@ -810,7 +810,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Run an init inside the container that forwards signals and reaps.
+     * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
      * configured on the daemon) is used.
      */
@@ -820,7 +820,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Run an init inside the container that forwards signals and reaps.
+     * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
      * configured on the daemon) is used.
      */
@@ -832,7 +832,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
      * to not change.
      */
     public function getPidsLimit(): ?int
@@ -841,7 +841,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
      * to not change.
      */
     public function setPidsLimit(?int $pidsLimit): self
@@ -952,7 +952,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Maximum IO in bytes per second for the container system drive.
+     * Maximum IO in bytes per second for the container system drive
      * (Windows only).
      */
     public function getIOMaximumBandwidth(): ?int
@@ -961,7 +961,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * Maximum IO in bytes per second for the container system drive.
+     * Maximum IO in bytes per second for the container system drive
      * (Windows only).
      */
     public function setIOMaximumBandwidth(?int $iOMaximumBandwidth): self
@@ -972,7 +972,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * The behavior to apply when the container exits. The default is not to.
+     * The behavior to apply when the container exits. The default is not to
      * restart.
      *
      * An ever increasing delay (double the previous delay, starting at 100ms) is
@@ -984,7 +984,7 @@ class ContainersIdUpdatePostBody
     }
 
     /**
-     * The behavior to apply when the container exits. The default is not to.
+     * The behavior to apply when the container exits. The default is not to
      * restart.
      *
      * An ever increasing delay (double the previous delay, starting at 100ms) is

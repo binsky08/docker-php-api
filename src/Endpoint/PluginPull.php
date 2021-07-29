@@ -6,15 +6,18 @@ namespace Docker\API\Endpoint;
 
 class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
+
     /**
-     * Pulls and installs a plugin. After the plugin is installed, it can be.
+     * Pulls and installs a plugin. After the plugin is installed, it can be
      * enabled using the [`POST /plugins/{name}/enable` endpoint](#operation/PostPluginsEnable).
      *
-     * @param \Docker\API\Model\PluginsPullPostBodyItem[] $requestBody
-     * @param array                                       $queryParameters {
+     * @param \Docker\API\Model\PluginsPullPostBodyItem[]|null $requestBody
+     * @param array                                            $queryParameters {
      *
      *     @var string $remote Remote reference for plugin to install.
      *
+     * The `:latest` tag is optional, and is used as the default if omitted.
      *     @var string $name Local name for the pulled plugin.
      *
      * The `:latest` tag is optional, and is used as the default if omitted.
@@ -31,14 +34,12 @@ class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *
      * }
      */
-    public function __construct(array $requestBody, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(?array $requestBody = null, array $queryParameters = [], array $headerParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -101,7 +102,7 @@ class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     {
         if (204 === $status) {
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PluginPullInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

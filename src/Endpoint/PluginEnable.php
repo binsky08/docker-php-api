@@ -6,10 +6,12 @@ namespace Docker\API\Endpoint;
 
 class PluginEnable extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docker\API\Runtime\Client\Endpoint
 {
+    use \Docker\API\Runtime\Client\EndpointTrait;
     protected $name;
 
     /**
      * @param string $name            The name of the plugin. The `:latest` tag is optional, and is the
+     *                                default if omitted.
      * @param array  $queryParameters {
      *
      *     @var int $timeout Set the HTTP client timeout (in seconds)
@@ -20,8 +22,6 @@ class PluginEnable extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
         $this->name = $name;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Docker\API\Runtime\Client\EndpointTrait;
 
     public function getMethod(): string
     {
@@ -66,10 +66,10 @@ class PluginEnable extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     {
         if (200 === $status) {
         }
-        if (404 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PluginEnableNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if (500 === $status && false !== \mb_strpos($contentType, 'application/json')) {
+        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\PluginEnableInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }
