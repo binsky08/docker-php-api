@@ -5,11 +5,11 @@ $finder = \PhpCsFixer\Finder::create()
         __DIR__.'/src',
     ]);
 
-return \PhpCsFixer\Config::create()
+$config = new \PhpCsFixer\Config();
+return $config
     ->setRules([
         '@Symfony'                    => true,
         '@Symfony:risky'              => true,
-        '@PHP56Migration'             => true,
         '@PHP56Migration:risky'       => true,
         '@PHP70Migration'             => true,
         '@PHP70Migration:risky'       => true,
