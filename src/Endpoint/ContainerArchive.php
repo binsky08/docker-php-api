@@ -31,7 +31,7 @@ class ContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implement
 
     public function getUri(): string
     {
-        return \str_replace(['{id}'], [$this->id], '/containers/{id}/archive');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/archive');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -68,7 +68,7 @@ class ContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implement
         }
         if (400 === $status) {
         }
-        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (404 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerArchiveNotFoundException();
         }
         if (500 === $status) {

@@ -36,7 +36,7 @@ class ContainerAttachWebsocket extends \Docker\API\Runtime\Client\BaseEndpoint i
 
     public function getUri(): string
     {
-        return \str_replace(['{id}'], [$this->id], '/containers/{id}/attach/ws');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/attach/ws');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -80,13 +80,13 @@ class ContainerAttachWebsocket extends \Docker\API\Runtime\Client\BaseEndpoint i
         }
         if (200 === $status) {
         }
-        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (400 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerAttachWebsocketBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (404 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerAttachWebsocketNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (500 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerAttachWebsocketInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

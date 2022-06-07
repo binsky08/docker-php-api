@@ -33,7 +33,7 @@ class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
 
     public function getUri(): string
     {
-        return \str_replace(['{id}'], [$this->id], '/exec/{id}/resize');
+        return str_replace(['{id}'], [$this->id], '/exec/{id}/resize');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -69,7 +69,7 @@ class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     {
         if (201 === $status) {
         }
-        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (404 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ExecResizeNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

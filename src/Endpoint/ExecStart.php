@@ -29,7 +29,7 @@ class ExecStart extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
 
     public function getUri(): string
     {
-        return \str_replace(['{id}'], [$this->id], '/exec/{id}/start');
+        return str_replace(['{id}'], [$this->id], '/exec/{id}/start');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array

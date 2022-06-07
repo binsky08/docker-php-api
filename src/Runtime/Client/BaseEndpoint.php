@@ -32,14 +32,14 @@ abstract class BaseEndpoint implements Endpoint
     public function getQueryString(): string
     {
         $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
-        $optionsResolved = \array_map(fn ($value) => null !== $value ? $value : '', $optionsResolved);
+        $optionsResolved = array_map(fn ($value) => null !== $value ? $value : '', $optionsResolved);
 
-        return \http_build_query($optionsResolved, '', '&', \PHP_QUERY_RFC3986);
+        return http_build_query($optionsResolved, '', '&', \PHP_QUERY_RFC3986);
     }
 
     public function getHeaders(array $baseHeaders = []): array
     {
-        return \array_merge($this->getExtraHeaders(), $baseHeaders, $this->getHeadersOptionsResolver()->resolve($this->headerParameters));
+        return array_merge($this->getExtraHeaders(), $baseHeaders, $this->getHeadersOptionsResolver()->resolve($this->headerParameters));
     }
 
     protected function getQueryOptionsResolver(): OptionsResolver
@@ -56,7 +56,7 @@ abstract class BaseEndpoint implements Endpoint
     // Used for OpenApi2 compatibility
     protected function getFormBody(): array
     {
-        return [['Content-Type' => ['application/x-www-form-urlencoded']], \http_build_query($this->getFormOptionsResolver()->resolve($this->formParameters))];
+        return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($this->getFormOptionsResolver()->resolve($this->formParameters))];
     }
 
     protected function getMultipartBody($streamFactory = null): array

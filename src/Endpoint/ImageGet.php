@@ -48,7 +48,7 @@ class ImageGet extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
 
     public function getUri(): string
     {
-        return \str_replace(['{name}'], [$this->name], '/images/{name}/get');
+        return str_replace(['{name}'], [$this->name], '/images/{name}/get');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array

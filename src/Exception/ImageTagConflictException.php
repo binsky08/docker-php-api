@@ -6,15 +6,18 @@ namespace Docker\API\Exception;
 
 class ImageTagConflictException extends ConflictException
 {
+    /**
+     * @var \Docker\API\Model\ErrorResponse
+     */
     private $errorResponse;
 
     public function __construct(\Docker\API\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Conflict', 409);
+        parent::__construct('Conflict');
         $this->errorResponse = $errorResponse;
     }
 
-    public function getErrorResponse()
+    public function getErrorResponse(): \Docker\API\Model\ErrorResponse
     {
         return $this->errorResponse;
     }

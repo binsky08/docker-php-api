@@ -32,7 +32,7 @@ class SecretUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
 
     public function getUri(): string
     {
-        return \str_replace(['{id}'], [$this->id], '/secrets/{id}/update');
+        return str_replace(['{id}'], [$this->id], '/secrets/{id}/update');
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
@@ -77,16 +77,16 @@ class SecretUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     {
         if (200 === $status) {
         }
-        if ((null === $contentType) === false && (400 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (400 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\SecretUpdateBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if ((null === $contentType) === false && (404 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (404 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\SecretUpdateNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if ((null === $contentType) === false && (500 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (500 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\SecretUpdateInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
-        if ((null === $contentType) === false && (503 === $status && false !== \mb_strpos($contentType, 'application/json'))) {
+        if ((null === $contentType) === false && (503 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\SecretUpdateServiceUnavailableException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'));
         }
     }

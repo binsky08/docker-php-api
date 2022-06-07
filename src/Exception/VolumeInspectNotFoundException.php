@@ -6,15 +6,18 @@ namespace Docker\API\Exception;
 
 class VolumeInspectNotFoundException extends NotFoundException
 {
+    /**
+     * @var \Docker\API\Model\ErrorResponse
+     */
     private $errorResponse;
 
     public function __construct(\Docker\API\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('No such volume', 404);
+        parent::__construct('No such volume');
         $this->errorResponse = $errorResponse;
     }
 
-    public function getErrorResponse()
+    public function getErrorResponse(): \Docker\API\Model\ErrorResponse
     {
         return $this->errorResponse;
     }

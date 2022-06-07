@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Docker\API\Normalizer;
 
 use Docker\API\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,6 +19,9 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return 'Docker\\API\\Model\\EndpointSettings' === $type;
@@ -26,9 +29,12 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\EndpointSettings' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\EndpointSettings' === $data::class;
     }
 
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -122,6 +128,9 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];

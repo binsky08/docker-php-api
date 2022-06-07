@@ -6,15 +6,18 @@ namespace Docker\API\Exception;
 
 class NetworkCreateForbiddenException extends ForbiddenException
 {
+    /**
+     * @var \Docker\API\Model\ErrorResponse
+     */
     private $errorResponse;
 
     public function __construct(\Docker\API\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('operation not supported for pre-defined networks', 403);
+        parent::__construct('operation not supported for pre-defined networks');
         $this->errorResponse = $errorResponse;
     }
 
-    public function getErrorResponse()
+    public function getErrorResponse(): \Docker\API\Model\ErrorResponse
     {
         return $this->errorResponse;
     }

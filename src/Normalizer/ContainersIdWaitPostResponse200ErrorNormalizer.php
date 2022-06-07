@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Docker\API\Normalizer;
 
 use Docker\API\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,6 +19,9 @@ class ContainersIdWaitPostResponse200ErrorNormalizer implements DenormalizerInte
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return 'Docker\\API\\Model\\ContainersIdWaitPostResponse200Error' === $type;
@@ -26,9 +29,12 @@ class ContainersIdWaitPostResponse200ErrorNormalizer implements DenormalizerInte
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\ContainersIdWaitPostResponse200Error' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\ContainersIdWaitPostResponse200Error' === $data::class;
     }
 
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -50,6 +56,9 @@ class ContainersIdWaitPostResponse200ErrorNormalizer implements DenormalizerInte
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];

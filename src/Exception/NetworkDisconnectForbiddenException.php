@@ -6,15 +6,18 @@ namespace Docker\API\Exception;
 
 class NetworkDisconnectForbiddenException extends ForbiddenException
 {
+    /**
+     * @var \Docker\API\Model\ErrorResponse
+     */
     private $errorResponse;
 
     public function __construct(\Docker\API\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Operation not supported for swarm scoped networks', 403);
+        parent::__construct('Operation not supported for swarm scoped networks');
         $this->errorResponse = $errorResponse;
     }
 
-    public function getErrorResponse()
+    public function getErrorResponse(): \Docker\API\Model\ErrorResponse
     {
         return $this->errorResponse;
     }

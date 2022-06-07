@@ -6,15 +6,18 @@ namespace Docker\API\Exception;
 
 class ContainerListInternalServerErrorException extends InternalServerErrorException
 {
+    /**
+     * @var \Docker\API\Model\ErrorResponse
+     */
     private $errorResponse;
 
     public function __construct(\Docker\API\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('server error', 500);
+        parent::__construct('server error');
         $this->errorResponse = $errorResponse;
     }
 
-    public function getErrorResponse()
+    public function getErrorResponse(): \Docker\API\Model\ErrorResponse
     {
         return $this->errorResponse;
     }

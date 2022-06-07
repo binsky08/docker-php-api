@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Docker\API\Normalizer;
 
 use Docker\API\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,6 +19,9 @@ class GenericResourcesItemDiscreteResourceSpecNormalizer implements Denormalizer
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return 'Docker\\API\\Model\\GenericResourcesItemDiscreteResourceSpec' === $type;
@@ -26,9 +29,12 @@ class GenericResourcesItemDiscreteResourceSpecNormalizer implements Denormalizer
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'Docker\\API\\Model\\GenericResourcesItemDiscreteResourceSpec' === \get_class($data);
+        return \is_object($data) && 'Docker\\API\\Model\\GenericResourcesItemDiscreteResourceSpec' === $data::class;
     }
 
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -55,6 +61,9 @@ class GenericResourcesItemDiscreteResourceSpecNormalizer implements Denormalizer
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];

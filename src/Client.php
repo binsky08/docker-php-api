@@ -2517,7 +2517,7 @@ class Client extends \Docker\API\Runtime\Client\Client
         return $this->executeEndpoint(new \Docker\API\Endpoint\Session(), $fetch);
     }
 
-    public static function create($httpClient = null, array $additionalPlugins = [])
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
@@ -2525,13 +2525,17 @@ class Client extends \Docker\API\Runtime\Client\Client
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('/v1.41');
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (\count($additionalPlugins) > 0) {
-                $plugins = \array_merge($plugins, $additionalPlugins);
+                $plugins = array_merge($plugins, $additionalPlugins);
             }
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $serializer = new \Symfony\Component\Serializer\Serializer([new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Docker\API\Normalizer\JaneObjectNormalizer()], [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Docker\API\Normalizer\JaneObjectNormalizer()];
+        if (\count($additionalNormalizers) > 0) {
+            $normalizers = array_merge($normalizers, $additionalNormalizers);
+        }
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
 
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }

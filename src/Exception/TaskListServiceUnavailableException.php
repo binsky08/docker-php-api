@@ -6,15 +6,18 @@ namespace Docker\API\Exception;
 
 class TaskListServiceUnavailableException extends ServiceUnavailableException
 {
+    /**
+     * @var \Docker\API\Model\ErrorResponse
+     */
     private $errorResponse;
 
     public function __construct(\Docker\API\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('node is not part of a swarm', 503);
+        parent::__construct('node is not part of a swarm');
         $this->errorResponse = $errorResponse;
     }
 
-    public function getErrorResponse()
+    public function getErrorResponse(): \Docker\API\Model\ErrorResponse
     {
         return $this->errorResponse;
     }
