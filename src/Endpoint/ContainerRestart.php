@@ -14,8 +14,8 @@ class ContainerRestart extends \Docker\API\Runtime\Client\BaseEndpoint implement
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var int $t Number of seconds to wait before killing the container
-     * }
+     * @var int $t Number of seconds to wait before killing the container
+     *          }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -62,14 +62,12 @@ class ContainerRestart extends \Docker\API\Runtime\Client\BaseEndpoint implement
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerRestartNotFoundException
      * @throws \Docker\API\Exception\ContainerRestartInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

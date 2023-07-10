@@ -11,8 +11,8 @@ class TaskList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-     * process on the tasks list.
+     * @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *             process on the tasks list.
      *
      * Available filters:
      *
@@ -62,14 +62,12 @@ class TaskList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\TaskListInternalServerErrorException
      * @throws \Docker\API\Exception\TaskListServiceUnavailableException
      *
      * @return \Docker\API\Model\Task[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

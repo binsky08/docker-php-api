@@ -21,19 +21,16 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\PluginConfig' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\PluginConfig' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -174,7 +171,7 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $data['Description'] = $object->getDescription();
         $data['Documentation'] = $object->getDocumentation();
-        $data['Interface'] = new \ArrayObject($this->normalizer->normalize($object->getInterface(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['Interface'] = $this->normalizer->normalize($object->getInterface(), 'json', $context);
         $values = [];
         foreach ($object->getEntrypoint() as $value) {
             $values[] = $value;
@@ -182,26 +179,26 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['Entrypoint'] = $values;
         $data['WorkDir'] = $object->getWorkDir();
         if ($object->isInitialized('user') && null !== $object->getUser()) {
-            $data['User'] = new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['User'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }
-        $data['Network'] = new \ArrayObject($this->normalizer->normalize($object->getNetwork(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
-        $data['Linux'] = new \ArrayObject($this->normalizer->normalize($object->getLinux(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['Network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
+        $data['Linux'] = $this->normalizer->normalize($object->getLinux(), 'json', $context);
         $data['PropagatedMount'] = $object->getPropagatedMount();
         $data['IpcHost'] = $object->getIpcHost();
         $data['PidHost'] = $object->getPidHost();
         $values_1 = [];
         foreach ($object->getMounts() as $value_1) {
-            $values_1[] = new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['Mounts'] = $values_1;
         $values_2 = [];
         foreach ($object->getEnv() as $value_2) {
-            $values_2[] = new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
         }
         $data['Env'] = $values_2;
-        $data['Args'] = new \ArrayObject($this->normalizer->normalize($object->getArgs(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['Args'] = $this->normalizer->normalize($object->getArgs(), 'json', $context);
         if ($object->isInitialized('rootfs') && null !== $object->getRootfs()) {
-            $data['rootfs'] = new \ArrayObject($this->normalizer->normalize($object->getRootfs(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['rootfs'] = $this->normalizer->normalize($object->getRootfs(), 'json', $context);
         }
         foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
@@ -210,5 +207,10 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\PluginConfig' => false];
     }
 }

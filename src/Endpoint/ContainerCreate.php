@@ -11,12 +11,12 @@ class ContainerCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements
     /**
      * @param array $queryParameters {
      *
-     *     @var string $name Assign the specified name to the container. Must match
-     * `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
+     * @var string $name Assign the specified name to the container. Must match
+     *             `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
      *
      * }
      */
-    public function __construct(?\Docker\API\Model\ContainersCreatePostBody $requestBody = null, array $queryParameters = [])
+    public function __construct(\Docker\API\Model\ContainersCreatePostBody $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -61,8 +61,6 @@ class ContainerCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerCreateBadRequestException
      * @throws \Docker\API\Exception\ContainerCreateNotFoundException
      * @throws \Docker\API\Exception\ContainerCreateConflictException
@@ -70,7 +68,7 @@ class ContainerCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements
      *
      * @return \Docker\API\Model\ContainersCreatePostResponse201|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

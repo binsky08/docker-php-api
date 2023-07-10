@@ -21,19 +21,16 @@ class NodeSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\NodeSpec' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\NodeSpec' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -93,7 +90,7 @@ class NodeSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['Name'] = $object->getName();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -112,5 +109,10 @@ class NodeSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\NodeSpec' => false];
     }
 }

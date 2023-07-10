@@ -21,19 +21,16 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\PluginConfigInterface' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\PluginConfigInterface' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -85,7 +82,7 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
         $data = [];
         $values = [];
         foreach ($object->getTypes() as $value) {
-            $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['Types'] = $values;
         $data['Socket'] = $object->getSocket();
@@ -99,5 +96,10 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\PluginConfigInterface' => false];
     }
 }

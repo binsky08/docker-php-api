@@ -21,19 +21,16 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\PluginSettings' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\PluginSettings' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -103,7 +100,7 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
         $data = [];
         $values = [];
         foreach ($object->getMounts() as $value) {
-            $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['Mounts'] = $values;
         $values_1 = [];
@@ -118,7 +115,7 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
         $data['Args'] = $values_2;
         $values_3 = [];
         foreach ($object->getDevices() as $value_3) {
-            $values_3[] = new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
         }
         $data['Devices'] = $values_3;
         foreach ($object as $key => $value_4) {
@@ -128,5 +125,10 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\PluginSettings' => false];
     }
 }

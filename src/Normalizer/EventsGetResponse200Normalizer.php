@@ -21,19 +21,16 @@ class EventsGetResponse200Normalizer implements DenormalizerInterface, Normalize
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\EventsGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\EventsGetResponse200' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -98,7 +95,7 @@ class EventsGetResponse200Normalizer implements DenormalizerInterface, Normalize
             $data['Action'] = $object->getAction();
         }
         if ($object->isInitialized('actor') && null !== $object->getActor()) {
-            $data['Actor'] = new \ArrayObject($this->normalizer->normalize($object->getActor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
         }
         if ($object->isInitialized('time') && null !== $object->getTime()) {
             $data['time'] = $object->getTime();
@@ -113,5 +110,10 @@ class EventsGetResponse200Normalizer implements DenormalizerInterface, Normalize
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\EventsGetResponse200' => false];
     }
 }

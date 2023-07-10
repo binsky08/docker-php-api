@@ -21,19 +21,16 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\Node' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\Node' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -113,7 +110,7 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['ID'] = $object->getID();
         }
         if ($object->isInitialized('version') && null !== $object->getVersion()) {
-            $data['Version'] = new \ArrayObject($this->normalizer->normalize($object->getVersion(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
         }
         if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['CreatedAt'] = $object->getCreatedAt();
@@ -122,16 +119,16 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['UpdatedAt'] = $object->getUpdatedAt();
         }
         if ($object->isInitialized('spec') && null !== $object->getSpec()) {
-            $data['Spec'] = new \ArrayObject($this->normalizer->normalize($object->getSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
         if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['Description'] = new \ArrayObject($this->normalizer->normalize($object->getDescription(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Description'] = $this->normalizer->normalize($object->getDescription(), 'json', $context);
         }
         if ($object->isInitialized('status') && null !== $object->getStatus()) {
-            $data['Status'] = new \ArrayObject($this->normalizer->normalize($object->getStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
         }
         if ($object->isInitialized('managerStatus') && null !== $object->getManagerStatus()) {
-            $data['ManagerStatus'] = new \ArrayObject($this->normalizer->normalize($object->getManagerStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['ManagerStatus'] = $this->normalizer->normalize($object->getManagerStatus(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -140,5 +137,10 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\Node' => false];
     }
 }

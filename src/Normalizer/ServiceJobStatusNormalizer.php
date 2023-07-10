@@ -21,19 +21,16 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ServiceJobStatus' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ServiceJobStatus' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -74,7 +71,7 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = [];
         if ($object->isInitialized('jobIteration') && null !== $object->getJobIteration()) {
-            $data['JobIteration'] = new \ArrayObject($this->normalizer->normalize($object->getJobIteration(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['JobIteration'] = $this->normalizer->normalize($object->getJobIteration(), 'json', $context);
         }
         if ($object->isInitialized('lastExecution') && null !== $object->getLastExecution()) {
             $data['LastExecution'] = $object->getLastExecution();
@@ -86,5 +83,10 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ServiceJobStatus' => false];
     }
 }

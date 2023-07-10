@@ -16,8 +16,8 @@ class ImageLoad extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
      * @param string|resource|\Psr\Http\Message\StreamInterface|null $requestBody
      * @param array                                                  $queryParameters {
      *
-     *     @var bool $quiet Suppress progress details during load.
-     * }
+     * @var bool $quiet Suppress progress details during load.
+     *           }
      */
     public function __construct($requestBody = null, array $queryParameters = [])
     {
@@ -61,13 +61,11 @@ class ImageLoad extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ImageLoadInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

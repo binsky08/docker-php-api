@@ -21,19 +21,16 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\VolumesCreatePostBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\VolumesCreatePostBody' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -100,14 +97,14 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $data['Driver'] = $object->getDriver();
         }
         if ($object->isInitialized('driverOpts') && null !== $object->getDriverOpts()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getDriverOpts() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['DriverOpts'] = $values;
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = [];
             foreach ($object->getLabels() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -120,5 +117,10 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\VolumesCreatePostBody' => false];
     }
 }

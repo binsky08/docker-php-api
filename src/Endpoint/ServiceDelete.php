@@ -45,15 +45,13 @@ class ServiceDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ServiceDeleteNotFoundException
      * @throws \Docker\API\Exception\ServiceDeleteInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceDeleteServiceUnavailableException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

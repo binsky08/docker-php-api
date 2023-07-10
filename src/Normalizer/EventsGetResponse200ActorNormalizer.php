@@ -21,19 +21,16 @@ class EventsGetResponse200ActorNormalizer implements DenormalizerInterface, Norm
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\EventsGetResponse200Actor' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\EventsGetResponse200Actor' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -81,7 +78,7 @@ class EventsGetResponse200ActorNormalizer implements DenormalizerInterface, Norm
             $data['ID'] = $object->getID();
         }
         if ($object->isInitialized('attributes') && null !== $object->getAttributes()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getAttributes() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -94,5 +91,10 @@ class EventsGetResponse200ActorNormalizer implements DenormalizerInterface, Norm
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\EventsGetResponse200Actor' => false];
     }
 }

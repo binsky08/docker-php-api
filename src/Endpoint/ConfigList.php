@@ -11,8 +11,8 @@ class ConfigList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-     * process on the configs list.
+     * @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *             process on the configs list.
      *
      * Available filters:
      *
@@ -60,14 +60,12 @@ class ConfigList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ConfigListInternalServerErrorException
      * @throws \Docker\API\Exception\ConfigListServiceUnavailableException
      *
      * @return \Docker\API\Model\Config[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

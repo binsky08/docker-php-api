@@ -21,19 +21,16 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\TaskSpecPlacement' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\TaskSpecPlacement' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -107,7 +104,7 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
         if ($object->isInitialized('preferences') && null !== $object->getPreferences()) {
             $values_1 = [];
             foreach ($object->getPreferences() as $value_1) {
-                $values_1[] = new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['Preferences'] = $values_1;
         }
@@ -117,7 +114,7 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
         if ($object->isInitialized('platforms') && null !== $object->getPlatforms()) {
             $values_2 = [];
             foreach ($object->getPlatforms() as $value_2) {
-                $values_2[] = new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['Platforms'] = $values_2;
         }
@@ -128,5 +125,10 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\TaskSpecPlacement' => false];
     }
 }

@@ -21,19 +21,16 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\DeviceRequest' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\DeviceRequest' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -132,7 +129,7 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['Capabilities'] = $values_1;
         }
         if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = [];
             foreach ($object->getOptions() as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }
@@ -145,5 +142,10 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\DeviceRequest' => false];
     }
 }

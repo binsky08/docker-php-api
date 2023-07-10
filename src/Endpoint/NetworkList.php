@@ -18,8 +18,8 @@ class NetworkList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
      *
      * @param array $queryParameters {
      *
-     *     @var string $filters JSON encoded value of the filters (a `map[string][]string`) to process
-     * on the networks list.
+     * @var string $filters JSON encoded value of the filters (a `map[string][]string`) to process
+     *             on the networks list.
      *
      * Available filters:
      *
@@ -73,13 +73,11 @@ class NetworkList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\NetworkListInternalServerErrorException
      *
      * @return \Docker\API\Model\Network[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

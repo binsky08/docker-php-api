@@ -21,19 +21,16 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\MountVolumeOptions' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\MountVolumeOptions' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -87,14 +84,14 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
             $data['NoCopy'] = $object->getNoCopy();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
         if ($object->isInitialized('driverConfig') && null !== $object->getDriverConfig()) {
-            $data['DriverConfig'] = new \ArrayObject($this->normalizer->normalize($object->getDriverConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['DriverConfig'] = $this->normalizer->normalize($object->getDriverConfig(), 'json', $context);
         }
         foreach ($object as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -103,5 +100,10 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\MountVolumeOptions' => false];
     }
 }

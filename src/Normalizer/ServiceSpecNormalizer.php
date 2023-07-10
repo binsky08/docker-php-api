@@ -21,19 +21,16 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ServiceSpec' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ServiceSpec' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -121,33 +118,33 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['Name'] = $object->getName();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
         if ($object->isInitialized('taskTemplate') && null !== $object->getTaskTemplate()) {
-            $data['TaskTemplate'] = new \ArrayObject($this->normalizer->normalize($object->getTaskTemplate(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['TaskTemplate'] = $this->normalizer->normalize($object->getTaskTemplate(), 'json', $context);
         }
         if ($object->isInitialized('mode') && null !== $object->getMode()) {
-            $data['Mode'] = new \ArrayObject($this->normalizer->normalize($object->getMode(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Mode'] = $this->normalizer->normalize($object->getMode(), 'json', $context);
         }
         if ($object->isInitialized('updateConfig') && null !== $object->getUpdateConfig()) {
-            $data['UpdateConfig'] = new \ArrayObject($this->normalizer->normalize($object->getUpdateConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['UpdateConfig'] = $this->normalizer->normalize($object->getUpdateConfig(), 'json', $context);
         }
         if ($object->isInitialized('rollbackConfig') && null !== $object->getRollbackConfig()) {
-            $data['RollbackConfig'] = new \ArrayObject($this->normalizer->normalize($object->getRollbackConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['RollbackConfig'] = $this->normalizer->normalize($object->getRollbackConfig(), 'json', $context);
         }
         if ($object->isInitialized('networks') && null !== $object->getNetworks()) {
             $values_1 = [];
             foreach ($object->getNetworks() as $value_1) {
-                $values_1[] = new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['Networks'] = $values_1;
         }
         if ($object->isInitialized('endpointSpec') && null !== $object->getEndpointSpec()) {
-            $data['EndpointSpec'] = new \ArrayObject($this->normalizer->normalize($object->getEndpointSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['EndpointSpec'] = $this->normalizer->normalize($object->getEndpointSpec(), 'json', $context);
         }
         foreach ($object as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -156,5 +153,10 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ServiceSpec' => false];
     }
 }

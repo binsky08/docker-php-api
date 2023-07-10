@@ -14,8 +14,8 @@ class NodeDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      * @param string $id              The ID or name of the node
      * @param array  $queryParameters {
      *
-     *     @var bool $force Force remove a node from the swarm
-     * }
+     * @var bool $force Force remove a node from the swarm
+     *           }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -62,15 +62,13 @@ class NodeDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\NodeDeleteNotFoundException
      * @throws \Docker\API\Exception\NodeDeleteInternalServerErrorException
      * @throws \Docker\API\Exception\NodeDeleteServiceUnavailableException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

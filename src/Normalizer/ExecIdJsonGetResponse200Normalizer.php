@@ -21,19 +21,16 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ExecIdJsonGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ExecIdJsonGetResponse200' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -143,7 +140,7 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
             $data['ExitCode'] = $object->getExitCode();
         }
         if ($object->isInitialized('processConfig') && null !== $object->getProcessConfig()) {
-            $data['ProcessConfig'] = new \ArrayObject($this->normalizer->normalize($object->getProcessConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['ProcessConfig'] = $this->normalizer->normalize($object->getProcessConfig(), 'json', $context);
         }
         if ($object->isInitialized('openStdin') && null !== $object->getOpenStdin()) {
             $data['OpenStdin'] = $object->getOpenStdin();
@@ -167,5 +164,10 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ExecIdJsonGetResponse200' => false];
     }
 }

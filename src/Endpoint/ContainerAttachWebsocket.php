@@ -14,15 +14,15 @@ class ContainerAttachWebsocket extends \Docker\API\Runtime\Client\BaseEndpoint i
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var string $detachKeys Override the key sequence for detaching a container.Format is a single
-     * character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`,
-     * `@`, `^`, `[`, `,`, or `_`.
-     *     @var bool $logs Return logs
-     *     @var bool $stream Return stream
-     *     @var bool $stdin Attach to `stdin`
-     *     @var bool $stdout Attach to `stdout`
-     *     @var bool $stderr Attach to `stderr`
-     * }
+     * @var string $detachKeys Override the key sequence for detaching a container.Format is a single
+     *             character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`,
+     *             `@`, `^`, `[`, `,`, or `_`.
+     * @var bool   $logs Return logs
+     * @var bool   $stream Return stream
+     * @var bool   $stdin Attach to `stdin`
+     * @var bool   $stdout Attach to `stdout`
+     * @var bool   $stderr Attach to `stderr`
+     *             }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -74,15 +74,13 @@ class ContainerAttachWebsocket extends \Docker\API\Runtime\Client\BaseEndpoint i
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerAttachWebsocketBadRequestException
      * @throws \Docker\API\Exception\ContainerAttachWebsocketNotFoundException
      * @throws \Docker\API\Exception\ContainerAttachWebsocketInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

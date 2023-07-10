@@ -13,24 +13,24 @@ class ImageCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
      *
      * @param array $queryParameters {
      *
-     *     @var string $fromImage Name of the image to pull. The name may include a tag or digest. This parameter may only be used when pulling an image. The pull is cancelled if the HTTP connection is closed.
-     *     @var string $fromSrc Source to import. The value may be a URL from which the image can be retrieved or `-` to read the image from the request body. This parameter may only be used when importing an image.
-     *     @var string $repo Repository name given to an image when it is imported. The repo may include a tag. This parameter may only be used when importing an image.
-     *     @var string $tag Tag or digest. If empty when pulling an image, this causes all tags for the given image to be pulled.
-     *     @var string $message set commit message for imported image
-     *     @var string $platform Platform in the format os[/arch[/variant]]
-     * }
+     * @var string $fromImage Name of the image to pull. The name may include a tag or digest. This parameter may only be used when pulling an image. The pull is cancelled if the HTTP connection is closed.
+     * @var string $fromSrc Source to import. The value may be a URL from which the image can be retrieved or `-` to read the image from the request body. This parameter may only be used when importing an image.
+     * @var string $repo Repository name given to an image when it is imported. The repo may include a tag. This parameter may only be used when importing an image.
+     * @var string $tag Tag or digest. If empty when pulling an image, this causes all tags for the given image to be pulled.
+     * @var string $message set commit message for imported image
+     * @var string $platform Platform in the format os[/arch[/variant]]
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64url-encoded auth configuration.
+     * @var string $X-Registry-Auth A base64url-encoded auth configuration.
      *
      * Refer to the [authentication section](#section/Authentication) for
      * details.
      *
      * }
      */
-    public function __construct(?string $requestBody = null, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $requestBody = null, array $queryParameters = [], array $headerParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -92,14 +92,12 @@ class ImageCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ImageCreateNotFoundException
      * @throws \Docker\API\Exception\ImageCreateInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

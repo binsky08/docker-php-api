@@ -14,14 +14,14 @@ class NodeUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      * @param string $id              The ID of the node
      * @param array  $queryParameters {
      *
-     *     @var int $version The version number of the node object being updated. This is required
-     * to avoid conflicting writes.
+     * @var int $version The version number of the node object being updated. This is required
+     *          to avoid conflicting writes.
      *
      * }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
-    public function __construct(string $id, ?\Docker\API\Model\NodeSpec $requestBody = null, array $queryParameters = [], array $accept = [])
+    public function __construct(string $id, \Docker\API\Model\NodeSpec $requestBody = null, array $queryParameters = [], array $accept = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -72,8 +72,6 @@ class NodeUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\NodeUpdateBadRequestException
      * @throws \Docker\API\Exception\NodeUpdateNotFoundException
      * @throws \Docker\API\Exception\NodeUpdateInternalServerErrorException
@@ -81,7 +79,7 @@ class NodeUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

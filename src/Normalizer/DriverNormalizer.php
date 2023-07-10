@@ -21,19 +21,16 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\Driver' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\Driver' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -79,7 +76,7 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data = [];
         $data['Name'] = $object->getName();
         if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -92,5 +89,10 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\Driver' => false];
     }
 }

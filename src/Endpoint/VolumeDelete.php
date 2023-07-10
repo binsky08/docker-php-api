@@ -16,8 +16,8 @@ class VolumeDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      * @param string $name            Volume name or ID
      * @param array  $queryParameters {
      *
-     *     @var bool $force Force the removal of the volume
-     * }
+     * @var bool $force Force the removal of the volume
+     *           }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -64,15 +64,13 @@ class VolumeDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\VolumeDeleteNotFoundException
      * @throws \Docker\API\Exception\VolumeDeleteConflictException
      * @throws \Docker\API\Exception\VolumeDeleteInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

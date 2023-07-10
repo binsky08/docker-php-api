@@ -21,19 +21,16 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\TaskSpecResources' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\TaskSpecResources' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -74,10 +71,10 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = [];
         if ($object->isInitialized('limits') && null !== $object->getLimits()) {
-            $data['Limits'] = new \ArrayObject($this->normalizer->normalize($object->getLimits(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Limits'] = $this->normalizer->normalize($object->getLimits(), 'json', $context);
         }
         if ($object->isInitialized('reservation') && null !== $object->getReservation()) {
-            $data['Reservation'] = new \ArrayObject($this->normalizer->normalize($object->getReservation(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Reservation'] = $this->normalizer->normalize($object->getReservation(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -86,5 +83,10 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\TaskSpecResources' => false];
     }
 }

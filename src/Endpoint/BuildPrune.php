@@ -11,10 +11,10 @@ class BuildPrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     /**
      * @param array $queryParameters {
      *
-     *     @var int $keep-storage Amount of disk space in bytes to keep for cache
-     *     @var bool $all Remove all types of build cache
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-     * process on the list of build cache objects.
+     * @var int    $keep-storage Amount of disk space in bytes to keep for cache
+     * @var bool   $all Remove all types of build cache
+     * @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *             process on the list of build cache objects.
      *
      * Available filters:
      *
@@ -68,13 +68,11 @@ class BuildPrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\BuildPruneInternalServerErrorException
      *
      * @return \Docker\API\Model\BuildPrunePostResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

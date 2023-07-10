@@ -15,8 +15,8 @@ class ContainerWait extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var string $condition Wait until a container state reaches the given condition, either
-     * 'not-running' (default), 'next-exit', or 'removed'.
+     * @var string $condition Wait until a container state reaches the given condition, either
+     *             'not-running' (default), 'next-exit', or 'removed'.
      *
      * }
      */
@@ -58,14 +58,12 @@ class ContainerWait extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerWaitNotFoundException
      * @throws \Docker\API\Exception\ContainerWaitInternalServerErrorException
      *
      * @return \Docker\API\Model\ContainersIdWaitPostResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

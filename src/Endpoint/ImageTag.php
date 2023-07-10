@@ -16,9 +16,9 @@ class ImageTag extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
      * @param string $name            image name or ID to tag
      * @param array  $queryParameters {
      *
-     *     @var string $repo The repository to tag in. For example, `someuser/someimage`.
-     *     @var string $tag The name of the new tag.
-     * }
+     * @var string $repo The repository to tag in. For example, `someuser/someimage`.
+     * @var string $tag The name of the new tag.
+     *             }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -66,8 +66,6 @@ class ImageTag extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ImageTagBadRequestException
      * @throws \Docker\API\Exception\ImageTagNotFoundException
      * @throws \Docker\API\Exception\ImageTagConflictException
@@ -75,7 +73,7 @@ class ImageTag extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -11,7 +11,7 @@ class NetworkPrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
+     * @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
      *
      * Available filters:
      * - `until=<timestamp>` Prune networks created before this timestamp. The `<timestamp>` can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. `10m`, `1h30m`) computed relative to the daemon machine’s time.
@@ -56,13 +56,11 @@ class NetworkPrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\NetworkPruneInternalServerErrorException
      *
      * @return \Docker\API\Model\NetworksPrunePostResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

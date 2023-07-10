@@ -21,19 +21,16 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\Image' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\Image' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -203,12 +200,12 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['Created'] = $object->getCreated();
         $data['Container'] = $object->getContainer();
         if ($object->isInitialized('containerConfig') && null !== $object->getContainerConfig()) {
-            $data['ContainerConfig'] = new \ArrayObject($this->normalizer->normalize($object->getContainerConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['ContainerConfig'] = $this->normalizer->normalize($object->getContainerConfig(), 'json', $context);
         }
         $data['DockerVersion'] = $object->getDockerVersion();
         $data['Author'] = $object->getAuthor();
         if ($object->isInitialized('config') && null !== $object->getConfig()) {
-            $data['Config'] = new \ArrayObject($this->normalizer->normalize($object->getConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
         }
         $data['Architecture'] = $object->getArchitecture();
         $data['Os'] = $object->getOs();
@@ -217,10 +214,10 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $data['Size'] = $object->getSize();
         $data['VirtualSize'] = $object->getVirtualSize();
-        $data['GraphDriver'] = new \ArrayObject($this->normalizer->normalize($object->getGraphDriver(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
-        $data['RootFS'] = new \ArrayObject($this->normalizer->normalize($object->getRootFS(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['GraphDriver'] = $this->normalizer->normalize($object->getGraphDriver(), 'json', $context);
+        $data['RootFS'] = $this->normalizer->normalize($object->getRootFS(), 'json', $context);
         if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
-            $data['Metadata'] = new \ArrayObject($this->normalizer->normalize($object->getMetadata(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Metadata'] = $this->normalizer->normalize($object->getMetadata(), 'json', $context);
         }
         foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
@@ -229,5 +226,10 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\Image' => false];
     }
 }

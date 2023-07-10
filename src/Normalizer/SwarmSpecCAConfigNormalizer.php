@@ -21,19 +21,16 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\SwarmSpecCAConfig' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\SwarmSpecCAConfig' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -101,7 +98,7 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
         if ($object->isInitialized('externalCAs') && null !== $object->getExternalCAs()) {
             $values = [];
             foreach ($object->getExternalCAs() as $value) {
-                $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['ExternalCAs'] = $values;
         }
@@ -121,5 +118,10 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\SwarmSpecCAConfig' => false];
     }
 }

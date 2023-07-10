@@ -13,8 +13,8 @@ class PluginCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      * @param string|resource|\Psr\Http\Message\StreamInterface|null $requestBody
      * @param array                                                  $queryParameters {
      *
-     *     @var string $name The name of the plugin. The `:latest` tag is optional, and is the
-     * default if omitted.
+     * @var string $name The name of the plugin. The `:latest` tag is optional, and is the
+     *             default if omitted.
      *
      * }
      *
@@ -67,13 +67,11 @@ class PluginCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\PluginCreateInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

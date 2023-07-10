@@ -21,19 +21,16 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ServiceSpecMode' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ServiceSpecMode' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -86,16 +83,16 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $data = [];
         if ($object->isInitialized('replicated') && null !== $object->getReplicated()) {
-            $data['Replicated'] = new \ArrayObject($this->normalizer->normalize($object->getReplicated(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Replicated'] = $this->normalizer->normalize($object->getReplicated(), 'json', $context);
         }
         if ($object->isInitialized('global') && null !== $object->getGlobal()) {
-            $data['Global'] = new \ArrayObject($this->normalizer->normalize($object->getGlobal(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Global'] = $this->normalizer->normalize($object->getGlobal(), 'json', $context);
         }
         if ($object->isInitialized('replicatedJob') && null !== $object->getReplicatedJob()) {
-            $data['ReplicatedJob'] = new \ArrayObject($this->normalizer->normalize($object->getReplicatedJob(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['ReplicatedJob'] = $this->normalizer->normalize($object->getReplicatedJob(), 'json', $context);
         }
         if ($object->isInitialized('globalJob') && null !== $object->getGlobalJob()) {
-            $data['GlobalJob'] = new \ArrayObject($this->normalizer->normalize($object->getGlobalJob(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['GlobalJob'] = $this->normalizer->normalize($object->getGlobalJob(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -104,5 +101,10 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ServiceSpecMode' => false];
     }
 }

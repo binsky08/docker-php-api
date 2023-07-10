@@ -21,19 +21,16 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\SwarmSpecCAConfigExternalCAsItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\SwarmSpecCAConfigExternalCAsItem' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -96,7 +93,7 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
             $data['URL'] = $object->getURL();
         }
         if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -112,5 +109,10 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\SwarmSpecCAConfigExternalCAsItem' => false];
     }
 }

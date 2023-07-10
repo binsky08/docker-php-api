@@ -21,19 +21,16 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ServiceEndpoint' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ServiceEndpoint' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -88,19 +85,19 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $data = [];
         if ($object->isInitialized('spec') && null !== $object->getSpec()) {
-            $data['Spec'] = new \ArrayObject($this->normalizer->normalize($object->getSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
         if ($object->isInitialized('ports') && null !== $object->getPorts()) {
             $values = [];
             foreach ($object->getPorts() as $value) {
-                $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['Ports'] = $values;
         }
         if ($object->isInitialized('virtualIPs') && null !== $object->getVirtualIPs()) {
             $values_1 = [];
             foreach ($object->getVirtualIPs() as $value_1) {
-                $values_1[] = new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['VirtualIPs'] = $values_1;
         }
@@ -111,5 +108,10 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ServiceEndpoint' => false];
     }
 }

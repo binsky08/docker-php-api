@@ -17,9 +17,9 @@ class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      * @param string $id              Exec instance ID
      * @param array  $queryParameters {
      *
-     *     @var int $h Height of the TTY session in characters
-     *     @var int $w Width of the TTY session in characters
-     * }
+     * @var int $h Height of the TTY session in characters
+     * @var int $w Width of the TTY session in characters
+     *          }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -67,13 +67,11 @@ class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ExecResizeNotFoundException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

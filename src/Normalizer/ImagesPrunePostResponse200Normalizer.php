@@ -21,19 +21,16 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ImagesPrunePostResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ImagesPrunePostResponse200' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -80,7 +77,7 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
         if ($object->isInitialized('imagesDeleted') && null !== $object->getImagesDeleted()) {
             $values = [];
             foreach ($object->getImagesDeleted() as $value) {
-                $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['ImagesDeleted'] = $values;
         }
@@ -94,5 +91,10 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ImagesPrunePostResponse200' => false];
     }
 }

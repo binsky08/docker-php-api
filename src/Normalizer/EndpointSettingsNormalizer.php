@@ -21,19 +21,16 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\EndpointSettings' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\EndpointSettings' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -152,7 +149,7 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = [];
         if ($object->isInitialized('iPAMConfig') && null !== $object->getIPAMConfig()) {
-            $data['IPAMConfig'] = new \ArrayObject($this->normalizer->normalize($object->getIPAMConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['IPAMConfig'] = $this->normalizer->normalize($object->getIPAMConfig(), 'json', $context);
         }
         if ($object->isInitialized('links') && null !== $object->getLinks()) {
             $values = [];
@@ -196,7 +193,7 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
             $data['MacAddress'] = $object->getMacAddress();
         }
         if ($object->isInitialized('driverOpts') && null !== $object->getDriverOpts()) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = [];
             foreach ($object->getDriverOpts() as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
@@ -209,5 +206,10 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\EndpointSettings' => false];
     }
 }

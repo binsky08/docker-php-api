@@ -21,19 +21,16 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\SystemVersion' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\SystemVersion' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -138,12 +135,12 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = [];
         if ($object->isInitialized('platform') && null !== $object->getPlatform()) {
-            $data['Platform'] = new \ArrayObject($this->normalizer->normalize($object->getPlatform(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Platform'] = $this->normalizer->normalize($object->getPlatform(), 'json', $context);
         }
         if ($object->isInitialized('components') && null !== $object->getComponents()) {
             $values = [];
             foreach ($object->getComponents() as $value) {
-                $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['Components'] = $values;
         }
@@ -184,5 +181,10 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\SystemVersion' => false];
     }
 }

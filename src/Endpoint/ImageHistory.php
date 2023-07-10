@@ -40,14 +40,12 @@ class ImageHistory extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ImageHistoryNotFoundException
      * @throws \Docker\API\Exception\ImageHistoryInternalServerErrorException
      *
      * @return \Docker\API\Model\ImagesNameHistoryGetResponse200Item[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

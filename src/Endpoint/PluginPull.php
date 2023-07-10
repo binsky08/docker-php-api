@@ -15,10 +15,10 @@ class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      * @param \Docker\API\Model\PluginsPullPostBodyItem[]|null $requestBody
      * @param array                                            $queryParameters {
      *
-     *     @var string $remote Remote reference for plugin to install.
+     * @var string $remote Remote reference for plugin to install.
      *
      * The `:latest` tag is optional, and is used as the default if omitted.
-     *     @var string $name Local name for the pulled plugin.
+     * @var string $name Local name for the pulled plugin.
      *
      * The `:latest` tag is optional, and is used as the default if omitted.
      *
@@ -26,15 +26,15 @@ class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64url-encoded auth configuration to use when pulling a plugin
-     * from a registry.
+     * @var string $X-Registry-Auth A base64url-encoded auth configuration to use when pulling a plugin
+     *             from a registry.
      *
      * Refer to the [authentication section](#section/Authentication) for
      * details.
      *
      * }
      */
-    public function __construct(?array $requestBody = null, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $requestBody = null, array $queryParameters = [], array $headerParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -92,13 +92,11 @@ class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\PluginPullInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

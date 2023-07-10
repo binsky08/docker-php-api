@@ -11,16 +11,16 @@ class ImageCommit extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     /**
      * @param array $queryParameters {
      *
-     *     @var string $container The ID or name of the container to commit
-     *     @var string $repo Repository name for the created image
-     *     @var string $tag Tag name for the create image
-     *     @var string $comment Commit message
-     *     @var string $author Author of the image (e.g., `John Hannibal Smith <hannibal@a-team.com>`)
-     *     @var bool $pause Whether to pause the container before committing
-     *     @var string $changes `Dockerfile` instructions to apply while committing
-     * }
+     * @var string $container The ID or name of the container to commit
+     * @var string $repo Repository name for the created image
+     * @var string $tag Tag name for the create image
+     * @var string $comment Commit message
+     * @var string $author Author of the image (e.g., `John Hannibal Smith <hannibal@a-team.com>`)
+     * @var bool   $pause Whether to pause the container before committing
+     * @var string $changes `Dockerfile` instructions to apply while committing
+     *             }
      */
-    public function __construct(?\Docker\API\Model\ContainerConfig $requestBody = null, array $queryParameters = [])
+    public function __construct(\Docker\API\Model\ContainerConfig $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -68,14 +68,12 @@ class ImageCommit extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ImageCommitNotFoundException
      * @throws \Docker\API\Exception\ImageCommitInternalServerErrorException
      *
      * @return \Docker\API\Model\IdResponse|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

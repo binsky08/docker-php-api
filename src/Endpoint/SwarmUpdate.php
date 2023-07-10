@@ -12,16 +12,16 @@ class SwarmUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     /**
      * @param array $queryParameters {
      *
-     *     @var int $version The version number of the swarm object being updated. This is
-     * required to avoid conflicting writes.
-     *     @var bool $rotateWorkerToken rotate the worker join token
-     *     @var bool $rotateManagerToken rotate the manager join token
-     *     @var bool $rotateManagerUnlockKey Rotate the manager unlock key.
-     * }
+     * @var int  $version The version number of the swarm object being updated. This is
+     *           required to avoid conflicting writes.
+     * @var bool $rotateWorkerToken rotate the worker join token
+     * @var bool $rotateManagerToken rotate the manager join token
+     * @var bool $rotateManagerUnlockKey Rotate the manager unlock key.
+     *           }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
-    public function __construct(?\Docker\API\Model\SwarmSpec $requestBody = null, array $queryParameters = [], array $accept = [])
+    public function __construct(\Docker\API\Model\SwarmSpec $requestBody = null, array $queryParameters = [], array $accept = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -74,15 +74,13 @@ class SwarmUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\SwarmUpdateBadRequestException
      * @throws \Docker\API\Exception\SwarmUpdateInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmUpdateServiceUnavailableException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -17,8 +17,8 @@ class ContainerTop extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var string $ps_args The arguments to pass to `ps`. For example, `aux`
-     * }
+     * @var string $ps_args The arguments to pass to `ps`. For example, `aux`
+     *             }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -65,14 +65,12 @@ class ContainerTop extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerTopNotFoundException
      * @throws \Docker\API\Exception\ContainerTopInternalServerErrorException
      *
      * @return \Docker\API\Model\ContainersIdTopGetJsonResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -21,19 +21,16 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\EngineDescription' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\EngineDescription' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -91,7 +88,7 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
             $data['EngineVersion'] = $object->getEngineVersion();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -100,7 +97,7 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
         if ($object->isInitialized('plugins') && null !== $object->getPlugins()) {
             $values_1 = [];
             foreach ($object->getPlugins() as $value_1) {
-                $values_1[] = new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['Plugins'] = $values_1;
         }
@@ -111,5 +108,10 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\EngineDescription' => false];
     }
 }

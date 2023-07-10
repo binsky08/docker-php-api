@@ -17,8 +17,8 @@ class ContainerKill extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var string $signal Signal to send to the container as an integer or string (e.g. `SIGINT`)
-     * }
+     * @var string $signal Signal to send to the container as an integer or string (e.g. `SIGINT`)
+     *             }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -65,15 +65,13 @@ class ContainerKill extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerKillNotFoundException
      * @throws \Docker\API\Exception\ContainerKillConflictException
      * @throws \Docker\API\Exception\ContainerKillInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -40,10 +40,10 @@ class ContainerStats extends \Docker\API\Runtime\Client\BaseEndpoint implements 
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var bool $stream Stream the output. If false, the stats will be output once and then
-     * it will disconnect.
-     *     @var bool $one-shot Only get a single stat instead of waiting for 2 cycles. Must be used
-     * with `stream=false`.
+     * @var bool $stream Stream the output. If false, the stats will be output once and then
+     *           it will disconnect.
+     * @var bool $one-shot Only get a single stat instead of waiting for 2 cycles. Must be used
+     *           with `stream=false`.
      *
      * }
      */
@@ -86,14 +86,12 @@ class ContainerStats extends \Docker\API\Runtime\Client\BaseEndpoint implements 
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerStatsNotFoundException
      * @throws \Docker\API\Exception\ContainerStatsInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

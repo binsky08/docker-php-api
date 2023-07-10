@@ -21,19 +21,16 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ContainerState' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ContainerState' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -167,7 +164,7 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
             $data['FinishedAt'] = $object->getFinishedAt();
         }
         if ($object->isInitialized('health') && null !== $object->getHealth()) {
-            $data['Health'] = new \ArrayObject($this->normalizer->normalize($object->getHealth(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Health'] = $this->normalizer->normalize($object->getHealth(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -176,5 +173,10 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ContainerState' => false];
     }
 }

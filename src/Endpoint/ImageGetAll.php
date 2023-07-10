@@ -22,8 +22,8 @@ class ImageGetAll extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
      *
      * @param array $queryParameters {
      *
-     *     @var array $names Image names to filter by
-     * }
+     * @var array $names Image names to filter by
+     *            }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -62,11 +62,9 @@ class ImageGetAll extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

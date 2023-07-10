@@ -11,15 +11,15 @@ class ServiceCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     /**
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
-     * registries.
+     * @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
+     *             registries.
      *
      * Refer to the [authentication section](#section/Authentication) for
      * details.
      *
      * }
      */
-    public function __construct(?\Docker\API\Model\ServicesCreatePostBody $requestBody = null, array $headerParameters = [])
+    public function __construct(\Docker\API\Model\ServicesCreatePostBody $requestBody = null, array $headerParameters = [])
     {
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;
@@ -61,8 +61,6 @@ class ServiceCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ServiceCreateBadRequestException
      * @throws \Docker\API\Exception\ServiceCreateForbiddenException
      * @throws \Docker\API\Exception\ServiceCreateConflictException
@@ -71,7 +69,7 @@ class ServiceCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * @return \Docker\API\Model\ServicesCreatePostResponse201|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

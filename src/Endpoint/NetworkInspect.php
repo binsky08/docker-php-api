@@ -13,9 +13,9 @@ class NetworkInspect extends \Docker\API\Runtime\Client\BaseEndpoint implements 
      * @param string $id              Network ID or name
      * @param array  $queryParameters {
      *
-     *     @var bool $verbose Detailed inspect output for troubleshooting
-     *     @var string $scope Filter the network by scope (swarm, global, or local)
-     * }
+     * @var bool   $verbose Detailed inspect output for troubleshooting
+     * @var string $scope Filter the network by scope (swarm, global, or local)
+     *             }
      */
     public function __construct(string $id, array $queryParameters = [])
     {
@@ -56,14 +56,12 @@ class NetworkInspect extends \Docker\API\Runtime\Client\BaseEndpoint implements 
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\NetworkInspectNotFoundException
      * @throws \Docker\API\Exception\NetworkInspectInternalServerErrorException
      *
      * @return \Docker\API\Model\Network|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -21,19 +21,16 @@ class CreateImageInfoNormalizer implements DenormalizerInterface, NormalizerInte
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\CreateImageInfo' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\CreateImageInfo' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -104,7 +101,7 @@ class CreateImageInfoNormalizer implements DenormalizerInterface, NormalizerInte
             $data['progress'] = $object->getProgress();
         }
         if ($object->isInitialized('progressDetail') && null !== $object->getProgressDetail()) {
-            $data['progressDetail'] = new \ArrayObject($this->normalizer->normalize($object->getProgressDetail(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['progressDetail'] = $this->normalizer->normalize($object->getProgressDetail(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -113,5 +110,10 @@ class CreateImageInfoNormalizer implements DenormalizerInterface, NormalizerInte
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\CreateImageInfo' => false];
     }
 }

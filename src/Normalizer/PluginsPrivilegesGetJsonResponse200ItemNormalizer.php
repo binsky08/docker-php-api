@@ -21,19 +21,16 @@ class PluginsPrivilegesGetJsonResponse200ItemNormalizer implements DenormalizerI
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\PluginsPrivilegesGetJsonResponse200Item' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\PluginsPrivilegesGetJsonResponse200Item' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -103,5 +100,10 @@ class PluginsPrivilegesGetJsonResponse200ItemNormalizer implements DenormalizerI
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\PluginsPrivilegesGetJsonResponse200Item' => false];
     }
 }

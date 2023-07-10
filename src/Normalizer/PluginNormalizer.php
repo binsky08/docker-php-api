@@ -21,19 +21,16 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\Plugin' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\Plugin' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -102,11 +99,11 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $data['Name'] = $object->getName();
         $data['Enabled'] = $object->getEnabled();
-        $data['Settings'] = new \ArrayObject($this->normalizer->normalize($object->getSettings(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['Settings'] = $this->normalizer->normalize($object->getSettings(), 'json', $context);
         if ($object->isInitialized('pluginReference') && null !== $object->getPluginReference()) {
             $data['PluginReference'] = $object->getPluginReference();
         }
-        $data['Config'] = new \ArrayObject($this->normalizer->normalize($object->getConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['Config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;
@@ -114,5 +111,10 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\Plugin' => false];
     }
 }

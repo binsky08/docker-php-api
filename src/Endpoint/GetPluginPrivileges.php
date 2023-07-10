@@ -12,8 +12,8 @@ class GetPluginPrivileges extends \Docker\API\Runtime\Client\BaseEndpoint implem
     /**
      * @param array $queryParameters {
      *
-     *     @var string $remote The name of the plugin. The `:latest` tag is optional, and is the
-     * default if omitted.
+     * @var string $remote The name of the plugin. The `:latest` tag is optional, and is the
+     *             default if omitted.
      *
      * }
      *
@@ -61,13 +61,11 @@ class GetPluginPrivileges extends \Docker\API\Runtime\Client\BaseEndpoint implem
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\GetPluginPrivilegesInternalServerErrorException
      *
      * @return \Docker\API\Model\PluginsPrivilegesGetJsonResponse200Item[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -21,19 +21,16 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\BuildInfo' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\BuildInfo' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -119,7 +116,7 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['error'] = $object->getError();
         }
         if ($object->isInitialized('errorDetail') && null !== $object->getErrorDetail()) {
-            $data['errorDetail'] = new \ArrayObject($this->normalizer->normalize($object->getErrorDetail(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['errorDetail'] = $this->normalizer->normalize($object->getErrorDetail(), 'json', $context);
         }
         if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
@@ -128,10 +125,10 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['progress'] = $object->getProgress();
         }
         if ($object->isInitialized('progressDetail') && null !== $object->getProgressDetail()) {
-            $data['progressDetail'] = new \ArrayObject($this->normalizer->normalize($object->getProgressDetail(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['progressDetail'] = $this->normalizer->normalize($object->getProgressDetail(), 'json', $context);
         }
         if ($object->isInitialized('aux') && null !== $object->getAux()) {
-            $data['aux'] = new \ArrayObject($this->normalizer->normalize($object->getAux(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['aux'] = $this->normalizer->normalize($object->getAux(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -140,5 +137,10 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\BuildInfo' => false];
     }
 }

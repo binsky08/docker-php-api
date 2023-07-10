@@ -21,19 +21,16 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\Service' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\Service' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -119,7 +116,7 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['ID'] = $object->getID();
         }
         if ($object->isInitialized('version') && null !== $object->getVersion()) {
-            $data['Version'] = new \ArrayObject($this->normalizer->normalize($object->getVersion(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
         }
         if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['CreatedAt'] = $object->getCreatedAt();
@@ -128,19 +125,19 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['UpdatedAt'] = $object->getUpdatedAt();
         }
         if ($object->isInitialized('spec') && null !== $object->getSpec()) {
-            $data['Spec'] = new \ArrayObject($this->normalizer->normalize($object->getSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
         if ($object->isInitialized('endpoint') && null !== $object->getEndpoint()) {
-            $data['Endpoint'] = new \ArrayObject($this->normalizer->normalize($object->getEndpoint(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Endpoint'] = $this->normalizer->normalize($object->getEndpoint(), 'json', $context);
         }
         if ($object->isInitialized('updateStatus') && null !== $object->getUpdateStatus()) {
-            $data['UpdateStatus'] = new \ArrayObject($this->normalizer->normalize($object->getUpdateStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['UpdateStatus'] = $this->normalizer->normalize($object->getUpdateStatus(), 'json', $context);
         }
         if ($object->isInitialized('serviceStatus') && null !== $object->getServiceStatus()) {
-            $data['ServiceStatus'] = new \ArrayObject($this->normalizer->normalize($object->getServiceStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['ServiceStatus'] = $this->normalizer->normalize($object->getServiceStatus(), 'json', $context);
         }
         if ($object->isInitialized('jobStatus') && null !== $object->getJobStatus()) {
-            $data['JobStatus'] = new \ArrayObject($this->normalizer->normalize($object->getJobStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['JobStatus'] = $this->normalizer->normalize($object->getJobStatus(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -149,5 +146,10 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\Service' => false];
     }
 }

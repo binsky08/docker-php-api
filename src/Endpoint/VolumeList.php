@@ -11,8 +11,8 @@ class VolumeList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters JSON encoded value of the filters (a `map[string][]string`) to
-     * process on the volumes list. Available filters:
+     * @var string $filters JSON encoded value of the filters (a `map[string][]string`) to
+     *             process on the volumes list. Available filters:
      *
      * - `dangling=<boolean>` When set to `true` (or `1`), returns all
      * volumes that are not in use by a container. When set to `false`
@@ -62,13 +62,11 @@ class VolumeList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\VolumeListInternalServerErrorException
      *
      * @return \Docker\API\Model\VolumesGetResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

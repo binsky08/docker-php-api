@@ -21,19 +21,16 @@ class DistributionNameJsonGetResponse200Normalizer implements DenormalizerInterf
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\DistributionNameJsonGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\DistributionNameJsonGetResponse200' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -77,10 +74,10 @@ class DistributionNameJsonGetResponse200Normalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        $data['Descriptor'] = new \ArrayObject($this->normalizer->normalize($object->getDescriptor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['Descriptor'] = $this->normalizer->normalize($object->getDescriptor(), 'json', $context);
         $values = [];
         foreach ($object->getPlatforms() as $value) {
-            $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['Platforms'] = $values;
         foreach ($object as $key => $value_1) {
@@ -90,5 +87,10 @@ class DistributionNameJsonGetResponse200Normalizer implements DenormalizerInterf
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\DistributionNameJsonGetResponse200' => false];
     }
 }

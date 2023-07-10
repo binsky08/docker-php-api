@@ -13,30 +13,30 @@ class ServiceUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param string $id              ID or name of service
      * @param array  $queryParameters {
      *
-     *     @var int $version The version number of the service object being updated. This is
-     * required to avoid conflicting writes.
-     * This version number should be the value as currently set on the
-     * service *before* the update. You can find the current version by
-     * calling `GET /services/{id}`
-     *     @var string $registryAuthFrom if the `X-Registry-Auth` header is not specified, this parameter
-     * indicates where to find registry authorization credentials
-     *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback
-     * to the previous service spec. The supplied spec will be ignored in
-     * this case.
+     * @var int    $version The version number of the service object being updated. This is
+     *             required to avoid conflicting writes.
+     *             This version number should be the value as currently set on the
+     *             service *before* the update. You can find the current version by
+     *             calling `GET /services/{id}`
+     * @var string $registryAuthFrom if the `X-Registry-Auth` header is not specified, this parameter
+     *             indicates where to find registry authorization credentials
+     * @var string $rollback Set to this parameter to `previous` to cause a server-side rollback
+     *             to the previous service spec. The supplied spec will be ignored in
+     *             this case.
      *
      * }
      *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
-     * registries.
+     * @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
+     *             registries.
      *
      * Refer to the [authentication section](#section/Authentication) for
      * details.
      *
      * }
      */
-    public function __construct(string $id, ?\Docker\API\Model\ServicesIdUpdatePostBody $requestBody = null, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $id, \Docker\API\Model\ServicesIdUpdatePostBody $requestBody = null, array $queryParameters = [], array $headerParameters = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -93,8 +93,6 @@ class ServiceUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ServiceUpdateBadRequestException
      * @throws \Docker\API\Exception\ServiceUpdateNotFoundException
      * @throws \Docker\API\Exception\ServiceUpdateInternalServerErrorException
@@ -102,7 +100,7 @@ class ServiceUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * @return \Docker\API\Model\ServiceUpdateResponse|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

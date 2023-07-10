@@ -12,7 +12,7 @@ class NodeList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters Filters to process on the nodes list, encoded as JSON (a `map[string][]string`).
+     * @var string $filters Filters to process on the nodes list, encoded as JSON (a `map[string][]string`).
      *
      * Available filters:
      * - `id=<node id>`
@@ -68,14 +68,12 @@ class NodeList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\NodeListInternalServerErrorException
      * @throws \Docker\API\Exception\NodeListServiceUnavailableException
      *
      * @return \Docker\API\Model\Node[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

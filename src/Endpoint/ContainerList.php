@@ -18,13 +18,13 @@ class ContainerList extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * @param array $queryParameters {
      *
-     *     @var bool $all Return all containers. By default, only running containers are shown.
-     *     @var int $limit return this number of most recently created containers, including
-     * non-running ones
-     *     @var bool $size return the size of container as fields `SizeRw` and `SizeRootFs`
-     *     @var string $filters Filters to process on the container list, encoded as JSON (a
-     * `map[string][]string`). For example, `{"status": ["paused"]}` will
-     * only return paused containers.
+     * @var bool   $all Return all containers. By default, only running containers are shown.
+     * @var int    $limit return this number of most recently created containers, including
+     *             non-running ones
+     * @var bool   $size return the size of container as fields `SizeRw` and `SizeRootFs`
+     * @var string $filters Filters to process on the container list, encoded as JSON (a
+     *             `map[string][]string`). For example, `{"status": ["paused"]}` will
+     *             only return paused containers.
      *
      * Available filters:
      *
@@ -86,14 +86,12 @@ class ContainerList extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerListBadRequestException
      * @throws \Docker\API\Exception\ContainerListInternalServerErrorException
      *
      * @return \Docker\API\Model\ContainerSummaryItem[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

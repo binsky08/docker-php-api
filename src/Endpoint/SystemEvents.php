@@ -35,9 +35,9 @@ class SystemEvents extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      *
      * @param array $queryParameters {
      *
-     *     @var string $since show events created since this timestamp then stream new events
-     *     @var string $until show events created until this timestamp then stop streaming
-     *     @var string $filters A JSON encoded value of filters (a `map[string][]string`) to process on the event list. Available filters:
+     * @var string $since show events created since this timestamp then stream new events
+     * @var string $until show events created until this timestamp then stop streaming
+     * @var string $filters A JSON encoded value of filters (a `map[string][]string`) to process on the event list. Available filters:
      *
      * - `config=<string>` config name or ID
      * - `container=<string>` container name or ID
@@ -95,14 +95,12 @@ class SystemEvents extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\SystemEventsBadRequestException
      * @throws \Docker\API\Exception\SystemEventsInternalServerErrorException
      *
      * @return \Docker\API\Model\EventsGetResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -21,19 +21,16 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\IPAM' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\IPAM' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -97,7 +94,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($object->isInitialized('config') && null !== $object->getConfig()) {
             $values = [];
             foreach ($object->getConfig() as $value) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = [];
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -106,7 +103,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['Config'] = $values;
         }
         if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = [];
             foreach ($object->getOptions() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
@@ -119,5 +116,10 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\IPAM' => false];
     }
 }

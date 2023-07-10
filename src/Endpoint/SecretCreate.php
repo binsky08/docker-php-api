@@ -8,7 +8,7 @@ class SecretCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
 {
     use \Docker\API\Runtime\Client\EndpointTrait;
 
-    public function __construct(?\Docker\API\Model\SecretsCreatePostBody $requestBody = null)
+    public function __construct(\Docker\API\Model\SecretsCreatePostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -38,15 +38,13 @@ class SecretCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\SecretCreateConflictException
      * @throws \Docker\API\Exception\SecretCreateInternalServerErrorException
      * @throws \Docker\API\Exception\SecretCreateServiceUnavailableException
      *
      * @return \Docker\API\Model\IdResponse|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

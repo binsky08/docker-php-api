@@ -18,8 +18,8 @@ class ContainerArchiveInfo extends \Docker\API\Runtime\Client\BaseEndpoint imple
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var string $path Resource in the container’s filesystem to archive.
-     * }
+     * @var string $path Resource in the container’s filesystem to archive.
+     *             }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -66,15 +66,13 @@ class ContainerArchiveInfo extends \Docker\API\Runtime\Client\BaseEndpoint imple
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerArchiveInfoBadRequestException
      * @throws \Docker\API\Exception\ContainerArchiveInfoNotFoundException
      * @throws \Docker\API\Exception\ContainerArchiveInfoInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

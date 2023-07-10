@@ -15,7 +15,7 @@ class ContainerUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements
      *
      * @param string $id ID or name of the container
      */
-    public function __construct(string $id, ?\Docker\API\Model\ContainersIdUpdatePostBody $requestBody = null)
+    public function __construct(string $id, \Docker\API\Model\ContainersIdUpdatePostBody $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -46,14 +46,12 @@ class ContainerUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerUpdateNotFoundException
      * @throws \Docker\API\Exception\ContainerUpdateInternalServerErrorException
      *
      * @return \Docker\API\Model\ContainersIdUpdatePostResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

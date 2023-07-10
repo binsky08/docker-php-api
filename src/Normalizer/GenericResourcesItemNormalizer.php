@@ -21,19 +21,16 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\GenericResourcesItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\GenericResourcesItem' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -74,10 +71,10 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
     {
         $data = [];
         if ($object->isInitialized('namedResourceSpec') && null !== $object->getNamedResourceSpec()) {
-            $data['NamedResourceSpec'] = new \ArrayObject($this->normalizer->normalize($object->getNamedResourceSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['NamedResourceSpec'] = $this->normalizer->normalize($object->getNamedResourceSpec(), 'json', $context);
         }
         if ($object->isInitialized('discreteResourceSpec') && null !== $object->getDiscreteResourceSpec()) {
-            $data['DiscreteResourceSpec'] = new \ArrayObject($this->normalizer->normalize($object->getDiscreteResourceSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['DiscreteResourceSpec'] = $this->normalizer->normalize($object->getDiscreteResourceSpec(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -86,5 +83,10 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\GenericResourcesItem' => false];
     }
 }

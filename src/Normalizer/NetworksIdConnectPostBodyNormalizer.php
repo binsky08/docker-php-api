@@ -21,19 +21,16 @@ class NetworksIdConnectPostBodyNormalizer implements DenormalizerInterface, Norm
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\NetworksIdConnectPostBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\NetworksIdConnectPostBody' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -77,7 +74,7 @@ class NetworksIdConnectPostBodyNormalizer implements DenormalizerInterface, Norm
             $data['Container'] = $object->getContainer();
         }
         if ($object->isInitialized('endpointConfig') && null !== $object->getEndpointConfig()) {
-            $data['EndpointConfig'] = new \ArrayObject($this->normalizer->normalize($object->getEndpointConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['EndpointConfig'] = $this->normalizer->normalize($object->getEndpointConfig(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -86,5 +83,10 @@ class NetworksIdConnectPostBodyNormalizer implements DenormalizerInterface, Norm
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\NetworksIdConnectPostBody' => false];
     }
 }

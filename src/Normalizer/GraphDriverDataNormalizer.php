@@ -21,19 +21,16 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\GraphDriverData' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\GraphDriverData' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -78,7 +75,7 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $data = [];
         $data['Name'] = $object->getName();
-        $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+        $values = [];
         foreach ($object->getData() as $key => $value) {
             $values[$key] = $value;
         }
@@ -90,5 +87,10 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\GraphDriverData' => false];
     }
 }

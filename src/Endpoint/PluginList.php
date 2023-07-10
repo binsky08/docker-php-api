@@ -13,8 +13,8 @@ class PluginList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      *
      * @param array $queryParameters {
      *
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-     * process on the plugin list.
+     * @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *             process on the plugin list.
      *
      * Available filters:
      *
@@ -60,13 +60,11 @@ class PluginList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\PluginListInternalServerErrorException
      *
      * @return \Docker\API\Model\Plugin[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

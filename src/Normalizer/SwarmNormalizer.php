@@ -21,19 +21,16 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\Swarm' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\Swarm' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -135,7 +132,7 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['ID'] = $object->getID();
         }
         if ($object->isInitialized('version') && null !== $object->getVersion()) {
-            $data['Version'] = new \ArrayObject($this->normalizer->normalize($object->getVersion(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
         }
         if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['CreatedAt'] = $object->getCreatedAt();
@@ -144,10 +141,10 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['UpdatedAt'] = $object->getUpdatedAt();
         }
         if ($object->isInitialized('spec') && null !== $object->getSpec()) {
-            $data['Spec'] = new \ArrayObject($this->normalizer->normalize($object->getSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
         if ($object->isInitialized('tLSInfo') && null !== $object->getTLSInfo()) {
-            $data['TLSInfo'] = new \ArrayObject($this->normalizer->normalize($object->getTLSInfo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['TLSInfo'] = $this->normalizer->normalize($object->getTLSInfo(), 'json', $context);
         }
         if ($object->isInitialized('rootRotationInProgress') && null !== $object->getRootRotationInProgress()) {
             $data['RootRotationInProgress'] = $object->getRootRotationInProgress();
@@ -166,7 +163,7 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['SubnetSize'] = $object->getSubnetSize();
         }
         if ($object->isInitialized('joinTokens') && null !== $object->getJoinTokens()) {
-            $data['JoinTokens'] = new \ArrayObject($this->normalizer->normalize($object->getJoinTokens(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['JoinTokens'] = $this->normalizer->normalize($object->getJoinTokens(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -175,5 +172,10 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\Swarm' => false];
     }
 }

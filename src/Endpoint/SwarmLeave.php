@@ -12,8 +12,8 @@ class SwarmLeave extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     /**
      * @param array $queryParameters {
      *
-     *     @var bool $force Force leave swarm, even if this is the last manager or that it will
-     * break the cluster.
+     * @var bool $force Force leave swarm, even if this is the last manager or that it will
+     *           break the cluster.
      *
      * }
      *
@@ -61,14 +61,12 @@ class SwarmLeave extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\SwarmLeaveInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmLeaveServiceUnavailableException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -21,19 +21,16 @@ class ContainersIdWaitPostResponse200Normalizer implements DenormalizerInterface
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ContainersIdWaitPostResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ContainersIdWaitPostResponse200' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -75,7 +72,7 @@ class ContainersIdWaitPostResponse200Normalizer implements DenormalizerInterface
         $data = [];
         $data['StatusCode'] = $object->getStatusCode();
         if ($object->isInitialized('error') && null !== $object->getError()) {
-            $data['Error'] = new \ArrayObject($this->normalizer->normalize($object->getError(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Error'] = $this->normalizer->normalize($object->getError(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -84,5 +81,10 @@ class ContainersIdWaitPostResponse200Normalizer implements DenormalizerInterface
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ContainersIdWaitPostResponse200' => false];
     }
 }

@@ -19,9 +19,9 @@ class ImageDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
      * @param string $name            Image name or ID
      * @param array  $queryParameters {
      *
-     *     @var bool $force Remove the image even if it is being used by stopped containers or has other tags
-     *     @var bool $noprune Do not delete untagged parent images
-     * }
+     * @var bool $force Remove the image even if it is being used by stopped containers or has other tags
+     * @var bool $noprune Do not delete untagged parent images
+     *           }
      */
     public function __construct(string $name, array $queryParameters = [])
     {
@@ -62,15 +62,13 @@ class ImageDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ImageDeleteNotFoundException
      * @throws \Docker\API\Exception\ImageDeleteConflictException
      * @throws \Docker\API\Exception\ImageDeleteInternalServerErrorException
      *
      * @return \Docker\API\Model\ImageDeleteResponseItem[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

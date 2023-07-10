@@ -21,19 +21,16 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ClusterInfo' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ClusterInfo' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -129,7 +126,7 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['ID'] = $object->getID();
         }
         if ($object->isInitialized('version') && null !== $object->getVersion()) {
-            $data['Version'] = new \ArrayObject($this->normalizer->normalize($object->getVersion(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
         }
         if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['CreatedAt'] = $object->getCreatedAt();
@@ -138,10 +135,10 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['UpdatedAt'] = $object->getUpdatedAt();
         }
         if ($object->isInitialized('spec') && null !== $object->getSpec()) {
-            $data['Spec'] = new \ArrayObject($this->normalizer->normalize($object->getSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
         if ($object->isInitialized('tLSInfo') && null !== $object->getTLSInfo()) {
-            $data['TLSInfo'] = new \ArrayObject($this->normalizer->normalize($object->getTLSInfo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['TLSInfo'] = $this->normalizer->normalize($object->getTLSInfo(), 'json', $context);
         }
         if ($object->isInitialized('rootRotationInProgress') && null !== $object->getRootRotationInProgress()) {
             $data['RootRotationInProgress'] = $object->getRootRotationInProgress();
@@ -166,5 +163,10 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ClusterInfo' => false];
     }
 }

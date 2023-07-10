@@ -21,19 +21,16 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\NodeDescription' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\NodeDescription' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -95,16 +92,16 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
             $data['Hostname'] = $object->getHostname();
         }
         if ($object->isInitialized('platform') && null !== $object->getPlatform()) {
-            $data['Platform'] = new \ArrayObject($this->normalizer->normalize($object->getPlatform(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Platform'] = $this->normalizer->normalize($object->getPlatform(), 'json', $context);
         }
         if ($object->isInitialized('resources') && null !== $object->getResources()) {
-            $data['Resources'] = new \ArrayObject($this->normalizer->normalize($object->getResources(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Resources'] = $this->normalizer->normalize($object->getResources(), 'json', $context);
         }
         if ($object->isInitialized('engine') && null !== $object->getEngine()) {
-            $data['Engine'] = new \ArrayObject($this->normalizer->normalize($object->getEngine(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Engine'] = $this->normalizer->normalize($object->getEngine(), 'json', $context);
         }
         if ($object->isInitialized('tLSInfo') && null !== $object->getTLSInfo()) {
-            $data['TLSInfo'] = new \ArrayObject($this->normalizer->normalize($object->getTLSInfo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['TLSInfo'] = $this->normalizer->normalize($object->getTLSInfo(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -113,5 +110,10 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\NodeDescription' => false];
     }
 }

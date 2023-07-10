@@ -15,8 +15,8 @@ class PluginDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      *                                default if omitted.
      * @param array  $queryParameters {
      *
-     *     @var bool $force Disable the plugin before removing. This may result in issues if the
-     * plugin is in use by a container.
+     * @var bool $force Disable the plugin before removing. This may result in issues if the
+     *           plugin is in use by a container.
      *
      * }
      *
@@ -65,14 +65,12 @@ class PluginDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\PluginDeleteNotFoundException
      * @throws \Docker\API\Exception\PluginDeleteInternalServerErrorException
      *
      * @return \Docker\API\Model\Plugin|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

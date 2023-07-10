@@ -21,19 +21,16 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\NetworkAttachmentConfig' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\NetworkAttachmentConfig' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -98,7 +95,7 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
             $data['Aliases'] = $values;
         }
         if ($object->isInitialized('driverOpts') && null !== $object->getDriverOpts()) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = [];
             foreach ($object->getDriverOpts() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -111,5 +108,10 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\NetworkAttachmentConfig' => false];
     }
 }

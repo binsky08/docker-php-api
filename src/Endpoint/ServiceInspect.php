@@ -14,8 +14,8 @@ class ServiceInspect extends \Docker\API\Runtime\Client\BaseEndpoint implements 
      * @param string $id              ID or name of service
      * @param array  $queryParameters {
      *
-     *     @var bool $insertDefaults Fill empty fields with default values.
-     * }
+     * @var bool $insertDefaults Fill empty fields with default values.
+     *           }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -62,15 +62,13 @@ class ServiceInspect extends \Docker\API\Runtime\Client\BaseEndpoint implements 
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ServiceInspectNotFoundException
      * @throws \Docker\API\Exception\ServiceInspectInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceInspectServiceUnavailableException
      *
      * @return \Docker\API\Model\Service|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

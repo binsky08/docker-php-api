@@ -13,9 +13,9 @@ class ImageList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
      *
      * @param array $queryParameters {
      *
-     *     @var bool $all Show all images. Only images from a final layer (no children) are shown by default.
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-     * process on the images list.
+     * @var bool   $all Show all images. Only images from a final layer (no children) are shown by default.
+     * @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *             process on the images list.
      *
      * Available filters:
      *
@@ -24,8 +24,8 @@ class ImageList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
      * - `label=key` or `label="key=value"` of an image label
      * - `reference`=(`<image-name>[:<tag>]`)
      * - `since`=(`<image-name>[:<tag>]`,  `<image id>` or `<image@digest>`)
-     *     @var bool $digests Show digest information as a `RepoDigests` field on each image.
-     * }
+     * @var bool $digests Show digest information as a `RepoDigests` field on each image.
+     *           }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -66,13 +66,11 @@ class ImageList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ImageListInternalServerErrorException
      *
      * @return \Docker\API\Model\ImageSummary[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

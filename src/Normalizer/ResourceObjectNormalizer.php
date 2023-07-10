@@ -21,19 +21,16 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ResourceObject' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ResourceObject' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -92,7 +89,7 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
         if ($object->isInitialized('genericResources') && null !== $object->getGenericResources()) {
             $values = [];
             foreach ($object->getGenericResources() as $value) {
-                $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['GenericResources'] = $values;
         }
@@ -103,5 +100,10 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ResourceObject' => false];
     }
 }

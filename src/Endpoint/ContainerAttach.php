@@ -108,10 +108,10 @@ class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var string $detachKeys Override the key sequence for detaching a container.Format is a single
-     * character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`,
-     * `@`, `^`, `[`, `,` or `_`.
-     *     @var bool $logs Replay previous logs from the container.
+     * @var string $detachKeys Override the key sequence for detaching a container.Format is a single
+     *             character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`,
+     *             `@`, `^`, `[`, `,` or `_`.
+     * @var bool   $logs Replay previous logs from the container.
      *
      * This is useful for attaching to a container that has started and you
      * want to output everything since the container started.
@@ -119,11 +119,11 @@ class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements
      * If `stream` is also enabled, once all the previous output has been
      * returned, it will seamlessly transition into streaming current
      * output.
-     *     @var bool $stream stream attached streams from the time the request was made onwards
-     *     @var bool $stdin Attach to `stdin`
-     *     @var bool $stdout Attach to `stdout`
-     *     @var bool $stderr Attach to `stderr`
-     * }
+     * @var bool $stream stream attached streams from the time the request was made onwards
+     * @var bool $stdin Attach to `stdin`
+     * @var bool $stdout Attach to `stdout`
+     * @var bool $stderr Attach to `stderr`
+     *           }
      *
      * @param array $accept Accept content header application/vnd.docker.raw-stream|application/json
      */
@@ -175,13 +175,11 @@ class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerAttachNotFoundException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -15,8 +15,8 @@ class PluginEnable extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      *                                default if omitted.
      * @param array  $queryParameters {
      *
-     *     @var int $timeout Set the HTTP client timeout (in seconds)
-     * }
+     * @var int $timeout Set the HTTP client timeout (in seconds)
+     *          }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -63,14 +63,12 @@ class PluginEnable extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\PluginEnableNotFoundException
      * @throws \Docker\API\Exception\PluginEnableInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -11,7 +11,7 @@ class ImagePrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`). Available filters:
+     * @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`). Available filters:
      *
      * - `dangling=<boolean>` When set to `true` (or `1`), prune only
      * unused *and* untagged images. When set to `false`
@@ -58,13 +58,11 @@ class ImagePrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ImagePruneInternalServerErrorException
      *
      * @return \Docker\API\Model\ImagesPrunePostResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

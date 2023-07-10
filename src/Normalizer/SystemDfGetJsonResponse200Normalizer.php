@@ -21,19 +21,16 @@ class SystemDfGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\SystemDfGetJsonResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\SystemDfGetJsonResponse200' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -117,7 +114,7 @@ class SystemDfGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
         if ($object->isInitialized('images') && null !== $object->getImages()) {
             $values = [];
             foreach ($object->getImages() as $value) {
-                $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['Images'] = $values;
         }
@@ -126,7 +123,7 @@ class SystemDfGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
             foreach ($object->getContainers() as $value_1) {
                 $values_2 = [];
                 foreach ($value_1 as $value_2) {
-                    $values_2[] = new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
                 }
                 $values_1[] = $values_2;
             }
@@ -135,14 +132,14 @@ class SystemDfGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
         if ($object->isInitialized('volumes') && null !== $object->getVolumes()) {
             $values_3 = [];
             foreach ($object->getVolumes() as $value_3) {
-                $values_3[] = new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['Volumes'] = $values_3;
         }
         if ($object->isInitialized('buildCache') && null !== $object->getBuildCache()) {
             $values_4 = [];
             foreach ($object->getBuildCache() as $value_4) {
-                $values_4[] = new \ArrayObject($this->normalizer->normalize($value_4, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['BuildCache'] = $values_4;
         }
@@ -153,5 +150,10 @@ class SystemDfGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\SystemDfGetJsonResponse200' => false];
     }
 }

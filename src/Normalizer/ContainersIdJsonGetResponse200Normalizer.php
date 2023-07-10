@@ -21,19 +21,16 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ContainersIdJsonGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ContainersIdJsonGetResponse200' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -240,7 +237,7 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
             $data['Args'] = $values;
         }
         if ($object->isInitialized('state') && null !== $object->getState()) {
-            $data['State'] = new \ArrayObject($this->normalizer->normalize($object->getState(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['State'] = $this->normalizer->normalize($object->getState(), 'json', $context);
         }
         if ($object->isInitialized('image') && null !== $object->getImage()) {
             $data['Image'] = $object->getImage();
@@ -286,10 +283,10 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
             $data['ExecIDs'] = $values_1;
         }
         if ($object->isInitialized('hostConfig') && null !== $object->getHostConfig()) {
-            $data['HostConfig'] = new \ArrayObject($this->normalizer->normalize($object->getHostConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['HostConfig'] = $this->normalizer->normalize($object->getHostConfig(), 'json', $context);
         }
         if ($object->isInitialized('graphDriver') && null !== $object->getGraphDriver()) {
-            $data['GraphDriver'] = new \ArrayObject($this->normalizer->normalize($object->getGraphDriver(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['GraphDriver'] = $this->normalizer->normalize($object->getGraphDriver(), 'json', $context);
         }
         if ($object->isInitialized('sizeRw') && null !== $object->getSizeRw()) {
             $data['SizeRw'] = $object->getSizeRw();
@@ -300,15 +297,15 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
         if ($object->isInitialized('mounts') && null !== $object->getMounts()) {
             $values_2 = [];
             foreach ($object->getMounts() as $value_2) {
-                $values_2[] = new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['Mounts'] = $values_2;
         }
         if ($object->isInitialized('config') && null !== $object->getConfig()) {
-            $data['Config'] = new \ArrayObject($this->normalizer->normalize($object->getConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
         }
         if ($object->isInitialized('networkSettings') && null !== $object->getNetworkSettings()) {
-            $data['NetworkSettings'] = new \ArrayObject($this->normalizer->normalize($object->getNetworkSettings(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['NetworkSettings'] = $this->normalizer->normalize($object->getNetworkSettings(), 'json', $context);
         }
         foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
@@ -317,5 +314,10 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ContainersIdJsonGetResponse200' => false];
     }
 }

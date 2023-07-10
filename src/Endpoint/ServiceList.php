@@ -12,8 +12,8 @@ class ServiceList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-     * process on the services list.
+     * @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *             process on the services list.
      *
      * Available filters:
      *
@@ -21,7 +21,7 @@ class ServiceList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
      * - `label=<service label>`
      * - `mode=["replicated"|"global"]`
      * - `name=<service name>`
-     *     @var bool $status Include service status, with count of running and desired tasks.
+     * @var bool $status Include service status, with count of running and desired tasks.
      *
      * }
      *
@@ -70,14 +70,12 @@ class ServiceList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ServiceListInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceListServiceUnavailableException
      *
      * @return \Docker\API\Model\Service[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

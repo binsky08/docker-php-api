@@ -14,14 +14,14 @@ class SecretUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      * @param string $id              The ID or name of the secret
      * @param array  $queryParameters {
      *
-     *     @var int $version The version number of the secret object being updated. This is
-     * required to avoid conflicting writes.
+     * @var int $version The version number of the secret object being updated. This is
+     *          required to avoid conflicting writes.
      *
      * }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
-    public function __construct(string $id, ?\Docker\API\Model\SecretSpec $requestBody = null, array $queryParameters = [], array $accept = [])
+    public function __construct(string $id, \Docker\API\Model\SecretSpec $requestBody = null, array $queryParameters = [], array $accept = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -72,8 +72,6 @@ class SecretUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\SecretUpdateBadRequestException
      * @throws \Docker\API\Exception\SecretUpdateNotFoundException
      * @throws \Docker\API\Exception\SecretUpdateInternalServerErrorException
@@ -81,7 +79,7 @@ class SecretUpdate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

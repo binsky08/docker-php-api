@@ -42,15 +42,13 @@ class SwarmInspect extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\SwarmInspectNotFoundException
      * @throws \Docker\API\Exception\SwarmInspectInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmInspectServiceUnavailableException
      *
      * @return \Docker\API\Model\Swarm|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

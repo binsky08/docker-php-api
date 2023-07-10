@@ -14,7 +14,7 @@ class NetworkDisconnect extends \Docker\API\Runtime\Client\BaseEndpoint implemen
      * @param string $id     Network ID or name
      * @param array  $accept Accept content header application/json|text/plain
      */
-    public function __construct(string $id, ?\Docker\API\Model\NetworksIdDisconnectPostBody $requestBody = null, array $accept = [])
+    public function __construct(string $id, \Docker\API\Model\NetworksIdDisconnectPostBody $requestBody = null, array $accept = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -50,15 +50,13 @@ class NetworkDisconnect extends \Docker\API\Runtime\Client\BaseEndpoint implemen
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\NetworkDisconnectForbiddenException
      * @throws \Docker\API\Exception\NetworkDisconnectNotFoundException
      * @throws \Docker\API\Exception\NetworkDisconnectInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

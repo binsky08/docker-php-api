@@ -21,19 +21,16 @@ class ContainerSummaryItemNormalizer implements DenormalizerInterface, Normalize
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ContainerSummaryItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ContainerSummaryItem' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -192,7 +189,7 @@ class ContainerSummaryItemNormalizer implements DenormalizerInterface, Normalize
         if ($object->isInitialized('ports') && null !== $object->getPorts()) {
             $values_1 = [];
             foreach ($object->getPorts() as $value_1) {
-                $values_1[] = new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['Ports'] = $values_1;
         }
@@ -203,7 +200,7 @@ class ContainerSummaryItemNormalizer implements DenormalizerInterface, Normalize
             $data['SizeRootFs'] = $object->getSizeRootFs();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = [];
             foreach ($object->getLabels() as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
@@ -216,15 +213,15 @@ class ContainerSummaryItemNormalizer implements DenormalizerInterface, Normalize
             $data['Status'] = $object->getStatus();
         }
         if ($object->isInitialized('hostConfig') && null !== $object->getHostConfig()) {
-            $data['HostConfig'] = new \ArrayObject($this->normalizer->normalize($object->getHostConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['HostConfig'] = $this->normalizer->normalize($object->getHostConfig(), 'json', $context);
         }
         if ($object->isInitialized('networkSettings') && null !== $object->getNetworkSettings()) {
-            $data['NetworkSettings'] = new \ArrayObject($this->normalizer->normalize($object->getNetworkSettings(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['NetworkSettings'] = $this->normalizer->normalize($object->getNetworkSettings(), 'json', $context);
         }
         if ($object->isInitialized('mounts') && null !== $object->getMounts()) {
             $values_3 = [];
             foreach ($object->getMounts() as $value_3) {
-                $values_3[] = new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['Mounts'] = $values_3;
         }
@@ -235,5 +232,10 @@ class ContainerSummaryItemNormalizer implements DenormalizerInterface, Normalize
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ContainerSummaryItem' => false];
     }
 }

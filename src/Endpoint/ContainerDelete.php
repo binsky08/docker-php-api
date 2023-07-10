@@ -14,10 +14,10 @@ class ContainerDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var bool $v remove anonymous volumes associated with the container
-     *     @var bool $force if the container is running, kill it before removing it
-     *     @var bool $link Remove the specified link associated with the container.
-     * }
+     * @var bool $v remove anonymous volumes associated with the container
+     * @var bool $force if the container is running, kill it before removing it
+     * @var bool $link Remove the specified link associated with the container.
+     *           }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -66,8 +66,6 @@ class ContainerDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerDeleteBadRequestException
      * @throws \Docker\API\Exception\ContainerDeleteNotFoundException
      * @throws \Docker\API\Exception\ContainerDeleteConflictException
@@ -75,7 +73,7 @@ class ContainerDelete extends \Docker\API\Runtime\Client\BaseEndpoint implements
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

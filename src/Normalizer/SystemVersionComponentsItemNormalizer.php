@@ -21,19 +21,16 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\SystemVersionComponentsItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\SystemVersionComponentsItem' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -82,7 +79,7 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
         $data['Name'] = $object->getName();
         $data['Version'] = $object->getVersion();
         if ($object->isInitialized('details') && null !== $object->getDetails()) {
-            $data['Details'] = new \ArrayObject($this->normalizer->normalize($object->getDetails(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Details'] = $this->normalizer->normalize($object->getDetails(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -91,5 +88,10 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\SystemVersionComponentsItem' => false];
     }
 }

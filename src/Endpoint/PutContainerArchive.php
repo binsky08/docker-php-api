@@ -17,12 +17,12 @@ class PutContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implem
      * @param string|resource|\Psr\Http\Message\StreamInterface|null $requestBody
      * @param array                                                  $queryParameters {
      *
-     *     @var string $path path to a directory in the container to extract the archive’s contents into
-     *     @var string $noOverwriteDirNonDir if `1`, `true`, or `True` then it will be an error if unpacking the
-     * given content would cause an existing directory to be replaced with
-     * a non-directory and vice versa
-     *     @var string $copyUIDGID If `1`, `true`, then it will copy UID/GID maps to the dest file or
-     * dir
+     * @var string $path path to a directory in the container to extract the archive’s contents into
+     * @var string $noOverwriteDirNonDir if `1`, `true`, or `True` then it will be an error if unpacking the
+     *             given content would cause an existing directory to be replaced with
+     *             a non-directory and vice versa
+     * @var string $copyUIDGID If `1`, `true`, then it will copy UID/GID maps to the dest file or
+     *             dir
      *
      * }
      *
@@ -81,8 +81,6 @@ class PutContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implem
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\PutContainerArchiveBadRequestException
      * @throws \Docker\API\Exception\PutContainerArchiveForbiddenException
      * @throws \Docker\API\Exception\PutContainerArchiveNotFoundException
@@ -90,7 +88,7 @@ class PutContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implem
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

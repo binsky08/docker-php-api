@@ -21,19 +21,16 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\NetworksCreatePostBody' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\NetworksCreatePostBody' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -146,20 +143,20 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
             $data['Ingress'] = $object->getIngress();
         }
         if ($object->isInitialized('iPAM') && null !== $object->getIPAM()) {
-            $data['IPAM'] = new \ArrayObject($this->normalizer->normalize($object->getIPAM(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['IPAM'] = $this->normalizer->normalize($object->getIPAM(), 'json', $context);
         }
         if ($object->isInitialized('enableIPv6') && null !== $object->getEnableIPv6()) {
             $data['EnableIPv6'] = $object->getEnableIPv6();
         }
         if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Options'] = $values;
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = [];
             foreach ($object->getLabels() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -172,5 +169,10 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\NetworksCreatePostBody' => false];
     }
 }

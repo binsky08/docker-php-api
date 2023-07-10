@@ -16,7 +16,7 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param \Docker\API\Model\PluginsNameUpgradePostBodyItem[]|null $requestBody
      * @param array                                                   $queryParameters {
      *
-     *     @var string $remote Remote reference to upgrade to.
+     * @var string $remote Remote reference to upgrade to.
      *
      * The `:latest` tag is optional, and is used as the default if omitted.
      *
@@ -24,8 +24,8 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64url-encoded auth configuration to use when pulling a plugin
-     * from a registry.
+     * @var string $X-Registry-Auth A base64url-encoded auth configuration to use when pulling a plugin
+     *             from a registry.
      *
      * Refer to the [authentication section](#section/Authentication) for
      * details.
@@ -34,7 +34,7 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * @param array $accept Accept content header application/json|text/plain
      */
-    public function __construct(string $name, ?array $requestBody = null, array $queryParameters = [], array $headerParameters = [], array $accept = [])
+    public function __construct(string $name, array $requestBody = null, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
         $this->name = $name;
         $this->body = $requestBody;
@@ -97,14 +97,12 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\PluginUpgradeNotFoundException
      * @throws \Docker\API\Exception\PluginUpgradeInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

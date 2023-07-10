@@ -15,8 +15,8 @@ class ContainerInspect extends \Docker\API\Runtime\Client\BaseEndpoint implement
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var bool $size Return the size of container as fields `SizeRw` and `SizeRootFs`
-     * }
+     * @var bool $size Return the size of container as fields `SizeRw` and `SizeRootFs`
+     *           }
      */
     public function __construct(string $id, array $queryParameters = [])
     {
@@ -56,14 +56,12 @@ class ContainerInspect extends \Docker\API\Runtime\Client\BaseEndpoint implement
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerInspectNotFoundException
      * @throws \Docker\API\Exception\ContainerInspectInternalServerErrorException
      *
      * @return \Docker\API\Model\ContainersIdJsonGetResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -8,7 +8,7 @@ class NetworkCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
 {
     use \Docker\API\Runtime\Client\EndpointTrait;
 
-    public function __construct(?\Docker\API\Model\NetworksCreatePostBody $requestBody = null)
+    public function __construct(\Docker\API\Model\NetworksCreatePostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -38,15 +38,13 @@ class NetworkCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\NetworkCreateForbiddenException
      * @throws \Docker\API\Exception\NetworkCreateNotFoundException
      * @throws \Docker\API\Exception\NetworkCreateInternalServerErrorException
      *
      * @return \Docker\API\Model\NetworksCreatePostResponse201|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

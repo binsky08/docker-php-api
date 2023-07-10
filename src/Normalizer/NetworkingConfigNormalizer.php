@@ -21,19 +21,16 @@ class NetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInt
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\NetworkingConfig' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\NetworkingConfig' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -72,9 +69,9 @@ class NetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = [];
         if ($object->isInitialized('endpointsConfig') && null !== $object->getEndpointsConfig()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getEndpointsConfig() as $key => $value) {
-                $values[$key] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['EndpointsConfig'] = $values;
         }
@@ -85,5 +82,10 @@ class NetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInt
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\NetworkingConfig' => false];
     }
 }

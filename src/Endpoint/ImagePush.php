@@ -22,12 +22,12 @@ class ImagePush extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
      * @param string $name            image name or ID
      * @param array  $queryParameters {
      *
-     *     @var string $tag The tag to associate with the image on the registry.
-     * }
+     * @var string $tag The tag to associate with the image on the registry.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $X-Registry-Auth A base64url-encoded auth configuration.
+     * @var string $X-Registry-Auth A base64url-encoded auth configuration.
      *
      * Refer to the [authentication section](#section/Authentication) for
      * details.
@@ -91,14 +91,12 @@ class ImagePush extends \Docker\API\Runtime\Client\BaseEndpoint implements \Dock
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ImagePushNotFoundException
      * @throws \Docker\API\Exception\ImagePushInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

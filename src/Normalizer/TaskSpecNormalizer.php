@@ -21,19 +21,16 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\TaskSpec' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\TaskSpec' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -126,22 +123,22 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $data = [];
         if ($object->isInitialized('pluginSpec') && null !== $object->getPluginSpec()) {
-            $data['PluginSpec'] = new \ArrayObject($this->normalizer->normalize($object->getPluginSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['PluginSpec'] = $this->normalizer->normalize($object->getPluginSpec(), 'json', $context);
         }
         if ($object->isInitialized('containerSpec') && null !== $object->getContainerSpec()) {
-            $data['ContainerSpec'] = new \ArrayObject($this->normalizer->normalize($object->getContainerSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['ContainerSpec'] = $this->normalizer->normalize($object->getContainerSpec(), 'json', $context);
         }
         if ($object->isInitialized('networkAttachmentSpec') && null !== $object->getNetworkAttachmentSpec()) {
-            $data['NetworkAttachmentSpec'] = new \ArrayObject($this->normalizer->normalize($object->getNetworkAttachmentSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['NetworkAttachmentSpec'] = $this->normalizer->normalize($object->getNetworkAttachmentSpec(), 'json', $context);
         }
         if ($object->isInitialized('resources') && null !== $object->getResources()) {
-            $data['Resources'] = new \ArrayObject($this->normalizer->normalize($object->getResources(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Resources'] = $this->normalizer->normalize($object->getResources(), 'json', $context);
         }
         if ($object->isInitialized('restartPolicy') && null !== $object->getRestartPolicy()) {
-            $data['RestartPolicy'] = new \ArrayObject($this->normalizer->normalize($object->getRestartPolicy(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['RestartPolicy'] = $this->normalizer->normalize($object->getRestartPolicy(), 'json', $context);
         }
         if ($object->isInitialized('placement') && null !== $object->getPlacement()) {
-            $data['Placement'] = new \ArrayObject($this->normalizer->normalize($object->getPlacement(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['Placement'] = $this->normalizer->normalize($object->getPlacement(), 'json', $context);
         }
         if ($object->isInitialized('forceUpdate') && null !== $object->getForceUpdate()) {
             $data['ForceUpdate'] = $object->getForceUpdate();
@@ -152,12 +149,12 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($object->isInitialized('networks') && null !== $object->getNetworks()) {
             $values = [];
             foreach ($object->getNetworks() as $value) {
-                $values[] = new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['Networks'] = $values;
         }
         if ($object->isInitialized('logDriver') && null !== $object->getLogDriver()) {
-            $data['LogDriver'] = new \ArrayObject($this->normalizer->normalize($object->getLogDriver(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['LogDriver'] = $this->normalizer->normalize($object->getLogDriver(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -166,5 +163,10 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\TaskSpec' => false];
     }
 }

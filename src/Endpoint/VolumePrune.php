@@ -11,7 +11,7 @@ class VolumePrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
+     * @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
      *
      * Available filters:
      * - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune volumes with (or without, in case `label!=...` is used) the specified labels.
@@ -55,13 +55,11 @@ class VolumePrune extends \Docker\API\Runtime\Client\BaseEndpoint implements \Do
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\VolumePruneInternalServerErrorException
      *
      * @return \Docker\API\Model\VolumesPrunePostResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

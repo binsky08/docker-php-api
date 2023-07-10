@@ -14,8 +14,8 @@ class ContainerRename extends \Docker\API\Runtime\Client\BaseEndpoint implements
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var string $name New name for the container
-     * }
+     * @var string $name New name for the container
+     *             }
      *
      * @param array $accept Accept content header application/json|text/plain
      */
@@ -62,15 +62,13 @@ class ContainerRename extends \Docker\API\Runtime\Client\BaseEndpoint implements
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerRenameNotFoundException
      * @throws \Docker\API\Exception\ContainerRenameConflictException
      * @throws \Docker\API\Exception\ContainerRenameInternalServerErrorException
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

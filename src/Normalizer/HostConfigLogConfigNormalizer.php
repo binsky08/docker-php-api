@@ -21,19 +21,16 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\HostConfigLogConfig' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\HostConfigLogConfig' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -81,7 +78,7 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
             $data['Type'] = $object->getType();
         }
         if ($object->isInitialized('config') && null !== $object->getConfig()) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = [];
             foreach ($object->getConfig() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -94,5 +91,10 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\HostConfigLogConfig' => false];
     }
 }

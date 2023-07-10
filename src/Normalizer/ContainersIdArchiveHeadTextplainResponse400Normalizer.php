@@ -21,19 +21,16 @@ class ContainersIdArchiveHeadTextplainResponse400Normalizer implements Denormali
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'Docker\\API\\Model\\ContainersIdArchiveHeadTextplainResponse400' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'Docker\\API\\Model\\ContainersIdArchiveHeadTextplainResponse400' === $data::class;
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -74,7 +71,7 @@ class ContainersIdArchiveHeadTextplainResponse400Normalizer implements Denormali
     {
         $data = [];
         if ($object->isInitialized('errorResponse') && null !== $object->getErrorResponse()) {
-            $data['ErrorResponse'] = new \ArrayObject($this->normalizer->normalize($object->getErrorResponse(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+            $data['ErrorResponse'] = $this->normalizer->normalize($object->getErrorResponse(), 'json', $context);
         }
         if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
@@ -86,5 +83,10 @@ class ContainersIdArchiveHeadTextplainResponse400Normalizer implements Denormali
         }
 
         return $data;
+    }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['Docker\\API\\Model\\ContainersIdArchiveHeadTextplainResponse400' => false];
     }
 }

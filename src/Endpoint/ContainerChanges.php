@@ -45,14 +45,12 @@ class ContainerChanges extends \Docker\API\Runtime\Client\BaseEndpoint implement
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \Docker\API\Exception\ContainerChangesNotFoundException
      * @throws \Docker\API\Exception\ContainerChangesInternalServerErrorException
      *
      * @return \Docker\API\Model\ContainersIdChangesGetResponse200Item[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
