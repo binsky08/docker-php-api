@@ -13,9 +13,9 @@ class ContainerChanges extends \Docker\API\Runtime\Client\BaseEndpoint implement
      * Returns which files in a container's filesystem have been added, deleted,
      * or modified. The `Kind` of modification can be one of:.
      *
-     * - `0`: Modified
-     * - `1`: Added
-     * - `2`: Deleted
+     * - `0`: Modified ("C")
+     * - `1`: Added ("A")
+     * - `2`: Deleted ("D")
      *
      * @param string $id ID or name of the container
      */
@@ -48,14 +48,14 @@ class ContainerChanges extends \Docker\API\Runtime\Client\BaseEndpoint implement
      * @throws \Docker\API\Exception\ContainerChangesNotFoundException
      * @throws \Docker\API\Exception\ContainerChangesInternalServerErrorException
      *
-     * @return \Docker\API\Model\ContainersIdChangesGetResponse200Item[]|null
+     * @return \Docker\API\Model\FilesystemChange[]|null
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainersIdChangesGetResponse200Item[]', 'json');
+            return $serializer->deserialize($body, 'Docker\\API\\Model\\FilesystemChange[]', 'json');
         }
         if ((null === $contentType) === false && (404 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerChangesNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);

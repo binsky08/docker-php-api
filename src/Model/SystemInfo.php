@@ -469,7 +469,8 @@ class SystemInfo extends \ArrayObject
     protected $initCommit;
     /**
      * List of security features that are enabled on the daemon, such as
-     * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
+     * apparmor, seccomp, SELinux, user-namespaces (userns), rootless and
+     * no-new-privileges.
      *
      * Additional configuration options for each security feature may
      * be present, and are included as a comma-separated list of key/value
@@ -1821,7 +1822,8 @@ class SystemInfo extends \ArrayObject
 
     /**
      * List of security features that are enabled on the daemon, such as
-     * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
+     * apparmor, seccomp, SELinux, user-namespaces (userns), rootless and
+     * no-new-privileges.
      *
      * Additional configuration options for each security feature may
      * be present, and are included as a comma-separated list of key/value
@@ -1836,7 +1838,8 @@ class SystemInfo extends \ArrayObject
 
     /**
      * List of security features that are enabled on the daemon, such as
-     * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
+     * apparmor, seccomp, SELinux, user-namespaces (userns), rootless and
+     * no-new-privileges.
      *
      * Additional configuration options for each security feature may
      * be present, and are included as a comma-separated list of key/value

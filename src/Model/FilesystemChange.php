@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Docker\API\Model;
 
-class ContainersIdChangesGetResponse200Item extends \ArrayObject
+class FilesystemChange extends \ArrayObject
 {
     /**
      * @var array
@@ -16,7 +16,7 @@ class ContainersIdChangesGetResponse200Item extends \ArrayObject
         return \array_key_exists($property, $this->initialized);
     }
     /**
-     * Path to file that has changed.
+     * Path to file or directory that has changed.
      *
      * @var string|null
      */
@@ -24,12 +24,18 @@ class ContainersIdChangesGetResponse200Item extends \ArrayObject
     /**
      * Kind of change.
      *
+     * Can be one of:
+     *
+     * - `0`: Modified ("C")
+     * - `1`: Added ("A")
+     * - `2`: Deleted ("D")
+     *
      * @var int|null
      */
     protected $kind;
 
     /**
-     * Path to file that has changed.
+     * Path to file or directory that has changed.
      */
     public function getPath(): ?string
     {
@@ -37,7 +43,7 @@ class ContainersIdChangesGetResponse200Item extends \ArrayObject
     }
 
     /**
-     * Path to file that has changed.
+     * Path to file or directory that has changed.
      */
     public function setPath(?string $path): self
     {
@@ -49,6 +55,12 @@ class ContainersIdChangesGetResponse200Item extends \ArrayObject
 
     /**
      * Kind of change.
+     *
+     * Can be one of:
+     *
+     * - `0`: Modified ("C")
+     * - `1`: Added ("A")
+     * - `2`: Deleted ("D")
      */
     public function getKind(): ?int
     {
@@ -57,6 +69,12 @@ class ContainersIdChangesGetResponse200Item extends \ArrayObject
 
     /**
      * Kind of change.
+     *
+     * Can be one of:
+     *
+     * - `0`: Modified ("C")
+     * - `1`: Added ("A")
+     * - `2`: Deleted ("D")
      */
     public function setKind(?int $kind): self
     {

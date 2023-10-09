@@ -50,7 +50,8 @@ class ContainerState extends \ArrayObject
      */
     protected $restarting;
     /**
-     * Whether this container has been killed because it ran out of memory.
+     * Whether a process within this container has been killed because it ran
+     * out of memory since the container was last started.
      *
      * @var bool|null
      */
@@ -191,7 +192,8 @@ class ContainerState extends \ArrayObject
     }
 
     /**
-     * Whether this container has been killed because it ran out of memory.
+     * Whether a process within this container has been killed because it ran
+     * out of memory since the container was last started.
      */
     public function getOOMKilled(): ?bool
     {
@@ -199,7 +201,8 @@ class ContainerState extends \ArrayObject
     }
 
     /**
-     * Whether this container has been killed because it ran out of memory.
+     * Whether a process within this container has been killed because it ran
+     * out of memory since the container was last started.
      */
     public function setOOMKilled(?bool $oOMKilled): self
     {

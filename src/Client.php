@@ -174,9 +174,9 @@ class Client extends \Docker\API\Runtime\Client\Client
      * Returns which files in a container's filesystem have been added, deleted,
      * or modified. The `Kind` of modification can be one of:.
      *
-     * - `0`: Modified
-     * - `1`: Added
-     * - `2`: Deleted
+     * - `0`: Modified ("C")
+     * - `1`: Added ("A")
+     * - `2`: Deleted ("D")
      *
      * @param string $id    ID or name of the container
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -184,7 +184,7 @@ class Client extends \Docker\API\Runtime\Client\Client
      * @throws \Docker\API\Exception\ContainerChangesNotFoundException
      * @throws \Docker\API\Exception\ContainerChangesInternalServerErrorException
      *
-     * @return \Docker\API\Model\ContainersIdChangesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @return \Docker\API\Model\FilesystemChange[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerChanges(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -874,7 +874,7 @@ class Client extends \Docker\API\Runtime\Client\Client
      *
      * Available filters:
      *
-     * - `until=<duration>`: duration relative to daemon's time, during which build cache was not used, in Go's duration format (e.g., '24h')
+     * - `until=<timestamp>` remove cache older than `<timestamp>`. The `<timestamp>` can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. `10m`, `1h30m`) computed relative to the daemon's local time.
      * - `id=<id>`
      * - `parent=<id>`
      * - `type=<string>`
@@ -2633,7 +2633,7 @@ class Client extends \Docker\API\Runtime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('/v1.42');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('/v1.43');
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (\count($additionalPlugins) > 0) {
                 $plugins = array_merge($plugins, $additionalPlugins);

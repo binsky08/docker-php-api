@@ -368,6 +368,13 @@ class HostConfig extends \ArrayObject
      */
     protected $consoleSize;
     /**
+     * Arbitrary non-identifying metadata attached to container and
+     * provided to the runtime when the container is started.
+     *
+     * @var array<string, string>|null
+     */
+    protected $annotations;
+    /**
      * A list of kernel capabilities to add to the container. Conflicts
      * with option 'Capabilities'.
      *
@@ -1626,6 +1633,31 @@ class HostConfig extends \ArrayObject
     {
         $this->initialized['consoleSize'] = true;
         $this->consoleSize = $consoleSize;
+
+        return $this;
+    }
+
+    /**
+     * Arbitrary non-identifying metadata attached to container and
+     * provided to the runtime when the container is started.
+     *
+     * @return array<string, string>|null
+     */
+    public function getAnnotations(): ?iterable
+    {
+        return $this->annotations;
+    }
+
+    /**
+     * Arbitrary non-identifying metadata attached to container and
+     * provided to the runtime when the container is started.
+     *
+     * @param array<string, string>|null $annotations
+     */
+    public function setAnnotations(?iterable $annotations): self
+    {
+        $this->initialized['annotations'] = true;
+        $this->annotations = $annotations;
 
         return $this;
     }

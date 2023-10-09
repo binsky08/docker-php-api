@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class FilesystemChangeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -23,12 +23,12 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
 
     public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
-        return 'Docker\\API\\Model\\ContainersIdChangesGetResponse200Item' === $type;
+        return 'Docker\\API\\Model\\FilesystemChange' === $type;
     }
 
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return \is_object($data) && 'Docker\\API\\Model\\ContainersIdChangesGetResponse200Item' === $data::class;
+        return \is_object($data) && 'Docker\\API\\Model\\FilesystemChange' === $data::class;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -39,7 +39,7 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\API\Model\ContainersIdChangesGetResponse200Item();
+        $object = new \Docker\API\Model\FilesystemChange();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,6 +83,6 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
 
     public function getSupportedTypes(string $format = null): array
     {
-        return ['Docker\\API\\Model\\ContainersIdChangesGetResponse200Item' => false];
+        return ['Docker\\API\\Model\\FilesystemChange' => false];
     }
 }
