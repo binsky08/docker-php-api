@@ -24,6 +24,10 @@ class CreateImageInfo extends \ArrayObject
      */
     protected $error;
     /**
+     * @var ErrorDetail|null
+     */
+    protected $errorDetail;
+    /**
      * @var string|null
      */
     protected $status;
@@ -58,6 +62,19 @@ class CreateImageInfo extends \ArrayObject
     {
         $this->initialized['error'] = true;
         $this->error = $error;
+
+        return $this;
+    }
+
+    public function getErrorDetail(): ?ErrorDetail
+    {
+        return $this->errorDetail;
+    }
+
+    public function setErrorDetail(?ErrorDetail $errorDetail): self
+    {
+        $this->initialized['errorDetail'] = true;
+        $this->errorDetail = $errorDetail;
 
         return $this;
     }

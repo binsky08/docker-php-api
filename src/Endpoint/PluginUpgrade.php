@@ -11,10 +11,10 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     protected $accept;
 
     /**
-     * @param string                                                  $name            The name of the plugin. The `:latest` tag is optional, and is the
-     *                                                                                 default if omitted.
-     * @param \Docker\API\Model\PluginsNameUpgradePostBodyItem[]|null $requestBody
-     * @param array                                                   $queryParameters {
+     * @param string                                   $name            The name of the plugin. The `:latest` tag is optional, and is the
+     *                                                                  default if omitted.
+     * @param \Docker\API\Model\PluginPrivilege[]|null $requestBody
+     * @param array                                    $queryParameters {
      *
      * @var string $remote Remote reference to upgrade to.
      *
@@ -55,10 +55,10 @@ class PluginUpgrade extends \Docker\API\Runtime\Client\BaseEndpoint implements \
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if (\is_array($this->body) && isset($this->body[0]) && $this->body[0] instanceof \Docker\API\Model\PluginsNameUpgradePostBodyItem) {
+        if (\is_array($this->body) && isset($this->body[0]) && $this->body[0] instanceof \Docker\API\Model\PluginPrivilege) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        if (\is_array($this->body) && isset($this->body[0]) && $this->body[0] instanceof \Docker\API\Model\PluginsNameUpgradePostBodyItem) {
+        if (\is_array($this->body) && isset($this->body[0]) && $this->body[0] instanceof \Docker\API\Model\PluginPrivilege) {
             return [['Content-Type' => ['text/plain']], $this->body];
         }
 

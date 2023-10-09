@@ -38,7 +38,7 @@ class ImageBuild extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      * @var int    $cpuquota microseconds of CPU time that the container can get in a CPU period
      * @var string $buildargs JSON map of string pairs for build-time variables. Users pass these values at build-time. Docker uses the buildargs as the environment context for commands run via the `Dockerfile` RUN instruction, or for variable expansion in other `Dockerfile` instructions. This is not meant for passing secret values.
      *
-     * For example, the build arg `FOO=bar` would become `{"FOO":"bar"}` in JSON. This would result in the the query parameter `buildargs={"FOO":"bar"}`. Note that `{"FOO":"bar"}` should be URI component encoded.
+     * For example, the build arg `FOO=bar` would become `{"FOO":"bar"}` in JSON. This would result in the query parameter `buildargs={"FOO":"bar"}`. Note that `{"FOO":"bar"}` should be URI component encoded.
      *
      * [Read more about the buildargs instruction.](https://docs.docker.com/engine/reference/builder/#arg)
      * @var int    $shmsize Size of `/dev/shm` in bytes. The size must be greater than 0. If omitted the system uses 64MB.

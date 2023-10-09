@@ -67,7 +67,9 @@ class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
+     * @throws \Docker\API\Exception\ExecResizeBadRequestException
      * @throws \Docker\API\Exception\ExecResizeNotFoundException
+     * @throws \Docker\API\Exception\ExecResizeInternalServerErrorException
      *
      * @return null
      */
@@ -75,10 +77,16 @@ class ExecResize extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (201 === $status) {
+        if (200 === $status) {
+        }
+        if ((null === $contentType) === false && (400 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+            throw new \Docker\API\Exception\ExecResizeBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
         }
         if ((null === $contentType) === false && (404 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ExecResizeNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
+        }
+        if ((null === $contentType) === false && (500 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+            throw new \Docker\API\Exception\ExecResizeInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
         }
     }
 

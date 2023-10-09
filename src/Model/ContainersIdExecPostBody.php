@@ -34,6 +34,12 @@ class ContainersIdExecPostBody extends \ArrayObject
      */
     protected $attachStderr;
     /**
+     * Initial console size, as an `[height, width]` array.
+     *
+     * @var int[]|null
+     */
+    protected $consoleSize;
+    /**
      * Override the key sequence for detaching a container. Format is
      * a single character `[a-Z]` or `ctrl-<value>` where `<value>`
      * is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
@@ -133,6 +139,29 @@ class ContainersIdExecPostBody extends \ArrayObject
     {
         $this->initialized['attachStderr'] = true;
         $this->attachStderr = $attachStderr;
+
+        return $this;
+    }
+
+    /**
+     * Initial console size, as an `[height, width]` array.
+     *
+     * @return int[]|null
+     */
+    public function getConsoleSize(): ?array
+    {
+        return $this->consoleSize;
+    }
+
+    /**
+     * Initial console size, as an `[height, width]` array.
+     *
+     * @param int[]|null $consoleSize
+     */
+    public function setConsoleSize(?array $consoleSize): self
+    {
+        $this->initialized['consoleSize'] = true;
+        $this->consoleSize = $consoleSize;
 
         return $this;
     }

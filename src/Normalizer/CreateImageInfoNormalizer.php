@@ -55,6 +55,12 @@ class CreateImageInfoNormalizer implements DenormalizerInterface, NormalizerInte
         } elseif (\array_key_exists('error', $data) && null === $data['error']) {
             $object->setError(null);
         }
+        if (\array_key_exists('errorDetail', $data) && null !== $data['errorDetail']) {
+            $object->setErrorDetail($this->denormalizer->denormalize($data['errorDetail'], 'Docker\\API\\Model\\ErrorDetail', 'json', $context));
+            unset($data['errorDetail']);
+        } elseif (\array_key_exists('errorDetail', $data) && null === $data['errorDetail']) {
+            $object->setErrorDetail(null);
+        }
         if (\array_key_exists('status', $data) && null !== $data['status']) {
             $object->setStatus($data['status']);
             unset($data['status']);
@@ -93,6 +99,9 @@ class CreateImageInfoNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['error'] = $object->getError();
+        }
+        if ($object->isInitialized('errorDetail') && null !== $object->getErrorDetail()) {
+            $data['errorDetail'] = $this->normalizer->normalize($object->getErrorDetail(), 'json', $context);
         }
         if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();

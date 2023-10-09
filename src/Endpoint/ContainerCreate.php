@@ -13,6 +13,22 @@ class ContainerCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements
      *
      * @var string $name Assign the specified name to the container. Must match
      *             `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
+     * @var string $platform Platform in the format `os[/arch[/variant]]` used for image lookup.
+     *
+     * When specified, the daemon checks if the requested image is present
+     * in the local image cache with the given OS and Architecture, and
+     * otherwise returns a `404` status.
+     *
+     * If the option is not set, the host's native OS and Architecture are
+     * used to look up the image in the image cache. However, if no platform
+     * is passed and the given image does exist in the local image cache,
+     * but its OS or architecture does not match, the container is created
+     * with the available image, and a warning is added to the `Warnings`
+     * field in the response, for example;
+     *
+     * WARNING: The requested image's platform (linux/arm64/v8) does not
+     * match the detected host platform (linux/amd64) and no
+     * specific platform was requested
      *
      * }
      */
@@ -52,10 +68,11 @@ class ContainerCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['name']);
+        $optionsResolver->setDefined(['name', 'platform']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('platform', ['string']);
 
         return $optionsResolver;
     }
@@ -66,14 +83,14 @@ class ContainerCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements
      * @throws \Docker\API\Exception\ContainerCreateConflictException
      * @throws \Docker\API\Exception\ContainerCreateInternalServerErrorException
      *
-     * @return \Docker\API\Model\ContainersCreatePostResponse201|null
+     * @return \Docker\API\Model\ContainerCreateResponse|null
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (201 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainersCreatePostResponse201', 'json');
+            return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainerCreateResponse', 'json');
         }
         if ((null === $contentType) === false && (400 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerCreateBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);

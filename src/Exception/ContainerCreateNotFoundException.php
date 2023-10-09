@@ -17,7 +17,7 @@ class ContainerCreateNotFoundException extends NotFoundException
 
     public function __construct(\Docker\API\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('no such container');
+        parent::__construct('no such image');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

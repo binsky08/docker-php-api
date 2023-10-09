@@ -27,6 +27,12 @@ class MountBindOptions extends \ArrayObject
      * @var bool|null
      */
     protected $nonRecursive = false;
+    /**
+     * Create mount point on host if missing.
+     *
+     * @var bool|null
+     */
+    protected $createMountpoint = false;
 
     /**
      * A propagation mode with the value `[r]private`, `[r]shared`, or `[r]slave`.
@@ -62,6 +68,25 @@ class MountBindOptions extends \ArrayObject
     {
         $this->initialized['nonRecursive'] = true;
         $this->nonRecursive = $nonRecursive;
+
+        return $this;
+    }
+
+    /**
+     * Create mount point on host if missing.
+     */
+    public function getCreateMountpoint(): ?bool
+    {
+        return $this->createMountpoint;
+    }
+
+    /**
+     * Create mount point on host if missing.
+     */
+    public function setCreateMountpoint(?bool $createMountpoint): self
+    {
+        $this->initialized['createMountpoint'] = true;
+        $this->createMountpoint = $createMountpoint;
 
         return $this;
     }

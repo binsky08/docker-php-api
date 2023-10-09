@@ -151,18 +151,11 @@ class HostConfig extends \ArrayObject
      */
     protected $deviceRequests;
     /**
-     * Kernel memory limit in bytes.
+     * Hard limit for kernel TCP buffer memory (in bytes). Depending on the
+     * OCI runtime in use, this option may be ignored. It is no longer supported
+     * by the default (runc) runtime.
      *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-     * > `kmem.limit_in_bytes`.
-     *
-     * @var int|null
-     */
-    protected $kernelMemory;
-    /**
-     * Hard limit for kernel TCP buffer memory (in bytes).
+     * This field is omitted when empty.
      *
      * @var int|null
      */
@@ -192,7 +185,7 @@ class HostConfig extends \ArrayObject
      *
      * @var int|null
      */
-    protected $nanoCPUs;
+    protected $nanoCpus;
     /**
      * Disable OOM Killer for the container.
      *
@@ -369,6 +362,12 @@ class HostConfig extends \ArrayObject
      */
     protected $mounts;
     /**
+     * Initial console size, as an `[height, width]` array.
+     *
+     * @var int[]|null
+     */
+    protected $consoleSize;
+    /**
      * A list of kernel capabilities to add to the container. Conflicts
      * with option 'Capabilities'.
      *
@@ -497,7 +496,8 @@ class HostConfig extends \ArrayObject
      */
     protected $readonlyRootfs;
     /**
-     * A list of string values to customize labels for MLS systems, such as SELinux.
+     * A list of string values to customize labels for MLS systems, such
+     * as SELinux.
      *
      * @var string[]|null
      */
@@ -555,12 +555,6 @@ class HostConfig extends \ArrayObject
      * @var string|null
      */
     protected $runtime;
-    /**
-     * Initial console size, as an `[height, width]` array. (Windows only).
-     *
-     * @var int[]|null
-     */
-    protected $consoleSize;
     /**
      * Isolation technology of the container. (Windows only).
      *
@@ -1011,36 +1005,11 @@ class HostConfig extends \ArrayObject
     }
 
     /**
-     * Kernel memory limit in bytes.
+     * Hard limit for kernel TCP buffer memory (in bytes). Depending on the
+     * OCI runtime in use, this option may be ignored. It is no longer supported
+     * by the default (runc) runtime.
      *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-     * > `kmem.limit_in_bytes`.
-     */
-    public function getKernelMemory(): ?int
-    {
-        return $this->kernelMemory;
-    }
-
-    /**
-     * Kernel memory limit in bytes.
-     *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-     * > `kmem.limit_in_bytes`.
-     */
-    public function setKernelMemory(?int $kernelMemory): self
-    {
-        $this->initialized['kernelMemory'] = true;
-        $this->kernelMemory = $kernelMemory;
-
-        return $this;
-    }
-
-    /**
-     * Hard limit for kernel TCP buffer memory (in bytes).
+     * This field is omitted when empty.
      */
     public function getKernelMemoryTCP(): ?int
     {
@@ -1048,7 +1017,11 @@ class HostConfig extends \ArrayObject
     }
 
     /**
-     * Hard limit for kernel TCP buffer memory (in bytes).
+     * Hard limit for kernel TCP buffer memory (in bytes). Depending on the
+     * OCI runtime in use, this option may be ignored. It is no longer supported
+     * by the default (runc) runtime.
+     *
+     * This field is omitted when empty.
      */
     public function setKernelMemoryTCP(?int $kernelMemoryTCP): self
     {
@@ -1122,18 +1095,18 @@ class HostConfig extends \ArrayObject
     /**
      * CPU quota in units of 10<sup>-9</sup> CPUs.
      */
-    public function getNanoCPUs(): ?int
+    public function getNanoCpus(): ?int
     {
-        return $this->nanoCPUs;
+        return $this->nanoCpus;
     }
 
     /**
      * CPU quota in units of 10<sup>-9</sup> CPUs.
      */
-    public function setNanoCPUs(?int $nanoCPUs): self
+    public function setNanoCpus(?int $nanoCpus): self
     {
-        $this->initialized['nanoCPUs'] = true;
-        $this->nanoCPUs = $nanoCPUs;
+        $this->initialized['nanoCpus'] = true;
+        $this->nanoCpus = $nanoCpus;
 
         return $this;
     }
@@ -1635,6 +1608,29 @@ class HostConfig extends \ArrayObject
     }
 
     /**
+     * Initial console size, as an `[height, width]` array.
+     *
+     * @return int[]|null
+     */
+    public function getConsoleSize(): ?array
+    {
+        return $this->consoleSize;
+    }
+
+    /**
+     * Initial console size, as an `[height, width]` array.
+     *
+     * @param int[]|null $consoleSize
+     */
+    public function setConsoleSize(?array $consoleSize): self
+    {
+        $this->initialized['consoleSize'] = true;
+        $this->consoleSize = $consoleSize;
+
+        return $this;
+    }
+
+    /**
      * A list of kernel capabilities to add to the container. Conflicts
      * with option 'Capabilities'.
      *
@@ -2035,7 +2031,8 @@ class HostConfig extends \ArrayObject
     }
 
     /**
-     * A list of string values to customize labels for MLS systems, such as SELinux.
+     * A list of string values to customize labels for MLS systems, such
+     * as SELinux.
      *
      * @return string[]|null
      */
@@ -2045,7 +2042,8 @@ class HostConfig extends \ArrayObject
     }
 
     /**
-     * A list of string values to customize labels for MLS systems, such as SELinux.
+     * A list of string values to customize labels for MLS systems, such
+     * as SELinux.
      *
      * @param string[]|null $securityOpt
      */
@@ -2220,29 +2218,6 @@ class HostConfig extends \ArrayObject
     {
         $this->initialized['runtime'] = true;
         $this->runtime = $runtime;
-
-        return $this;
-    }
-
-    /**
-     * Initial console size, as an `[height, width]` array. (Windows only).
-     *
-     * @return int[]|null
-     */
-    public function getConsoleSize(): ?array
-    {
-        return $this->consoleSize;
-    }
-
-    /**
-     * Initial console size, as an `[height, width]` array. (Windows only).
-     *
-     * @param int[]|null $consoleSize
-     */
-    public function setConsoleSize(?array $consoleSize): self
-    {
-        $this->initialized['consoleSize'] = true;
-        $this->consoleSize = $consoleSize;
 
         return $this;
     }

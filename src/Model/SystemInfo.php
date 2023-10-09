@@ -115,16 +115,15 @@ class SystemInfo extends \ArrayObject
      */
     protected $swapLimit;
     /**
-     * Indicates if the host has kernel memory limit support enabled.
+     * Indicates if the host has kernel memory TCP limit support enabled. This
+     * field is omitted if not supported.
      *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-     * > `kmem.limit_in_bytes`.
+     * Kernel memory TCP limits are not supported when using cgroups v2, which
+     * does not support the corresponding `memory.kmem.tcp.limit_in_bytes` cgroup.
      *
      * @var bool|null
      */
-    protected $kernelMemory;
+    protected $kernelMemoryTCP;
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by
      * the host.
@@ -382,44 +381,9 @@ class SystemInfo extends \ArrayObject
     /**
      * Version string of the daemon.
      *
-     * > **Note**: the [standalone Swarm API](https://docs.docker.com/swarm/swarm-api/)
-     * > returns the Swarm version instead of the daemon  version, for example
-     * > `swarm/1.2.8`.
-     *
      * @var string|null
      */
     protected $serverVersion;
-    /**
-     * URL of the distributed storage backend.
-     *
-     * The storage backend is used for multihost networking (to store
-     * network and endpoint information) and by the node discovery mechanism.
-     *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is only propagated when using standalone Swarm
-     * > mode, and overlay networking using an external k/v store. Overlay
-     * > networks with Swarm mode enabled use the built-in raft store, and
-     * > this field will be empty.
-     *
-     * @var string|null
-     */
-    protected $clusterStore;
-    /**
-     * The network endpoint that the Engine advertises for the purpose of
-     * node discovery. ClusterAdvertise is a `host:port` combination on which
-     * the daemon is reachable by other hosts.
-     *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is only propagated when using standalone Swarm
-     * > mode, and overlay networking using an external k/v store. Overlay
-     * > networks with Swarm mode enabled use the built-in raft store, and
-     * > this field will be empty.
-     *
-     * @var string|null
-     */
-    protected $clusterAdvertise;
     /**
      * List of [OCI compliant](https://github.com/opencontainers/runtime-spec)
      * runtimes configured on the daemon. Keys hold the "name" used to
@@ -830,30 +794,28 @@ class SystemInfo extends \ArrayObject
     }
 
     /**
-     * Indicates if the host has kernel memory limit support enabled.
+     * Indicates if the host has kernel memory TCP limit support enabled. This
+     * field is omitted if not supported.
      *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-     * > `kmem.limit_in_bytes`.
+     * Kernel memory TCP limits are not supported when using cgroups v2, which
+     * does not support the corresponding `memory.kmem.tcp.limit_in_bytes` cgroup.
      */
-    public function getKernelMemory(): ?bool
+    public function getKernelMemoryTCP(): ?bool
     {
-        return $this->kernelMemory;
+        return $this->kernelMemoryTCP;
     }
 
     /**
-     * Indicates if the host has kernel memory limit support enabled.
+     * Indicates if the host has kernel memory TCP limit support enabled. This
+     * field is omitted if not supported.
      *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-     * > `kmem.limit_in_bytes`.
+     * Kernel memory TCP limits are not supported when using cgroups v2, which
+     * does not support the corresponding `memory.kmem.tcp.limit_in_bytes` cgroup.
      */
-    public function setKernelMemory(?bool $kernelMemory): self
+    public function setKernelMemoryTCP(?bool $kernelMemoryTCP): self
     {
-        $this->initialized['kernelMemory'] = true;
-        $this->kernelMemory = $kernelMemory;
+        $this->initialized['kernelMemoryTCP'] = true;
+        $this->kernelMemoryTCP = $kernelMemoryTCP;
 
         return $this;
     }
@@ -1607,10 +1569,6 @@ class SystemInfo extends \ArrayObject
 
     /**
      * Version string of the daemon.
-     *
-     * > **Note**: the [standalone Swarm API](https://docs.docker.com/swarm/swarm-api/)
-     * > returns the Swarm version instead of the daemon  version, for example
-     * > `swarm/1.2.8`.
      */
     public function getServerVersion(): ?string
     {
@@ -1619,91 +1577,11 @@ class SystemInfo extends \ArrayObject
 
     /**
      * Version string of the daemon.
-     *
-     * > **Note**: the [standalone Swarm API](https://docs.docker.com/swarm/swarm-api/)
-     * > returns the Swarm version instead of the daemon  version, for example
-     * > `swarm/1.2.8`.
      */
     public function setServerVersion(?string $serverVersion): self
     {
         $this->initialized['serverVersion'] = true;
         $this->serverVersion = $serverVersion;
-
-        return $this;
-    }
-
-    /**
-     * URL of the distributed storage backend.
-     *
-     * The storage backend is used for multihost networking (to store
-     * network and endpoint information) and by the node discovery mechanism.
-     *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is only propagated when using standalone Swarm
-     * > mode, and overlay networking using an external k/v store. Overlay
-     * > networks with Swarm mode enabled use the built-in raft store, and
-     * > this field will be empty.
-     */
-    public function getClusterStore(): ?string
-    {
-        return $this->clusterStore;
-    }
-
-    /**
-     * URL of the distributed storage backend.
-     *
-     * The storage backend is used for multihost networking (to store
-     * network and endpoint information) and by the node discovery mechanism.
-     *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is only propagated when using standalone Swarm
-     * > mode, and overlay networking using an external k/v store. Overlay
-     * > networks with Swarm mode enabled use the built-in raft store, and
-     * > this field will be empty.
-     */
-    public function setClusterStore(?string $clusterStore): self
-    {
-        $this->initialized['clusterStore'] = true;
-        $this->clusterStore = $clusterStore;
-
-        return $this;
-    }
-
-    /**
-     * The network endpoint that the Engine advertises for the purpose of
-     * node discovery. ClusterAdvertise is a `host:port` combination on which
-     * the daemon is reachable by other hosts.
-     *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is only propagated when using standalone Swarm
-     * > mode, and overlay networking using an external k/v store. Overlay
-     * > networks with Swarm mode enabled use the built-in raft store, and
-     * > this field will be empty.
-     */
-    public function getClusterAdvertise(): ?string
-    {
-        return $this->clusterAdvertise;
-    }
-
-    /**
-     * The network endpoint that the Engine advertises for the purpose of
-     * node discovery. ClusterAdvertise is a `host:port` combination on which
-     * the daemon is reachable by other hosts.
-     *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is only propagated when using standalone Swarm
-     * > mode, and overlay networking using an external k/v store. Overlay
-     * > networks with Swarm mode enabled use the built-in raft store, and
-     * > this field will be empty.
-     */
-    public function setClusterAdvertise(?string $clusterAdvertise): self
-    {
-        $this->initialized['clusterAdvertise'] = true;
-        $this->clusterAdvertise = $clusterAdvertise;
 
         return $this;
     }

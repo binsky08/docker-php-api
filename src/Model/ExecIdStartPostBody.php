@@ -27,6 +27,12 @@ class ExecIdStartPostBody extends \ArrayObject
      * @var bool|null
      */
     protected $tty;
+    /**
+     * Initial console size, as an `[height, width]` array.
+     *
+     * @var int[]|null
+     */
+    protected $consoleSize;
 
     /**
      * Detach from the command.
@@ -62,6 +68,29 @@ class ExecIdStartPostBody extends \ArrayObject
     {
         $this->initialized['tty'] = true;
         $this->tty = $tty;
+
+        return $this;
+    }
+
+    /**
+     * Initial console size, as an `[height, width]` array.
+     *
+     * @return int[]|null
+     */
+    public function getConsoleSize(): ?array
+    {
+        return $this->consoleSize;
+    }
+
+    /**
+     * Initial console size, as an `[height, width]` array.
+     *
+     * @param int[]|null $consoleSize
+     */
+    public function setConsoleSize(?array $consoleSize): self
+    {
+        $this->initialized['consoleSize'] = true;
+        $this->consoleSize = $consoleSize;
 
         return $this;
     }

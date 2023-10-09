@@ -64,14 +64,14 @@ class VolumeList extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     /**
      * @throws \Docker\API\Exception\VolumeListInternalServerErrorException
      *
-     * @return \Docker\API\Model\VolumesGetResponse200|null
+     * @return \Docker\API\Model\VolumeListResponse|null
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'Docker\\API\\Model\\VolumesGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Docker\\API\\Model\\VolumeListResponse', 'json');
         }
         if ((null === $contentType) === false && (500 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\VolumeListInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);

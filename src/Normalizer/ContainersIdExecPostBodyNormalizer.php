@@ -61,6 +61,16 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
         } elseif (\array_key_exists('AttachStderr', $data) && null === $data['AttachStderr']) {
             $object->setAttachStderr(null);
         }
+        if (\array_key_exists('ConsoleSize', $data) && null !== $data['ConsoleSize']) {
+            $values = [];
+            foreach ($data['ConsoleSize'] as $value) {
+                $values[] = $value;
+            }
+            $object->setConsoleSize($values);
+            unset($data['ConsoleSize']);
+        } elseif (\array_key_exists('ConsoleSize', $data) && null === $data['ConsoleSize']) {
+            $object->setConsoleSize(null);
+        }
         if (\array_key_exists('DetachKeys', $data) && null !== $data['DetachKeys']) {
             $object->setDetachKeys($data['DetachKeys']);
             unset($data['DetachKeys']);
@@ -74,21 +84,21 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
             $object->setTty(null);
         }
         if (\array_key_exists('Env', $data) && null !== $data['Env']) {
-            $values = [];
-            foreach ($data['Env'] as $value) {
-                $values[] = $value;
+            $values_1 = [];
+            foreach ($data['Env'] as $value_1) {
+                $values_1[] = $value_1;
             }
-            $object->setEnv($values);
+            $object->setEnv($values_1);
             unset($data['Env']);
         } elseif (\array_key_exists('Env', $data) && null === $data['Env']) {
             $object->setEnv(null);
         }
         if (\array_key_exists('Cmd', $data) && null !== $data['Cmd']) {
-            $values_1 = [];
-            foreach ($data['Cmd'] as $value_1) {
-                $values_1[] = $value_1;
+            $values_2 = [];
+            foreach ($data['Cmd'] as $value_2) {
+                $values_2[] = $value_2;
             }
-            $object->setCmd($values_1);
+            $object->setCmd($values_2);
             unset($data['Cmd']);
         } elseif (\array_key_exists('Cmd', $data) && null === $data['Cmd']) {
             $object->setCmd(null);
@@ -111,9 +121,9 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
         } elseif (\array_key_exists('WorkingDir', $data) && null === $data['WorkingDir']) {
             $object->setWorkingDir(null);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_3;
             }
         }
 
@@ -135,6 +145,13 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
         if ($object->isInitialized('attachStderr') && null !== $object->getAttachStderr()) {
             $data['AttachStderr'] = $object->getAttachStderr();
         }
+        if ($object->isInitialized('consoleSize') && null !== $object->getConsoleSize()) {
+            $values = [];
+            foreach ($object->getConsoleSize() as $value) {
+                $values[] = $value;
+            }
+            $data['ConsoleSize'] = $values;
+        }
         if ($object->isInitialized('detachKeys') && null !== $object->getDetachKeys()) {
             $data['DetachKeys'] = $object->getDetachKeys();
         }
@@ -142,18 +159,18 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
             $data['Tty'] = $object->getTty();
         }
         if ($object->isInitialized('env') && null !== $object->getEnv()) {
-            $values = [];
-            foreach ($object->getEnv() as $value) {
-                $values[] = $value;
-            }
-            $data['Env'] = $values;
-        }
-        if ($object->isInitialized('cmd') && null !== $object->getCmd()) {
             $values_1 = [];
-            foreach ($object->getCmd() as $value_1) {
+            foreach ($object->getEnv() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data['Cmd'] = $values_1;
+            $data['Env'] = $values_1;
+        }
+        if ($object->isInitialized('cmd') && null !== $object->getCmd()) {
+            $values_2 = [];
+            foreach ($object->getCmd() as $value_2) {
+                $values_2[] = $value_2;
+            }
+            $data['Cmd'] = $values_2;
         }
         if ($object->isInitialized('privileged') && null !== $object->getPrivileged()) {
             $data['Privileged'] = $object->getPrivileged();
@@ -164,9 +181,9 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
         if ($object->isInitialized('workingDir') && null !== $object->getWorkingDir()) {
             $data['WorkingDir'] = $object->getWorkingDir();
         }
-        foreach ($object as $key => $value_2) {
+        foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_2;
+                $data[$key] = $value_3;
             }
         }
 

@@ -89,14 +89,14 @@ class ContainerList extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @throws \Docker\API\Exception\ContainerListBadRequestException
      * @throws \Docker\API\Exception\ContainerListInternalServerErrorException
      *
-     * @return \Docker\API\Model\ContainerSummaryItem[]|null
+     * @return \Docker\API\Model\ContainerSummary[]|null
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainerSummaryItem[]', 'json');
+            return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainerSummary[]', 'json');
         }
         if ((null === $contentType) === false && (400 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerListBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);

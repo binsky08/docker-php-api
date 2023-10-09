@@ -16,7 +16,7 @@ class NetworkSettings extends \ArrayObject
         return \array_key_exists($property, $this->initialized);
     }
     /**
-     * Name of the network'a bridge (for example, `docker0`).
+     * Name of the network's bridge (for example, `docker0`).
      *
      * @var string|null
      */
@@ -190,7 +190,7 @@ class NetworkSettings extends \ArrayObject
     protected $networks;
 
     /**
-     * Name of the network'a bridge (for example, `docker0`).
+     * Name of the network's bridge (for example, `docker0`).
      */
     public function getBridge(): ?string
     {
@@ -198,7 +198,7 @@ class NetworkSettings extends \ArrayObject
     }
 
     /**
-     * Name of the network'a bridge (for example, `docker0`).
+     * Name of the network's bridge (for example, `docker0`).
      */
     public function setBridge(?string $bridge): self
     {

@@ -109,7 +109,8 @@ class ContainersIdJsonGetResponse200 extends \ArrayObject
      */
     protected $hostConfig;
     /**
-     * Information about a container's graph driver.
+     * Information about the storage driver used to store the container's and
+     * image's filesystem.
      *
      * @var GraphDriverData|null
      */
@@ -133,6 +134,13 @@ class ContainersIdJsonGetResponse200 extends \ArrayObject
     protected $mounts;
     /**
      * Configuration for a container that is portable between hosts.
+     *
+     * When used as `ContainerConfig` field in an image, `ContainerConfig` is an
+     * optional field containing the configuration of the container that was last
+     * committed when creating the image.
+     *
+     * Previous versions of Docker builder used this field to store build cache,
+     * and it is not in active use anymore.
      *
      * @var ContainerConfig|null
      */
@@ -450,7 +458,8 @@ class ContainersIdJsonGetResponse200 extends \ArrayObject
     }
 
     /**
-     * Information about a container's graph driver.
+     * Information about the storage driver used to store the container's and
+     * image's filesystem.
      */
     public function getGraphDriver(): ?GraphDriverData
     {
@@ -458,7 +467,8 @@ class ContainersIdJsonGetResponse200 extends \ArrayObject
     }
 
     /**
-     * Information about a container's graph driver.
+     * Information about the storage driver used to store the container's and
+     * image's filesystem.
      */
     public function setGraphDriver(?GraphDriverData $graphDriver): self
     {
@@ -529,6 +539,13 @@ class ContainersIdJsonGetResponse200 extends \ArrayObject
 
     /**
      * Configuration for a container that is portable between hosts.
+     *
+     * When used as `ContainerConfig` field in an image, `ContainerConfig` is an
+     * optional field containing the configuration of the container that was last
+     * committed when creating the image.
+     *
+     * Previous versions of Docker builder used this field to store build cache,
+     * and it is not in active use anymore.
      */
     public function getConfig(): ?ContainerConfig
     {
@@ -537,6 +554,13 @@ class ContainersIdJsonGetResponse200 extends \ArrayObject
 
     /**
      * Configuration for a container that is portable between hosts.
+     *
+     * When used as `ContainerConfig` field in an image, `ContainerConfig` is an
+     * optional field containing the configuration of the container that was last
+     * committed when creating the image.
+     *
+     * Previous versions of Docker builder used this field to store build cache,
+     * and it is not in active use anymore.
      */
     public function setConfig(?ContainerConfig $config): self
     {

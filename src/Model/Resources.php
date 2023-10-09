@@ -151,18 +151,11 @@ class Resources extends \ArrayObject
      */
     protected $deviceRequests;
     /**
-     * Kernel memory limit in bytes.
+     * Hard limit for kernel TCP buffer memory (in bytes). Depending on the
+     * OCI runtime in use, this option may be ignored. It is no longer supported
+     * by the default (runc) runtime.
      *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-     * > `kmem.limit_in_bytes`.
-     *
-     * @var int|null
-     */
-    protected $kernelMemory;
-    /**
-     * Hard limit for kernel TCP buffer memory (in bytes).
+     * This field is omitted when empty.
      *
      * @var int|null
      */
@@ -192,7 +185,7 @@ class Resources extends \ArrayObject
      *
      * @var int|null
      */
-    protected $nanoCPUs;
+    protected $nanoCpus;
     /**
      * Disable OOM Killer for the container.
      *
@@ -687,36 +680,11 @@ class Resources extends \ArrayObject
     }
 
     /**
-     * Kernel memory limit in bytes.
+     * Hard limit for kernel TCP buffer memory (in bytes). Depending on the
+     * OCI runtime in use, this option may be ignored. It is no longer supported
+     * by the default (runc) runtime.
      *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-     * > `kmem.limit_in_bytes`.
-     */
-    public function getKernelMemory(): ?int
-    {
-        return $this->kernelMemory;
-    }
-
-    /**
-     * Kernel memory limit in bytes.
-     *
-     * <p><br /></p>
-     *
-     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-     * > `kmem.limit_in_bytes`.
-     */
-    public function setKernelMemory(?int $kernelMemory): self
-    {
-        $this->initialized['kernelMemory'] = true;
-        $this->kernelMemory = $kernelMemory;
-
-        return $this;
-    }
-
-    /**
-     * Hard limit for kernel TCP buffer memory (in bytes).
+     * This field is omitted when empty.
      */
     public function getKernelMemoryTCP(): ?int
     {
@@ -724,7 +692,11 @@ class Resources extends \ArrayObject
     }
 
     /**
-     * Hard limit for kernel TCP buffer memory (in bytes).
+     * Hard limit for kernel TCP buffer memory (in bytes). Depending on the
+     * OCI runtime in use, this option may be ignored. It is no longer supported
+     * by the default (runc) runtime.
+     *
+     * This field is omitted when empty.
      */
     public function setKernelMemoryTCP(?int $kernelMemoryTCP): self
     {
@@ -798,18 +770,18 @@ class Resources extends \ArrayObject
     /**
      * CPU quota in units of 10<sup>-9</sup> CPUs.
      */
-    public function getNanoCPUs(): ?int
+    public function getNanoCpus(): ?int
     {
-        return $this->nanoCPUs;
+        return $this->nanoCpus;
     }
 
     /**
      * CPU quota in units of 10<sup>-9</sup> CPUs.
      */
-    public function setNanoCPUs(?int $nanoCPUs): self
+    public function setNanoCpus(?int $nanoCpus): self
     {
-        $this->initialized['nanoCPUs'] = true;
-        $this->nanoCPUs = $nanoCPUs;
+        $this->initialized['nanoCpus'] = true;
+        $this->nanoCpus = $nanoCpus;
 
         return $this;
     }

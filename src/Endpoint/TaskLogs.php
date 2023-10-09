@@ -31,7 +31,7 @@ class TaskLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
      *
      * }
      *
-     * @param array $accept Accept content header application/json|text/plain
+     * @param array $accept Accept content header application/vnd.docker.raw-stream|application/vnd.docker.multiplexed-stream|application/json
      */
     public function __construct(string $id, array $queryParameters = [], array $accept = [])
     {
@@ -58,7 +58,7 @@ class TaskLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
     public function getExtraHeaders(): array
     {
         if (empty($this->accept)) {
-            return ['Accept' => ['application/json', 'text/plain']];
+            return ['Accept' => ['application/vnd.docker.raw-stream', 'application/vnd.docker.multiplexed-stream', 'application/json']];
         }
 
         return $this->accept;
@@ -83,8 +83,6 @@ class TaskLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
 
     /**
      * @throws \Docker\API\Exception\TaskLogsNotFoundException
-     * @throws \Docker\API\Exception\TaskLogsInternalServerErrorException
-     * @throws \Docker\API\Exception\TaskLogsServiceUnavailableException
      *
      * @return null
      */
@@ -92,17 +90,14 @@ class TaskLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \Docke
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return json_decode($body);
+        if (200 === $status) {
         }
         if ((null === $contentType) === false && (404 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            throw new \Docker\API\Exception\TaskLogsNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\API\Exception\TaskLogsNotFoundException($response);
         }
-        if ((null === $contentType) === false && (500 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            throw new \Docker\API\Exception\TaskLogsInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
+        if (500 === $status) {
         }
-        if ((null === $contentType) === false && (503 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            throw new \Docker\API\Exception\TaskLogsServiceUnavailableException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
+        if (503 === $status) {
         }
     }
 

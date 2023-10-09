@@ -42,6 +42,7 @@ class SystemAuth extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
     }
 
     /**
+     * @throws \Docker\API\Exception\SystemAuthUnauthorizedException
      * @throws \Docker\API\Exception\SystemAuthInternalServerErrorException
      *
      * @return \Docker\API\Model\AuthPostResponse200|null
@@ -54,6 +55,9 @@ class SystemAuth extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
             return $serializer->deserialize($body, 'Docker\\API\\Model\\AuthPostResponse200', 'json');
         }
         if (204 === $status) {
+        }
+        if ((null === $contentType) === false && (401 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+            throw new \Docker\API\Exception\SystemAuthUnauthorizedException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
         }
         if ((null === $contentType) === false && (500 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\SystemAuthInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);

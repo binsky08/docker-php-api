@@ -93,6 +93,12 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
         } elseif (\array_key_exists('Scope', $data) && null === $data['Scope']) {
             $object->setScope(null);
         }
+        if (\array_key_exists('ClusterVolume', $data) && null !== $data['ClusterVolume']) {
+            $object->setClusterVolume($this->denormalizer->denormalize($data['ClusterVolume'], 'Docker\\API\\Model\\ClusterVolume', 'json', $context));
+            unset($data['ClusterVolume']);
+        } elseif (\array_key_exists('ClusterVolume', $data) && null === $data['ClusterVolume']) {
+            $object->setClusterVolume(null);
+        }
         if (\array_key_exists('Options', $data) && null !== $data['Options']) {
             $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Options'] as $key_2 => $value_2) {
@@ -143,6 +149,9 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $data['Labels'] = $values_1;
         $data['Scope'] = $object->getScope();
+        if ($object->isInitialized('clusterVolume') && null !== $object->getClusterVolume()) {
+            $data['ClusterVolume'] = $this->normalizer->normalize($object->getClusterVolume(), 'json', $context);
+        }
         $values_2 = [];
         foreach ($object->getOptions() as $key_2 => $value_2) {
             $values_2[$key_2] = $value_2;

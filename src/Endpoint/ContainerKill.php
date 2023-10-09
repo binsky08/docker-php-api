@@ -17,8 +17,9 @@ class ContainerKill extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     * @var string $signal Signal to send to the container as an integer or string (e.g. `SIGINT`)
-     *             }
+     * @var string $signal Signal to send to the container as an integer or string (e.g. `SIGINT`).
+     *
+     * }
      *
      * @param array $accept Accept content header application/json|text/plain
      */

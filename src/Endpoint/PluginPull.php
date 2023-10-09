@@ -12,8 +12,8 @@ class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
      * Pulls and installs a plugin. After the plugin is installed, it can be
      * enabled using the [`POST /plugins/{name}/enable` endpoint](#operation/PostPluginsEnable).
      *
-     * @param \Docker\API\Model\PluginsPullPostBodyItem[]|null $requestBody
-     * @param array                                            $queryParameters {
+     * @param \Docker\API\Model\PluginPrivilege[]|null $requestBody
+     * @param array                                    $queryParameters {
      *
      * @var string $remote Remote reference for plugin to install.
      *
@@ -53,10 +53,10 @@ class PluginPull extends \Docker\API\Runtime\Client\BaseEndpoint implements \Doc
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if (\is_array($this->body) && isset($this->body[0]) && $this->body[0] instanceof \Docker\API\Model\PluginsPullPostBodyItem) {
+        if (\is_array($this->body) && isset($this->body[0]) && $this->body[0] instanceof \Docker\API\Model\PluginPrivilege) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        if (\is_array($this->body) && isset($this->body[0]) && $this->body[0] instanceof \Docker\API\Model\PluginsPullPostBodyItem) {
+        if (\is_array($this->body) && isset($this->body[0]) && $this->body[0] instanceof \Docker\API\Model\PluginPrivilege) {
             return [['Content-Type' => ['text/plain']], $this->body];
         }
 

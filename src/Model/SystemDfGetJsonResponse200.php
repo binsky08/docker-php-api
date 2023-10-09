@@ -24,7 +24,7 @@ class SystemDfGetJsonResponse200 extends \ArrayObject
      */
     protected $images;
     /**
-     * @var ContainerSummaryItem[][]|null
+     * @var ContainerSummary[]|null
      */
     protected $containers;
     /**
@@ -69,7 +69,7 @@ class SystemDfGetJsonResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ContainerSummaryItem[][]|null
+     * @return ContainerSummary[]|null
      */
     public function getContainers(): ?array
     {
@@ -77,7 +77,7 @@ class SystemDfGetJsonResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ContainerSummaryItem[][]|null $containers
+     * @param ContainerSummary[]|null $containers
      */
     public function setContainers(?array $containers): self
     {

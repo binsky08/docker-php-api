@@ -34,7 +34,7 @@ class TaskSpecPluginSpec extends \ArrayObject
      */
     protected $disabled;
     /**
-     * @var TaskSpecPluginSpecPluginPrivilegeItem[]|null
+     * @var PluginPrivilege[]|null
      */
     protected $pluginPrivilege;
 
@@ -96,7 +96,7 @@ class TaskSpecPluginSpec extends \ArrayObject
     }
 
     /**
-     * @return TaskSpecPluginSpecPluginPrivilegeItem[]|null
+     * @return PluginPrivilege[]|null
      */
     public function getPluginPrivilege(): ?array
     {
@@ -104,7 +104,7 @@ class TaskSpecPluginSpec extends \ArrayObject
     }
 
     /**
-     * @param TaskSpecPluginSpecPluginPrivilegeItem[]|null $pluginPrivilege
+     * @param PluginPrivilege[]|null $pluginPrivilege
      */
     public function setPluginPrivilege(?array $pluginPrivilege): self
     {

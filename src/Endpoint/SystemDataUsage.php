@@ -10,10 +10,16 @@ class SystemDataUsage extends \Docker\API\Runtime\Client\BaseEndpoint implements
     protected $accept;
 
     /**
+     * @param array $queryParameters {
+     *
+     * @var array $type Object types, for which to compute and return data.
+     *            }
+     *
      * @param array $accept Accept content header application/json|text/plain
      */
-    public function __construct(array $accept = [])
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
+        $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
 
@@ -39,6 +45,17 @@ class SystemDataUsage extends \Docker\API\Runtime\Client\BaseEndpoint implements
         }
 
         return $this->accept;
+    }
+
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['type']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('type', ['array']);
+
+        return $optionsResolver;
     }
 
     /**

@@ -102,9 +102,10 @@ class ContainersCreatePostBody extends \ArrayObject
      *
      * @var bool|null
      */
-    protected $argsEscaped;
+    protected $argsEscaped = false;
     /**
-     * The name of the image to use when creating the container/.
+     * The name (or reference) of the image to use when creating the container,
+     * or which was used when the container was created.
      *
      * @var string|null
      */
@@ -161,7 +162,7 @@ class ContainersCreatePostBody extends \ArrayObject
      *
      * @var string|null
      */
-    protected $stopSignal = 'SIGTERM';
+    protected $stopSignal;
     /**
      * Timeout to stop a container in seconds.
      *
@@ -477,7 +478,8 @@ class ContainersCreatePostBody extends \ArrayObject
     }
 
     /**
-     * The name of the image to use when creating the container/.
+     * The name (or reference) of the image to use when creating the container,
+     * or which was used when the container was created.
      */
     public function getImage(): ?string
     {
@@ -485,7 +487,8 @@ class ContainersCreatePostBody extends \ArrayObject
     }
 
     /**
-     * The name of the image to use when creating the container/.
+     * The name (or reference) of the image to use when creating the container,
+     * or which was used when the container was created.
      */
     public function setImage(?string $image): self
     {

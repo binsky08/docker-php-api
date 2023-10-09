@@ -55,6 +55,16 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         } elseif (\array_key_exists('Parent', $data) && null === $data['Parent']) {
             $object->setParent(null);
         }
+        if (\array_key_exists('Parents', $data) && null !== $data['Parents']) {
+            $values = [];
+            foreach ($data['Parents'] as $value) {
+                $values[] = $value;
+            }
+            $object->setParents($values);
+            unset($data['Parents']);
+        } elseif (\array_key_exists('Parents', $data) && null === $data['Parents']) {
+            $object->setParents(null);
+        }
         if (\array_key_exists('Type', $data) && null !== $data['Type']) {
             $object->setType($data['Type']);
             unset($data['Type']);
@@ -103,9 +113,9 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         } elseif (\array_key_exists('UsageCount', $data) && null === $data['UsageCount']) {
             $object->setUsageCount(null);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
 
@@ -123,6 +133,13 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if ($object->isInitialized('parent') && null !== $object->getParent()) {
             $data['Parent'] = $object->getParent();
+        }
+        if ($object->isInitialized('parents') && null !== $object->getParents()) {
+            $values = [];
+            foreach ($object->getParents() as $value) {
+                $values[] = $value;
+            }
+            $data['Parents'] = $values;
         }
         if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['Type'] = $object->getType();
@@ -148,9 +165,9 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($object->isInitialized('usageCount') && null !== $object->getUsageCount()) {
             $data['UsageCount'] = $object->getUsageCount();
         }
-        foreach ($object as $key => $value) {
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $data[$key] = $value_1;
             }
         }
 

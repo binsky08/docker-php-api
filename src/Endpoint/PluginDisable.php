@@ -11,13 +11,20 @@ class PluginDisable extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     protected $accept;
 
     /**
-     * @param string $name   The name of the plugin. The `:latest` tag is optional, and is the
-     *                       default if omitted.
-     * @param array  $accept Accept content header application/json|text/plain
+     * @param string $name            The name of the plugin. The `:latest` tag is optional, and is the
+     *                                default if omitted.
+     * @param array  $queryParameters {
+     *
+     * @var bool $force Force disable a plugin even if still in use.
+     *
+     * }
+     *
+     * @param array $accept Accept content header application/json|text/plain
      */
-    public function __construct(string $name, array $accept = [])
+    public function __construct(string $name, array $queryParameters = [], array $accept = [])
     {
         $this->name = $name;
+        $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
 
@@ -43,6 +50,17 @@ class PluginDisable extends \Docker\API\Runtime\Client\BaseEndpoint implements \
         }
 
         return $this->accept;
+    }
+
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['force']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('force', ['bool']);
+
+        return $optionsResolver;
     }
 
     /**

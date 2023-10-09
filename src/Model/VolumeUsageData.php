@@ -23,14 +23,14 @@ class VolumeUsageData extends \ArrayObject
      *
      * @var int|null
      */
-    protected $size;
+    protected $size = -1;
     /**
      * The number of containers referencing this volume. This field
      * is set to `-1` if the reference-count is not available.
      *
      * @var int|null
      */
-    protected $refCount;
+    protected $refCount = -1;
 
     /**
      * Amount of disk space used by the volume (in bytes). This information

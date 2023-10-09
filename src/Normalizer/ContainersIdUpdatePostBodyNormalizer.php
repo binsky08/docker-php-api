@@ -183,12 +183,6 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
         } elseif (\array_key_exists('DeviceRequests', $data) && null === $data['DeviceRequests']) {
             $object->setDeviceRequests(null);
         }
-        if (\array_key_exists('KernelMemory', $data) && null !== $data['KernelMemory']) {
-            $object->setKernelMemory($data['KernelMemory']);
-            unset($data['KernelMemory']);
-        } elseif (\array_key_exists('KernelMemory', $data) && null === $data['KernelMemory']) {
-            $object->setKernelMemory(null);
-        }
         if (\array_key_exists('KernelMemoryTCP', $data) && null !== $data['KernelMemoryTCP']) {
             $object->setKernelMemoryTCP($data['KernelMemoryTCP']);
             unset($data['KernelMemoryTCP']);
@@ -213,11 +207,11 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
         } elseif (\array_key_exists('MemorySwappiness', $data) && null === $data['MemorySwappiness']) {
             $object->setMemorySwappiness(null);
         }
-        if (\array_key_exists('NanoCPUs', $data) && null !== $data['NanoCPUs']) {
-            $object->setNanoCPUs($data['NanoCPUs']);
-            unset($data['NanoCPUs']);
-        } elseif (\array_key_exists('NanoCPUs', $data) && null === $data['NanoCPUs']) {
-            $object->setNanoCPUs(null);
+        if (\array_key_exists('NanoCpus', $data) && null !== $data['NanoCpus']) {
+            $object->setNanoCpus($data['NanoCpus']);
+            unset($data['NanoCpus']);
+        } elseif (\array_key_exists('NanoCpus', $data) && null === $data['NanoCpus']) {
+            $object->setNanoCpus(null);
         }
         if (\array_key_exists('OomKillDisable', $data) && null !== $data['OomKillDisable']) {
             $object->setOomKillDisable($data['OomKillDisable']);
@@ -378,9 +372,6 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
             }
             $data['DeviceRequests'] = $values_7;
         }
-        if ($object->isInitialized('kernelMemory') && null !== $object->getKernelMemory()) {
-            $data['KernelMemory'] = $object->getKernelMemory();
-        }
         if ($object->isInitialized('kernelMemoryTCP') && null !== $object->getKernelMemoryTCP()) {
             $data['KernelMemoryTCP'] = $object->getKernelMemoryTCP();
         }
@@ -393,8 +384,8 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
         if ($object->isInitialized('memorySwappiness') && null !== $object->getMemorySwappiness()) {
             $data['MemorySwappiness'] = $object->getMemorySwappiness();
         }
-        if ($object->isInitialized('nanoCPUs') && null !== $object->getNanoCPUs()) {
-            $data['NanoCPUs'] = $object->getNanoCPUs();
+        if ($object->isInitialized('nanoCpus') && null !== $object->getNanoCpus()) {
+            $data['NanoCpus'] = $object->getNanoCpus();
         }
         if ($object->isInitialized('oomKillDisable') && null !== $object->getOomKillDisable()) {
             $data['OomKillDisable'] = $object->getOomKillDisable();

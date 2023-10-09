@@ -27,7 +27,7 @@ class TaskSpecResources extends \ArrayObject
      *
      * @var ResourceObject|null
      */
-    protected $reservation;
+    protected $reservations;
 
     /**
      * An object describing a limit on resources which can be requested by a task.
@@ -52,19 +52,19 @@ class TaskSpecResources extends \ArrayObject
      * An object describing the resources which can be advertised by a node and
      * requested by a task.
      */
-    public function getReservation(): ?ResourceObject
+    public function getReservations(): ?ResourceObject
     {
-        return $this->reservation;
+        return $this->reservations;
     }
 
     /**
      * An object describing the resources which can be advertised by a node and
      * requested by a task.
      */
-    public function setReservation(?ResourceObject $reservation): self
+    public function setReservations(?ResourceObject $reservations): self
     {
-        $this->initialized['reservation'] = true;
-        $this->reservation = $reservation;
+        $this->initialized['reservations'] = true;
+        $this->reservations = $reservations;
 
         return $this;
     }

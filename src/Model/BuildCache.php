@@ -16,26 +16,46 @@ class BuildCache extends \ArrayObject
         return \array_key_exists($property, $this->initialized);
     }
     /**
+     * Unique ID of the build cache record.
+     *
      * @var string|null
      */
     protected $iD;
     /**
+     * ID of the parent build cache record.
+     *
+     * > **Deprecated**: This field is deprecated, and omitted if empty.
+     *
      * @var string|null
      */
     protected $parent;
     /**
+     * List of parent build cache record IDs.
+     *
+     * @var string[]|null
+     */
+    protected $parents;
+    /**
+     * Cache record type.
+     *
      * @var string|null
      */
     protected $type;
     /**
+     * Description of the build-step that produced the build cache.
+     *
      * @var string|null
      */
     protected $description;
     /**
+     * Indicates if the build cache is in use.
+     *
      * @var bool|null
      */
     protected $inUse;
     /**
+     * Indicates if the build cache is shared.
+     *
      * @var bool|null
      */
     protected $shared;
@@ -64,11 +84,17 @@ class BuildCache extends \ArrayObject
      */
     protected $usageCount;
 
+    /**
+     * Unique ID of the build cache record.
+     */
     public function getID(): ?string
     {
         return $this->iD;
     }
 
+    /**
+     * Unique ID of the build cache record.
+     */
     public function setID(?string $iD): self
     {
         $this->initialized['iD'] = true;
@@ -77,11 +103,21 @@ class BuildCache extends \ArrayObject
         return $this;
     }
 
+    /**
+     * ID of the parent build cache record.
+     *
+     * > **Deprecated**: This field is deprecated, and omitted if empty.
+     */
     public function getParent(): ?string
     {
         return $this->parent;
     }
 
+    /**
+     * ID of the parent build cache record.
+     *
+     * > **Deprecated**: This field is deprecated, and omitted if empty.
+     */
     public function setParent(?string $parent): self
     {
         $this->initialized['parent'] = true;
@@ -90,11 +126,40 @@ class BuildCache extends \ArrayObject
         return $this;
     }
 
+    /**
+     * List of parent build cache record IDs.
+     *
+     * @return string[]|null
+     */
+    public function getParents(): ?array
+    {
+        return $this->parents;
+    }
+
+    /**
+     * List of parent build cache record IDs.
+     *
+     * @param string[]|null $parents
+     */
+    public function setParents(?array $parents): self
+    {
+        $this->initialized['parents'] = true;
+        $this->parents = $parents;
+
+        return $this;
+    }
+
+    /**
+     * Cache record type.
+     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
+    /**
+     * Cache record type.
+     */
     public function setType(?string $type): self
     {
         $this->initialized['type'] = true;
@@ -103,11 +168,17 @@ class BuildCache extends \ArrayObject
         return $this;
     }
 
+    /**
+     * Description of the build-step that produced the build cache.
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * Description of the build-step that produced the build cache.
+     */
     public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
@@ -116,11 +187,17 @@ class BuildCache extends \ArrayObject
         return $this;
     }
 
+    /**
+     * Indicates if the build cache is in use.
+     */
     public function getInUse(): ?bool
     {
         return $this->inUse;
     }
 
+    /**
+     * Indicates if the build cache is in use.
+     */
     public function setInUse(?bool $inUse): self
     {
         $this->initialized['inUse'] = true;
@@ -129,11 +206,17 @@ class BuildCache extends \ArrayObject
         return $this;
     }
 
+    /**
+     * Indicates if the build cache is shared.
+     */
     public function getShared(): ?bool
     {
         return $this->shared;
     }
 
+    /**
+     * Indicates if the build cache is shared.
+     */
     public function setShared(?bool $shared): self
     {
         $this->initialized['shared'] = true;

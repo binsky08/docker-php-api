@@ -55,9 +55,19 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
         } elseif (\array_key_exists('Tty', $data) && null === $data['Tty']) {
             $object->setTty(null);
         }
-        foreach ($data as $key => $value) {
+        if (\array_key_exists('ConsoleSize', $data) && null !== $data['ConsoleSize']) {
+            $values = [];
+            foreach ($data['ConsoleSize'] as $value) {
+                $values[] = $value;
+            }
+            $object->setConsoleSize($values);
+            unset($data['ConsoleSize']);
+        } elseif (\array_key_exists('ConsoleSize', $data) && null === $data['ConsoleSize']) {
+            $object->setConsoleSize(null);
+        }
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
 
@@ -76,9 +86,16 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
         if ($object->isInitialized('tty') && null !== $object->getTty()) {
             $data['Tty'] = $object->getTty();
         }
-        foreach ($object as $key => $value) {
+        if ($object->isInitialized('consoleSize') && null !== $object->getConsoleSize()) {
+            $values = [];
+            foreach ($object->getConsoleSize() as $value) {
+                $values[] = $value;
+            }
+            $data['ConsoleSize'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $data[$key] = $value_1;
             }
         }
 

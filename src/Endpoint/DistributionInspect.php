@@ -43,14 +43,14 @@ class DistributionInspect extends \Docker\API\Runtime\Client\BaseEndpoint implem
      * @throws \Docker\API\Exception\DistributionInspectUnauthorizedException
      * @throws \Docker\API\Exception\DistributionInspectInternalServerErrorException
      *
-     * @return \Docker\API\Model\DistributionNameJsonGetResponse200|null
+     * @return \Docker\API\Model\DistributionInspect|null
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'Docker\\API\\Model\\DistributionNameJsonGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Docker\\API\\Model\\DistributionInspect', 'json');
         }
         if ((null === $contentType) === false && (401 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\DistributionInspectUnauthorizedException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);

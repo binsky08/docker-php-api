@@ -30,7 +30,7 @@ class ContainerLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      *
      * }
      *
-     * @param array $accept Accept content header application/json|text/plain
+     * @param array $accept Accept content header application/vnd.docker.raw-stream|application/vnd.docker.multiplexed-stream|application/json
      */
     public function __construct(string $id, array $queryParameters = [], array $accept = [])
     {
@@ -57,7 +57,7 @@ class ContainerLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     public function getExtraHeaders(): array
     {
         if (empty($this->accept)) {
-            return ['Accept' => ['application/json', 'text/plain']];
+            return ['Accept' => ['application/vnd.docker.raw-stream', 'application/vnd.docker.multiplexed-stream', 'application/json']];
         }
 
         return $this->accept;
@@ -82,7 +82,6 @@ class ContainerLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \
 
     /**
      * @throws \Docker\API\Exception\ContainerLogsNotFoundException
-     * @throws \Docker\API\Exception\ContainerLogsInternalServerErrorException
      *
      * @return null
      */
@@ -90,14 +89,12 @@ class ContainerLogs extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return json_decode($body);
+        if (200 === $status) {
         }
         if ((null === $contentType) === false && (404 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            throw new \Docker\API\Exception\ContainerLogsNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\API\Exception\ContainerLogsNotFoundException($response);
         }
-        if ((null === $contentType) === false && (500 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            throw new \Docker\API\Exception\ContainerLogsInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
+        if (500 === $status) {
         }
     }
 

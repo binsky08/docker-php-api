@@ -55,6 +55,12 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
         } elseif (\array_key_exists('NonRecursive', $data) && null === $data['NonRecursive']) {
             $object->setNonRecursive(null);
         }
+        if (\array_key_exists('CreateMountpoint', $data) && null !== $data['CreateMountpoint']) {
+            $object->setCreateMountpoint($data['CreateMountpoint']);
+            unset($data['CreateMountpoint']);
+        } elseif (\array_key_exists('CreateMountpoint', $data) && null === $data['CreateMountpoint']) {
+            $object->setCreateMountpoint(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -75,6 +81,9 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if ($object->isInitialized('nonRecursive') && null !== $object->getNonRecursive()) {
             $data['NonRecursive'] = $object->getNonRecursive();
+        }
+        if ($object->isInitialized('createMountpoint') && null !== $object->getCreateMountpoint()) {
+            $data['CreateMountpoint'] = $object->getCreateMountpoint();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

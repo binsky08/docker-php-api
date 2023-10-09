@@ -64,7 +64,8 @@ class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements
      * ### Stream format
      *
      * When the TTY setting is disabled in [`POST /containers/create`](#operation/ContainerCreate),
-     * the stream over the hijacked connected is multiplexed to separate out
+     * the HTTP Content-Type header is set to application/vnd.docker.multiplexed-stream
+     * and the stream over the hijacked connected is multiplexed to separate out
      * `stdout` and `stderr`. The stream consists of a series of frames, each
      * containing a header and a payload.
      *
@@ -125,7 +126,7 @@ class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements
      * @var bool $stderr Attach to `stderr`
      *           }
      *
-     * @param array $accept Accept content header application/vnd.docker.raw-stream|application/json
+     * @param array $accept Accept content header application/vnd.docker.raw-stream|application/vnd.docker.multiplexed-stream|application/json
      */
     public function __construct(string $id, array $queryParameters = [], array $accept = [])
     {
@@ -152,7 +153,7 @@ class ContainerAttach extends \Docker\API\Runtime\Client\BaseEndpoint implements
     public function getExtraHeaders(): array
     {
         if (empty($this->accept)) {
-            return ['Accept' => ['application/vnd.docker.raw-stream', 'application/json']];
+            return ['Accept' => ['application/vnd.docker.raw-stream', 'application/vnd.docker.multiplexed-stream', 'application/json']];
         }
 
         return $this->accept;

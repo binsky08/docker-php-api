@@ -37,7 +37,7 @@ class SwarmJoinPostBody extends \ArrayObject
     /**
      * Address or interface to use for data path traffic (format:
      * `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
-     * like `eth0`. If `DataPathAddr` is unspecified, the same addres
+     * like `eth0`. If `DataPathAddr` is unspecified, the same address
      * as `AdvertiseAddr` is used.
      *
      * The `DataPathAddr` specifies the address that global scope
@@ -117,7 +117,7 @@ class SwarmJoinPostBody extends \ArrayObject
     /**
      * Address or interface to use for data path traffic (format:
      * `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
-     * like `eth0`. If `DataPathAddr` is unspecified, the same addres
+     * like `eth0`. If `DataPathAddr` is unspecified, the same address
      * as `AdvertiseAddr` is used.
      *
      * The `DataPathAddr` specifies the address that global scope
@@ -134,7 +134,7 @@ class SwarmJoinPostBody extends \ArrayObject
     /**
      * Address or interface to use for data path traffic (format:
      * `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
-     * like `eth0`. If `DataPathAddr` is unspecified, the same addres
+     * like `eth0`. If `DataPathAddr` is unspecified, the same address
      * as `AdvertiseAddr` is used.
      *
      * The `DataPathAddr` specifies the address that global scope

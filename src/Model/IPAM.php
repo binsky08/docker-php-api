@@ -28,7 +28,7 @@ class IPAM extends \ArrayObject
      * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
      * ```
      *
-     * @var array<string, string>[]|null
+     * @var IPAMConfig[]|null
      */
     protected $config;
     /**
@@ -64,7 +64,7 @@ class IPAM extends \ArrayObject
      * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
      * ```
      *
-     * @return array<string, string>[]|null
+     * @return IPAMConfig[]|null
      */
     public function getConfig(): ?array
     {
@@ -78,7 +78,7 @@ class IPAM extends \ArrayObject
      * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
      * ```
      *
-     * @param array<string, string>[]|null $config
+     * @param IPAMConfig[]|null $config
      */
     public function setConfig(?array $config): self
     {

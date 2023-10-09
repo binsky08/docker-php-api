@@ -64,7 +64,7 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('PluginPrivilege', $data) && null !== $data['PluginPrivilege']) {
             $values = [];
             foreach ($data['PluginPrivilege'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\TaskSpecPluginSpecPluginPrivilegeItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\PluginPrivilege', 'json', $context);
             }
             $object->setPluginPrivilege($values);
             unset($data['PluginPrivilege']);

@@ -123,11 +123,11 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         } elseif (\array_key_exists('SwapLimit', $data) && null === $data['SwapLimit']) {
             $object->setSwapLimit(null);
         }
-        if (\array_key_exists('KernelMemory', $data) && null !== $data['KernelMemory']) {
-            $object->setKernelMemory($data['KernelMemory']);
-            unset($data['KernelMemory']);
-        } elseif (\array_key_exists('KernelMemory', $data) && null === $data['KernelMemory']) {
-            $object->setKernelMemory(null);
+        if (\array_key_exists('KernelMemoryTCP', $data) && null !== $data['KernelMemoryTCP']) {
+            $object->setKernelMemoryTCP($data['KernelMemoryTCP']);
+            unset($data['KernelMemoryTCP']);
+        } elseif (\array_key_exists('KernelMemoryTCP', $data) && null === $data['KernelMemoryTCP']) {
+            $object->setKernelMemoryTCP(null);
         }
         if (\array_key_exists('CpuCfsPeriod', $data) && null !== $data['CpuCfsPeriod']) {
             $object->setCpuCfsPeriod($data['CpuCfsPeriod']);
@@ -341,18 +341,6 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         } elseif (\array_key_exists('ServerVersion', $data) && null === $data['ServerVersion']) {
             $object->setServerVersion(null);
         }
-        if (\array_key_exists('ClusterStore', $data) && null !== $data['ClusterStore']) {
-            $object->setClusterStore($data['ClusterStore']);
-            unset($data['ClusterStore']);
-        } elseif (\array_key_exists('ClusterStore', $data) && null === $data['ClusterStore']) {
-            $object->setClusterStore(null);
-        }
-        if (\array_key_exists('ClusterAdvertise', $data) && null !== $data['ClusterAdvertise']) {
-            $object->setClusterAdvertise($data['ClusterAdvertise']);
-            unset($data['ClusterAdvertise']);
-        } elseif (\array_key_exists('ClusterAdvertise', $data) && null === $data['ClusterAdvertise']) {
-            $object->setClusterAdvertise(null);
-        }
         if (\array_key_exists('Runtimes', $data) && null !== $data['Runtimes']) {
             $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['Runtimes'] as $key => $value_4) {
@@ -506,8 +494,8 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($object->isInitialized('swapLimit') && null !== $object->getSwapLimit()) {
             $data['SwapLimit'] = $object->getSwapLimit();
         }
-        if ($object->isInitialized('kernelMemory') && null !== $object->getKernelMemory()) {
-            $data['KernelMemory'] = $object->getKernelMemory();
+        if ($object->isInitialized('kernelMemoryTCP') && null !== $object->getKernelMemoryTCP()) {
+            $data['KernelMemoryTCP'] = $object->getKernelMemoryTCP();
         }
         if ($object->isInitialized('cpuCfsPeriod') && null !== $object->getCpuCfsPeriod()) {
             $data['CpuCfsPeriod'] = $object->getCpuCfsPeriod();
@@ -618,12 +606,6 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if ($object->isInitialized('serverVersion') && null !== $object->getServerVersion()) {
             $data['ServerVersion'] = $object->getServerVersion();
-        }
-        if ($object->isInitialized('clusterStore') && null !== $object->getClusterStore()) {
-            $data['ClusterStore'] = $object->getClusterStore();
-        }
-        if ($object->isInitialized('clusterAdvertise') && null !== $object->getClusterAdvertise()) {
-            $data['ClusterAdvertise'] = $object->getClusterAdvertise();
         }
         if ($object->isInitialized('runtimes') && null !== $object->getRuntimes()) {
             $values_4 = [];

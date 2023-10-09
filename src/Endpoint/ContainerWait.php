@@ -15,8 +15,9 @@ class ContainerWait extends \Docker\API\Runtime\Client\BaseEndpoint implements \
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     * @var string $condition Wait until a container state reaches the given condition, either
-     *             'not-running' (default), 'next-exit', or 'removed'.
+     * @var string $condition Wait until a container state reaches the given condition.
+     *
+     * Defaults to `not-running` if omitted or empty.
      *
      * }
      */
@@ -58,17 +59,21 @@ class ContainerWait extends \Docker\API\Runtime\Client\BaseEndpoint implements \
     }
 
     /**
+     * @throws \Docker\API\Exception\ContainerWaitBadRequestException
      * @throws \Docker\API\Exception\ContainerWaitNotFoundException
      * @throws \Docker\API\Exception\ContainerWaitInternalServerErrorException
      *
-     * @return \Docker\API\Model\ContainersIdWaitPostResponse200|null
+     * @return \Docker\API\Model\ContainerWaitResponse|null
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainersIdWaitPostResponse200', 'json');
+            return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainerWaitResponse', 'json');
+        }
+        if ((null === $contentType) === false && (400 === $status && false !== mb_strpos($contentType, 'application/json'))) {
+            throw new \Docker\API\Exception\ContainerWaitBadRequestException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);
         }
         if ((null === $contentType) === false && (404 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\ContainerWaitNotFoundException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);

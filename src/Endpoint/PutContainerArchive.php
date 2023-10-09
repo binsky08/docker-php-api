@@ -12,6 +12,8 @@ class PutContainerArchive extends \Docker\API\Runtime\Client\BaseEndpoint implem
 
     /**
      * Upload a tar archive to be extracted to a path in the filesystem of container id.
+     * `path` parameter is asserted to be a directory. If it exists as a file, 400 error
+     * will be returned with message "not a directory".
      *
      * @param string                                                 $id              ID or name of the container
      * @param string|resource|\Psr\Http\Message\StreamInterface|null $requestBody

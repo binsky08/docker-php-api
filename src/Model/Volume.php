@@ -64,6 +64,13 @@ class Volume extends \ArrayObject
      */
     protected $scope = 'local';
     /**
+     * Options and information specific to, and only present on, Swarm CSI
+     * cluster volumes.
+     *
+     * @var ClusterVolume|null
+     */
+    protected $clusterVolume;
+    /**
      * The driver specific options used when creating the volume.
      *
      * @var array<string, string>|null
@@ -226,6 +233,27 @@ class Volume extends \ArrayObject
     {
         $this->initialized['scope'] = true;
         $this->scope = $scope;
+
+        return $this;
+    }
+
+    /**
+     * Options and information specific to, and only present on, Swarm CSI
+     * cluster volumes.
+     */
+    public function getClusterVolume(): ?ClusterVolume
+    {
+        return $this->clusterVolume;
+    }
+
+    /**
+     * Options and information specific to, and only present on, Swarm CSI
+     * cluster volumes.
+     */
+    public function setClusterVolume(?ClusterVolume $clusterVolume): self
+    {
+        $this->initialized['clusterVolume'] = true;
+        $this->clusterVolume = $clusterVolume;
 
         return $this;
     }

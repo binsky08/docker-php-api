@@ -63,14 +63,14 @@ class GetPluginPrivileges extends \Docker\API\Runtime\Client\BaseEndpoint implem
     /**
      * @throws \Docker\API\Exception\GetPluginPrivilegesInternalServerErrorException
      *
-     * @return \Docker\API\Model\PluginsPrivilegesGetJsonResponse200Item[]|null
+     * @return \Docker\API\Model\PluginPrivilege[]|null
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ((null === $contentType) === false && (200 === $status && false !== mb_strpos($contentType, 'application/json'))) {
-            return $serializer->deserialize($body, 'Docker\\API\\Model\\PluginsPrivilegesGetJsonResponse200Item[]', 'json');
+            return $serializer->deserialize($body, 'Docker\\API\\Model\\PluginPrivilege[]', 'json');
         }
         if ((null === $contentType) === false && (500 === $status && false !== mb_strpos($contentType, 'application/json'))) {
             throw new \Docker\API\Exception\GetPluginPrivilegesInternalServerErrorException($serializer->deserialize($body, 'Docker\\API\\Model\\ErrorResponse', 'json'), $response);

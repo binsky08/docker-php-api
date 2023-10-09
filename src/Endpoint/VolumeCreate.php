@@ -8,7 +8,7 @@ class VolumeCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
 {
     use \Docker\API\Runtime\Client\EndpointTrait;
 
-    public function __construct(\Docker\API\Model\VolumesCreatePostBody $requestBody = null)
+    public function __construct(\Docker\API\Model\VolumeCreateOptions $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -25,7 +25,7 @@ class VolumeCreate extends \Docker\API\Runtime\Client\BaseEndpoint implements \D
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Docker\API\Model\VolumesCreatePostBody) {
+        if ($this->body instanceof \Docker\API\Model\VolumeCreateOptions) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 

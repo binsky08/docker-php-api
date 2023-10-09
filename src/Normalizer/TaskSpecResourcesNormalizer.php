@@ -49,11 +49,11 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
         } elseif (\array_key_exists('Limits', $data) && null === $data['Limits']) {
             $object->setLimits(null);
         }
-        if (\array_key_exists('Reservation', $data) && null !== $data['Reservation']) {
-            $object->setReservation($this->denormalizer->denormalize($data['Reservation'], 'Docker\\API\\Model\\ResourceObject', 'json', $context));
-            unset($data['Reservation']);
-        } elseif (\array_key_exists('Reservation', $data) && null === $data['Reservation']) {
-            $object->setReservation(null);
+        if (\array_key_exists('Reservations', $data) && null !== $data['Reservations']) {
+            $object->setReservations($this->denormalizer->denormalize($data['Reservations'], 'Docker\\API\\Model\\ResourceObject', 'json', $context));
+            unset($data['Reservations']);
+        } elseif (\array_key_exists('Reservations', $data) && null === $data['Reservations']) {
+            $object->setReservations(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -73,8 +73,8 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
         if ($object->isInitialized('limits') && null !== $object->getLimits()) {
             $data['Limits'] = $this->normalizer->normalize($object->getLimits(), 'json', $context);
         }
-        if ($object->isInitialized('reservation') && null !== $object->getReservation()) {
-            $data['Reservation'] = $this->normalizer->normalize($object->getReservation(), 'json', $context);
+        if ($object->isInitialized('reservations') && null !== $object->getReservations()) {
+            $data['Reservations'] = $this->normalizer->normalize($object->getReservations(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
