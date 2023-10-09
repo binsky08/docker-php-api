@@ -16,12 +16,12 @@ class ContainerSummaryItemNetworkSettings extends \ArrayObject
         return \array_key_exists($property, $this->initialized);
     }
     /**
-     * @var EndpointSettings[]|null
+     * @var array<string, EndpointSettings>|null
      */
     protected $networks;
 
     /**
-     * @return EndpointSettings[]|null
+     * @return array<string, EndpointSettings>|null
      */
     public function getNetworks(): ?iterable
     {
@@ -29,7 +29,7 @@ class ContainerSummaryItemNetworkSettings extends \ArrayObject
     }
 
     /**
-     * @param EndpointSettings[]|null $networks
+     * @param array<string, EndpointSettings>|null $networks
      */
     public function setNetworks(?iterable $networks): self
     {

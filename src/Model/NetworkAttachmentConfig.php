@@ -30,7 +30,7 @@ class NetworkAttachmentConfig extends \ArrayObject
     /**
      * Driver attachment options for the network target.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $driverOpts;
 
@@ -79,7 +79,7 @@ class NetworkAttachmentConfig extends \ArrayObject
     /**
      * Driver attachment options for the network target.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getDriverOpts(): ?iterable
     {
@@ -89,7 +89,7 @@ class NetworkAttachmentConfig extends \ArrayObject
     /**
      * Driver attachment options for the network target.
      *
-     * @param string[]|null $driverOpts
+     * @param array<string, string>|null $driverOpts
      */
     public function setDriverOpts(?iterable $driverOpts): self
     {

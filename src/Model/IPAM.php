@@ -28,13 +28,13 @@ class IPAM extends \ArrayObject
      * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
      * ```
      *
-     * @var string[][]|null
+     * @var array<string, string>[]|null
      */
     protected $config;
     /**
      * Driver-specific options, specified as a map.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $options;
 
@@ -64,7 +64,7 @@ class IPAM extends \ArrayObject
      * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
      * ```
      *
-     * @return string[][]|null
+     * @return array<string, string>[]|null
      */
     public function getConfig(): ?array
     {
@@ -78,7 +78,7 @@ class IPAM extends \ArrayObject
      * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
      * ```
      *
-     * @param string[][]|null $config
+     * @param array<string, string>[]|null $config
      */
     public function setConfig(?array $config): self
     {
@@ -91,7 +91,7 @@ class IPAM extends \ArrayObject
     /**
      * Driver-specific options, specified as a map.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getOptions(): ?iterable
     {
@@ -101,7 +101,7 @@ class IPAM extends \ArrayObject
     /**
      * Driver-specific options, specified as a map.
      *
-     * @param string[]|null $options
+     * @param array<string, string>|null $options
      */
     public function setOptions(?iterable $options): self
     {

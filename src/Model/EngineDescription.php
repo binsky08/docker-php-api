@@ -20,7 +20,7 @@ class EngineDescription extends \ArrayObject
      */
     protected $engineVersion;
     /**
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $labels;
     /**
@@ -42,7 +42,7 @@ class EngineDescription extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getLabels(): ?iterable
     {
@@ -50,7 +50,7 @@ class EngineDescription extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $labels
+     * @param array<string, string>|null $labels
      */
     public function setLabels(?iterable $labels): self
     {

@@ -95,7 +95,7 @@ class RegistryServiceConfig extends \ArrayObject
      */
     protected $insecureRegistryCIDRs;
     /**
-     * @var IndexInfo[]|null
+     * @var array<string, IndexInfo>|null
      */
     protected $indexConfigs;
     /**
@@ -298,7 +298,7 @@ class RegistryServiceConfig extends \ArrayObject
     }
 
     /**
-     * @return IndexInfo[]|null
+     * @return array<string, IndexInfo>|null
      */
     public function getIndexConfigs(): ?iterable
     {
@@ -306,7 +306,7 @@ class RegistryServiceConfig extends \ArrayObject
     }
 
     /**
-     * @param IndexInfo[]|null $indexConfigs
+     * @param array<string, IndexInfo>|null $indexConfigs
      */
     public function setIndexConfigs(?iterable $indexConfigs): self
     {

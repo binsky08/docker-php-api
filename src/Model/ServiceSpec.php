@@ -24,7 +24,7 @@ class ServiceSpec extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $labels;
     /**
@@ -86,7 +86,7 @@ class ServiceSpec extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getLabels(): ?iterable
     {
@@ -96,7 +96,7 @@ class ServiceSpec extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @param string[]|null $labels
+     * @param array<string, string>|null $labels
      */
     public function setLabels(?iterable $labels): self
     {

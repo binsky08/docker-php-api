@@ -53,7 +53,7 @@ class NetworkSettings extends \ArrayObject
      * If a container's port is mapped for multiple protocols, separate entries
      * are added to the mapping table.
      *
-     * @var PortBinding[][]|null
+     * @var array<string, PortBinding[]>|null
      */
     protected $ports;
     /**
@@ -185,7 +185,7 @@ class NetworkSettings extends \ArrayObject
     /**
      * Information about all networks that the container is connected to.
      *
-     * @var EndpointSettings[]|null
+     * @var array<string, EndpointSettings>|null
      */
     protected $networks;
 
@@ -292,7 +292,7 @@ class NetworkSettings extends \ArrayObject
      * If a container's port is mapped for multiple protocols, separate entries
      * are added to the mapping table.
      *
-     * @return PortBinding[][]|null
+     * @return array<string, PortBinding[]>|null
      */
     public function getPorts(): ?iterable
     {
@@ -307,7 +307,7 @@ class NetworkSettings extends \ArrayObject
      * If a container's port is mapped for multiple protocols, separate entries
      * are added to the mapping table.
      *
-     * @param PortBinding[][]|null $ports
+     * @param array<string, PortBinding[]>|null $ports
      */
     public function setPorts(?iterable $ports): self
     {
@@ -657,7 +657,7 @@ class NetworkSettings extends \ArrayObject
     /**
      * Information about all networks that the container is connected to.
      *
-     * @return EndpointSettings[]|null
+     * @return array<string, EndpointSettings>|null
      */
     public function getNetworks(): ?iterable
     {
@@ -667,7 +667,7 @@ class NetworkSettings extends \ArrayObject
     /**
      * Information about all networks that the container is connected to.
      *
-     * @param EndpointSettings[]|null $networks
+     * @param array<string, EndpointSettings>|null $networks
      */
     public function setNetworks(?iterable $networks): self
     {

@@ -20,7 +20,7 @@ class TaskSpecLogDriver extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $options;
 
@@ -38,7 +38,7 @@ class TaskSpecLogDriver extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getOptions(): ?iterable
     {
@@ -46,7 +46,7 @@ class TaskSpecLogDriver extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $options
+     * @param array<string, string>|null $options
      */
     public function setOptions(?iterable $options): self
     {

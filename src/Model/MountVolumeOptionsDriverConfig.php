@@ -24,7 +24,7 @@ class MountVolumeOptionsDriverConfig extends \ArrayObject
     /**
      * key/value map of driver specific options.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $options;
 
@@ -50,7 +50,7 @@ class MountVolumeOptionsDriverConfig extends \ArrayObject
     /**
      * key/value map of driver specific options.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getOptions(): ?iterable
     {
@@ -60,7 +60,7 @@ class MountVolumeOptionsDriverConfig extends \ArrayObject
     /**
      * key/value map of driver specific options.
      *
-     * @param string[]|null $options
+     * @param array<string, string>|null $options
      */
     public function setOptions(?iterable $options): self
     {

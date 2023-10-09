@@ -72,13 +72,13 @@ class NetworksCreatePostBody extends \ArrayObject
     /**
      * Network specific options to be used by the drivers.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $options;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $labels;
 
@@ -247,7 +247,7 @@ class NetworksCreatePostBody extends \ArrayObject
     /**
      * Network specific options to be used by the drivers.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getOptions(): ?iterable
     {
@@ -257,7 +257,7 @@ class NetworksCreatePostBody extends \ArrayObject
     /**
      * Network specific options to be used by the drivers.
      *
-     * @param string[]|null $options
+     * @param array<string, string>|null $options
      */
     public function setOptions(?iterable $options): self
     {
@@ -270,7 +270,7 @@ class NetworksCreatePostBody extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getLabels(): ?iterable
     {
@@ -280,7 +280,7 @@ class NetworksCreatePostBody extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @param string[]|null $labels
+     * @param array<string, string>|null $labels
      */
     public function setLabels(?iterable $labels): self
     {

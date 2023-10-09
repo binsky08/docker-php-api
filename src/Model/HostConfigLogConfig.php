@@ -20,7 +20,7 @@ class HostConfigLogConfig extends \ArrayObject
      */
     protected $type;
     /**
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $config;
 
@@ -38,7 +38,7 @@ class HostConfigLogConfig extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getConfig(): ?iterable
     {
@@ -46,7 +46,7 @@ class HostConfigLogConfig extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $config
+     * @param array<string, string>|null $config
      */
     public function setConfig(?iterable $config): self
     {

@@ -32,7 +32,7 @@ class SwarmSpecCAConfigExternalCAsItem extends \ArrayObject
      * An object with key/value pairs that are interpreted as
      * protocol-specific options for the external CA driver.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $options;
     /**
@@ -88,7 +88,7 @@ class SwarmSpecCAConfigExternalCAsItem extends \ArrayObject
      * An object with key/value pairs that are interpreted as
      * protocol-specific options for the external CA driver.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getOptions(): ?iterable
     {
@@ -99,7 +99,7 @@ class SwarmSpecCAConfigExternalCAsItem extends \ArrayObject
      * An object with key/value pairs that are interpreted as
      * protocol-specific options for the external CA driver.
      *
-     * @param string[]|null $options
+     * @param array<string, string>|null $options
      */
     public function setOptions(?iterable $options): self
     {

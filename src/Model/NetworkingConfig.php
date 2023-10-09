@@ -18,14 +18,14 @@ class NetworkingConfig extends \ArrayObject
     /**
      * A mapping of network name to endpoint configuration for that network.
      *
-     * @var EndpointSettings[]|null
+     * @var array<string, EndpointSettings>|null
      */
     protected $endpointsConfig;
 
     /**
      * A mapping of network name to endpoint configuration for that network.
      *
-     * @return EndpointSettings[]|null
+     * @return array<string, EndpointSettings>|null
      */
     public function getEndpointsConfig(): ?iterable
     {
@@ -35,7 +35,7 @@ class NetworkingConfig extends \ArrayObject
     /**
      * A mapping of network name to endpoint configuration for that network.
      *
-     * @param EndpointSettings[]|null $endpointsConfig
+     * @param array<string, EndpointSettings>|null $endpointsConfig
      */
     public function setEndpointsConfig(?iterable $endpointsConfig): self
     {

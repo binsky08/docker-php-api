@@ -57,8 +57,7 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\ContainersCreatePostBody|null $requestBody
-     * @param array                                           $queryParameters {
+     * @param array $queryParameters {
      *
      * @var string $name Assign the specified name to the container. Must match
      *             `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
@@ -356,9 +355,8 @@ class Client extends \Docker\API\Runtime\Client\Client
      * Change various configuration options of a container without having to
      * recreate it.
      *
-     * @param string                                            $id          ID or name of the container
-     * @param \Docker\API\Model\ContainersIdUpdatePostBody|null $requestBody
-     * @param string                                            $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $id    ID or name of the container
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\ContainerUpdateNotFoundException
      * @throws \Docker\API\Exception\ContainerUpdateInternalServerErrorException
@@ -1083,8 +1081,7 @@ class Client extends \Docker\API\Runtime\Client\Client
      * Validate credentials for a registry and, if available, get an identity
      * token for accessing the registry without password.
      *
-     * @param \Docker\API\Model\AuthConfig|null $requestBody
-     * @param string                            $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\SystemAuthInternalServerErrorException
      *
@@ -1140,8 +1137,7 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\ContainerConfig|null $requestBody
-     * @param array                                  $queryParameters {
+     * @param array $queryParameters {
      *
      * @var string $container The ID or name of the container to commit
      * @var string $repo Repository name for the created image
@@ -1323,9 +1319,8 @@ class Client extends \Docker\API\Runtime\Client\Client
     /**
      * Run a command inside a running container.
      *
-     * @param string                                          $id          ID or name of container
-     * @param \Docker\API\Model\ContainersIdExecPostBody|null $requestBody
-     * @param string                                          $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $id    ID or name of container
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\ContainerExecNotFoundException
      * @throws \Docker\API\Exception\ContainerExecConflictException
@@ -1343,9 +1338,8 @@ class Client extends \Docker\API\Runtime\Client\Client
      * returns immediately after starting the command. Otherwise, it sets up an
      * interactive session with the command.
      *
-     * @param string                                     $id          Exec instance ID
-     * @param \Docker\API\Model\ExecIdStartPostBody|null $requestBody
-     * @param string                                     $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $id    Exec instance ID
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
@@ -1422,8 +1416,7 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\VolumesCreatePostBody|null $requestBody
-     * @param string                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\VolumeCreateInternalServerErrorException
      *
@@ -1568,8 +1561,7 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\NetworksCreatePostBody|null $requestBody
-     * @param string                                        $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\NetworkCreateForbiddenException
      * @throws \Docker\API\Exception\NetworkCreateNotFoundException
@@ -1583,10 +1575,9 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param string                                           $id          Network ID or name
-     * @param \Docker\API\Model\NetworksIdConnectPostBody|null $requestBody
-     * @param string                                           $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     * @param array                                            $accept      Accept content header application/json|text/plain
+     * @param string $id     Network ID or name
+     * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $accept Accept content header application/json|text/plain
      *
      * @throws \Docker\API\Exception\NetworkConnectForbiddenException
      * @throws \Docker\API\Exception\NetworkConnectNotFoundException
@@ -1600,10 +1591,9 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param string                                              $id          Network ID or name
-     * @param \Docker\API\Model\NetworksIdDisconnectPostBody|null $requestBody
-     * @param string                                              $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     * @param array                                               $accept      Accept content header application/json|text/plain
+     * @param string $id     Network ID or name
+     * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $accept Accept content header application/json|text/plain
      *
      * @throws \Docker\API\Exception\NetworkDisconnectForbiddenException
      * @throws \Docker\API\Exception\NetworkDisconnectNotFoundException
@@ -1954,9 +1944,8 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param string                          $id              The ID of the node
-     * @param \Docker\API\Model\NodeSpec|null $requestBody
-     * @param array                           $queryParameters {
+     * @param string $id              The ID of the node
+     * @param array  $queryParameters {
      *
      * @var int $version The version number of the node object being updated. This is required
      *          to avoid conflicting writes.
@@ -1994,9 +1983,8 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\SwarmInitPostBody|null $requestBody
-     * @param string                                   $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     * @param array                                    $accept      Accept content header application/json|text/plain
+     * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $accept Accept content header application/json|text/plain
      *
      * @throws \Docker\API\Exception\SwarmInitBadRequestException
      * @throws \Docker\API\Exception\SwarmInitInternalServerErrorException
@@ -2010,9 +1998,8 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\SwarmJoinPostBody|null $requestBody
-     * @param string                                   $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     * @param array                                    $accept      Accept content header application/json|text/plain
+     * @param string $fetch  Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array  $accept Accept content header application/json|text/plain
      *
      * @throws \Docker\API\Exception\SwarmJoinBadRequestException
      * @throws \Docker\API\Exception\SwarmJoinInternalServerErrorException
@@ -2047,8 +2034,7 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\SwarmSpec|null $requestBody
-     * @param array                            $queryParameters {
+     * @param array $queryParameters {
      *
      * @var int  $version The version number of the swarm object being updated. This is
      *           required to avoid conflicting writes.
@@ -2086,8 +2072,7 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\SwarmUnlockPostBody|null $requestBody
-     * @param string                                     $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\SwarmUnlockInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmUnlockServiceUnavailableException
@@ -2129,8 +2114,7 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\ServicesCreatePostBody|null $requestBody
-     * @param array                                         $headerParameters {
+     * @param array $headerParameters {
      *
      * @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
      *             registries.
@@ -2193,9 +2177,8 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param string                                          $id              ID or name of service
-     * @param \Docker\API\Model\ServicesIdUpdatePostBody|null $requestBody
-     * @param array                                           $queryParameters {
+     * @param string $id              ID or name of service
+     * @param array  $queryParameters {
      *
      * @var int    $version The version number of the service object being updated. This is
      *             required to avoid conflicting writes.
@@ -2376,8 +2359,7 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\SecretsCreatePostBody|null $requestBody
-     * @param string                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\SecretCreateConflictException
      * @throws \Docker\API\Exception\SecretCreateInternalServerErrorException
@@ -2421,9 +2403,8 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param string                            $id              The ID or name of the secret
-     * @param \Docker\API\Model\SecretSpec|null $requestBody
-     * @param array                             $queryParameters {
+     * @param string $id              The ID or name of the secret
+     * @param array  $queryParameters {
      *
      * @var int $version The version number of the secret object being updated. This is
      *          required to avoid conflicting writes.
@@ -2473,8 +2454,7 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param \Docker\API\Model\ConfigsCreatePostBody|null $requestBody
-     * @param string                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\ConfigCreateConflictException
      * @throws \Docker\API\Exception\ConfigCreateInternalServerErrorException
@@ -2518,9 +2498,8 @@ class Client extends \Docker\API\Runtime\Client\Client
     }
 
     /**
-     * @param string                            $id              The ID or name of the config
-     * @param \Docker\API\Model\ConfigSpec|null $requestBody
-     * @param array                             $queryParameters {
+     * @param string $id              The ID or name of the config
+     * @param array  $queryParameters {
      *
      * @var int $version The version number of the config object being updated. This is
      *          required to avoid conflicting writes.
@@ -2573,7 +2552,7 @@ class Client extends \Docker\API\Runtime\Client\Client
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('/v1.41');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('/v1.41');
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (\count($additionalPlugins) > 0) {
                 $plugins = array_merge($plugins, $additionalPlugins);

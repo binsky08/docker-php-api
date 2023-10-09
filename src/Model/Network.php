@@ -56,15 +56,15 @@ class Network extends \ArrayObject
      */
     protected $ingress;
     /**
-     * @var NetworkContainer[]|null
+     * @var array<string, NetworkContainer>|null
      */
     protected $containers;
     /**
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $options;
     /**
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $labels;
 
@@ -199,7 +199,7 @@ class Network extends \ArrayObject
     }
 
     /**
-     * @return NetworkContainer[]|null
+     * @return array<string, NetworkContainer>|null
      */
     public function getContainers(): ?iterable
     {
@@ -207,7 +207,7 @@ class Network extends \ArrayObject
     }
 
     /**
-     * @param NetworkContainer[]|null $containers
+     * @param array<string, NetworkContainer>|null $containers
      */
     public function setContainers(?iterable $containers): self
     {
@@ -218,7 +218,7 @@ class Network extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getOptions(): ?iterable
     {
@@ -226,7 +226,7 @@ class Network extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $options
+     * @param array<string, string>|null $options
      */
     public function setOptions(?iterable $options): self
     {
@@ -237,7 +237,7 @@ class Network extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getLabels(): ?iterable
     {
@@ -245,7 +245,7 @@ class Network extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $labels
+     * @param array<string, string>|null $labels
      */
     public function setLabels(?iterable $labels): self
     {

@@ -432,7 +432,7 @@ class SystemInfo extends \ArrayObject
      * The default runtime is `runc`, and automatically configured. Additional
      * runtimes can be configured by the user and will be listed here.
      *
-     * @var Runtime[]|null
+     * @var array<string, Runtime>|null
      */
     protected $runtimes;
     /**
@@ -1720,7 +1720,7 @@ class SystemInfo extends \ArrayObject
      * The default runtime is `runc`, and automatically configured. Additional
      * runtimes can be configured by the user and will be listed here.
      *
-     * @return Runtime[]|null
+     * @return array<string, Runtime>|null
      */
     public function getRuntimes(): ?iterable
     {
@@ -1739,7 +1739,7 @@ class SystemInfo extends \ArrayObject
      * The default runtime is `runc`, and automatically configured. Additional
      * runtimes can be configured by the user and will be listed here.
      *
-     * @param Runtime[]|null $runtimes
+     * @param array<string, Runtime>|null $runtimes
      */
     public function setRuntimes(?iterable $runtimes): self
     {

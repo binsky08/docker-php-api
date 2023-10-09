@@ -48,7 +48,7 @@ class ImageSummary extends \ArrayObject
      */
     protected $virtualSize;
     /**
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $labels;
     /**
@@ -173,7 +173,7 @@ class ImageSummary extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getLabels(): ?iterable
     {
@@ -181,7 +181,7 @@ class ImageSummary extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $labels
+     * @param array<string, string>|null $labels
      */
     public function setLabels(?iterable $labels): self
     {

@@ -24,7 +24,7 @@ class EventsGetResponse200Actor extends \ArrayObject
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $attributes;
 
@@ -50,7 +50,7 @@ class EventsGetResponse200Actor extends \ArrayObject
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getAttributes(): ?iterable
     {
@@ -60,7 +60,7 @@ class EventsGetResponse200Actor extends \ArrayObject
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @param string[]|null $attributes
+     * @param array<string, string>|null $attributes
      */
     public function setAttributes(?iterable $attributes): self
     {

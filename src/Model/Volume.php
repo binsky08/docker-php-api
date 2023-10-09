@@ -47,13 +47,13 @@ class Volume extends \ArrayObject
      * The `Status` field is optional, and is omitted if the volume driver
      * does not support this feature.
      *
-     * @var VolumeStatusItem[]|null
+     * @var array<string, VolumeStatusItem>|null
      */
     protected $status;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $labels;
     /**
@@ -66,7 +66,7 @@ class Volume extends \ArrayObject
     /**
      * The driver specific options used when creating the volume.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $options;
     /**
@@ -161,7 +161,7 @@ class Volume extends \ArrayObject
      * The `Status` field is optional, and is omitted if the volume driver
      * does not support this feature.
      *
-     * @return VolumeStatusItem[]|null
+     * @return array<string, VolumeStatusItem>|null
      */
     public function getStatus(): ?iterable
     {
@@ -176,7 +176,7 @@ class Volume extends \ArrayObject
      * The `Status` field is optional, and is omitted if the volume driver
      * does not support this feature.
      *
-     * @param VolumeStatusItem[]|null $status
+     * @param array<string, VolumeStatusItem>|null $status
      */
     public function setStatus(?iterable $status): self
     {
@@ -189,7 +189,7 @@ class Volume extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getLabels(): ?iterable
     {
@@ -199,7 +199,7 @@ class Volume extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @param string[]|null $labels
+     * @param array<string, string>|null $labels
      */
     public function setLabels(?iterable $labels): self
     {
@@ -233,7 +233,7 @@ class Volume extends \ArrayObject
     /**
      * The driver specific options used when creating the volume.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getOptions(): ?iterable
     {
@@ -243,7 +243,7 @@ class Volume extends \ArrayObject
     /**
      * The driver specific options used when creating the volume.
      *
-     * @param string[]|null $options
+     * @param array<string, string>|null $options
      */
     public function setOptions(?iterable $options): self
     {

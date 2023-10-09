@@ -87,7 +87,7 @@ class EndpointSettings extends \ArrayObject
      * DriverOpts is a mapping of driver options and values. These options
      * are passed directly to the driver and are driver specific.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $driverOpts;
 
@@ -323,7 +323,7 @@ class EndpointSettings extends \ArrayObject
      * DriverOpts is a mapping of driver options and values. These options
      * are passed directly to the driver and are driver specific.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getDriverOpts(): ?iterable
     {
@@ -334,7 +334,7 @@ class EndpointSettings extends \ArrayObject
      * DriverOpts is a mapping of driver options and values. These options
      * are passed directly to the driver and are driver specific.
      *
-     * @param string[]|null $driverOpts
+     * @param array<string, string>|null $driverOpts
      */
     public function setDriverOpts(?iterable $driverOpts): self
     {

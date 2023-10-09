@@ -31,13 +31,13 @@ class VolumesCreatePostBody extends \ArrayObject
      * A mapping of driver options and values. These options are
      * passed directly to the driver and are driver specific.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $driverOpts;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $labels;
 
@@ -83,7 +83,7 @@ class VolumesCreatePostBody extends \ArrayObject
      * A mapping of driver options and values. These options are
      * passed directly to the driver and are driver specific.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getDriverOpts(): ?iterable
     {
@@ -94,7 +94,7 @@ class VolumesCreatePostBody extends \ArrayObject
      * A mapping of driver options and values. These options are
      * passed directly to the driver and are driver specific.
      *
-     * @param string[]|null $driverOpts
+     * @param array<string, string>|null $driverOpts
      */
     public function setDriverOpts(?iterable $driverOpts): self
     {
@@ -107,7 +107,7 @@ class VolumesCreatePostBody extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getLabels(): ?iterable
     {
@@ -117,7 +117,7 @@ class VolumesCreatePostBody extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @param string[]|null $labels
+     * @param array<string, string>|null $labels
      */
     public function setLabels(?iterable $labels): self
     {

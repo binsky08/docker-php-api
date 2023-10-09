@@ -20,7 +20,7 @@ class GraphDriverData extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $data;
 
@@ -38,7 +38,7 @@ class GraphDriverData extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getData(): ?iterable
     {
@@ -46,7 +46,7 @@ class GraphDriverData extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $data
+     * @param array<string, string>|null $data
      */
     public function setData(?iterable $data): self
     {

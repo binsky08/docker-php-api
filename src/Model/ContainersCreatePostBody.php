@@ -56,7 +56,7 @@ class ContainersCreatePostBody extends \ArrayObject
      *
      * `{"<port>/<tcp|udp|sctp>": {}}`
      *
-     * @var ContainerConfigExposedPortsItem[]|null
+     * @var array<string, ContainerConfigExposedPortsItem>|null
      */
     protected $exposedPorts;
     /**
@@ -113,7 +113,7 @@ class ContainersCreatePostBody extends \ArrayObject
      * An object mapping mount point paths inside the container to empty
      * objects.
      *
-     * @var ContainerConfigVolumesItem[]|null
+     * @var array<string, ContainerConfigVolumesItem>|null
      */
     protected $volumes;
     /**
@@ -153,7 +153,7 @@ class ContainersCreatePostBody extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $labels;
     /**
@@ -309,7 +309,7 @@ class ContainersCreatePostBody extends \ArrayObject
      *
      * `{"<port>/<tcp|udp|sctp>": {}}`
      *
-     * @return ContainerConfigExposedPortsItem[]|null
+     * @return array<string, ContainerConfigExposedPortsItem>|null
      */
     public function getExposedPorts(): ?iterable
     {
@@ -321,7 +321,7 @@ class ContainersCreatePostBody extends \ArrayObject
      *
      * `{"<port>/<tcp|udp|sctp>": {}}`
      *
-     * @param ContainerConfigExposedPortsItem[]|null $exposedPorts
+     * @param array<string, ContainerConfigExposedPortsItem>|null $exposedPorts
      */
     public function setExposedPorts(?iterable $exposedPorts): self
     {
@@ -499,7 +499,7 @@ class ContainersCreatePostBody extends \ArrayObject
      * An object mapping mount point paths inside the container to empty
      * objects.
      *
-     * @return ContainerConfigVolumesItem[]|null
+     * @return array<string, ContainerConfigVolumesItem>|null
      */
     public function getVolumes(): ?iterable
     {
@@ -510,7 +510,7 @@ class ContainersCreatePostBody extends \ArrayObject
      * An object mapping mount point paths inside the container to empty
      * objects.
      *
-     * @param ContainerConfigVolumesItem[]|null $volumes
+     * @param array<string, ContainerConfigVolumesItem>|null $volumes
      */
     public function setVolumes(?iterable $volumes): self
     {
@@ -634,7 +634,7 @@ class ContainersCreatePostBody extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getLabels(): ?iterable
     {
@@ -644,7 +644,7 @@ class ContainersCreatePostBody extends \ArrayObject
     /**
      * User-defined key/value metadata.
      *
-     * @param string[]|null $labels
+     * @param array<string, string>|null $labels
      */
     public function setLabels(?iterable $labels): self
     {

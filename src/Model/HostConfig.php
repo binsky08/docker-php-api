@@ -329,7 +329,7 @@ class HostConfig extends \ArrayObject
      * If a container's port is mapped for multiple protocols, separate entries
      * are added to the mapping table.
      *
-     * @var PortBinding[][]|null
+     * @var array<string, PortBinding[]>|null
      */
     protected $portBindings;
     /**
@@ -505,7 +505,7 @@ class HostConfig extends \ArrayObject
     /**
      * Storage driver options for this container, in the form `{"size": "120G"}`.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $storageOpt;
     /**
@@ -516,7 +516,7 @@ class HostConfig extends \ArrayObject
      * { "/run": "rw,noexec,nosuid,size=65536k" }
      * ```
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $tmpfs;
     /**
@@ -546,7 +546,7 @@ class HostConfig extends \ArrayObject
      * {"net.ipv4.ip_forward": "1"}
      * ```
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $sysctls;
     /**
@@ -1494,7 +1494,7 @@ class HostConfig extends \ArrayObject
      * If a container's port is mapped for multiple protocols, separate entries
      * are added to the mapping table.
      *
-     * @return PortBinding[][]|null
+     * @return array<string, PortBinding[]>|null
      */
     public function getPortBindings(): ?iterable
     {
@@ -1509,7 +1509,7 @@ class HostConfig extends \ArrayObject
      * If a container's port is mapped for multiple protocols, separate entries
      * are added to the mapping table.
      *
-     * @param PortBinding[][]|null $portBindings
+     * @param array<string, PortBinding[]>|null $portBindings
      */
     public function setPortBindings(?iterable $portBindings): self
     {
@@ -2060,7 +2060,7 @@ class HostConfig extends \ArrayObject
     /**
      * Storage driver options for this container, in the form `{"size": "120G"}`.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getStorageOpt(): ?iterable
     {
@@ -2070,7 +2070,7 @@ class HostConfig extends \ArrayObject
     /**
      * Storage driver options for this container, in the form `{"size": "120G"}`.
      *
-     * @param string[]|null $storageOpt
+     * @param array<string, string>|null $storageOpt
      */
     public function setStorageOpt(?iterable $storageOpt): self
     {
@@ -2088,7 +2088,7 @@ class HostConfig extends \ArrayObject
      * { "/run": "rw,noexec,nosuid,size=65536k" }
      * ```
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getTmpfs(): ?iterable
     {
@@ -2103,7 +2103,7 @@ class HostConfig extends \ArrayObject
      * { "/run": "rw,noexec,nosuid,size=65536k" }
      * ```
      *
-     * @param string[]|null $tmpfs
+     * @param array<string, string>|null $tmpfs
      */
     public function setTmpfs(?iterable $tmpfs): self
     {
@@ -2180,7 +2180,7 @@ class HostConfig extends \ArrayObject
      * {"net.ipv4.ip_forward": "1"}
      * ```
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getSysctls(): ?iterable
     {
@@ -2195,7 +2195,7 @@ class HostConfig extends \ArrayObject
      * {"net.ipv4.ip_forward": "1"}
      * ```
      *
-     * @param string[]|null $sysctls
+     * @param array<string, string>|null $sysctls
      */
     public function setSysctls(?iterable $sysctls): self
     {

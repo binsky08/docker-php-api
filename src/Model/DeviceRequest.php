@@ -37,7 +37,7 @@ class DeviceRequest extends \ArrayObject
      * Driver-specific options, specified as a key/value pairs. These options
      * are passed directly to the driver.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $options;
 
@@ -113,7 +113,7 @@ class DeviceRequest extends \ArrayObject
      * Driver-specific options, specified as a key/value pairs. These options
      * are passed directly to the driver.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getOptions(): ?iterable
     {
@@ -124,7 +124,7 @@ class DeviceRequest extends \ArrayObject
      * Driver-specific options, specified as a key/value pairs. These options
      * are passed directly to the driver.
      *
-     * @param string[]|null $options
+     * @param array<string, string>|null $options
      */
     public function setOptions(?iterable $options): self
     {

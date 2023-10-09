@@ -24,7 +24,7 @@ class TaskSpecContainerSpec extends \ArrayObject
     /**
      * User-defined key/value data.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $labels;
     /**
@@ -176,7 +176,7 @@ class TaskSpecContainerSpec extends \ArrayObject
      * to determine whether a given sysctl will work properly in a
      * Service.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $sysctls;
     /**
@@ -222,7 +222,7 @@ class TaskSpecContainerSpec extends \ArrayObject
     /**
      * User-defined key/value data.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getLabels(): ?iterable
     {
@@ -232,7 +232,7 @@ class TaskSpecContainerSpec extends \ArrayObject
     /**
      * User-defined key/value data.
      *
-     * @param string[]|null $labels
+     * @param array<string, string>|null $labels
      */
     public function setLabels(?iterable $labels): self
     {
@@ -710,7 +710,7 @@ class TaskSpecContainerSpec extends \ArrayObject
      * to determine whether a given sysctl will work properly in a
      * Service.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getSysctls(): ?iterable
     {
@@ -726,7 +726,7 @@ class TaskSpecContainerSpec extends \ArrayObject
      * to determine whether a given sysctl will work properly in a
      * Service.
      *
-     * @param string[]|null $sysctls
+     * @param array<string, string>|null $sysctls
      */
     public function setSysctls(?iterable $sysctls): self
     {
