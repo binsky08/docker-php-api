@@ -148,7 +148,7 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($object->isInitialized('virtualSize') && null !== $object->getVirtualSize()) {
             $data['VirtualSize'] = $object->getVirtualSize();
         }
-        $values_2 = [];
+        $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object->getLabels() as $key => $value_2) {
             $values_2[$key] = $value_2;
         }
