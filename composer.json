@@ -1,5 +1,5 @@
 {
-    "name": "beluga-php/docker-php-api",
+    "name": "binsky08/docker-php-api",
     "license": "MIT",
     "type": "library",
     "description": "Docker API generated files from OpenAPI Specification",
